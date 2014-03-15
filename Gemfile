@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0'
+gem 'rails', '~> 4.0.4'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -33,7 +33,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.2'
+gem 'bcrypt'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -44,4 +44,7 @@ gem 'bcrypt', '~> 3.1.2'
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
-gem 'rspec', group: [:development, :test]
+group :development, :test do
+    gem 'rspec'
+    gem 'rspec-rails'
+end
