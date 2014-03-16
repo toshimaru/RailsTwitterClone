@@ -6,5 +6,9 @@ FactoryGirl.define do
     email 'toshi@factory.girl'
     password 'FactoryGirl'
     password_confirmation 'FactoryGirl'
+
+    factory :user_having_different_email do
+      email 'changed@mail.address'
+    end
   end
 end
