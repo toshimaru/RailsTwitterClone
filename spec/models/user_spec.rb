@@ -1,11 +1,11 @@
-#http://ruby.railstutorial.org/chapters/modeling-users#sec-user_model
+#ref. http://ruby.railstutorial.org/chapters/modeling-users#sec-user_model
 
 require 'spec_helper'
 
 describe User do
   before do
     @user = User.new(name: 'toshi', email: "mail@test.com",
-                            password: 'my password', password_confirmation: 'my password')
+                     password: 'my password', password_confirmation: 'my password')
   end
 
   subject { @user }
