@@ -45,6 +45,7 @@ gem 'bcrypt'
 gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-    gem 'rspec'
-    gem 'rspec-rails'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
