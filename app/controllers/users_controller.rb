@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        flash[:success] = "Welcome to Twitter Clone!"
         format.html { redirect_to @user, notice: 'User was successfully created.' }
       else
         format.html { render action: 'new' }
@@ -57,6 +58,7 @@ class UsersController < ApplicationController
   end
 
   def signin
+    @title = 'Sign In'
   end
 
   private
