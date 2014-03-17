@@ -2,7 +2,6 @@
 
 * [drone.io](https://drone.io/) integration
 * [coveralls](https://coveralls.io/subscriptions) integration
-* [codeclimate](https://codeclimate.com/) integration
 
 ## README
 
