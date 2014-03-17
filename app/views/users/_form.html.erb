@@ -9,21 +9,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class: 'control-label' %><br>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="form-group">
+    <%= f.label :email, class: 'control-label' %><br>
+    <%= f.text_field :email, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.text_field :password %>
+  <div class="form-group">
+    <%= f.label :password, class: 'control-label' %><br>
+    <%= f.text_field :password, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.text_field :password_confirmation %>
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'control-label' %><br>
+    <%= f.text_field :password_confirmation, class: 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit "Sign Up", class: "btn btn-large btn-primary" %>
