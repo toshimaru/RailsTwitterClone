@@ -1,3 +1,4 @@
+@import "bootstrap"; // requre: gem 'bootstrap-sass'
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -11,4 +12,8 @@
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+.field_with_errors {
+  @extend .has-error;
 }
