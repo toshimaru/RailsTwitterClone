@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   before { @user = FactoryGirl.create(:user) }
+  let(:user) { @user }
 
   describe "#index" do
     context "GET" do
@@ -15,7 +16,7 @@ describe UsersController do
   describe "#show" do
     context "GET" do
       it "has a 200 status code" do
-        get :show, id: @user.id
+        get :show, id: user.id
         expect(response.status).to eq(200)
       end
     end
