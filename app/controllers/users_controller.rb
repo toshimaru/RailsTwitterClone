@@ -26,13 +26,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        flash[:success] = "Welcome to Twitter Clone!"
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if @user.save
+      sign_in @user
+      flash[:success] = "Welcome to Twitter Clone!"
+      redirect_to @user
+    else
+      render action: 'new'
     end
   end
 
@@ -58,7 +57,6 @@ class UsersController < ApplicationController
   end
 
   def signin
-    @title = 'Sign In'
   end
 
   private

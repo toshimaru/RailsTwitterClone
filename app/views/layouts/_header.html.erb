@@ -10,15 +10,13 @@
       <a class="navbar-brand" href="/">Twitter Clone</a>
     </div>
     <div class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right" role="form">
-        <div class="form-group">
-          <input type="text" placeholder="_Email" class="form-control">
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="_Password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-success">Sign in</button>
-      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? %>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
+        <li><%= link_to "Setting", '#' %></li>
+        <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+        <% end %>
+      </ul>
     </div><!--/.navbar-collapse -->
   </div>
 </div>
