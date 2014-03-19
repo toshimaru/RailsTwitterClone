@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if signed_in? %>
         <li><%= link_to "Profile", user_path(current_user) %></li>
-        <li><%= link_to "Setting", edit_user_path(@user) %></li>
+        <li><%= link_to "Setting", edit_user_path(current_user) %></li>
         <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
         <% end %>
       </ul>
