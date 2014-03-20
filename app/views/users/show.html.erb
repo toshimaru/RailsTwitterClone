@@ -2,16 +2,23 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= gravatar_for @user %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="row">
+  <div class="col-md-4">
+    <p><%= gravatar_for @user %></p>
+    <ul>
+      <li><strong>Name:</strong> <%= @user.name %></li>
+      <li><strong>Email:</strong> <%= @user.email %></li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% else %>
+      <p>No post yet</p>
+    <% end %>
+  </div>
+</div>
