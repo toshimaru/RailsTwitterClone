@@ -36,4 +36,7 @@
     <%= gravatar_for @user %>
     <a href="http://gravatar.com/emails">change</a>
   </div>
+
 <% end %>
+
+<%= link_to 'Delete my account', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>

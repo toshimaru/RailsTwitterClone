@@ -52,15 +52,16 @@ describe "UserPages" do
   end
 
   describe "edit" do
-    before {
+    before do
       sign_in user
       visit edit_user_path(user)
-    }
+    end
 
     describe "page" do
       it { should have_content("Update your profile") }
       it { should have_title("Edit user") }
       it { should have_link('change', href: 'http://gravatar.com/emails') }
+      it { should have_link('Delete my account', href: user_path(user)) }
     end
 
     context "with invalid information" do
