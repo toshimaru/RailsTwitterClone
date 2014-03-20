@@ -37,18 +37,23 @@ end
 gem 'bcrypt'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
-gem 'debugger', group: [:development, :test]
-
 group :development, :test do
+  # Use debugger
+  gem 'debugger'
+
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'capybara'
   gem 'simplecov', '~> 0.7.1'
+end
+
+group :development do
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
 end
