@@ -3,12 +3,8 @@
 require 'spec_helper'
 
 describe User do
-  before do
-    @user = User.new(name: 'toshi', email: "mail@test.com",
-                     password: 'my password', password_confirmation: 'my password')
-  end
-
-  subject { @user }
+  subject(:user) { User.new(name: 'toshi', email: "mail@test.com",
+                            password: 'my password', password_confirmation: 'my password') }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
@@ -17,15 +13,18 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+
+  it { should respond_to(:microposts) }
+
   it { should be_valid }
 
   describe "when name is not present" do
-    before { @user.name = ' ' }
+    before { user.name = ' ' }
     it { should_not be_valid }
   end
 
   describe "when name is too long" do
-    before { @user.name = 'a' * 51 }
+    before { user.name = 'a' * 51 }
     it { should_not be_valid }
   end
 
@@ -33,8 +32,8 @@ describe User do
     it "should be invalid" do
       addresses = %w[user@foo,bar user.foo user@foo.]
       addresses.each { |address|
-        @user.email = address
-        expect(@user).not_to be_valid
+        user.email = address
+        expect(user).not_to be_valid
       }
     end
   end
@@ -43,16 +42,16 @@ describe User do
     it "should be valid" do
       addresses = %w[user@foo.bar a+b@a.com toshi...1@a.b.c]
       addresses.each { |address|
-        @user.email = address
-        expect(@user).to be_valid
+        user.email = address
+        expect(user).to be_valid
       }
     end
   end
 
   describe "when email address is already taken" do
     before do
-      user_with_same_email = @user.dup
-      user_with_same_email.email = @user.email.upcase
+      user_with_same_email = user.dup
+      user_with_same_email.email = user.email.upcase
       user_with_same_email.save
     end
 
@@ -60,29 +59,27 @@ describe User do
   end
 
   describe "when password is not present" do
-    before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: " ", password_confirmation: " ")
-    end
+    subject(:user) { User.new(name: "Example User", email: "user@example.com",
+                              password: " ", password_confirmation: " ") }
     it { should_not be_valid }
   end
 
   describe "when password doesn't match confirmation" do
-    before { @user.password_confirmation = 'aaa' }
+    before { user.password_confirmation = 'aaa' }
     it { should_not be_valid }
   end
 
   describe "with a password that's too short" do
-    before { @user.password = @user.password_confirmation = "a" * 3 }
+    before { user.password = user.password_confirmation = "a" * 3 }
     it { should be_invalid }
   end
 
   describe "return value of authenticate method" do
-    before { @user.save }
-    let(:found_user) { User.find_by(email: @user.email) }
+    before { user.save }
+    let(:found_user) { User.find_by(email: user.email) }
 
     describe "with valid password" do
-      it { should eq found_user.authenticate(@user.password) }
+      it { should eq found_user.authenticate(user.password) }
     end
 
     describe "with invalid password" do
@@ -94,7 +91,21 @@ describe User do
   end
 
   describe "remember token" do
-    before { @user.save }
-    it { expect(@user.remember_token).not_to be_blank }
+    before { user.save }
+    it { expect(user.remember_token).not_to be_blank }
+  end
+
+  describe "micropost associations" do
+    before { user.save }
+    let!(:older_micropost) do
+      FactoryGirl.create(:micropost, user: user, created_at: 1.day.ago)
+    end
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right microposts in the right order" do
+      expect(user.microposts.to_a).to eq [newer_micropost, older_micropost]
+    end
   end
 end

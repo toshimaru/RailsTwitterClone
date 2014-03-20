@@ -4,10 +4,11 @@ describe "Authentication" do
 
   subject { page }
 
-  describe '#new' do
+  describe 'authorization' do
     before { visit signin_path }
 
     it { should have_content('Sign in') }
+    it { should have_title('Sign in') }
 
     context 'with invalid information' do
       before { click_button "Sign in" }
@@ -41,6 +42,20 @@ describe "Authentication" do
         it { should have_link('Sign in') }
         it { should have_link('Sign up') }
       end
+    end
+
+    context 'for non-signed-in users' do
+      let(:user) { FactoryGirl.create(:user) }
+
+      describe "visiting the edit page" do
+        before { visit edit_user_path(user) }
+        it { should have_title('Sign in') }
+      end
+
+      # describe "submitting to the update action" do
+      #   before { patch user_path(user) } # undifined method `patch` because capybara doesn't support PUT/PATCH
+      #   specify { expect(response).to redirect_to(signin_path) }
+      # end
     end
 
   end
