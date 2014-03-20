@@ -42,7 +42,11 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
+# to use paginate
 gem 'will_paginate'
+
+# to create faked user
+gem 'faker'
 
 group :development, :test do
   # Use debugger
