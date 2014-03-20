@@ -42,6 +42,8 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
+gem 'will_paginate'
+
 group :development, :test do
   # Use debugger
   gem 'debugger'
