@@ -13,8 +13,8 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
-
   it { should respond_to(:microposts) }
+  it { should respond_to(:feed) }
 
   it { should be_valid }
 
@@ -114,6 +114,16 @@ describe User do
       expect(microposts).not_to be_empty
       microposts.each do |m|
         expect(Micropost.where(id: m.id)).to be_empty
+      end
+    end
+
+    describe "status" do
+      let(:unfollowed_post) { FactoryGirl.create(:micropost, user: FactoryGirl.create(:user)) }
+
+      specify do
+        expect(user.feed).to include(newer_micropost)
+        expect(user.feed).to include(older_micropost)
+        expect(user.feed).not_to include(unfollowed_post)
       end
     end
   end

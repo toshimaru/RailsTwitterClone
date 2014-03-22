@@ -70,6 +70,16 @@ describe "Authentication" do
       #   before { patch user_path(user) } # undifined method `patch` because capybara doesn't support PUT/PATCH
       #   specify { expect(response).to redirect_to(signin_path) }
       # end
+
+      # describe "in the Microposts controller" do
+      #   describe "submitting to the create action" do
+      #     before { post microposts_path }
+      #     specify { expect(response).to redirect_to(signin_path) }
+      #   end
+      #   describe "" do
+      #     before { delete microposts_path }
+      #   end
+      # end
     end
 
     describe "as wrong user" do
