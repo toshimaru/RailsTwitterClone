@@ -3,6 +3,10 @@
 ##TODO
 
 * [coveralls](https://coveralls.io/subscriptions) integration
+* DRY!
+  * <http://ruby.railstutorial.org/chapters/sign-up#code-f_error_messages>
+* Rename from micropost to tweet
+
 
 ## README
 
@@ -23,3 +27,4 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
