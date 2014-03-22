@@ -7,10 +7,12 @@ Rails4TwitterClone::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root   'users#index'
+  root   'static_pages#home'
   get    'signup'   => 'users#new'
   get    'signin'   => 'sessions#new'
   delete 'signout'  => 'sessions#destroy'
+
+  get    'about'    => 'static_pages#about'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
