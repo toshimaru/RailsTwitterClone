@@ -6,6 +6,7 @@
 * DRY!
   * <http://ruby.railstutorial.org/chapters/sign-up#code-f_error_messages>
 * Rename from micropost to tweet
+* Use [Slim](http://slim-lang.com/)
 
 ##Imprementation
 
@@ -19,6 +20,7 @@ Imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org
 * simplecov
 * guard
 * bootstrap-sass
+* faker
 
 See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone/blob/master/Gemfile).
 
