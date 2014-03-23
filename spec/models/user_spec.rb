@@ -15,6 +15,13 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:microposts) }
   it { should respond_to(:feed) }
+  it { should respond_to(:relationships) }
+  it { should respond_to(:followed_users) }
+  it { should respond_to(:reverse_relationships) }
+  it { should respond_to(:followers) }
+  it { should respond_to(:following?) }
+  it { should respond_to(:follow!) }
+  it { should respond_to(:unfollow!) }
 
   it { should be_valid }
 
@@ -125,6 +132,22 @@ describe User do
         expect(user.feed).to include(older_micropost)
         expect(user.feed).not_to include(unfollowed_post)
       end
+    end
+  end
+
+  describe "following" do
+    let(:other_user) { FactoryGirl.create(:user) }
+
+    before do
+      user.save
+      user.follow!(other_user)
+    end
+
+    it { should be_following(other_user) }
+    specify { expect(user.followed_users).to include(other_user) }
+
+    describe "followed user" do
+      specify { expect(other_user.followers).to include(user) }
     end
   end
 
