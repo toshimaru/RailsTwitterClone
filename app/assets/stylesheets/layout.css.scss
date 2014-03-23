@@ -12,6 +12,10 @@ body {
   padding-top: 60px;
 }
 
+ul, ol {
+  padding: 0;
+}
+
 .debug_dump {
   clear: both;
   float: left;
@@ -27,7 +31,6 @@ body {
 .microposts {
   list-style: none;
   margin: 10px 0 0 0;
-  padding: 0;
 
   li {
     padding: 10px 0;
@@ -43,4 +46,16 @@ body {
 .gravatar {
   float: left;
   margin-right: 10px;
+}
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLight;
+    &:last-child {
+      border-bottom: 1px solid $grayLight;
+    }
+  }
 }

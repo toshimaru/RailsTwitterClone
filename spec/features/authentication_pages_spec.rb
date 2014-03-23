@@ -66,6 +66,29 @@ describe "Authentication" do
         it { should have_content('Sign in') }
       end
 
+      describe "in the user controller" do
+        describe "visit the following page" do
+          before { visit following_user_path(user) }
+          it { should have_title('Following') }
+        end
+        describe "visit the followers page" do
+          before { visit followers_user_path(user) }
+          it { should have_title('Followers') }
+        end
+      end
+
+      # describe "in the Relationships controller" do
+      #   describe "submitting to the create action" do
+      #     before { post relationships_path }
+      #     specify { expect(response).to redirect_to(signin_path) }
+      #   end
+
+      #   describe "submitting to the destroy action" do
+      #     before { delete relationship_path(1) }
+      #     specify { expect(response).to redirect_to(signin_path) }
+      #   end
+      # end
+
       # describe "submitting to the update action" do
       #   before { patch user_path(user) } # undifined method `patch` because capybara doesn't support PUT/PATCH
       #   specify { expect(response).to redirect_to(signin_path) }
