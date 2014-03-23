@@ -7,6 +7,20 @@
   * <http://ruby.railstutorial.org/chapters/sign-up#code-f_error_messages>
 * Rename from micropost to tweet
 
+##Imprementation
+
+Imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book).
+
+##Used gem
+
+* rspec
+* factory_girl
+* capybara
+* simplecov
+* guard
+* bootstrap-sass
+
+See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone/blob/master/Gemfile).
 
 ## README
 
