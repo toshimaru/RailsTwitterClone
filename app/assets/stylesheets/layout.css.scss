@@ -28,6 +28,10 @@ ul, ol {
   @extend .has-error;
 }
 
+.alert-notice {
+  @extend .alert-danger;
+}
+
 .microposts {
   list-style: none;
   margin: 10px 0 0 0;

@@ -12,6 +12,7 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
+
     <div class="col-md-8">
       <h3>Micropost Feed</h3>
       <%= render 'shared/feed' %>
@@ -20,6 +21,7 @@
 <% else %>
   <% provide(:title, 'Welcome') %>
   <h1>Welcome to Twitter Clone</h1>
+  <p>Start a conversation, explore your interests, and be in the know.</p>
   <%= link_to 'Sign up', signup_path, class: "btn btn-primary" %>
   <%= link_to 'Sign in', signin_path, class: "btn btn-default" %>
 <% end %>
