@@ -1,0 +1,10 @@
+li id="#{feed_item.id}"
+  = link_to gravatar_for(feed_item.user), feed_item.user
+  span.user = link_to feed_item.user.name, feed_item.user
+  span.content = feed_item.content
+  span.timestamp
+    Posted #{time_ago_in_words(feed_item.created_at)} ago.
+  - if current_user?(feed_item.user)
+    = link_to "delete", feed_item, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: feed_item.content

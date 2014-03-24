@@ -1,0 +1,23 @@
+- provide(:title, @title)
+
+.row
+  aside.col-md-4
+    section
+      = gravatar_for @user
+      h1 = @user.name
+      span = link_to "view my profile", @user
+      span
+        <b>Microposts:</b>
+        = @user.microposts.count
+
+    section
+      = render 'shared/stats'
+
+  .col-md-8
+    h3
+      = @title
+
+    - if @users.any?
+      ul.users
+        = render @users
+      = will_paginate

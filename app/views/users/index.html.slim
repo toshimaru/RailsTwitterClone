@@ -1,0 +1,9 @@
+- provide(:title, 'Users')
+
+h1 All Users
+
+ul.users
+  - @users.each do |user|
+    li
+      = gravatar_for user, size: 52
+      = link_to user.name, user

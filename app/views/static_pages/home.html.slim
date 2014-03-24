@@ -1,0 +1,20 @@
+- if signed_in?
+  - provide(:title, 'Home')
+
+  .row
+    aside.col-md-4
+      section = render 'shared/user_info'
+      section = render 'shared/stats'
+      section = render 'shared/micropost_form'
+
+    .col-md-8
+      h3 Micropost Feed
+      = render 'shared/feed'
+
+- else
+  - provide(:title, 'Welcome')
+  h1 Welcome to Twitter Clone
+  p Start a conversation, explore your interests, and be in the know.
+
+  == link_to 'Sign up', signup_path, class: "btn btn-primary"
+  == link_to 'Sign in', signin_path, class: "btn btn-default"

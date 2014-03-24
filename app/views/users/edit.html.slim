@@ -1,0 +1,30 @@
+- provide(:title, 'Edit user')
+h1 Update your profile
+
+= form_for(@user) do |f|
+  = render 'shared/error_messages', object: f.object
+
+  .form-group
+    = f.label :name, class: 'control-label'
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :email, class: 'control-label'
+    = f.text_field :email, class: 'form-control'
+
+  .form-group
+    = f.label :password, class: 'control-label'
+    = f.password_field :password, class: 'form-control'
+
+  .form-group
+    = f.label :password_confirmation, class: 'control-label'
+    = f.password_field :password_confirmation, class: 'form-control'
+
+  .actions
+    = f.submit "Save changes", class: "btn btn-large btn-primary"
+
+  div
+    = gravatar_for @user
+    <a href="http://gravatar.com/emails">change</a>
+
+= link_to 'Delete my account', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
