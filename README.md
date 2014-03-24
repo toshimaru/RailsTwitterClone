@@ -2,13 +2,10 @@
 
 ##TODO
 
-* Show all users `/users`
 * [coveralls](https://coveralls.io/subscriptions) integration
-* Use [Slim](http://slim-lang.com/)
 * Design
 * Rename from micropost to tweet
 * DRY!
-* remove pending test
 
 ##Imprementation
 
@@ -16,6 +13,7 @@ Imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org
 
 ##Used gem
 
+* slim
 * rspec
 * factory_girl
 * capybara
@@ -29,6 +27,12 @@ See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone
 ##Test
 
     $ bundle exec rspec
+
+##Data reset and creation
+
+    $ bundle exec rake db:reset
+    $ bundle exec rake db:populate
+    $ bundle exec rake test:prepare
 
 ## README
 

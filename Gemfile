@@ -48,6 +48,9 @@ gem 'will_paginate'
 # to create faked user
 gem 'faker'
 
+# Use slim instead of erb
+gem 'slim'
+
 group :development, :test do
   # Use debugger
   gem 'debugger'
