@@ -5,11 +5,21 @@ describe "UserPages" do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  describe "/" do
-    before { visit root_path }
-    it { should have_content('Welcome to Twitter Clone') }
-    it { should have_link('Sign in') }
-    it { should have_link('Sign up') }
+  describe "/users" do
+    before do
+      FactoryGirl.create(:user, name: "Bob", email: "bob@example.com")
+      FactoryGirl.create(:user, name: "Ben", email: "ben@example.com")
+      visit users_path
+    end
+
+    it { should have_content('Users') }
+    it { should have_title('Users') }
+
+    it "should list each user" do
+      User.all.each do |user|
+        expect(page).to have_selector('li', text: user.name)
+      end
+    end
   end
 
   describe "/user/:id" do
@@ -90,6 +100,14 @@ describe "UserPages" do
       it { should have_selector('div.alert.alert-success') }
       specify { expect(user.reload.name).to  eq new_name }
       specify { expect(user.reload.email).to eq new_email }
+    end
+
+    context 'delete account' do
+      specify do
+        expect do
+          click_link 'Delete my account'
+        end.to change(User, :count).by(-1)
+      end
     end
   end
 
