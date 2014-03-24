@@ -5,52 +5,59 @@ describe UsersController do
   let(:user) { @user }
 
   describe "#index" do
-    context "GET" do
-      it "has a 200 status code" do
-        get :index
-        expect(response.status).to eq(200)
-      end
+    it "has a 200 status code" do
+      get :index
+      expect(response.status).to eq(200)
     end
   end
 
   describe "#show" do
-    context "GET" do
-      it "has a 200 status code" do
-        get :show, id: user.id
-        expect(response.status).to eq(200)
-      end
+    it "has a 200 status code" do
+      get :show, id: user.id
+      expect(response.status).to eq(200)
     end
   end
 
   describe "#new" do
-    context "GET" do
-      it "has a 200 status code" do
-        get :new
-        expect(response.status).to eq(200)
-      end
+    it "has a 200 status code" do
+      get :new
+      expect(response.status).to eq(200)
     end
   end
 
   describe "#create" do
-    context "POST" do
-      it "create new user" do
-        post :create, user: FactoryGirl.attributes_for(:user_having_different_email)
-        expect(response.status).to eq(302)
-        expect(response).to redirect_to(assigns(:user))
-      end
+    before { FactoryGirl.create(:user1) }
 
-      ## comment out because of `sequence`
-      # it "doesn't create new user" do
-      #   post :create, user: FactoryGirl.attributes_for(:user)
-      #   puts response.body
-      #   expect(response.status).to eq(200)
-      #   expect(response).to render_template(:new)
-      # end
+    it "create new user" do
+      post :create, user: FactoryGirl.attributes_for(:user)
+      expect(response.status).to eq(302)
+      expect(response).to redirect_to(assigns(:user))
+    end
+
+    it "doesn't create new user" do
+      post :create, user: FactoryGirl.attributes_for(:user1)
+      expect(response.status).to eq(200)
+      expect(response).to render_template(:new)
     end
   end
 
   describe "#destroy" do
-    pending "not yet"
+    context "no signed in" do
+      it "doen't delete user" do
+        delete :destroy, id: user.id
+        expect(response.status).to eq(302)
+        expect(response).to redirect_to(signin_path)
+      end
+    end
+
+    context "signed in" do
+      before { sign_in user, no_capybara: true }
+      it "deletes user" do
+        expect { delete :destroy, id: user.id }.to change(User, :count).by(-1)
+        expect(response.status).to eq(302)
+        expect(response).to redirect_to(root_path)
+      end
+    end
   end
 
   describe "#update" do

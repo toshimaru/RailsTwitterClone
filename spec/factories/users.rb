@@ -7,9 +7,10 @@ FactoryGirl.define do
     password 'FactoryGirl'
     password_confirmation 'FactoryGirl'
 
-    factory :user_having_different_email do
-      email 'changed@mail.address'
+    factory :user1 do
+      email 'user1@example.com'
     end
+
   end
 
   factory :micropost do
