@@ -20,7 +20,6 @@ describe "Authentication" do
         before { visit root_path }
         it { should_not have_selector('div.alert.alert-danger') }
       end
-
     end
 
     context "with valid information" do
@@ -45,6 +44,13 @@ describe "Authentication" do
 
     context 'for non-signed-in users' do
       let(:user) { FactoryGirl.create(:user) }
+
+      describe "visit root page" do
+        before { visit root_path }
+        it { should have_content('Welcome to Twitter Clone') }
+        it { should have_link('Sign in') }
+        it { should have_link('Sign up') }
+      end
 
       describe "when attempting to visit a protected page" do
         before do
@@ -110,7 +116,7 @@ describe "Authentication" do
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
       before { sign_in user }
 
-      describe "submitting a GET request to the Users#edit action" do
+      describe "Visit wrong_user's edit page" do
         before { visit edit_user_path(wrong_user) }
 
         it { should_not have_content('Update your profile') }
