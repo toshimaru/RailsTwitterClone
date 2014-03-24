@@ -61,7 +61,24 @@ describe UsersController do
   end
 
   describe "#update" do
-    pending "not yet"
+    context "no signed in" do
+      it "doen't update user" do
+        patch :update, id: user.id #, user: FactoryGirl.attributes_for(:user)
+        expect(response.status).to eq(302)
+        expect(response).to redirect_to(signin_path)
+      end
+    end
+
+    context "signed in" do
+      let(:updated_user) { FactoryGirl.attributes_for(:user) }
+      before { sign_in user, no_capybara: true }
+      it "updates user" do
+        patch :update, id: user.id, user: updated_user
+        expect(response.status).to eq(302)
+        expect(user.reload.name).to eq(updated_user[:name])
+        expect(user.reload.email).to eq(updated_user[:email])
+      end
+    end
   end
 
 end
