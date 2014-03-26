@@ -1,5 +1,8 @@
-= link_to gravatar_for(current_user, size: 52), current_user
+.profile.clearfix
+  = link_to gravatar_for(current_user, size: 52), current_user
+  div = link_to current_user.name, current_user
 
-h1 = current_user.name
-span = link_to "view my profile", current_user
-span = pluralize(current_user.microposts.count, "micropost")
+= render 'shared/stats'
+
+.tweet-box
+  = render 'shared/micropost_form'

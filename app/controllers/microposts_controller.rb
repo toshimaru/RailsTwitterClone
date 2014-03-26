@@ -3,6 +3,9 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def index
+    @micropost  = current_user.microposts.build
+    @feed_items = Micropost.all.paginate(page: params[:page])
+    render 'static_pages/home'
   end
 
   def create
@@ -11,7 +14,7 @@ class MicropostsController < ApplicationController
       flash[:success] = 'Micropost created!'
       redirect_to root_url
     else
-      @feed_items = []
+      @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
     end
   end

@@ -1,12 +1,16 @@
 - @user ||= current_user
 
 .stats
-  a href="#{following_user_path(@user)}"
-    strong id="following" class="stat"
-      = @user.followed_users.count
-    |  following
-
-  a href="#{followers_user_path(@user)}"
-    strong id="followers" class="stat"
-      = @user.followers.count
-    |  followers
+  table
+    tr
+      th Tweets
+      th Followings
+      th Followers
+    tr
+      td = @user.microposts.count
+      td
+        a href="#{following_user_path(@user)}"
+          = @user.followed_users.count
+      td
+        a href="#{followers_user_path(@user)}"
+          = @user.followers.count

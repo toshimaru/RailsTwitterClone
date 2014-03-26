@@ -1,6 +1,7 @@
 @import "bootstrap"; // requre: gem 'bootstrap-sass'
 
-$grayLight: #999;
+$gray: #aaa;
+$lightGray: #e8e8e8;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -10,12 +11,48 @@ $grayLight: #999;
 
 body {
   padding-top: 60px;
+  background-color: #8EC1DA;
 }
-
 ul, ol {
   padding: 0;
 }
+section {
+  background-color: #fff;
+  border-radius: 5px;
+}
+textarea {
+  width: 100%;
+  height: 80px;
+  border: 1px solid $lightGray;
+  margin-bottom: 8px;
+}
 
+.profile {
+  padding: 15px;
+  border-bottom: 1px solid $lightGray;
+}
+.stats {
+  border-bottom: 1px solid $lightGray;
+  table {
+    th, td {
+      padding-left: 20px;
+    }
+    th {
+      color: $gray;
+      padding-top: 7px;
+    }
+    td {
+      padding-bottom: 5px;
+      font-size: 23px;
+    }
+  }
+}
+.tweet-box {
+  padding: 15px;
+  background-color: #F8E5EE;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 .debug_dump {
   clear: both;
   float: left;
@@ -23,29 +60,34 @@ ul, ol {
   margin-top: 45px;
   @include box_sizing;
 }
-
 .field_with_errors {
   @extend .has-error;
 }
-
 .alert-notice {
   @extend .alert-danger;
 }
-
-.microposts {
+.tweets {
   list-style: none;
   margin: 10px 0 0 0;
 
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+  .tweet {
+    padding: 10px 15px 5px;
+    border-top: 1px solid $lightGray;
+    &:hover {
+      background-color: #F5F8FA;
+    }
+    &:last-child {
+      border-bottom: 1px solid $lightGray;
+    }
   }
 }
 .content {
   display: block;
+  margin-left: 63px;
 }
-.timestamp {
-  color: $grayLight;
+.tweet-footer {
+  font-size: 13px;
+  color: $gray;
 }
 .gravatar {
   float: left;
@@ -57,9 +99,25 @@ ul, ol {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-top: 1px solid $grayLight;
+    border-top: 1px solid $gray;
     &:last-child {
-      border-bottom: 1px solid $grayLight;
+      border-bottom: 1px solid $gray;
     }
   }
+}
+.timeline {
+  background-color: #fff;
+  border-radius: 5px;
+}
+.title {
+  font-size: 27px;
+  color: $gray;
+  margin: 5px 0;
+  padding: 13px 15px 0;
+}
+.paginate {
+  padding: 15px 10px;
+}
+.tweet-actions {
+  float: right;
 }
