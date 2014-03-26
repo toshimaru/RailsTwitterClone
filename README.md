@@ -2,7 +2,6 @@
 
 ##TODO
 
-* [coveralls](https://coveralls.io/subscriptions) integration
 * Design
 * Rename from micropost to tweet
 * DRY!
@@ -10,6 +9,14 @@
 ##Imprementation
 
 Imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book).
+
+##Features
+
+This application doesn't provide many features in order to keep it simple. Here is the features:
+
+* See timeline
+* Post new tweet
+* Follow/Unfollow user
 
 ##Used gem
 
