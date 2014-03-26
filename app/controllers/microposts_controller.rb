@@ -32,7 +32,7 @@ class MicropostsController < ApplicationController
       redirect_to root_url if @micropost.nil?
     end
 
-    ## yet another `correct_user`
+    ## yet another `correct_user` imprementation
     # def correct_user
     #   @micropost = current_user.microposts.find(params[:id])
     # rescue

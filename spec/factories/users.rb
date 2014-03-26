@@ -10,7 +10,6 @@ FactoryGirl.define do
     factory :user1 do
       email 'user1@example.com'
     end
-
   end
 
   factory :micropost do

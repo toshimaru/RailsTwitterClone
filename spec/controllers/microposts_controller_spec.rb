@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe RelationshipsController do
-  describe "in the Relationships controller" do
+describe MicropostsController do
+  describe "in the Microposts controller" do
     describe "submitting to the create action" do
       before { post :create }
       specify { expect(response).to redirect_to(signin_path) }

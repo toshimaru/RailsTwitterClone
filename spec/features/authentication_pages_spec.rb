@@ -87,33 +87,6 @@ describe "Authentication" do
           it { should have_title('Users') }
         end
       end
-
-      # describe "in the Relationships controller" do
-      #   describe "submitting to the create action" do
-      #     before { post relationships_path }
-      #     specify { expect(response).to redirect_to(signin_path) }
-      #   end
-
-      #   describe "submitting to the destroy action" do
-      #     before { delete relationship_path(1) }
-      #     specify { expect(response).to redirect_to(signin_path) }
-      #   end
-      # end
-
-      # describe "submitting to the update action" do
-      #   before { patch user_path(user) } # undifined method `patch` because capybara doesn't support PUT/PATCH
-      #   specify { expect(response).to redirect_to(signin_path) }
-      # end
-
-      # describe "in the Microposts controller" do
-      #   describe "submitting to the create action" do
-      #     before { post microposts_path }
-      #     specify { expect(response).to redirect_to(signin_path) }
-      #   end
-      #   describe "" do
-      #     before { delete microposts_path }
-      #   end
-      # end
     end
 
     describe "as wrong user" do
