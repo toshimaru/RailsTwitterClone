@@ -44,6 +44,7 @@ gem 'unicorn'
 
 # to use paginate
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 # to create faked user
 gem 'faker'
