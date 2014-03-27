@@ -7,12 +7,12 @@
         = gravatar_for @user
         div = @user.name
         div = @user.email
-      = render 'shared/stats'
+        = render 'follow_form' if signed_in?
+      .stats
+        = render 'shared/stats'
 
   .col-md-8
-    = render 'follow_form' if signed_in?
-
-    - if @user.microposts.any?
+    - if @user.tweets.any?
       .timeline
         h2.title Tweets
         = render 'shared/feed'

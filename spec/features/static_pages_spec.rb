@@ -10,8 +10,8 @@ describe "Static Pages" do
       let(:user) { FactoryGirl.create(:user) }
 
       before do
-        FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
-        FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")
+        FactoryGirl.create(:tweet, user: user, content: "Lorem ipsum")
+        FactoryGirl.create(:tweet, user: user, content: "Dolor sit amet")
         sign_in user
         visit root_path
       end
@@ -29,8 +29,8 @@ describe "Static Pages" do
           visit root_path
         end
 
-        it { should have_link('0 following', href: following_user_path(user)) }
-        it { should have_link('1 followers', href: followers_user_path(user)) }
+        it { should have_link('0', href: following_user_path(user)) }
+        it { should have_link('1', href: followers_user_path(user)) }
       end
 
     end

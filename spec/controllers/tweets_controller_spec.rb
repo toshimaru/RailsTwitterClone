@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MicropostsController do
+describe TweetsController do
   describe "in the Microposts controller" do
     describe "submitting to the create action" do
       before { post :create }

@@ -5,19 +5,15 @@
     section
       = gravatar_for @user
       h1 = @user.name
-      span = link_to "view my profile", @user
-      span
-        <b>Microposts:</b>
-        = @user.microposts.count
-
-    section
+      div = link_to "view my profile", @user
+      div = @user.tweets.count
       = render 'shared/stats'
 
-  .col-md-8
-    h3
-      = @title
+  div.col-md-8
+    .timeline
+      h2.title = @title
 
-    - if @users.any?
-      ul.users
-        = render @users
-      = will_paginate
+      - if @users.any?
+        ul.users
+          = render @users
+        = will_paginate

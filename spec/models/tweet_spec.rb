@@ -1,29 +1,29 @@
 require 'spec_helper'
 
-describe Micropost do
+describe Tweet do
   let(:user) { FactoryGirl.create(:user) }
 
-  subject(:micropost) { user.microposts.build(content: "Lorem ipsum") }
+  subject(:tweet) { user.tweets.build(content: "Lorem ipsum") }
 
   it { should respond_to(:content) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
-  it { expect(micropost.user).to eq(user) }
+  it { expect(tweet.user).to eq(user) }
 
   it { should be_valid }
 
   describe "when user_id is not present" do
-    before { micropost.user_id = nil }
+    before { tweet.user_id = nil }
     it { should_not be_valid }
   end
 
   describe "with blank content" do
-    before { micropost.content = " " }
+    before { tweet.content = " " }
     it { should_not be_valid }
   end
 
   describe "with content that is too long" do
-    before { micropost.content = "a" * 141 }
+    before { tweet.content = "a" * 141 }
     it { should_not be_valid }
   end
 

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @feed_items = @user.microposts.paginate(page: params[:page])
+    @feed_items = @user.tweets.paginate(page: params[:page])
   end
 
   # GET /users/new

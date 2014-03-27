@@ -112,17 +112,17 @@ describe "UserPages" do
   end
 
   describe "profile page" do
-    let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
-    let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
+    let!(:m1) { FactoryGirl.create(:tweet, user: user, content: "Foo") }
+    let!(:m2) { FactoryGirl.create(:tweet, user: user, content: "Bar") }
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
 
-    describe "microposts" do
+    describe "tweets" do
       it { should have_content(m1.content) }
       it { should have_content(m2.content) }
-      it { should have_content(user.microposts.count) }
+      it { should have_content(user.tweets.count) }
     end
 
     describe "follow/unfollow buttons" do
@@ -187,7 +187,7 @@ describe "UserPages" do
       end
 
       it { should have_title('Following') }
-      it { should have_selector('h3', text: 'Following') }
+      it { should have_selector('h2', text: 'Following') }
       it { should have_link(other_user.name, href: user_path(other_user)) }
     end
 
@@ -198,7 +198,7 @@ describe "UserPages" do
       end
 
       it { should have_title('Followers') }
-      it { should have_selector('h3', text: 'Followers') }
+      it { should have_selector('h2', text: 'Followers') }
       it { should have_link(user.name, href: user_path(user)) }
     end
   end

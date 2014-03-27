@@ -2,7 +2,8 @@
   = link_to gravatar_for(current_user, size: 52), current_user
   div = link_to current_user.name, current_user
 
-= render 'shared/stats'
+.stats
+  = render 'shared/stats'
 
 .tweet-box
-  = render 'shared/micropost_form'
+  = render 'shared/tweet_form'

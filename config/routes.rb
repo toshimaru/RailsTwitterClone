@@ -11,7 +11,7 @@ Rails4TwitterClone::Application.routes.draw do
     end
   end
   resources :sessions,      only: [:new, :create, :destroy]
-  resources :microposts,    only: [:index, :create, :destroy]
+  resources :tweets,        only: [:index, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
   get    'signup'   => 'users#new'

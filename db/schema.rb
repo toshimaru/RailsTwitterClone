@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323031217) do
-
-  create_table "microposts", force: true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+ActiveRecord::Schema.define(version: 20140326232214) do
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
@@ -28,6 +19,15 @@ ActiveRecord::Schema.define(version: 20140323031217) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "tweets", force: true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tweets", ["user_id", "created_at"], name: "index_tweets_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "name"

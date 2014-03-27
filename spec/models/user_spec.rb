@@ -13,7 +13,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
-  it { should respond_to(:microposts) }
+  it { should respond_to(:tweets) }
   it { should respond_to(:feed) }
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_users) }
@@ -102,44 +102,44 @@ describe User do
     it { expect(user.remember_token).not_to be_blank }
   end
 
-  describe "micropost associations" do
+  describe "tweet associations" do
     before { user.save }
-    let!(:older_micropost) do
-      FactoryGirl.create(:micropost, user: user, created_at: 1.day.ago)
+    let!(:older_tweet) do
+      FactoryGirl.create(:tweet, user: user, created_at: 1.day.ago)
     end
-    let!(:newer_micropost) do
-      FactoryGirl.create(:micropost, user: user, created_at: 1.hour.ago)
-    end
-
-    it "should have the right microposts in the right order" do
-      expect(user.microposts.to_a).to eq [newer_micropost, older_micropost]
+    let!(:newer_tweet) do
+      FactoryGirl.create(:tweet, user: user, created_at: 1.hour.ago)
     end
 
-    it "should destroy associated microposts" do
-      microposts = user.microposts.to_a
+    it "should have the right tweets in the right order" do
+      expect(user.tweets.to_a).to eq [newer_tweet, older_tweet]
+    end
+
+    it "should destroy associated tweets" do
+      tweets = user.tweets.to_a
       user.destroy
-      expect(microposts).not_to be_empty
-      microposts.each do |m|
-        expect(Micropost.where(id: m.id)).to be_empty
+      expect(tweets).not_to be_empty
+      tweets.each do |m|
+        expect(Tweet.where(id: m.id)).to be_empty
       end
     end
 
     describe "status" do
-      let(:unfollowed_post) { FactoryGirl.create(:micropost, user: FactoryGirl.create(:user)) }
+      let(:unfollowed_post) { FactoryGirl.create(:tweet, user: FactoryGirl.create(:user)) }
       let(:followed_user) { FactoryGirl.create(:user) }
 
       before do
         user.follow!(followed_user)
-        3.times { followed_user.microposts.create!(content: "Love & Peace!") }
+        3.times { followed_user.tweets.create!(content: "Love & Peace!") }
       end
 
       specify do
-        expect(user.feed).to include(newer_micropost)
-        expect(user.feed).to include(older_micropost)
+        expect(user.feed).to include(newer_tweet)
+        expect(user.feed).to include(older_tweet)
         expect(user.feed).not_to include(unfollowed_post)
 
-        followed_user.microposts.each do |micropost|
-          expect(user.feed).to include(micropost)
+        followed_user.tweets.each do |tweet|
+          expect(user.feed).to include(tweet)
         end
       end
     end

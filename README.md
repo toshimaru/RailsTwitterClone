@@ -3,7 +3,7 @@
 ##TODO
 
 * Design
-* Rename from micropost to tweet
+* Add profile description to User
 * DRY!
 
 ##Imprementation
