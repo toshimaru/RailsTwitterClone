@@ -2,7 +2,8 @@
   - provide(:title, 'Home')
   .row
     aside.col-md-4
-      section = render 'shared/user_info'
+      section
+        = render 'shared/user_info'
 
     div.col-md-8
       .timeline

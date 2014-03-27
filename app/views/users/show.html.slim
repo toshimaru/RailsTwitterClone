@@ -3,13 +3,8 @@
 .row
   aside.col-md-4
     section
-      .profile.clearfix
-        = gravatar_for @user
-        div = @user.name
-        div = @user.email
-        = render 'follow_form' if signed_in?
-      .stats
-        = render 'shared/stats'
+      = render 'shared/profile'
+      = render 'shared/stats'
 
   .col-md-8
     - if @user.tweets.any?

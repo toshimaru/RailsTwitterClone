@@ -1,6 +1,6 @@
-.profile.clearfix
-  = link_to gravatar_for(current_user, size: 52), current_user
-  div = link_to current_user.name, current_user
+- @user ||= current_user
+
+= render 'shared/profile'
 
 .stats
   = render 'shared/stats'

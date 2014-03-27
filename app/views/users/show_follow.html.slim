@@ -3,10 +3,7 @@
 .row
   aside.col-md-4
     section
-      = gravatar_for @user
-      h1 = @user.name
-      div = link_to "view my profile", @user
-      div = @user.tweets.count
+      = render 'shared/profile'
       = render 'shared/stats'
 
   div.col-md-8
