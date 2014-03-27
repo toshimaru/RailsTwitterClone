@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe "Tweet pages" do
-
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }
@@ -11,6 +10,7 @@ describe "Tweet pages" do
     let!(:tweet1) { FactoryGirl.create(:tweet, user: user, content: 'Harakiri' ) }
     let!(:tweet2) { FactoryGirl.create(:tweet, user: user, content: 'Samurai') }
     let!(:tweet3) { FactoryGirl.create(:tweet, user: user, content: 'Ninja') }
+    let!(:tweet4) { FactoryGirl.create(:tweet, user: user, content: 'a' * 70 ) }
 
     before { visit tweets_path }
 
@@ -18,6 +18,7 @@ describe "Tweet pages" do
     it { should have_content(tweet1.content) }
     it { should have_content(tweet2.content) }
     it { should have_content(tweet3.content) }
+    it { should have_content("a" * 65) }
   end
 
   describe "tweet creation" do
