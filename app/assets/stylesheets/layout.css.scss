@@ -110,14 +110,18 @@ textarea {
   border-radius: 5px;
 }
 .title {
-  font-size: 27px;
+  font-size: 25px;
   color: $gray;
   margin: 0;
-  padding: 13px 15px 0;
+  padding: 10px 15px 0;
 }
 .paginate {
   padding: 15px 10px;
 }
 .tweet-actions {
   float: right;
+}
+.one-col {
+  background-color: #fff;
+  padding: 20px 10px;
 }

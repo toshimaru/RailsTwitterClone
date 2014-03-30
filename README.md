@@ -2,8 +2,10 @@
 
 ##TODO
 
-* Design
 * Add profile description to User
+  * and Favorites feature
+* Design
+* Test of pagination
 * DRY!
 
 ##Imprementation

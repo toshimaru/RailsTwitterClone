@@ -1,6 +1,6 @@
-- if signed_in?
-  - provide(:title, 'Home')
-  .row
+.row
+  - if signed_in?
+    - provide(:title, 'Home')
     aside.col-md-4
       section
         = render 'shared/user_info'
@@ -10,10 +10,11 @@
         h2.title Tweets
         = render 'shared/feed'
 
-- else
-  - provide(:title, 'Welcome')
-  h1 Welcome to Twitter Clone
-  p Start a conversation, explore your interests, and be in the know.
+  - else
+    - provide(:title, 'Welcome')
+    div.col-md-12.one-col
+      h1 Welcome to Twitter Clone
+      p Start a conversation, explore your interests, and be in the know.
 
-  = link_to 'Sign up', signup_path, class: "btn btn-primary"
-  = link_to 'Sign in', signin_path, class: "btn btn-default"
+      = link_to 'Sign up', signup_path, class: "btn btn-primary"
+      = link_to 'Sign in', signin_path, class: "btn btn-default"
