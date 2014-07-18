@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe TweetsController do
   describe "in the Tweets controller" do

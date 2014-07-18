@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe RelationshipsController do
   describe "in the Relationships controller" do

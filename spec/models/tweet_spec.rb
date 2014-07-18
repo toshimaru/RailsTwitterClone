@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Tweet do
   let(:user) { FactoryGirl.create(:user) }
