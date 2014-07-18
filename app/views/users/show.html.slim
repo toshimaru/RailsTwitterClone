@@ -5,6 +5,7 @@
     section
       = render 'shared/profile'
       = render 'shared/stats'
+      = render 'shared/tweet_form' if @user == current_user
 
   .col-md-8
     - if @user.tweets.any?

@@ -5,7 +5,7 @@ describe "UserPages" do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  describe "/users" do
+  describe "Show all users (/users)" do
     before do
       FactoryGirl.create(:user, name: "Bob", email: "bob@example.com")
       FactoryGirl.create(:user, name: "Ben", email: "ben@example.com")
@@ -22,14 +22,10 @@ describe "UserPages" do
     end
   end
 
-  describe "/user/:id" do
-    before { visit user_path(user) }
-    it { should have_content(user.name) }
-  end
-
   describe "/signup" do
     before { visit signup_path }
     let(:submit) { "Sign up" }
+
     it { should have_content('Sign up') }
 
     context "with valid information" do
@@ -111,7 +107,7 @@ describe "UserPages" do
     end
   end
 
-  describe "profile page" do
+  describe "profile page (/user/:id)" do
     let!(:m1) { FactoryGirl.create(:tweet, user: user, content: "Foo") }
     let!(:m2) { FactoryGirl.create(:tweet, user: user, content: "Bar") }
     before { visit user_path(user) }
@@ -119,10 +115,21 @@ describe "UserPages" do
     it { should have_content(user.name) }
     it { should have_title(user.name) }
 
-    describe "tweets" do
-      it { should have_content(m1.content) }
-      it { should have_content(m2.content) }
-      it { should have_content(user.tweets.count) }
+    it { should have_content(m1.content) }
+    it { should have_content(m2.content) }
+    it { should have_content(user.tweets.count) }
+
+    it { should_not have_selector('textarea') }
+    it { should_not have_field('tweet[content]') }
+
+    describe "sign in user have tweet" do
+      before do
+        sign_in user
+        visit user_path(user)
+      end
+
+      it { should have_selector('textarea') }
+      it { should have_field('tweet[content]') }
     end
 
     describe "follow/unfollow buttons" do

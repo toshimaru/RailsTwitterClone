@@ -4,6 +4,8 @@
 
 * Add profile description to User
   * and Favorites feature
+* Use user screen name instead of id
+  * by Using `to_param`
 * Design
 * Test of pagination
 * DRY!

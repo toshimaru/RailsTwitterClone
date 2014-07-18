@@ -15,12 +15,8 @@ class TweetsController < ApplicationController
       flash[:success] = 'Micropost created!'
       redirect_to root_url
     else
-      # TODO:
-      #  redirect_to root
-      #    show error with `flash`
-      #  write test for @feed_items
-      @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'static_pages/home'
+      flash[:danger] = @tweet.errors.full_messages.to_sentence
+      redirect_to root_url
     end
   end
 

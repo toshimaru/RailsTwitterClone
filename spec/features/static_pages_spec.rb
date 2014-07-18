@@ -22,6 +22,9 @@ describe "Static Pages" do
         end
       end
 
+      it { should have_selector('textarea') }
+      it { should have_field('tweet[content]') }
+
       describe "follower/following counts" do
         let(:other_user) { FactoryGirl.create(:user) }
         before do

@@ -7,10 +7,6 @@
       th Followings
       th Followers
     tr
-      td = @user.tweets.count
-      td
-        a href="#{following_user_path(@user)}"
-          = @user.followed_users.count
-      td
-        a href="#{followers_user_path(@user)}"
-          = @user.followers.count
+      td = link_to @user.tweets.count, user_path(@user)
+      td = link_to @user.followed_users.count, following_user_path(@user)
+      td = link_to @user.followers.count, followers_user_path(@user)
