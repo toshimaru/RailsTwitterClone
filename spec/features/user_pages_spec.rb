@@ -31,6 +31,7 @@ describe "UserPages" do
     context "with valid information" do
       before do
         fill_in "Name",                  with: "Example User"
+        fill_in "Slug",                  with: "example-user"
         fill_in "Email",                 with: "user@example.com"
         fill_in "Password",              with: "foobar"
         fill_in "Password confirmation", with: "foobar"

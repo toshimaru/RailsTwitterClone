@@ -8,6 +8,10 @@
       = render 'shared/error_messages', object: f.object
 
       .form-group
+        = f.label :slug, class: 'control-label'
+        = f.text_field :slug, class: 'form-control'
+
+      .form-group
         = f.label :name, class: 'control-label'
         = f.text_field :name, class: 'form-control'
 

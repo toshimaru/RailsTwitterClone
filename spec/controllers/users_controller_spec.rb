@@ -13,7 +13,7 @@ describe UsersController do
 
   describe "#show" do
     it "has a 200 status code" do
-      get :show, id: user.id
+      get :show, id: user.slug
       expect(response.status).to eq(200)
     end
   end
@@ -44,7 +44,7 @@ describe UsersController do
   describe "#destroy" do
     context "no signed in" do
       it "doen't delete user" do
-        delete :destroy, id: user.id
+        delete :destroy, id: user.slug
         expect(response.status).to eq(302)
         expect(response).to redirect_to(signin_path)
       end
@@ -53,7 +53,7 @@ describe UsersController do
     context "signed in" do
       before { sign_in user, no_capybara: true }
       it "deletes user" do
-        expect { delete :destroy, id: user.id }.to change(User, :count).by(-1)
+        expect { delete :destroy, id: user.slug }.to change(User, :count).by(-1)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(root_path)
       end
@@ -63,7 +63,7 @@ describe UsersController do
   describe "#update" do
     context "no signed in" do
       it "doen't update user" do
-        patch :update, id: user.id #, user: FactoryGirl.attributes_for(:user)
+        patch :update, id: user.slug #, user: FactoryGirl.attributes_for(:user)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(signin_path)
       end
@@ -73,7 +73,7 @@ describe UsersController do
       let(:updated_user) { FactoryGirl.attributes_for(:user) }
       before { sign_in user, no_capybara: true }
       it "updates user" do
-        patch :update, id: user.id, user: updated_user
+        patch :update, id: user.slug, user: updated_user
         expect(response.status).to eq(302)
         expect(user.reload.name).to eq(updated_user[:name])
         expect(user.reload.email).to eq(updated_user[:email])

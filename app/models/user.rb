@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, if: lambda { |m| m.password.present? }
   validates :password, length: { minimum: 6 }
 
+  def to_param
+    slug
+  end
+
   def feed
     Tweet.from_users_followed_by(self)
   end
