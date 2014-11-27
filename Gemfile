@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.0.4'
+gem 'rails', '~> 4.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -37,7 +37,7 @@ end
 gem 'bcrypt'
 
 # Use unicorn as the app server
-gem 'unicorn'
+# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -52,18 +52,16 @@ gem 'faker'
 # Use slim instead of erb
 gem 'slim'
 
-group :development, :test do
-  # Use debugger
-  gem 'debugger'
+group :development do
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
+end
 
+group :development, :test do
+  # gem 'debugger'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'simplecov', '~> 0.7.1'
-end
-
-group :development do
-  gem 'guard-rspec'
-  gem 'terminal-notifier-guard'
 end
