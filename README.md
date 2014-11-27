@@ -13,15 +13,21 @@ This application doesn't provide many features in order to keep it simple. Here 
 * Follow/Unfollow user
 
 ## Used gem
-
 * slim
+* bootstrap-sass
+
+### For testing
 * rspec
 * factory_girl
 * capybara
 * simplecov
 * guard
-* bootstrap-sass
 * faker
+
+### For debugging
+* quiet_assets
+* bullet
+* better_errors & binding_of_caller
 
 See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone/blob/master/Gemfile).
 
