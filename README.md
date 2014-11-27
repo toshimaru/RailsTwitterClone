@@ -1,4 +1,4 @@
-[![Build Status](https://drone.io/github.com/toshimaru/Rails-4-Twitter-Clone/status.png)](https://drone.io/github.com/toshimaru/Rails-4-Twitter-Clone/latest)
+[![Build Status](https://travis-ci.org/toshimaru/Rails-4-Twitter-Clone.svg?branch=master)](https://travis-ci.org/toshimaru/Rails-4-Twitter-Clone)
 
 ## Imprementation
 
