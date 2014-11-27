@@ -1,15 +1,5 @@
 [![Build Status](https://drone.io/github.com/toshimaru/Rails-4-Twitter-Clone/status.png)](https://drone.io/github.com/toshimaru/Rails-4-Twitter-Clone/latest)
 
-## TODO
-
-* Add profile description to User
-  * and Favorites feature
-* User Slug
-  * Edit user
-  * Add Test
-* Design
-* Test of pagination
-
 ## Imprementation
 
 Imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book).
@@ -44,3 +34,12 @@ See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone
     $ bundle exec rake db:reset
     $ bundle exec rake db:populate
     $ bundle exec rake test:prepare
+
+## TODO
+* Design
+* Add profile description to User
+  * and Favorites feature
+* User Slug
+  * Edit user
+  * Add Test
+* Test of pagination
