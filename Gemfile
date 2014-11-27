@@ -55,6 +55,8 @@ gem 'slim'
 group :development do
   gem 'guard-rspec'
   gem 'terminal-notifier-guard'
+  gem 'quiet_assets'
+  gem 'bullet'
 end
 
 group :development, :test do
