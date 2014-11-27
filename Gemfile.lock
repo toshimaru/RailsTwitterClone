@@ -47,10 +47,10 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.7.1)
+    coffee-script-source (1.8.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
-    execjs (2.2.1)
+    execjs (2.2.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.4.1)
