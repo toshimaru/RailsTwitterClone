@@ -15,7 +15,7 @@ def make_user
                password_confirmation: "foobar",
                slug: "toshi")
 
-  99.times do |n|
+  (1..100).each do |n|
     name  = Faker::Name.name
     slug  = name.parameterize
     email = "example-#{n+1}@railstutorial.org"
@@ -29,7 +29,7 @@ def make_user
 end
 
 def make_tweets
-  users = User.all(limit: 6)
+  users = User.all
   50.times do
     content = Faker::Lorem.sentence(5)
     users.each { |user| user.tweets.create!(content: content) }
