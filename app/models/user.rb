@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   # See implementation: https://github.com/rails/rails/blob/master/activemodel/lib/active_model/secure_password.rb
   has_secure_password
-  validates_confirmation_of :password, if: lambda { |m| m.password.present? }
+  validates_confirmation_of :password, if: -> (m) { m.password.present? }
   validates :password, length: { minimum: 6 }
 
   def to_param
