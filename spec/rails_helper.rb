@@ -6,6 +6,12 @@ require 'rspec/rails'
 
 # coverage
 require 'simplecov'
+require 'coveralls'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
 SimpleCov.start
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
