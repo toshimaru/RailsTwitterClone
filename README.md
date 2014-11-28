@@ -2,7 +2,7 @@
 
 ## Imprementation
 
-Imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book).
+This imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book).
 
 ## Features
 
@@ -13,7 +13,11 @@ This application doesn't provide many features in order to keep it simple. Here 
 * Follow/Unfollow user
 
 ## Used gem
+
+### For template
 * slim
+
+### Style
 * bootstrap-sass
 
 ### For testing
@@ -42,10 +46,10 @@ See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone
     $ bundle exec rake test:prepare
 
 ## TODO
-* Design
+* Cool design
 * Add profile description to User
   * and Favorites feature
 * User Slug
   * Edit user
-  * Add Test
-* Test of pagination
+  * Add spec
+* Spec of pagination
