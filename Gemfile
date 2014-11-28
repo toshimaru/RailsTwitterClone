@@ -68,5 +68,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'simplecov', '~> 0.7.1'
+  gem 'simplecov', '~> 0.7.1', require: false
+  gem 'coveralls', require: false
 end
