@@ -6,11 +6,11 @@
       = render 'shared/profile'
       = render 'shared/stats'
 
-  div.col-md-8
+  .col-md-8
     .timeline
       h2.title = @title
 
       - if @users.any?
-        ul.users
+        ul.tweets
           = render @users
-        = will_paginate
+        .paginate = will_paginate @users, renderer: BootstrapPagination::Rails
