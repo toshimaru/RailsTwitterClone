@@ -1,4 +1,6 @@
 @import "bootstrap"; // requre: gem 'bootstrap-sass'
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 $gray: #aaa;
 $lightGray: #e8e8e8;
@@ -117,6 +119,7 @@ textarea {
 }
 .paginate {
   padding: 15px 10px;
+  text-align: center;
 }
 .tweet-actions {
   float: right;
