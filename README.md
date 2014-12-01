@@ -3,6 +3,8 @@
 [![Code Climate](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone)
 [![Dependency Status](https://gemnasium.com/toshimaru/Rails-4-Twitter-Clone.svg)](https://gemnasium.com/toshimaru/Rails-4-Twitter-Clone)
 
+![Github Clone Screen Capture](https://cloud.githubusercontent.com/assets/803398/5249480/bad77180-79c6-11e4-925a-f9331ce3bac1.png)
+
 ## Imprementation
 
 This imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book).
