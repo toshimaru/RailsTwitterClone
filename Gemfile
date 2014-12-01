@@ -57,21 +57,20 @@ gem 'faker'
 gem 'slim'
 
 group :development do
-  gem 'pry'
   gem 'guard-rspec'
-  gem 'terminal-notifier-guard'
-  gem 'quiet_assets'
   gem 'bullet'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry'
+  gem 'quiet_assets'
+  gem 'terminal-notifier-guard'
 end
 
 group :development, :test do
-  # gem 'debugger'
+  gem 'capybara'
+  gem 'coveralls', require: false
+  gem 'factory_girl_rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'capybara'
   gem 'simplecov', '~> 0.7.1', require: false
-  gem 'coveralls', require: false
 end
