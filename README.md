@@ -51,7 +51,7 @@ See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone
     $ bundle exec rake test:prepare
 
 ## TODO
-* Cool design
+* Cool design (Use this: http://bootswatch.com/default/)
 * Add profile description to User
   * and Favorites feature
 * User Slug
