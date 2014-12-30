@@ -72,5 +72,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'simplecov', '~> 0.7.1', require: false
+  gem 'simplecov', require: false
 end
