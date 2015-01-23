@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Twitter Clone!"
       redirect_to @user
     else
-      render action: 'new'
+      render :new
     end
   end
 
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       flash[:success] = "Update your profile"
       redirect_to @user
     else
-      render action: 'edit'
+      render :edit
     end
   end
 
@@ -55,19 +55,19 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @users = @user.followed_users.paginate(page: params[:page])
-    render "show_follow"
+    render :show_follow
   end
 
   def followers
     @title = "Followers"
     @users = @user.followers.paginate(page: params[:page])
-    render "show_follow"
+    render :show_follow
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find_by(slug: params[:id])
+      @user = User.find_by!(slug: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
