@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  rescue_from StandardError, with: :dispatch_error
+  rescue_from StandardError, with: :dispatch_error unless Rails.env.development?
 
   def dispatch_error(exception)
     logger.warn "dispatch_error!! #{exception.inspect}"
