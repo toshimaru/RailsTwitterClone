@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get    'signin'   => 'sessions#new'
   delete 'signout'  => 'sessions#destroy'
   get    'about'    => 'static_pages#about'
+
+  match '*path' => 'application#routing_error', via: :all
 end
