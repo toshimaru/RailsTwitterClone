@@ -1,4 +1,4 @@
-@import "bootstrap"; // requre: gem 'bootstrap-sass'
+@import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -12,8 +12,9 @@ $lightGray: #e8e8e8;
 }
 
 body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   padding-top: 60px;
-  background-color: #8EC1DA;
+  background-color: #F5F8FA;
 }
 ul, ol {
   padding: 0;
@@ -51,7 +52,7 @@ textarea {
 }
 .tweet-box {
   padding: 15px;
-  background-color: #F8E5EE;
+  background-color: rgba(0, 132, 180, 0.1);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
