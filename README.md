@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/toshimaru/Rails-4-Twitter-Clone.svg?branch=master)](https://travis-ci.org/toshimaru/Rails-4-Twitter-Clone)
-[![Coverage Status](https://img.shields.io/coveralls/toshimaru/Rails-4-Twitter-Clone.svg)](https://coveralls.io/r/toshimaru/Rails-4-Twitter-Clone?branch=master)
+[![Test Coverage](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone)
 [![Code Climate](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone)
 [![Dependency Status](https://gemnasium.com/toshimaru/Rails-4-Twitter-Clone.svg)](https://gemnasium.com/toshimaru/Rails-4-Twitter-Clone)
 
