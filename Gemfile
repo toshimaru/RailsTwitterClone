@@ -30,7 +30,7 @@ gem 'bcrypt'
 # gem 'capistrano', group: :development
 
 gem 'bootstrap-sass'
-gem 'font-awesome-sass', '~> 4.2.0'
+gem 'font-awesome-sass', '~> 4.3'
 
 # to use paginate
 gem 'will_paginate'
