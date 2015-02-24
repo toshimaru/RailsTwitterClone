@@ -6,13 +6,14 @@ require 'rspec/rails'
 
 # coverage
 require 'simplecov'
-require 'coveralls'
-
+#require 'coveralls'
+# Yet another coverage
+require "codeclimate-test-reporter"
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
+  CodeClimate::TestReporter::Formatter
 ]
-SimpleCov.start
+SimpleCov.start "rails"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
