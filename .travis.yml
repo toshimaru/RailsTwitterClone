@@ -3,6 +3,7 @@ cache: bundler
 rvm:
   - 2.0
   - 2.1
+  - 2.2
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate
   - bundle exec rake spec
