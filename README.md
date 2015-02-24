@@ -51,8 +51,6 @@ See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone
     $ bundle exec rake test:prepare
 
 ## TODO
-* Use kaminari instead
-* Coverage 100% again.
 * Add profile description to User
   * and Favorites feature
 * User Slug
