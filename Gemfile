@@ -56,6 +56,7 @@ end
 group :development, :test do
   gem 'capybara'
   gem 'coveralls', require: false
+  gem "codeclimate-test-reporter", require: false
   gem 'factory_girl_rails'
   gem 'rspec'
   gem 'rspec-rails'
