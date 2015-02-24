@@ -8,6 +8,10 @@ require 'rspec/rails'
 require 'simplecov'
 require 'coveralls'
 
+# Yet another coverage
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
