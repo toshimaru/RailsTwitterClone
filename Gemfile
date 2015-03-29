@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -46,6 +46,7 @@ group :development do
   gem 'bullet'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'byebug'
   gem 'pry'
   gem 'quiet_assets'
   gem 'terminal-notifier-guard'
@@ -53,7 +54,7 @@ group :development do
   gem 'spring'
 end
 
-group :development, :test do
+group :test do
   gem 'capybara'
   gem "codeclimate-test-reporter", require: false
   gem 'factory_girl_rails'
