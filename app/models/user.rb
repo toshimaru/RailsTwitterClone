@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates_confirmation_of :password, if: -> (m) { m.password.present? }
   validates :password, length: { minimum: 6 }
+  validates :slug, uniqueness: true
 
   def to_param
     slug
