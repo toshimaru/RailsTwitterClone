@@ -11,7 +11,7 @@ This imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutoria
 
 ## Features
 
-This application doesn't provide many features in order to keep it simple. Here is the features:
+This application doesn't provide many features in order to keep it simple. Here are the features that it does include:
 
 * See timeline
 * Post new tweet
