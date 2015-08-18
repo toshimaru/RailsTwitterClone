@@ -27,7 +27,7 @@ gem 'bcrypt'
 # Use unicorn as the app server
 # gem 'unicorn'
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+# gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass', '~> 4.3'
@@ -43,23 +43,22 @@ gem 'faker'
 gem 'slim'
 
 group :development do
-  gem 'bullet'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bullet'
   gem 'byebug'
   gem 'pry'
   gem 'quiet_assets'
-  gem 'terminal-notifier-guard'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'terminal-notifier-guard'
 end
 
 group :test do
   gem 'capybara'
-  gem "codeclimate-test-reporter", require: false
+  gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
-  gem 'rspec'
-  gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'rspec-rails'
   gem 'simplecov', require: false
 end
