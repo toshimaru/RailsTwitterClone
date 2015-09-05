@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -24,20 +24,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
-# Use unicorn as the app server
-# gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass', '~> 4.3'
 
-# to use paginate
+# pagination gem
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-
-# to create faked user
-gem 'faker'
 
 # Use slim instead of erb
 gem 'slim'
@@ -47,6 +42,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'bullet'
   gem 'byebug'
+  # to create faked user
+  gem 'faker'
   gem 'pry'
   gem 'quiet_assets'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
