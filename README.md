@@ -2,6 +2,7 @@
 [![Test Coverage](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone)
 [![Code Climate](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/Rails-4-Twitter-Clone)
 [![Dependency Status](https://gemnasium.com/toshimaru/Rails-4-Twitter-Clone.svg)](https://gemnasium.com/toshimaru/Rails-4-Twitter-Clone)
+[![Circle CI](https://circleci.com/gh/toshimaru/Rails-4-Twitter-Clone.svg?style=svg)](https://circleci.com/gh/toshimaru/Rails-4-Twitter-Clone)
 
 ![Github Clone Screen Capture](https://cloud.githubusercontent.com/assets/803398/5903211/acdfe32c-a5c3-11e4-8171-b5ab2c3ef806.png)
 
