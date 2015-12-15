@@ -7,7 +7,7 @@ require 'rspec/rails'
 # coverage with simplecov and codeclimate
 require 'simplecov'
 require "codeclimate-test-reporter"
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+SimpleCov.formatters = [
   SimpleCov::Formatter::HTMLFormatter,
   CodeClimate::TestReporter::Formatter
 ]
