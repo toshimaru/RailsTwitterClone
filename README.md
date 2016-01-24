@@ -8,7 +8,7 @@
 
 ## Imprementation
 
-This imprementatin is based on [Ruby on Rails Tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book).
+This imprementatin is based on [Ruby on Rails Tutorial](https://www.railstutorial.org/book).
 
 ## Features
 
