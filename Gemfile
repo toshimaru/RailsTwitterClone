@@ -57,5 +57,3 @@ group :test do
   gem 'rspec-rails'
   gem 'simplecov', require: false
 end
-
-gem 'nokogiri', '>= 1.6.7.2'
