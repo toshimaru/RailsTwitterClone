@@ -54,6 +54,7 @@ group :test do
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
   gem 'guard-rspec'
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'simplecov', require: false
 end
