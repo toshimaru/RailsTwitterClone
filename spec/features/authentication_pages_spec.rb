@@ -7,8 +7,12 @@ describe "Authentication" do
   describe 'authorization' do
     before { visit signin_path }
 
-    it { should have_content('Sign in') }
     it { should have_title('Sign in') }
+    it { should have_content('Sign in') }
+
+    describe 'screenshot', js: true do
+      it { page.save_screenshot "authorization.png" }
+    end
 
     context 'with invalid information' do
       before { click_button "Sign in" }
