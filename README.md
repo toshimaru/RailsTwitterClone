@@ -6,9 +6,9 @@
 
 ![Github Clone Screen Capture](https://cloud.githubusercontent.com/assets/803398/5903211/acdfe32c-a5c3-11e4-8171-b5ab2c3ef806.png)
 
-## Imprementation
+## Implementation
 
-This imprementatin is based on [Ruby on Rails Tutorial](https://www.railstutorial.org/book).
+This implementation is based on [Ruby on Rails Tutorial](https://www.railstutorial.org/book).
 
 ## Features
 
@@ -23,7 +23,7 @@ This application doesn't provide many features in order to keep it simple. Here 
 ### For template
 * slim
 
-### Style
+### For CSS Style
 * bootstrap-sass
 
 ### For testing
@@ -50,11 +50,3 @@ See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone
     $ bundle exec rake db:reset
     $ bundle exec rake db:populate
     $ bundle exec rake test:prepare
-
-## TODO
-* Add profile description to User
-  * and Favorites feature
-* User Slug
-  * Edit user
-  * Add spec
-* Spec of pagination
