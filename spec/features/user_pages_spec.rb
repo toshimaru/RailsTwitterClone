@@ -95,8 +95,8 @@ describe "UserPages" do
       it { should have_link('Sign out',    href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
       it { should have_selector('div.alert.alert-success') }
-      specify { expect(user.reload.name).to  eq new_name }
-      specify { expect(user.reload.email).to eq new_email }
+      it { expect(user.reload.name).to  eq new_name }
+      it { expect(user.reload.email).to eq new_email }
     end
 
     context 'delete account' do
