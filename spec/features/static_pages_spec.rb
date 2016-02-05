@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe "Static Pages" do
-
   subject { page }
 
   describe "Home Page" do
@@ -10,8 +9,7 @@ describe "Static Pages" do
       let(:user) { FactoryGirl.create(:user) }
 
       before do
-        FactoryGirl.create(:tweet, user: user, content: "Lorem ipsum")
-        FactoryGirl.create(:tweet, user: user, content: "Dolor sit amet")
+        3.times { FactoryGirl.create(:tweet, user: user, content: "Lorem ipsum") }
         sign_in user
         visit root_path
       end

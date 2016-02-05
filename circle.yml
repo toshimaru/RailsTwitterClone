@@ -4,3 +4,4 @@ machine:
 general:
   artifacts:
     - coverage
+    - screenshot

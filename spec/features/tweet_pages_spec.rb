@@ -19,6 +19,10 @@ describe "Tweet pages" do
     it { should have_content(tweet2.content) }
     it { should have_content(tweet3.content) }
     it { should have_content("a" * 65) }
+
+    # describe 'screenshot', js: true do
+    #   it { page.save_screenshot "tweets.png" }
+    # end
   end
 
   describe "tweet creation" do

@@ -7,8 +7,12 @@ describe "Authentication" do
   describe 'authorization' do
     before { visit signin_path }
 
-    it { should have_content('Sign in') }
     it { should have_title('Sign in') }
+    it { should have_content('Sign in') }
+
+    describe 'screenshot', js: true do
+      it { page.save_screenshot "authorization.png" }
+    end
 
     context 'with invalid information' do
       before { click_button "Sign in" }
@@ -52,26 +56,30 @@ describe "Authentication" do
         it { should have_content('Welcome to Twitter Clone') }
         it { should have_link('Sign in') }
         it { should have_link('Sign up') }
+
+        describe 'screenshot', js: true do
+          it { page.save_screenshot "sign-in.png" }
+        end
       end
 
       describe "when attempting to visit a protected page" do
-        before do
-          visit edit_user_path(user)
-          fill_in "Email",    with: user.email
-          fill_in "Password", with: user.password
-          click_button "Sign in"
+        describe "visiting the edit page" do
+          before { visit edit_user_path(user) }
+          it { should have_content('Sign in') }
         end
 
         describe "after signing in" do
+          before do
+            visit edit_user_path(user)
+            fill_in "Email",    with: user.email
+            fill_in "Password", with: user.password
+            click_button "Sign in"
+          end
+
           it "should render the desired protected page" do
-            expect(page).to have_content('Update your profile')
+            should have_content('Update your profile')
           end
         end
-      end
-
-      describe "visiting the edit page" do
-        before { visit edit_user_path(user) }
-        it { should have_content('Sign in') }
       end
 
       describe "in the Users Controller" do
@@ -79,13 +87,19 @@ describe "Authentication" do
           before { visit following_user_path(user) }
           it { should have_title('Following') }
         end
+
         describe "visit the followers page" do
           before { visit followers_user_path(user) }
           it { should have_title('Followers') }
         end
+
         describe "visiting the user index" do
           before { visit users_path }
           it { should have_title('Users') }
+
+          describe "screenshot", js: true do
+            it { page.save_screenshot "users.png" }
+          end
         end
       end
     end

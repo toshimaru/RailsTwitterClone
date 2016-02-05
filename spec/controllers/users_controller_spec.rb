@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe UsersController do
-  before { @user = FactoryGirl.create(:user) }
-  let(:user) { @user }
+  let(:user) { FactoryGirl.create(:user) }
 
   describe "#index" do
     it "has a 200 status code" do
