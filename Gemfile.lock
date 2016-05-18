@@ -275,7 +275,6 @@ DEPENDENCIES
   pry
   quiet_assets
   rails (~> 4.2.6)
-  rails-html-sanitizer (~> 1.0.3)
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
