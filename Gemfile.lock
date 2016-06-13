@@ -273,7 +273,6 @@ DEPENDENCIES
   font-awesome-sass (~> 4.3)
   guard-rspec
   jquery-rails
-  nokogiri (>= 1.6.8)
   poltergeist
   pry
   quiet_assets
