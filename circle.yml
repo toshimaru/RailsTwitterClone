@@ -4,4 +4,4 @@ machine:
 general:
   artifacts:
     - coverage
-    - screenshot
+    - tmp/capybara
