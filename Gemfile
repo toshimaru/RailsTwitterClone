@@ -48,7 +48,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'capybara-screenshot_config'
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
   gem 'guard-rspec'
