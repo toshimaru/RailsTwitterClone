@@ -3,7 +3,6 @@ cache: bundler
 rvm:
   - 2.2
   - 2.3.3
-  - 2.4.0
 addons:
   code_climate:
     repo_token: 16a5563f328e7241ec6257fd902ec4b0c0541faa26021e804d072a783cc05381
