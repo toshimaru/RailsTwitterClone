@@ -5,11 +5,6 @@ require File.expand_path("../../config/environment", __FILE__)
 
 # coverage with simplecov and codeclimate
 require 'simplecov'
-require "codeclimate-test-reporter"
-SimpleCov.formatters = [
-  SimpleCov::Formatter::HTMLFormatter,
-  CodeClimate::TestReporter::Formatter
-]
 SimpleCov.start 'rails'
 
 require 'rspec/rails'
