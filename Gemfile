@@ -55,6 +55,3 @@ group :test do
   gem 'rspec-rails'
   gem 'simplecov', require: false
 end
-
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
