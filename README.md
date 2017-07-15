@@ -1,3 +1,5 @@
+# Rails Twitter Clone
+
 [![Build Status](https://travis-ci.org/toshimaru/RailsTwitterClone.svg?branch=bundle-update-20170116)](https://travis-ci.org/toshimaru/RailsTwitterClone)
 [![Code Climate](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone)
 [![Test Coverage](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone/coverage)
@@ -21,12 +23,15 @@ This application doesn't provide many features in order to keep it simple. Here 
 ## Used gem
 
 ### For template
+
 * slim
 
 ### For CSS Style
+
 * bootstrap-sass
 
 ### For testing
+
 * capybara
 * factory_girl
 * faker
@@ -35,6 +40,7 @@ This application doesn't provide many features in order to keep it simple. Here 
 * simplecov
 
 ### For debugging
+
 * better_errors & binding_of_caller
 * bullet
 * quiet_assets
