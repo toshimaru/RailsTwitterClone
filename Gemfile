@@ -35,15 +35,6 @@ gem 'font-awesome-sass', '~> 4.3'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'bullet'
-  gem 'byebug'
-  gem 'pry'
-  gem 'quiet_assets'
-  gem 'spring'
-  gem 'web-console', '>= 3.3.0'
-end
-
-group :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
@@ -51,4 +42,13 @@ group :test do
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'simplecov', require: false
+end
+
+group :development do
+  gem 'bullet'
+  gem 'byebug'
+  gem 'pry'
+  gem 'quiet_assets'
+  gem 'spring'
+  gem 'web-console'
 end
