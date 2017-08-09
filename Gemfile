@@ -34,24 +34,21 @@ gem 'font-awesome-sass', '~> 4.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'bullet'
-  gem 'byebug'
-  gem 'faker'
-  gem 'pry'
-  gem 'quiet_assets'
-  gem 'spring'
-  gem 'terminal-notifier-guard'
-end
-
-group :test do
+group :development, :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
-  gem 'guard-rspec'
+  gem 'faker'
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'simplecov', require: false
+end
+
+group :development do
+  gem 'bullet'
+  gem 'byebug'
+  gem 'pry'
+  gem 'quiet_assets'
+  gem 'spring'
+  gem 'web-console'
 end
