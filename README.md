@@ -35,13 +35,11 @@ This application doesn't provide many features in order to keep it simple. Here 
 * capybara
 * factory_girl
 * faker
-* guard
 * rspec
 * simplecov
 
 ### For debugging
 
-* better_errors & binding_of_caller
 * bullet
 * quiet_assets
 
@@ -49,10 +47,14 @@ See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone
 
 ## Test
 
-    $ bundle exec rspec
+```console
+$ bundle exec rspec
+```
 
 ## Data reset and creation
 
-    $ bundle exec rake db:reset
-    $ bundle exec rake db:populate
-    $ bundle exec rake test:prepare
+```console
+$ bundle exec rake db:reset
+$ bundle exec rake db:populate
+$ bundle exec rake test:prepare
+```
