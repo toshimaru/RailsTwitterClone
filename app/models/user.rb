@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   # See implementation: https://github.com/rails/rails/blob/master/activemodel/lib/active_model/secure_password.rb
   has_secure_password
-  validates_confirmation_of :password, if: -> (m) { m.password.present? }
+  validates_confirmation_of :password, if: ->(m) { m.password.present? }
   validates :password, length: { minimum: 6 }
   validates :slug, uniqueness: true
 
@@ -47,17 +47,19 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  def self.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
+  class << self
+    def new_remember_token
+      SecureRandom.urlsafe_base64
+    end
 
-  def self.hash(token)
-    Digest::SHA1.hexdigest(token.to_s)
+    def hexdigest(token)
+      Digest::SHA1.hexdigest(token.to_s)
+    end
   end
 
   private
 
     def create_remember_token
-      self.remember_token = User.hash(User.new_remember_token)
+      self.remember_token = User.hexdigest(User.new_remember_token)
     end
 end
