@@ -49,7 +49,7 @@ end
 group :development do
   gem 'bullet'
   gem 'byebug'
-  gem 'pry'
+  gem 'pry-byebug'
   gem 'spring'
   gem 'web-console'
 end

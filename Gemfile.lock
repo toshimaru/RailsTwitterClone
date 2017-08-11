@@ -116,6 +116,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.4.2)
+      byebug (~> 9.0)
+      pry (~> 0.10)
     public_suffix (2.0.5)
     puma (3.9.1)
     rack (2.0.3)
@@ -241,7 +244,7 @@ DEPENDENCIES
   font-awesome-sass (~> 4.3)
   jquery-rails
   poltergeist
-  pry
+  pry-byebug
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails-controller-testing
