@@ -29,6 +29,7 @@ This application doesn't provide many features in order to keep it simple. Here 
 ### For CSS Style
 
 * bootstrap-sass
+* font-awesome-sass
 
 ### For testing
 
@@ -41,9 +42,10 @@ This application doesn't provide many features in order to keep it simple. Here 
 ### For debugging
 
 * bullet
-* quiet_assets
+* pry-byebug
+* web-console
 
-See more details on [Gemfile](https://github.com/toshimaru/Rails-4-Twitter-Clone/blob/master/Gemfile).
+See more details on [Gemfile](https://github.com/toshimaru/RailsTwitterClone/blob/master/Gemfile).
 
 ## Test
 

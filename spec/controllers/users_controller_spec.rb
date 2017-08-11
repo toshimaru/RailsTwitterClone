@@ -12,7 +12,7 @@ describe UsersController do
 
   describe "#show" do
     it "has a 200 status code" do
-      get :show, id: user.slug
+      get :show, params: { id: user.slug }
       expect(response.status).to eq(200)
     end
   end
@@ -28,13 +28,13 @@ describe UsersController do
     before { FactoryGirl.create(:user1) }
 
     it "create new user" do
-      post :create, user: FactoryGirl.attributes_for(:user)
+      post :create, params: { user: FactoryGirl.attributes_for(:user) }
       expect(response.status).to eq(302)
       expect(response).to redirect_to(assigns(:user))
     end
 
     it "doesn't create new user" do
-      post :create, user: FactoryGirl.attributes_for(:user1)
+      post :create, params: { user: FactoryGirl.attributes_for(:user1) }
       expect(response.status).to eq(200)
       expect(response).to render_template(:new)
     end
@@ -43,7 +43,7 @@ describe UsersController do
   describe "#destroy" do
     context "no signed in" do
       it "doen't delete user" do
-        delete :destroy, id: user.slug
+        delete :destroy, params: { id: user.slug }
         expect(response.status).to eq(302)
         expect(response).to redirect_to(signin_path)
       end
@@ -52,7 +52,7 @@ describe UsersController do
     context "signed in" do
       before { sign_in user, no_capybara: true }
       it "deletes user" do
-        expect { delete :destroy, id: user.slug }.to change(User, :count).by(-1)
+        expect { delete :destroy, params: { id: user.slug } }.to change(User, :count).by(-1)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(root_path)
       end
@@ -62,7 +62,7 @@ describe UsersController do
   describe "#update" do
     context "no signed in" do
       it "doen't update user" do
-        patch :update, id: user.slug #, user: FactoryGirl.attributes_for(:user)
+        patch :update, params: { id: user.slug }
         expect(response.status).to eq(302)
         expect(response).to redirect_to(signin_path)
       end
@@ -72,12 +72,11 @@ describe UsersController do
       let(:updated_user) { FactoryGirl.attributes_for(:user) }
       before { sign_in user, no_capybara: true }
       it "updates user" do
-        patch :update, id: user.slug, user: updated_user
+        patch :update, params: { id: user.slug, user: updated_user }
         expect(response.status).to eq(302)
         expect(user.reload.name).to eq(updated_user[:name])
         expect(user.reload.email).to eq(updated_user[:email])
       end
     end
   end
-
 end
