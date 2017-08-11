@@ -10,7 +10,7 @@
 
 ## Implementation
 
-This implementation is based on [Ruby on Rails Tutorial](https://www.railstutorial.org/).
+This implementation is based on [Ruby on Rails Tutorial](https://www.railstutorial.org/book).
 
 ## Features
 
