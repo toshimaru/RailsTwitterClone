@@ -8,7 +8,7 @@ describe RelationshipsController do
     end
 
     describe "submitting to the destroy action" do
-      before { delete :destroy, id: 1 }
+      before { delete :destroy, params: { id: 1 } }
       it { expect(response).to redirect_to(signin_path) }
     end
   end

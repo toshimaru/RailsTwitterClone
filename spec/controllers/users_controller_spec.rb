@@ -52,9 +52,7 @@ describe UsersController do
     context "signed in" do
       before { sign_in user, no_capybara: true }
       it "deletes user" do
-        expect {
-          delete :destroy, params: { id: user.slug }
-        }.to change(User, :count).by(-1)
+        expect { delete :destroy, params: { id: user.slug } }.to change(User, :count).by(-1)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(root_path)
       end
