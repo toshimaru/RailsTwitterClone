@@ -36,11 +36,13 @@ gem 'slim'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'byebug'
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'poltergeist'
+  gem 'pry-byebug'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'simplecov', require: false
@@ -48,8 +50,6 @@ end
 
 group :development do
   gem 'bullet'
-  gem 'byebug'
-  gem 'pry-byebug'
   gem 'spring'
   gem 'web-console'
 end
