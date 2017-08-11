@@ -41,6 +41,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'poltergeist'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'simplecov', require: false
 end
