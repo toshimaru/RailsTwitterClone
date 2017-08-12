@@ -38,20 +38,21 @@ describe User do
   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,bar user.foo user@foo.]
-      addresses.each { |address|
+      addresses << "too.long.email@address.com" + "a" * 250
+      addresses.each do |address|
         user.email = address
         expect(user).not_to be_valid
-      }
+      end
     end
   end
 
   describe "when email format is invalid" do
     it "should be valid" do
       addresses = %w[user@foo.bar a+b@a.com toshi...1@a.b.c]
-      addresses.each { |address|
+      addresses.each do |address|
         user.email = address
         expect(user).to be_valid
-      }
+      end
     end
   end
 
