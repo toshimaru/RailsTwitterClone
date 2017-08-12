@@ -78,5 +78,4 @@ class UsersController < ApplicationController
     def correct_user
       redirect_to(signin_url) unless current_user?(@user)
     end
-
 end
