@@ -24,3 +24,9 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
+
+      # RSpec
+      - run: bundle exec rspec
+
+      - store_artifacts:
+          path: coverage
