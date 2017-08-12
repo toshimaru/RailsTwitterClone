@@ -2,7 +2,7 @@ jobs:
   build:
     working_directory: ~/rails_twitter_clone
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/ruby:2.4.1-node
         environment:
           RAILS_ENV: test
     steps:
