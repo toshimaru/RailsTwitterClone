@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -12,11 +12,13 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+  validates :email, presence: true,
+                    length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   # See implementation: https://github.com/rails/rails/blob/master/activemodel/lib/active_model/secure_password.rb
   has_secure_password
-  validates_confirmation_of :password, if: -> (m) { m.password.present? }
+  validates_confirmation_of :password, if: ->(m) { m.password.present? }
   validates :password, length: { minimum: 6 }
   validates :slug, uniqueness: true
 
@@ -47,17 +49,19 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  def self.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
+  class << self
+    def new_remember_token
+      SecureRandom.urlsafe_base64
+    end
 
-  def self.hash(token)
-    Digest::SHA1.hexdigest(token.to_s)
+    def hexdigest(token)
+      Digest::SHA1.hexdigest(token.to_s)
+    end
   end
 
   private
 
     def create_remember_token
-      self.remember_token = User.hash(User.new_remember_token)
+      self.remember_token = User.hexdigest(User.new_remember_token)
     end
 end

@@ -42,5 +42,4 @@ class TweetsController < ApplicationController
     # rescue
     #   redirect_to root_url
     # end
-
 end

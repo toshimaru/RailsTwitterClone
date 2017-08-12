@@ -1,5 +1,4 @@
 class StaticPagesController < ApplicationController
-
   def home
     if signed_in?
       @tweet  = current_user.tweets.build

@@ -60,7 +60,7 @@ describe "UserPages" do
 
   describe "edit" do
     before do
-      sign_in user
+      log_in user
       visit edit_user_path(user)
     end
 
@@ -125,7 +125,7 @@ describe "UserPages" do
 
     describe "sign in user have tweet" do
       before do
-        sign_in user
+        log_in user
         visit user_path(user)
       end
 
@@ -135,7 +135,7 @@ describe "UserPages" do
 
     describe "follow/unfollow buttons" do
       let(:other_user) { FactoryGirl.create(:user) }
-      before { sign_in user }
+      before { log_in user }
 
       describe "following a user" do
         before { visit user_path(other_user) }
@@ -190,7 +190,7 @@ describe "UserPages" do
 
     describe "followed users" do
       before do
-        sign_in user
+        log_in user
         visit following_user_path(user)
       end
 
@@ -201,7 +201,7 @@ describe "UserPages" do
 
     describe "followers" do
       before do
-        sign_in other_user
+        log_in other_user
         visit followers_user_path(other_user)
       end
 

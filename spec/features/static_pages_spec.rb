@@ -10,7 +10,7 @@ describe "Static Pages" do
 
       before do
         3.times { FactoryGirl.create(:tweet, user: user, content: "Lorem ipsum") }
-        sign_in user
+        log_in user
         visit root_path
       end
 

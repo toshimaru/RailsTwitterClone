@@ -4,7 +4,7 @@ describe "Tweet pages" do
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }
-  before { sign_in user }
+  before { log_in user }
 
   describe "show all tweets" do
     let!(:tweet1) { FactoryGirl.create(:tweet, user: user, content: 'Harakiri' ) }

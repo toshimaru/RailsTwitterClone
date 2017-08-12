@@ -32,5 +32,4 @@ class ApplicationController < ActionController::Base
   def routing_error
     raise ActionController::RoutingError.new(params[:path])
   end
-
 end
