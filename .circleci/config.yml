@@ -5,6 +5,10 @@ jobs:
       - image: circleci/ruby:2.4.1-node
         environment:
           RAILS_ENV: test
+      - image: circleci/mysql:5.7
+        env:
+          - MYSQL_ALLOW_EMPTY_PASSWORD=true
+          - MYSQL_ROOT_HOST=%
     steps:
       - checkout
 
