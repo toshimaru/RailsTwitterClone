@@ -1,7 +1,26 @@
-machine:
-  ruby:
-    version: 2.4.1
-general:
-  artifacts:
-    - coverage
-    - tmp/capybara
+jobs:
+  build:
+    working_directory: ~/rails_twitter_clone
+    docker:
+      - image: circleci/ruby:2.4.1
+        environment:
+          RAILS_ENV: test
+    steps:
+      - checkout
+
+      # Restore bundle cache
+      - type: cache-restore
+        key: rails-demo-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+      # Store bundle cache
+      - type: cache-save
+        key: rails-demo-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # Database setup
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
