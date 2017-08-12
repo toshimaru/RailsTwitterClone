@@ -50,7 +50,7 @@ describe UsersController do
     end
 
     context "signed in" do
-      before { sign_in user, no_capybara: true }
+      before { log_in user, no_capybara: true }
       it "deletes user" do
         expect { delete :destroy, params: { id: user.slug } }.to change(User, :count).by(-1)
         expect(response.status).to eq(302)
@@ -70,7 +70,7 @@ describe UsersController do
 
     context "signed in" do
       let(:updated_user) { FactoryGirl.attributes_for(:user) }
-      before { sign_in user, no_capybara: true }
+      before { log_in user, no_capybara: true }
       it "updates user" do
         patch :update, params: { id: user.slug, user: updated_user }
         expect(response.status).to eq(302)
