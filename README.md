@@ -12,6 +12,16 @@
 
 This implementation is based on [Ruby on Rails Tutorial](https://www.railstutorial.org/book).
 
+## Setup
+
+Check out this repository and then,
+
+```console
+$ bundle install
+$ bundle exec rails db:migrate
+$ bundle exec rails server
+```
+
 ## Features
 
 This application doesn't provide many features in order to keep it simple. Here are the features that it does include:
@@ -43,6 +53,7 @@ This application doesn't provide many features in order to keep it simple. Here 
 
 * bullet
 * pry-byebug
+* pry-rails
 * web-console
 
 See more details on [Gemfile](https://github.com/toshimaru/RailsTwitterClone/blob/master/Gemfile).
@@ -53,10 +64,9 @@ See more details on [Gemfile](https://github.com/toshimaru/RailsTwitterClone/blo
 $ bundle exec rspec
 ```
 
-## Data reset and creation
+## Data reset and sample data creation
 
 ```console
-$ bundle exec rake db:reset
-$ bundle exec rake db:populate
-$ bundle exec rake test:prepare
+$ bundle exec rails db:reset    # Data reset
+$ bundle exec rails db:populate # Create sample data
 ```
