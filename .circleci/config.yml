@@ -5,6 +5,7 @@ jobs:
       - image: circleci/ruby:2.4.1-node
         environment:
           RAILS_ENV: test
+          NPM_CONFIG_PREFIX: ~/.npm-global
       - image: circleci/mysql:5.7
         env:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -28,10 +29,8 @@ jobs:
       - run:
           name: npm install
           command: |
-            mkdir ~/.npm-packages
-            echo "prefix=~/.npm-packages" >> ~/.npmrc
             npm install -g phantomjs-prebuilt
-      - run: export PATH="~/.npm-packages/bin:$PATH"
+            echo 'export PATH=~/.npm-global/bin:$PATH' >> .bashrc
 
       # Database setup
       - run: bundle exec rake db:create
