@@ -32,7 +32,7 @@ jobs:
           command: |
             npm install -g phantomjs-prebuilt
 
-      - run: sudo ln -sf ~/.npm-global/bin/phantomjs /usr/local/bin/phantomjs
+      - run: sudo mv ~/.npm-global/bin/phantomjs /usr/local/bin/phantomjs
 
       # Database setup
       - run: bundle exec rake db:create
