@@ -6,7 +6,6 @@ jobs:
         environment:
           RAILS_ENV: test
           # https://discuss.circleci.com/t/how-to-add-a-path-to-path-in-circle-2-0/11554/4
-          BASH_ENV: ~/.bashrc
           NPM_CONFIG_PREFIX: ~/.npm-global
       - image: circleci/mysql:5.7
         env:
@@ -32,7 +31,8 @@ jobs:
           name: npm install
           command: |
             npm install -g phantomjs-prebuilt
-            echo 'export PATH=~/.npm-global/bin:$PATH' >> $BASH_ENV
+            echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+            source ~/.bashrc
 
       # Database setup
       - run: bundle exec rake db:create
