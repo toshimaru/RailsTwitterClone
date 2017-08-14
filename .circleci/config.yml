@@ -28,11 +28,10 @@ jobs:
           - vendor/bundle
 
       - run:
-          name: npm install
+          name: Install PhantomJS
           command: |
-            npm install -g phantomjs-prebuilt
-
-      - run: sudo mv ~/.npm-global/bin/phantomjs /usr/local/bin/phantomjs
+            # npm install -g phantomjs-prebuilt
+            sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
 
       # Database setup
       - run: bundle exec rake db:create
