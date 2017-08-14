@@ -30,8 +30,8 @@ jobs:
       - run:
           name: Install PhantomJS
           command: |
-            # npm install -g phantomjs-prebuilt
-            sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
+            npm install -g phantomjs-prebuilt
+            sudo ln -sf /home/circleci/.npm-global/bin/phantomjs /usr/local/bin/phantomjs
 
       # Database setup
       - run: bundle exec rake db:create
