@@ -5,6 +5,8 @@ jobs:
       - image: circleci/ruby:2.4.1-node
         environment:
           RAILS_ENV: test
+          # https://discuss.circleci.com/t/how-to-add-a-path-to-path-in-circle-2-0/11554/4
+          NPM_CONFIG_PREFIX: ~/.npm-global
       - image: circleci/mysql:5.7
         env:
           - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -24,6 +26,13 @@ jobs:
         key: rails-demo-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
+
+      - run:
+          name: npm install
+          command: |
+            npm install -g phantomjs-prebuilt
+            echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
+            source ~/.bashrc
 
       # Database setup
       - run: bundle exec rake db:create
