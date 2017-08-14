@@ -31,6 +31,7 @@ jobs:
           name: npm install
           command: |
             npm install -g phantomjs-prebuilt
+
       - run: sudo ln -sf ~/.npm-global/bin/phantomjs /usr/local/bin/phantomjs
 
       # Database setup
