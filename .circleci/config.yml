@@ -22,20 +22,19 @@ jobs:
 
       # Restore bundle cache
       - type: cache-restore
-        key: rails-demo-{{ checksum "Gemfile.lock" }}
+        key: rails-twitter-clone-{{ checksum "Gemfile.lock" }}
 
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 
       # Store bundle cache
       - type: cache-save
-        key: rails-demo-{{ checksum "Gemfile.lock" }}
+        key: rails-twitter-clone-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
 
       # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: bundle exec rails db:create db:schema:load
 
       # RSpec
       - run: bundle exec rspec
