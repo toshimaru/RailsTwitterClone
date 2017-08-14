@@ -14,6 +14,12 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Install PhantomJS
+          command: |
+            npm install -g phantomjs-prebuilt
+            sudo ln -sf /home/circleci/.npm-global/bin/phantomjs /usr/local/bin/phantomjs
+
       # Restore bundle cache
       - type: cache-restore
         key: rails-demo-{{ checksum "Gemfile.lock" }}
@@ -26,12 +32,6 @@ jobs:
         key: rails-demo-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
-
-      - run:
-          name: Install PhantomJS
-          command: |
-            npm install -g phantomjs-prebuilt
-            sudo ln -sf /home/circleci/.npm-global/bin/phantomjs /usr/local/bin/phantomjs
 
       # Database setup
       - run: bundle exec rake db:create
