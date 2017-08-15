@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe User do
+RSpec.describe User do
   subject(:user) { User.new(name: 'toshi', email: "mail@test.com",
                             password: 'my password', password_confirmation: 'my password') }
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe SessionsController do
+RSpec.describe SessionsController do
 
   describe "#new" do
     context "GET" do

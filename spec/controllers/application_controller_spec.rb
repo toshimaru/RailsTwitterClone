@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ApplicationController do
+RSpec.describe ApplicationController do
 
   controller do
     def index

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Relationship do
+RSpec.describe Relationship do
 
   let(:follower) { FactoryGirl.create(:user) }
   let(:followed) { FactoryGirl.create(:user) }

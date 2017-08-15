@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Authentication" do
+RSpec.describe "Authentication" do
 
   subject { page }
 

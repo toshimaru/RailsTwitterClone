@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Tweet pages" do
+RSpec.describe "Tweet pages" do
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe TweetsController do
+RSpec.describe TweetsController do
   describe "in the Tweets controller" do
 
     describe "#index" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Tweet do
+RSpec.describe Tweet do
   let(:user) { FactoryGirl.create(:user) }
 
   subject(:tweet) { user.tweets.build(content: "Lorem ipsum") }

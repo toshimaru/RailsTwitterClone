@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe RelationshipsController do
+RSpec.describe RelationshipsController do
   describe "in the Relationships controller" do
     describe "submitting to the create action" do
       before { post :create }

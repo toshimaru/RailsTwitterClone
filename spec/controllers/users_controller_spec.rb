@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UsersController do
+RSpec.describe UsersController do
   let(:user) { FactoryGirl.create(:user) }
 
   describe "#index" do
