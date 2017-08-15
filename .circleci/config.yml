@@ -37,6 +37,7 @@ jobs:
       - run: bundle exec rails db:create db:schema:load
 
       # RSpec
+      - run: which phantomjs
       - run: bundle exec rspec
 
       - store_artifacts:
