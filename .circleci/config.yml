@@ -20,14 +20,14 @@ jobs:
 
       # Restore bundle cache
       - type: cache-restore
-        key: rails-twitter-clone-{{ checksum "Gemfile.lock" }}
+        key: bundle-{{ checksum "Gemfile.lock" }}
 
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 
       # Store bundle cache
       - type: cache-save
-        key: rails-twitter-clone-{{ checksum "Gemfile.lock" }}
+        key: bundle-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
 
