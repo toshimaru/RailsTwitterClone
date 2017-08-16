@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Relationship do
-
+RSpec.describe Relationship, type: :model do
   let(:follower) { FactoryGirl.create(:user) }
   let(:followed) { FactoryGirl.create(:user) }
   subject(:relationship) { follower.relationships.build(followed_id: followed.id) }
@@ -27,5 +26,4 @@ RSpec.describe Relationship do
     before { relationship.follower_id = nil }
     it { should_not be_valid }
   end
-
 end
