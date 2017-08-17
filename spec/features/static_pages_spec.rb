@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Static Pages" do
+RSpec.describe "Static Pages", type: :feature do
   subject { page }
 
   describe "Home Page" do

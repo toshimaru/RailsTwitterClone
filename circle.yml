@@ -1,7 +1,0 @@
-machine:
-  ruby:
-    version: 2.4.1
-general:
-  artifacts:
-    - coverage
-    - tmp/capybara

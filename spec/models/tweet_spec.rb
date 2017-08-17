@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Tweet do
+RSpec.describe Tweet, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
   subject(:tweet) { user.tweets.build(content: "Lorem ipsum") }
@@ -26,5 +26,4 @@ describe Tweet do
     before { tweet.content = "a" * 141 }
     it { should_not be_valid }
   end
-
 end

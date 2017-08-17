@@ -1,8 +1,6 @@
-#ref. http://ruby.railstutorial.org/chapters/modeling-users#sec-user_model
-
 require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   subject(:user) { User.new(name: 'toshi', email: "mail@test.com",
                             password: 'my password', password_confirmation: 'my password') }
 
@@ -161,5 +159,4 @@ describe User do
       specify { expect(other_user.followers).to include(user) }
     end
   end
-
 end

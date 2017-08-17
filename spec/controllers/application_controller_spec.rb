@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe ApplicationController do
-
+RSpec.describe ApplicationController, type: :controller do
   controller do
     def index
       routing_error
@@ -38,5 +37,4 @@ describe ApplicationController do
       expect(response.status).to eq(404)
     end
   end
-
 end

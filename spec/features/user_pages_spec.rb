@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "UserPages" do
+RSpec.describe "UserPages", type: :feature do
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }

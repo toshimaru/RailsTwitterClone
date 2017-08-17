@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe "Authentication" do
-
+RSpec.describe "Authentication", type: :feature do
   subject { page }
 
   describe 'authorization' do
@@ -116,7 +115,5 @@ describe "Authentication" do
         it { should have_content('Sign in') }
       end
     end
-
   end
-
 end

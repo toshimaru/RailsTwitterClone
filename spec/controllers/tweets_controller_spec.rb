@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-describe TweetsController do
+RSpec.describe TweetsController, type: :controller do
   describe "in the Tweets controller" do
-
     describe "#index" do
       before { get :index }
       it { expect(response.status).to eq(200) }
