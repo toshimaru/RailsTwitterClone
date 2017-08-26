@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ApplicationController, type: :controller do
   controller do
@@ -7,7 +7,7 @@ RSpec.describe ApplicationController, type: :controller do
     end
 
     def unknown_error
-      raise 'error'
+      raise "error"
     end
 
     def not_found_error
@@ -15,7 +15,7 @@ RSpec.describe ApplicationController, type: :controller do
     end
   end
 
-  describe 'render_500' do
+  describe "render_500" do
     before { routes.draw { get "anonymous/unknown_error" } }
     it "returns 500" do
       get :unknown_error
@@ -23,7 +23,7 @@ RSpec.describe ApplicationController, type: :controller do
     end
   end
 
-  describe '#render_404' do
+  describe "#render_404" do
     before { routes.draw { get "anonymous/not_found_error" } }
     it "returns 404" do
       get :not_found_error

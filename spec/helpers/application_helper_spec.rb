@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ApplicationHelper, type: :helper do
   it { expect(full_title("title")).to eq "title | Twitter Clone" }
