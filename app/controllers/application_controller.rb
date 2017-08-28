@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -19,14 +21,14 @@ class ApplicationController < ActionController::Base
     if exception
       logger.info "Rendering 404 with exception: #{exception} #{exception.message}"
     end
-    render template: "errors/error_404", status: 404, layout: 'application'
+    render template: "errors/error_404", status: 404, layout: "application"
   end
 
   def render_500(exception = nil)
     if exception
       logger.info "Rendering 500 with exception: #{exception.inspect}"
     end
-    render template: "errors/error_500", status: 500, layout: 'application'
+    render template: "errors/error_500", status: 500, layout: "application"
   end
 
   def routing_error

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RelationshipsController < ApplicationController
   before_action :signed_in_user
 

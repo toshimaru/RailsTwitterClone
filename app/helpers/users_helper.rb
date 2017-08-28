@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UsersHelper
   # Returns the Gravatar (http://gravatar.com/) for the given user.
   def gravatar_for(user, options = { size: 50 })

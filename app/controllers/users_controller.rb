@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user,       only: [:show, :edit, :update, :destroy, :following, :followers]
   before_action :signed_in_user, only: [:edit, :update, :destroy]
