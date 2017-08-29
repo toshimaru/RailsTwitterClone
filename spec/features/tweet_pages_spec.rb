@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "Tweet pages", type: :feature do
   subject { page }
@@ -7,14 +9,14 @@ RSpec.describe "Tweet pages", type: :feature do
   before { log_in user }
 
   describe "show all tweets" do
-    let!(:tweet1) { FactoryGirl.create(:tweet, user: user, content: 'Harakiri' ) }
-    let!(:tweet2) { FactoryGirl.create(:tweet, user: user, content: 'Samurai') }
-    let!(:tweet3) { FactoryGirl.create(:tweet, user: user, content: 'Ninja') }
-    let!(:tweet4) { FactoryGirl.create(:tweet, user: user, content: 'a' * 70 ) }
+    let!(:tweet1) { FactoryGirl.create(:tweet, user: user, content: "Harakiri") }
+    let!(:tweet2) { FactoryGirl.create(:tweet, user: user, content: "Samurai") }
+    let!(:tweet3) { FactoryGirl.create(:tweet, user: user, content: "Ninja") }
+    let!(:tweet4) { FactoryGirl.create(:tweet, user: user, content: "a" * 70) }
 
     before { visit tweets_path }
 
-    it { should have_selector('h2', text: 'Tweets') }
+    it { should have_selector("h2", text: "Tweets") }
     it { should have_content(tweet1.content) }
     it { should have_content(tweet2.content) }
     it { should have_content(tweet3.content) }
@@ -40,7 +42,7 @@ RSpec.describe "Tweet pages", type: :feature do
     end
 
     describe "with valid information" do
-      before { fill_in 'tweet_content', with: "Lorem ipsum" }
+      before { fill_in "tweet_content", with: "Lorem ipsum" }
       it "should create a tweet" do
         expect { click_button "Post" }.to change(Tweet, :count).by(1)
       end

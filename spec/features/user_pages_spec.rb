@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "UserPages", type: :feature do
   subject { page }
@@ -12,12 +14,12 @@ RSpec.describe "UserPages", type: :feature do
       visit users_path
     end
 
-    it { should have_content('Users') }
-    it { should have_title('Users') }
+    it { should have_content("Users") }
+    it { should have_title("Users") }
 
     it "should list each user" do
       User.all.each do |user|
-        expect(page).to have_selector('li', text: user.name)
+        expect(page).to have_selector("li", text: user.name)
       end
     end
   end
@@ -26,7 +28,7 @@ RSpec.describe "UserPages", type: :feature do
     before { visit signup_path }
     let(:submit) { "Sign up" }
 
-    it { should have_content('Sign up') }
+    it { should have_content("Sign up") }
 
     context "with valid information" do
       before do
@@ -43,10 +45,10 @@ RSpec.describe "UserPages", type: :feature do
 
       describe "after saving the user" do
         before { click_button submit }
-        let(:user) { User.find_by(email: 'user@example.com') }
+        let(:user) { User.find_by(email: "user@example.com") }
 
-        it { should have_link('Sign out') }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_link("Sign out") }
+        it { should have_selector("div.alert.alert-success", text: "Welcome") }
         it { should have_title(user.name) }
       end
     end
@@ -67,14 +69,14 @@ RSpec.describe "UserPages", type: :feature do
     describe "page" do
       it { should have_content("Update your profile") }
       it { should have_title("Edit user") }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
-      it { should have_link('Delete my account', href: user_path(user)) }
+      it { should have_link("change", href: "http://gravatar.com/emails") }
+      it { should have_link("Delete my account", href: user_path(user)) }
     end
 
     context "with invalid information" do
       before { click_button "Save changes" }
 
-      it { should have_content('too short') }
+      it { should have_content("too short") }
     end
 
     context "with valid information" do
@@ -90,19 +92,19 @@ RSpec.describe "UserPages", type: :feature do
       end
 
       it { should have_title(new_name) }
-      it { should have_link('Profile',     href: user_path(user)) }
-      it { should have_link('Setting',     href: edit_user_path(user)) }
-      it { should have_link('Sign out',    href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
-      it { should have_selector('div.alert.alert-success') }
+      it { should have_link("Profile",     href: user_path(user)) }
+      it { should have_link("Setting",     href: edit_user_path(user)) }
+      it { should have_link("Sign out",    href: signout_path) }
+      it { should_not have_link("Sign in", href: signin_path) }
+      it { should have_selector("div.alert.alert-success") }
       it { expect(user.reload.name).to  eq new_name }
       it { expect(user.reload.email).to eq new_email }
     end
 
-    context 'delete account' do
+    context "delete account" do
       specify do
         expect do
-          click_link 'Delete my account'
+          click_link "Delete my account"
         end.to change(User, :count).by(-1)
       end
     end
@@ -120,8 +122,8 @@ RSpec.describe "UserPages", type: :feature do
     it { should have_content(m2.content) }
     it { should have_content(user.tweets.count) }
 
-    it { should_not have_selector('textarea') }
-    it { should_not have_field('tweet[content]') }
+    it { should_not have_selector("textarea") }
+    it { should_not have_field("tweet[content]") }
 
     describe "sign in user have tweet" do
       before do
@@ -129,8 +131,8 @@ RSpec.describe "UserPages", type: :feature do
         visit user_path(user)
       end
 
-      it { should have_selector('textarea') }
-      it { should have_field('tweet[content]') }
+      it { should have_selector("textarea") }
+      it { should have_field("tweet[content]") }
     end
 
     describe "follow/unfollow buttons" do
@@ -194,8 +196,8 @@ RSpec.describe "UserPages", type: :feature do
         visit following_user_path(user)
       end
 
-      it { should have_title('Following') }
-      it { should have_selector('h2', text: 'Following') }
+      it { should have_title("Following") }
+      it { should have_selector("h2", text: "Following") }
       it { should have_link(other_user.name, href: user_path(other_user)) }
     end
 
@@ -205,8 +207,8 @@ RSpec.describe "UserPages", type: :feature do
         visit followers_user_path(other_user)
       end
 
-      it { should have_title('Followers') }
-      it { should have_selector('h2', text: 'Followers') }
+      it { should have_title("Followers") }
+      it { should have_selector("h2", text: "Followers") }
       it { should have_link(user.name, href: user_path(user)) }
     end
   end

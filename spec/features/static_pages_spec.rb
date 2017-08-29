@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "Static Pages", type: :feature do
   subject { page }
@@ -20,8 +22,8 @@ RSpec.describe "Static Pages", type: :feature do
         end
       end
 
-      it { should have_selector('textarea') }
-      it { should have_field('tweet[content]') }
+      it { should have_selector("textarea") }
+      it { should have_field("tweet[content]") }
 
       describe "follower/following counts" do
         let(:other_user) { FactoryGirl.create(:user) }
@@ -30,8 +32,8 @@ RSpec.describe "Static Pages", type: :feature do
           visit root_path
         end
 
-        it { should have_link('0', href: following_user_path(user)) }
-        it { should have_link('1', href: followers_user_path(user)) }
+        it { should have_link("0", href: following_user_path(user)) }
+        it { should have_link("1", href: followers_user_path(user)) }
       end
 
     end

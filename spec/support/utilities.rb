@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def log_in(user, options = {})
   if options[:no_capybara]
     remember_token = User.new_remember_token

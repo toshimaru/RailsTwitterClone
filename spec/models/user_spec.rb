@@ -1,8 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe User, type: :model do
-  subject(:user) { User.new(name: 'toshi', email: "mail@test.com",
-                            password: 'my password', password_confirmation: 'my password') }
+  subject(:user) { User.new(name: "toshi", email: "mail@test.com",
+                            password: "my password", password_confirmation: "my password") }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
@@ -24,12 +26,12 @@ RSpec.describe User, type: :model do
   it { should be_valid }
 
   describe "when name is not present" do
-    before { user.name = ' ' }
+    before { user.name = " " }
     it { should_not be_valid }
   end
 
   describe "when name is too long" do
-    before { user.name = 'a' * 51 }
+    before { user.name = "a" * 51 }
     it { should_not be_valid }
   end
 
@@ -71,7 +73,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "when password doesn't match confirmation" do
-    before { user.password_confirmation = 'aaa' }
+    before { user.password_confirmation = "aaa" }
     it { should_not be_valid }
   end
 

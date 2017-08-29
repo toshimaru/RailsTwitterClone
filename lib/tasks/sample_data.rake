@@ -1,4 +1,6 @@
 
+# frozen_string_literal: true
+
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
@@ -18,8 +20,8 @@ def make_user
   (1..100).each do |n|
     name  = Faker::Name.name
     slug  = name.parameterize
-    email = "example-#{n+1}@railstutorial.org"
-    password  = "password"
+    email = "example-#{n + 1}@railstutorial.org"
+    password = "password"
     User.create!(name: name,
                  email: email,
                  password: password,

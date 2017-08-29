@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SessionsHelper
   def log_in(user)
     remember_token = User.new_remember_token
