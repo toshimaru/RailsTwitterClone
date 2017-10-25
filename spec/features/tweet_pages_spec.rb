@@ -5,14 +5,14 @@ require "rails_helper"
 RSpec.describe "Tweet pages", type: :feature do
   subject { page }
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
   before { log_in user }
 
   describe "show all tweets" do
-    let!(:tweet1) { FactoryGirl.create(:tweet, user: user, content: "Harakiri") }
-    let!(:tweet2) { FactoryGirl.create(:tweet, user: user, content: "Samurai") }
-    let!(:tweet3) { FactoryGirl.create(:tweet, user: user, content: "Ninja") }
-    let!(:tweet4) { FactoryGirl.create(:tweet, user: user, content: "a" * 70) }
+    let!(:tweet1) { FactoryBot.create(:tweet, user: user, content: "Harakiri") }
+    let!(:tweet2) { FactoryBot.create(:tweet, user: user, content: "Samurai") }
+    let!(:tweet3) { FactoryBot.create(:tweet, user: user, content: "Ninja") }
+    let!(:tweet4) { FactoryBot.create(:tweet, user: user, content: "a" * 70) }
 
     before { visit tweets_path }
 
@@ -50,7 +50,7 @@ RSpec.describe "Tweet pages", type: :feature do
   end
 
   describe "tweet destroy" do
-    before { FactoryGirl.create(:tweet, user: user) }
+    before { FactoryBot.create(:tweet, user: user) }
 
     describe "as correct user" do
       before { visit root_path }

@@ -5,12 +5,12 @@ require "rails_helper"
 RSpec.describe "UserPages", type: :feature do
   subject { page }
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   describe "Show all users (/users)" do
     before do
-      FactoryGirl.create(:user, name: "Bob", email: "bob@example.com")
-      FactoryGirl.create(:user, name: "Ben", email: "ben@example.com")
+      FactoryBot.create(:user, name: "Bob", email: "bob@example.com")
+      FactoryBot.create(:user, name: "Ben", email: "ben@example.com")
       visit users_path
     end
 
@@ -111,8 +111,8 @@ RSpec.describe "UserPages", type: :feature do
   end
 
   describe "profile page (/user/:id)" do
-    let!(:m1) { FactoryGirl.create(:tweet, user: user, content: "Foo") }
-    let!(:m2) { FactoryGirl.create(:tweet, user: user, content: "Bar") }
+    let!(:m1) { FactoryBot.create(:tweet, user: user, content: "Foo") }
+    let!(:m2) { FactoryBot.create(:tweet, user: user, content: "Bar") }
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
@@ -136,7 +136,7 @@ RSpec.describe "UserPages", type: :feature do
     end
 
     describe "follow/unfollow buttons" do
-      let(:other_user) { FactoryGirl.create(:user) }
+      let(:other_user) { FactoryBot.create(:user) }
       before { log_in user }
 
       describe "following a user" do
@@ -187,7 +187,7 @@ RSpec.describe "UserPages", type: :feature do
   end
 
   describe "following/followers" do
-    let(:other_user) { FactoryGirl.create(:user) }
+    let(:other_user) { FactoryBot.create(:user) }
     before { user.follow!(other_user) }
 
     describe "followed users" do

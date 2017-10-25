@@ -28,7 +28,7 @@ RSpec.describe "Authentication", type: :feature do
     end
 
     context "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
         fill_in "Email",    with: user.email.upcase
@@ -50,7 +50,7 @@ RSpec.describe "Authentication", type: :feature do
     end
 
     context "for non-signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
 
       describe "visit root page" do
         before { visit root_path }
@@ -106,8 +106,8 @@ RSpec.describe "Authentication", type: :feature do
     end
 
     describe "as wrong user" do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
+      let(:user) { FactoryBot.create(:user) }
+      let(:wrong_user) { FactoryBot.create(:user, email: "wrong@example.com") }
       before { log_in user }
 
       describe "Visit wrong_user's edit page" do

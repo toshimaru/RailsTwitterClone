@@ -8,10 +8,10 @@ RSpec.describe "Static Pages", type: :feature do
   describe "Home Page" do
 
     describe "for signed in users" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryBot.create(:user) }
 
       before do
-        3.times { FactoryGirl.create(:tweet, user: user, content: "Lorem ipsum") }
+        3.times { FactoryBot.create(:tweet, user: user, content: "Lorem ipsum") }
         log_in user
         visit root_path
       end
@@ -26,7 +26,7 @@ RSpec.describe "Static Pages", type: :feature do
       it { should have_field("tweet[content]") }
 
       describe "follower/following counts" do
-        let(:other_user) { FactoryGirl.create(:user) }
+        let(:other_user) { FactoryBot.create(:user) }
         before do
           other_user.follow!(user)
           visit root_path
