@@ -41,7 +41,7 @@ group :development, :test do
   gem "byebug"
   gem "capybara"
   gem "codeclimate-test-reporter", require: false
-  gem "factory_girl_rails"
+  gem "factory_bot_rails"
   gem "faker"
   gem "poltergeist"
   gem "pry-byebug"
