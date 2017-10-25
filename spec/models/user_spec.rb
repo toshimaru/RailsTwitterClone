@@ -126,7 +126,9 @@ RSpec.describe User, type: :model do
     end
 
     describe "status" do
-      let(:unfollowed_post) { FactoryBot.create(:tweet, user: FactoryBot.create(:user)) }
+      let(:unfollowed_post) {
+        FactoryBot.create(:tweet, user: FactoryBot.create(:user))
+      }
       let(:followed_user) { FactoryBot.create(:user) }
 
       before do
