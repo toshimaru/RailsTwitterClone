@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe UsersController, type: :controller do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   describe "#index" do
     it "has a 200 status code" do
@@ -27,16 +27,16 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#create" do
-    before { FactoryGirl.create(:user1) }
+    before { FactoryBot.create(:user1) }
 
     it "create new user" do
-      post :create, params: { user: FactoryGirl.attributes_for(:user) }
+      post :create, params: { user: FactoryBot.attributes_for(:user) }
       expect(response.status).to eq(302)
       expect(response).to redirect_to(assigns(:user))
     end
 
     it "doesn't create new user" do
-      post :create, params: { user: FactoryGirl.attributes_for(:user1) }
+      post :create, params: { user: FactoryBot.attributes_for(:user1) }
       expect(response.status).to eq(200)
       expect(response).to render_template(:new)
     end
@@ -71,7 +71,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context "signed in" do
-      let(:updated_user) { FactoryGirl.attributes_for(:user) }
+      let(:updated_user) { FactoryBot.attributes_for(:user) }
       before { log_in user, no_capybara: true }
       it "updates user" do
         patch :update, params: { id: user.slug, user: updated_user }

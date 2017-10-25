@@ -106,10 +106,10 @@ RSpec.describe User, type: :model do
   describe "tweet associations" do
     before { user.save }
     let!(:older_tweet) do
-      FactoryGirl.create(:tweet, user: user, created_at: 1.day.ago)
+      FactoryBot.create(:tweet, user: user, created_at: 1.day.ago)
     end
     let!(:newer_tweet) do
-      FactoryGirl.create(:tweet, user: user, created_at: 1.hour.ago)
+      FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago)
     end
 
     it "should have the right tweets in the right order" do
@@ -126,8 +126,10 @@ RSpec.describe User, type: :model do
     end
 
     describe "status" do
-      let(:unfollowed_post) { FactoryGirl.create(:tweet, user: FactoryGirl.create(:user)) }
-      let(:followed_user) { FactoryGirl.create(:user) }
+      let(:unfollowed_post) {
+        FactoryBot.create(:tweet, user: FactoryBot.create(:user))
+      }
+      let(:followed_user) { FactoryBot.create(:user) }
 
       before do
         user.follow!(followed_user)
@@ -147,7 +149,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "following" do
-    let(:other_user) { FactoryGirl.create(:user) }
+    let(:other_user) { FactoryBot.create(:user) }
 
     before do
       user.save

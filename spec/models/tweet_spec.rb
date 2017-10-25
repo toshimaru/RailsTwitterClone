@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Tweet, type: :model do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   subject(:tweet) { user.tweets.build(content: "Lorem ipsum") }
 
