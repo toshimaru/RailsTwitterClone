@@ -130,7 +130,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.1)
-    puma (3.11.0)
+    puma (3.11.2)
     rack (2.0.3)
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
@@ -270,7 +270,7 @@ DEPENDENCIES
   poltergeist
   pry-byebug
   pry-rails
-  puma (~> 3.0)
+  puma (~> 3.11)
   rails (~> 5.1.0)
   rails-controller-testing
   rspec-rails
