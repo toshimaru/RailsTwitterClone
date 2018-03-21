@@ -86,7 +86,7 @@ GEM
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.21)
-    font-awesome-sass (4.7.0)
+    font-awesome-sass (5.0.6.2)
       sass (>= 3.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -264,7 +264,7 @@ DEPENDENCIES
   coffee-rails
   factory_bot_rails
   faker
-  font-awesome-sass (~> 4.3)
+  font-awesome-sass (~> 5.0)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   poltergeist

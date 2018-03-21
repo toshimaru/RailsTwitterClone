@@ -11,7 +11,7 @@ gem "puma", "~> 3.11"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 gem "bootstrap-sass"
-gem "font-awesome-sass", "~> 4.3"
+gem "font-awesome-sass", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
 # Use CoffeeScript for .js.coffee assets and views
