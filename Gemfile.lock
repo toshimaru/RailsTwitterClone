@@ -53,7 +53,7 @@ GEM
     bullet (5.7.5)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11.0)
-    byebug (10.0.0)
+    byebug (10.0.1)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)
