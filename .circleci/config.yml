@@ -5,18 +5,8 @@ jobs:
       - image: circleci/ruby:2.5-node-browsers
         environment:
           RAILS_ENV: test
-          PHANTOM_JS_VERSION: 2.1.1
     steps:
       - checkout
-
-      - run:
-          name: Install PhantomJS
-          command: |
-            mkdir -p ~/.phantomjs/${PHANTOM_JS_VERSION}
-            curl -L --output ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64.tar.bz2
-            tar xfvj ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs.tar.bz2 -C ~/.phantomjs/${PHANTOM_JS_VERSION}/
-            chmod ugo+x ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs
-            sudo ln -sf ~/.phantomjs/${PHANTOM_JS_VERSION}/phantomjs-${PHANTOM_JS_VERSION}-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs
 
       # Restore bundle cache
       - type: cache-restore
