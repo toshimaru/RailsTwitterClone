@@ -53,7 +53,7 @@ end
 
 group :development do
   gem "bullet"
-  gem "listen" 
+  gem "listen"
   gem "rubocop-rails"
   gem "spring"
   gem "web-console"
