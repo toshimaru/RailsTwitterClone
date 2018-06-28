@@ -1,0 +1,4 @@
+linter:
+  rubocop:
+    gems:
+      - rubocop-rails_config
