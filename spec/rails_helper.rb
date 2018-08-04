@@ -15,6 +15,16 @@ require "rspec/rails"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 require "selenium-webdriver"
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app,
+    browser: :chrome,
+    desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
+      chrome_options: {
+        args: %w(headless window-size=1680,1050),
+      },
+    )
+  )
+end
 Capybara.javascript_driver = :selenium
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
