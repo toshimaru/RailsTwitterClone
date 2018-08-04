@@ -1,6 +1,9 @@
+sudo: required
 language: ruby
 cache: bundler
 before_install:
+  - sudo apt-get install -y chromium-chromedriver
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
   - gem install bundler 
 rvm:
   - 2.3.4
