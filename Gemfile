@@ -43,11 +43,11 @@ group :development, :test do
   gem "codeclimate-test-reporter", require: false
   gem "factory_bot_rails"
   gem "faker"
-  gem "poltergeist"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rails-controller-testing"
   gem "rspec-rails"
+  gem "selenium-webdriver"
   gem "simplecov", require: false
 end
 
