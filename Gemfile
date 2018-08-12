@@ -39,7 +39,7 @@ gem "slim"
 
 group :development, :test do
   gem "byebug"
-  gem "capybara"
+  gem "capybara", "~> 2.18"
   gem "codeclimate-test-reporter", require: false
   gem "factory_bot_rails"
   gem "faker"
