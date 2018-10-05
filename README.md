@@ -43,7 +43,7 @@ This application doesn't provide many features in order to keep it simple. Here 
 ### For testing
 
 * capybara
-* factory_girl
+* factory_bot
 * faker
 * rspec
 * simplecov
