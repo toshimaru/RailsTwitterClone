@@ -59,5 +59,9 @@ workflows:
   test:
     jobs:
       - setup
-      - rspec
-      - rubocop
+      - rspec:
+          requires:
+            - setup
+      - rubocop:
+          requires:
+            - setup
