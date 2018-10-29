@@ -8,13 +8,9 @@ executors:
         environment:
           RAILS_ENV: test
 
-jobs:
-  build:
-    executor:
-      name: default
+commands:
+  bundle_install:
     steps:
-      - checkout
-
       # Restore bundle cache
       - restore_cache:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
@@ -25,6 +21,14 @@ jobs:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+
+jobs:
+  build:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - bundle_install
 
       # Database setup
       - run: bundle exec rails db:create db:schema:load
