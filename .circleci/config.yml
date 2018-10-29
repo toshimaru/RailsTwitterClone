@@ -10,17 +10,15 @@ jobs:
       - checkout
 
       # Restore bundle cache
-      - type: cache-restore
-        key: bundle-{{ checksum "Gemfile.lock" }}
-
+      - restore_cache:
+          key: bundle-cache-{{ checksum "Gemfile.lock" }}
       # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
-
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       # Store bundle cache
-      - type: cache-save
-        key: bundle-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+      - save_cache:
+          key: bundle-cache-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
 
       # Database setup
       - run: bundle exec rails db:create db:schema:load
