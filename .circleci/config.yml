@@ -1,37 +1,67 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+
+executors:
+  default:
     working_directory: ~/app
     docker:
       - image: circleci/ruby:2.5-node-browsers
         environment:
           RAILS_ENV: test
+
+commands:
+  bundle_install:
+    steps:
+      # Restore bundle cache
+      - restore_cache:
+          key: bundle-cache-{{ checksum "Gemfile.lock" }}
+      # Bundle install dependencies
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      # Store bundle cache
+      - save_cache:
+          key: bundle-cache-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+jobs:
+  setup:
+    executor:
+      name: default
     steps:
       - checkout
-
-      # Restore bundle cache
-      - type: cache-restore
-        key: bundle-{{ checksum "Gemfile.lock" }}
-
-      # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
-
-      # Store bundle cache
-      - type: cache-save
-        key: bundle-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+      - bundle_install
+  rspec:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - bundle_install
 
       # Database setup
       - run: bundle exec rails db:create db:schema:load
-
       # RSpec
       - run: bundle exec rspec
-      
-      # RuboCop
-      - run: bundle exec rubocop
 
       - store_artifacts:
           path: coverage
       - store_artifacts:
           path: tmp/capybara
+  rubocop:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - bundle_install
+
+      # RuboCop
+      - run: bundle exec rubocop
+
+workflows:
+  test:
+    jobs:
+      - setup
+      - rspec:
+          requires:
+            - setup
+      - rubocop:
+          requires:
+            - setup
