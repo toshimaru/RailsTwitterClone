@@ -21,10 +21,6 @@ commands:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-  restore_bundle_cache:
-    steps:
-      - restore_cache:
-          key: bundle-cache-{{ checksum "Gemfile.lock" }}
 
 jobs:
   setup:
@@ -38,7 +34,7 @@ jobs:
       name: default
     steps:
       - checkout
-      - restore_bundle_cache
+      - bundle_install
 
       # Database setup
       - run: bundle exec rails db:create db:schema:load
@@ -54,7 +50,7 @@ jobs:
       name: default
     steps:
       - checkout
-      - restore_bundle_cache
+      - bundle_install
 
       # RuboCop
       - run: bundle exec rubocop
