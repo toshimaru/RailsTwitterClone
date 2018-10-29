@@ -1,11 +1,17 @@
 version: 2.1
-jobs:
-  build:
+
+executors:
+  default:
     working_directory: ~/app
     docker:
       - image: circleci/ruby:2.5-node-browsers
         environment:
           RAILS_ENV: test
+
+jobs:
+  build:
+    executor:
+      name: default
     steps:
       - checkout
 
