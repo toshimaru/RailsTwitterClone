@@ -23,7 +23,7 @@ commands:
             - vendor/bundle
 
 jobs:
-  build:
+  rspec:
     executor:
       name: default
     steps:
@@ -43,3 +43,8 @@ jobs:
           path: coverage
       - store_artifacts:
           path: tmp/capybara
+
+workflows:
+  test:
+    jobs:
+      - rspec
