@@ -32,19 +32,25 @@ jobs:
 
       # Database setup
       - run: bundle exec rails db:create db:schema:load
-
       # RSpec
       - run: bundle exec rspec
-      
-      # RuboCop
-      - run: bundle exec rubocop
 
       - store_artifacts:
           path: coverage
       - store_artifacts:
           path: tmp/capybara
+  rubocop:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - bundle_install
+
+      # RuboCop
+      - run: bundle exec rubocop
 
 workflows:
   test:
     jobs:
       - rspec
+      - rubocop
