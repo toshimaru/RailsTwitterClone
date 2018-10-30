@@ -64,8 +64,6 @@ GEM
       xpath (~> 3.2)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
-    codeclimate-test-reporter (1.0.9)
-      simplecov (<= 0.13)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -265,7 +263,6 @@ DEPENDENCIES
   bullet
   byebug
   capybara
-  codeclimate-test-reporter
   coffee-rails
   factory_bot_rails
   faker
@@ -292,4 +289,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.16.1
+   1.17.1
