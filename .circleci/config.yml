@@ -58,7 +58,7 @@ jobs:
             curl -fSL https://github.com/haya14busa/reviewdog/releases/download/$REVIEWDOG_VERSION/reviewdog_linux_amd64 -o reviewdog && chmod +x ./reviewdog
 
       # RuboCop
-      - run: bundle exec rubocop
+      # - run: bundle exec rubocop
       - run: bundle exec rubocop | ./reviewdog -f=rubocop -reporter=github-pr-review
 
 workflows:
