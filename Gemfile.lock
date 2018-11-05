@@ -113,7 +113,7 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    method_source (0.9.0)
+    method_source (0.9.1)
     mimemagic (0.3.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
@@ -197,7 +197,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
-    rubocop-rails_config (0.2.6)
+    rubocop-rails_config (0.3.0.rc1)
       railties (>= 3.0)
       rubocop (~> 0.56)
     ruby-progressbar (1.10.0)
@@ -283,7 +283,7 @@ DEPENDENCIES
   rails (~> 5.2.1)
   rails-controller-testing
   rspec-rails
-  rubocop-rails_config
+  rubocop-rails_config (= 0.3.0.rc1)
   sass-rails (~> 5.0)
   selenium-webdriver
   simplecov
