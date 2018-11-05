@@ -50,6 +50,8 @@ GEM
       execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
+    bootsnap (1.3.2)
+      msgpack (~> 1.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -118,6 +120,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    msgpack (1.2.4)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
@@ -267,6 +270,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  bootsnap (>= 1.1.0)
   bootstrap-sass
   bullet
   byebug
