@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 5.1.6"
+gem "rails", "~> 5.2.1"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3"
 # Use Puma as the app server
@@ -30,6 +30,9 @@ gem "will_paginate-bootstrap"
 # Use slim instead of erb
 gem "slim"
 
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap", ">= 1.1.0", require: false
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -53,7 +56,7 @@ end
 group :development do
   gem "bullet"
   gem "listen"
-  gem "rubocop-rails_config"
+  gem "rubocop-rails_config", "0.3.0.rc2"
   gem "spring"
   gem "web-console"
 end
