@@ -59,7 +59,7 @@ jobs:
 
       # RuboCop
       - run: bundle exec rubocop
-      - run: bundle exec rubocop | ./reviewdog -f=rubocop -reporter=github-pr-check
+      - run: bundle exec rubocop | ./reviewdog -f=rubocop -reporter=github-pr-review
 
 workflows:
   test:
