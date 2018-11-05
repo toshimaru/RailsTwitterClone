@@ -7,6 +7,7 @@ executors:
       - image: circleci/ruby:2.5-node-browsers
         environment:
           RAILS_ENV: test
+          REVIEWDOG_VERSION: 0.9.11
 
 commands:
   bundle_install:
@@ -51,9 +52,14 @@ jobs:
     steps:
       - checkout
       - bundle_install
+      - run:
+          name: Install reviewdog
+          command: |
+            curl -fSL https://github.com/haya14busa/reviewdog/releases/download/$REVIEWDOG_VERSION/reviewdog_linux_amd64 -o reviewdog && chmod +x ./reviewdog
 
       # RuboCop
       - run: bundle exec rubocop
+      - run: bundle exec rubocop | ./reviewdog -f=rubocop -reporter=github-pr-check
 
 workflows:
   test:
