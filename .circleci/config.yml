@@ -24,11 +24,13 @@ commands:
   sayhello:
     description: "A very simple command for demonstration purposes"
     parameters:
-      to:
+      param1:
         type: string
         default: "Hello World"
+      param2:
+        type: string
     steps:
-      - run: echo << parameters.to >>
+      - run: echo << parameters.param1 >> << parameters.param2 >>
 
 jobs:
   setup:
@@ -37,8 +39,6 @@ jobs:
     steps:
       - checkout
       - bundle_install
-      - sayhello:
-          to: 'parameter-test'
   rspec:
     executor:
       name: default
@@ -69,6 +69,8 @@ jobs:
       name: default
     steps:
       - checkout
+      - sayhello:
+          to: 'parameter-test'
       - run: echo 'test deploy'
 
 workflows:
