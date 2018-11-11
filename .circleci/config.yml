@@ -70,7 +70,8 @@ jobs:
     steps:
       - checkout
       - sayhello:
-          to: 'parameter-test'
+          param1: 'parameter-test'
+          param2: 'foo!'
       - run: echo 'test deploy'
 
 workflows:
