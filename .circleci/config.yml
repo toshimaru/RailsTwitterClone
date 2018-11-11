@@ -21,6 +21,14 @@ commands:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+  sayhello:
+    description: "A very simple command for demonstration purposes"
+    parameters:
+      to:
+        type: string
+        default: "Hello World"
+    steps:
+      - run: echo << parameters.to >>
 
 jobs:
   setup:
@@ -29,6 +37,7 @@ jobs:
     steps:
       - checkout
       - bundle_install
+      - sayhello
   rspec:
     executor:
       name: default
