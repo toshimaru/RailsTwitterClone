@@ -21,6 +21,14 @@ commands:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+  sayhello:
+    description: "A very simple command for demonstration purposes"
+    parameters:
+      to:
+        type: string
+        default: "Hello World"
+    steps:
+      - run: echo << parameters.to >>
 
 jobs:
   setup:
@@ -29,6 +37,8 @@ jobs:
     steps:
       - checkout
       - bundle_install
+      - sayhello:
+          to: 'parameter-test'
   rspec:
     executor:
       name: default
@@ -54,14 +64,12 @@ jobs:
 
       # RuboCop
       - run: bundle exec rubocop
-  sayhello:
-    description: "A very simple command for demonstration purposes"
-    parameters:
-      to:
-        type: string
-        default: "Hello World"
+  deploy:
+    executor:
+      name: default
     steps:
-      - run: echo << parameters.to >>
+      - checkout
+      - run: echo 'test deploy'
 
 workflows:
   test:
@@ -73,6 +81,6 @@ workflows:
       - rubocop:
           requires:
             - setup
-      - sayhello:
+      - deploy:
           requires:
-            - setup
+            - rspec
