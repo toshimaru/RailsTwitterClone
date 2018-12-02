@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  toshimaru: toshimaru/bundle-install@0.1.0
+
 executors:
   default:
     working_directory: ~/app
@@ -8,33 +11,19 @@ executors:
         environment:
           RAILS_ENV: test
 
-commands:
-  bundle_install:
-    steps:
-      # Restore bundle cache
-      - restore_cache:
-          key: bundle-cache-{{ checksum "Gemfile.lock" }}
-      # Bundle install dependencies
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      # Store bundle cache
-      - save_cache:
-          key: bundle-cache-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-
 jobs:
   setup:
     executor:
       name: default
     steps:
       - checkout
-      - bundle_install
+      - toshimaru/bundle-install
   rspec:
     executor:
       name: default
     steps:
       - checkout
-      - bundle_install
+      - toshimaru/bundle-install
 
       # Database setup
       - run: bundle exec rails db:create db:schema:load
@@ -50,7 +39,7 @@ jobs:
       name: default
     steps:
       - checkout
-      - bundle_install
+      - toshimaru/bundle-install
 
       # RuboCop
       - run: bundle exec rubocop
