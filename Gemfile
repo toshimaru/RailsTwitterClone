@@ -56,7 +56,7 @@ end
 group :development do
   gem "bullet"
   gem "listen"
-  gem "rubocop-rails_config", "0.3.0"
+  gem "rubocop-rails_config", "0.3.1"
   gem "spring"
   gem "web-console"
 end
