@@ -200,7 +200,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
-    rubocop-rails_config (0.4.1)
+    rubocop-rails_config (0.4.2)
       railties (>= 3.0)
       rubocop (~> 0.58)
     ruby-progressbar (1.10.0)
@@ -290,7 +290,7 @@ DEPENDENCIES
   rails (~> 5.2.2)
   rails-controller-testing
   rspec-rails
-  rubocop-rails_config (= 0.4.1)
+  rubocop-rails_config (= 0.4.2)
   sass-rails (~> 5.0)
   selenium-webdriver
   simplecov
