@@ -92,7 +92,7 @@ GEM
       railties (>= 4.2.0)
     faker (1.9.3)
       i18n (>= 0.7)
-    ffi (1.11.0)
+    ffi (1.11.1)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     globalid (0.4.2)
@@ -221,7 +221,7 @@ GEM
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
-    selenium-webdriver (3.142.2)
+    selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     simplecov (0.16.1)
