@@ -6,7 +6,6 @@ module TweetsHelper
   end
 
   private
-
     def wrap_long_string(text, max_width = 65)
       zero_width_space = "&#8203;"
       regex = /.{1,#{max_width}}/
