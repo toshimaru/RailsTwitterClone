@@ -294,7 +294,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-controller-testing
   rspec-rails
-  rubocop-rails_config (= 0.6.1)
+  rubocop-rails_config
   sass-rails (~> 5.0)
   selenium-webdriver
   simplecov
@@ -308,4 +308,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.17.1
+   1.17.3
