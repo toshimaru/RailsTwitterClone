@@ -49,7 +49,7 @@ GEM
     autoprefixer-rails (9.6.1)
       execjs
     bcrypt (3.1.13)
-    bindex (0.7.0)
+    bindex (0.8.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     bootstrap-sass (3.4.1)
