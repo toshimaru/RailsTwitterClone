@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  toshimaru: toshimaru/bundle-install@0.1.0
+  bundle-install: toshimaru/bundle-install@0.1.0
 
 executors:
   default:
@@ -17,13 +17,13 @@ jobs:
       name: default
     steps:
       - checkout
-      - toshimaru/bundle-install
+      - bundle-install/bundle-install
   rspec:
     executor:
       name: default
     steps:
       - checkout
-      - toshimaru/bundle-install
+      - bundle-install/bundle-install
 
       # Database setup
       - run: bundle exec rails db:create db:schema:load
@@ -39,7 +39,7 @@ jobs:
       name: default
     steps:
       - checkout
-      - toshimaru/bundle-install
+      - bundle-install/bundle-install
 
       # RuboCop
       - run: bundle exec rubocop
