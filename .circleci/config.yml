@@ -13,34 +13,28 @@ executors:
 
 jobs:
   setup:
-    executor:
-      name: default
+    executor: default
     steps:
       - checkout
       - bundle-install/bundle-install
   rspec:
-    executor:
-      name: default
+    executor: default
     steps:
       - checkout
       - bundle-install/bundle-install
-
       # Database setup
       - run: bundle exec rails db:create db:schema:load
       # RSpec
       - run: bundle exec rspec
-
       - store_artifacts:
           path: coverage
       - store_artifacts:
           path: tmp/capybara
   rubocop:
-    executor:
-      name: default
+    executor: default
     steps:
       - checkout
       - bundle-install/bundle-install
-
       # RuboCop
       - run: bundle exec rubocop
 
