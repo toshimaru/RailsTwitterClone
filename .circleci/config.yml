@@ -1,46 +1,40 @@
 version: 2.1
 
 orbs:
-  toshimaru: toshimaru/bundle-install@0.1.0
+  bundle-install: toshimaru/bundle-install@0.3.0
 
 executors:
   default:
     working_directory: ~/app
     docker:
-      - image: circleci/ruby:2.5-node-browsers
+      - image: circleci/ruby:2.6-node-browsers
         environment:
           RAILS_ENV: test
 
 jobs:
   setup:
-    executor:
-      name: default
+    executor: default
     steps:
       - checkout
-      - toshimaru/bundle-install
+      - bundle-install/bundle-install
   rspec:
-    executor:
-      name: default
+    executor: default
     steps:
       - checkout
-      - toshimaru/bundle-install
-
+      - bundle-install/bundle-install
       # Database setup
       - run: bundle exec rails db:create db:schema:load
       # RSpec
       - run: bundle exec rspec
-
       - store_artifacts:
           path: coverage
       - store_artifacts:
           path: tmp/capybara
   rubocop:
-    executor:
-      name: default
+    executor: default
     steps:
       - checkout
-      - toshimaru/bundle-install
-
+      - bundle-install/bundle-install
       # RuboCop
       - run: bundle exec rubocop
 
