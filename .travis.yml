@@ -18,3 +18,5 @@ rvm:
   - 2.6.3
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+addons:
+  chrome: stable
