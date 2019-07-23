@@ -1,5 +1,5 @@
 FROM ruby:2.6
-RUN apt-get update -qq && apt-get install -y nodejs 
+RUN apt-get update -qq && apt-get install -y nodejs && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile /app/Gemfile
