@@ -6,6 +6,7 @@ env:
     - CC_TEST_REPORTER_ID=a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
 before_install:
   # Install chromedriver
+  - sudo apt-get update -qq
   - sudo apt-get install -y chromium-chromedriver
   - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
   # Download cc-test-reporter
