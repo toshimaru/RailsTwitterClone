@@ -17,6 +17,8 @@ Check out this repository and then,
 
 ```console
 $ bundle install
+migration file was written by rails 4.2,you should excute command before migration like underline
+$ find db/migrate -name '*.rb' | xargs sed -i "" 's/ActiveRecord::Migration$/ActiveRecord::Migration[4.2]/g'
 $ bundle exec rails db:migrate
 $ bundle exec rails server
 ```
