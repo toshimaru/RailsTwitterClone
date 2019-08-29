@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Build
+    - name: Build & Test
       run: |
         docker-compose build
         docker-compose run web rspec
