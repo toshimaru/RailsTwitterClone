@@ -15,7 +15,18 @@ require "rspec/rails"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 require "selenium-webdriver"
-Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.register_driver :headless_chrome do |app|
+  browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+    opts.args << "--headless"
+    opts.args << "--disable-gpu"
+    opts.args << "--no-sandbox"
+  end
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
+end
+Capybara.javascript_driver = :headless_chrome
+# Specifying `no-sandbox` is required, so use custom driver instead of `selenium_chrome_headless`.
+# ref. https://github.com/teamcapybara/capybara/blob/c7c22789b7aaf6c1515bf6e68f00bfe074cf8fc1/lib/capybara/registrations/drivers.rb#L27-L36
+# Capybara.javascript_driver = :selenium_chrome_headless
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
