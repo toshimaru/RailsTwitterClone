@@ -68,7 +68,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    childprocess (1.0.1)
+    childprocess (2.0.0)
       rake (< 13.0)
     coderay (1.1.2)
     coffee-rails (5.0.0)
@@ -227,8 +227,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.3)
-      childprocess (>= 0.5, < 2.0)
+    selenium-webdriver (3.142.4)
+      childprocess (>= 0.5, < 3.0)
       rubyzip (~> 1.2, >= 1.2.2)
     simplecov (0.17.0)
       docile (~> 1.1)
