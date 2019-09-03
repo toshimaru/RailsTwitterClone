@@ -21,6 +21,7 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: gem install bundler
       - bundle-install/bundle-install
       # Database setup
       - run: bundle exec rails db:create db:schema:load
