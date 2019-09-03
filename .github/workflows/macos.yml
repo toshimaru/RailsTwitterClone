@@ -1,0 +1,24 @@
+name: macOS
+on: [push]
+jobs:
+  build:
+    strategy:
+      matrix:
+        ruby: [2.6.x]
+    runs-on: macos-latest
+    name: RSpec
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        version: ${{ matrix.ruby }}
+    # - name: Install Dependencies
+    #   run: |
+    #     sudo apt-get install libsqlite3-dev chromium-driver
+    - name: Run RSpec
+      run: |
+        gem install bundler
+        bundle update --bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rake
