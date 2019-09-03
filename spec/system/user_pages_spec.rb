@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "UserPages", type: :feature do
+RSpec.describe "UserPages", type: :system do
   subject { page }
 
   let(:user) { FactoryBot.create(:user) }

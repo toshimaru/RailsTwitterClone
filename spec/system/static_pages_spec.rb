@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Static Pages", type: :feature do
+RSpec.describe "Static Pages", type: :system do
   subject { page }
 
   describe "Home Page" do
