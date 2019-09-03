@@ -17,8 +17,6 @@ before_install:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 rvm:
-  - 2.4.5
-  - 2.5.3
-  - 2.6.3
+  - 2.6.4
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
