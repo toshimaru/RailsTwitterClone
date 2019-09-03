@@ -1,14 +1,18 @@
-name: RSpec
+name: Ubuntu
 on: [push]
 jobs:
   build:
+    strategy:
+      matrix:
+        ruby: [2.6.x]
     runs-on: ubuntu-latest
+    name: RSpec
     steps:
     - uses: actions/checkout@master
     - name: Set up Ruby
       uses: actions/setup-ruby@v1
       with:
-        version: 2.6.x
+        version: ${{ matrix.ruby }}
     - name: Run RSpec
       run: |
         bundle update --bundler
