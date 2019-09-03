@@ -13,9 +13,9 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         version: ${{ matrix.ruby }}
-    # - name: Install Dependencies
-    #   run: |
-    #     sudo apt-get install libsqlite3-dev chromium-driver
+    - name: Install Dependencies
+      run: |
+        brew cask install chromedriver
     - name: Run RSpec
       run: |
         bundle update --bundler
