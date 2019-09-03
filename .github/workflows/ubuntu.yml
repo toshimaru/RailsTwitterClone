@@ -15,7 +15,7 @@ jobs:
         version: ${{ matrix.ruby }}
     - name: Install Dependencies
       run: |
-        sudo apt-get install libsqlite3-dev
+        sudo apt-get install libsqlite3-dev chromium-driver
     - name: Run RSpec
       run: |
         bundle update --bundler
