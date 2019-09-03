@@ -15,7 +15,7 @@ jobs:
         version: ${{ matrix.ruby }}
     - name: Install Dependencies
       run: |
-        brew cask install chromedriver
+        brew cask install google-chrome chromedriver
     - name: Run RSpec
       run: |
         bundle update --bundler
