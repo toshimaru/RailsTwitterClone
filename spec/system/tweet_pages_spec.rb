@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Tweet pages", type: :feature do
+RSpec.describe "Tweet pages", type: :system do
   subject { page }
 
   let(:user) { FactoryBot.create(:user) }
