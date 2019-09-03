@@ -1,11 +1,16 @@
-name: Build
+name: RSpec
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Build & Test
+    - uses: actions/checkout@master
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        version: 2.6.x
+    - name: Run RSpec
       run: |
-        docker-compose build
-        docker-compose run web rspec
+        bundle update --bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rake
