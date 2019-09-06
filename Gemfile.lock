@@ -239,6 +239,9 @@ GEM
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
     spring (2.1.0)
+    spring-watcher-listen (2.0.1)
+      listen (>= 2.7, < 4.0)
+      spring (>= 1.2, < 3.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -302,8 +305,10 @@ DEPENDENCIES
   simplecov
   slim
   spring
+  spring-watcher-listen (~> 2.0.0)
   sqlite3
   turbolinks
+  tzinfo-data
   uglifier (>= 1.3.0)
   web-console
   will_paginate
