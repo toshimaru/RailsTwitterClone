@@ -6,18 +6,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "rails", "~> 5.2.3"
 
 gem "bcrypt"
-gem "bootsnap", ">= 1.1.0", require: false
+gem "bootsnap", require: false
 gem "bootstrap-sass"
 gem "coffee-rails"
 gem "font-awesome-sass", "~> 4.3"
 gem "jquery-rails"
-gem "puma", "~> 4.1"
-gem "sass-rails", "~> 6.0"
+gem "puma"
+gem "sass-rails"
 gem "slim"
 gem "sqlite3"
 gem "turbolinks"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "uglifier", ">= 1.3.0"
+gem "uglifier"
 gem "will_paginate-bootstrap"
 gem "will_paginate"
 
