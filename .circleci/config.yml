@@ -22,9 +22,7 @@ jobs:
     steps:
       - checkout
       - bundle-install/bundle-install
-      # Database setup
       - run: bundle exec rails db:create db:schema:load
-      # RSpec
       - run: bundle exec rspec
       - store_artifacts:
           path: coverage
@@ -35,11 +33,10 @@ jobs:
     steps:
       - checkout
       - bundle-install/bundle-install
-      # RuboCop
       - run: bundle exec rubocop
 
 workflows:
-  test:
+  build:
     jobs:
       - setup
       - rspec:
