@@ -9,14 +9,12 @@ RSpec.describe "UserPages", type: :system do
 
   describe "Show all users (/users)" do
     before do
-      FactoryBot.create(:user, name: "Bob", email: "bob@example.com")
-      FactoryBot.create(:user, name: "Ben", email: "ben@example.com")
+      FactoryBot.create_list(:user, 2)
       visit users_path
     end
 
-    it { should have_content("Users") }
     it { should have_title("Users") }
-
+    it { should have_content("Users") }
     it "should list each user" do
       User.all.each do |user|
         expect(page).to have_selector("li", text: user.name)
@@ -26,36 +24,47 @@ RSpec.describe "UserPages", type: :system do
 
   describe "/signup" do
     before { visit signup_path }
-    let(:submit) { "Sign up" }
 
+    it { should have_title("Sign up") }
     it { should have_content("Sign up") }
 
     context "with valid information" do
+      let(:user_email) { "user@example.com" }
+      let(:user_name) { "Example User Name" }
+
       before do
-        fill_in "Name",                  with: "Example User"
         fill_in "Slug",                  with: "example-user"
-        fill_in "Email",                 with: "user@example.com"
+        fill_in "Name",                  with: user_name
+        fill_in "Email",                 with: user_email
         fill_in "Password",              with: "foobar"
         fill_in "Password confirmation", with: "foobar"
       end
 
       it "should create a user" do
-        expect { click_button submit }.to change(User, :count).by(1)
+        expect { click_button "Sign up" }.to change(User, :count).by(1)
       end
 
       describe "after saving the user" do
-        before { click_button submit }
-        let(:user) { User.find_by(email: "user@example.com") }
+        before { click_button "Sign up" }
 
         it { should have_link("Sign out") }
         it { should have_selector("div.alert.alert-success", text: "Welcome") }
-        it { should have_title(user.name) }
+        it { should have_title(user_name) }
       end
     end
 
     context "with invalid information" do
       it "should not create a user" do
-        expect { click_button submit }.not_to change(User, :count)
+        expect { click_button "Sign up" }.not_to change(User, :count)
+      end
+
+      describe "error message" do
+        before { click_button "Sign up" }
+
+        it { should have_content "Name can't be blank" }
+        it { should have_content "Email can't be blank" }
+        it { should have_content "Password can't be blank" }
+        it { should have_content "Password is too short" }
       end
     end
   end
@@ -101,12 +110,8 @@ RSpec.describe "UserPages", type: :system do
       it { expect(user.reload.email).to eq new_email }
     end
 
-    context "delete account" do
-      specify do
-        expect do
-          click_link "Delete my account"
-        end.to change(User, :count).by(-1)
-      end
+    it "deletes account" do
+      expect { click_link "Delete my account" }.to change(User, :count).by(-1)
     end
   end
 
