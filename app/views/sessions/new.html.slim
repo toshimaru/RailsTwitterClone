@@ -4,14 +4,14 @@
   div.col-md-12.one-col
     h1 Log in to Twitter Clone
 
-    = form_with url: sessions_path, local: true do |f|
+    = form_with url: sessions_path, local: true do |form|
       .form-group
-        = f.label :email, class: 'control-label'
-        = f.text_field :email, class: 'form-control'
+        = form.label :email, class: 'control-label'
+        = form.text_field :email, class: 'form-control'
       .form-group
-        = f.label :password, class: 'control-label'
-        = f.password_field :password, class: 'form-control'
-      = f.submit "Log in", class: "btn btn-large btn-primary"
+        = form.label :password, class: 'control-label'
+        = form.password_field :password, class: 'form-control'
+      = form.submit "Log in", class: "btn btn-large btn-primary"
 
     p
       | New user?
