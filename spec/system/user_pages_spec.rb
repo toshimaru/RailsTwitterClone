@@ -95,7 +95,7 @@ RSpec.describe "UserPages", type: :system do
       it { should have_link("Profile",     href: user_path(user)) }
       it { should have_link("Setting",     href: edit_user_path(user)) }
       it { should have_link("Sign out",    href: signout_path) }
-      it { should_not have_link("Sign in", href: signin_path) }
+      it { should_not have_link("Log in", href: signin_path) }
       it { should have_selector("div.alert.alert-success") }
       it { expect(user.reload.name).to  eq new_name }
       it { expect(user.reload.email).to eq new_email }
@@ -125,7 +125,7 @@ RSpec.describe "UserPages", type: :system do
     it { should_not have_selector("textarea") }
     it { should_not have_field("tweet[content]") }
 
-    describe "sign in user have tweet" do
+    describe "Log in user have tweet" do
       before do
         log_in user
         visit user_path(user)
