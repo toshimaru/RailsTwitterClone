@@ -11,7 +11,7 @@
         = link_to "Change", "http://gravatar.com/emails", class: "btn btn-default"
 
     = form_with model: @user, local: true do |form|
-      = render 'shared/error_messages', object: form.object
+      = render 'shared/error_messages', object: form.object if form.object.errors.any?
 
       .form-group
         = form.label :name, class: 'control-label'

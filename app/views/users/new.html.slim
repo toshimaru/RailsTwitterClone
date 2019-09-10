@@ -5,7 +5,7 @@
     h1 Sign up
 
     = form_with model: @user, local: true do |form|
-      = render 'shared/error_messages', object: form.object
+      = render 'shared/error_messages', object: form.object if form.object.errors.any?
 
       .form-group
         = form.label :slug, class: 'control-label'
