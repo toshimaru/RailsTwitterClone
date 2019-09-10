@@ -27,8 +27,6 @@ gem "will_paginate"
 # gem 'mini_magick', '~> 4.8'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

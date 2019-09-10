@@ -6,7 +6,7 @@
 [![Test Coverage](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone/coverage)
 [![CircleCI](https://circleci.com/gh/toshimaru/RailsTwitterClone.svg?style=svg)](https://circleci.com/gh/toshimaru/RailsTwitterClone)
 
-![Github Clone Screen Capture](https://cloud.githubusercontent.com/assets/803398/5903211/acdfe32c-a5c3-11e4-8171-b5ab2c3ef806.png)
+![Twitter Clone Screen Capture](https://cloud.githubusercontent.com/assets/803398/5903211/acdfe32c-a5c3-11e4-8171-b5ab2c3ef806.png)
 
 ## Implementation
 
@@ -26,9 +26,9 @@ $ bundle exec rails server
 
 This application doesn't provide many features in order to keep it simple. Here are the features that it does include:
 
-* See timeline
-* Post new tweet
-* Follow/Unfollow user
+* See TimeLine
+* Post new Tweet
+* Follow/Unfollow User
 
 ## Used gem
 

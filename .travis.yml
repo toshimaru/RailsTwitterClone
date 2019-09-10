@@ -18,5 +18,9 @@ before_install:
   - ./cc-test-reporter before-build
 rvm:
   - 2.6.4
+script:
+  - bundle exec rails db:migrate
+  - bundle exec rails db:populate
+  - bundle exec rspec
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
