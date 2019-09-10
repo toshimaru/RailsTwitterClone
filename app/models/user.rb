@@ -29,14 +29,8 @@ class User < ApplicationRecord
   end
 
   def feed
-    r = Relationship.arel_table
-    t = Tweet.arel_table
-    sub_query = t[:user_id].in(r.where(r[:follower_id].eq(id)).project(r[:followed_id]))
-    Tweet.where(sub_query.or(t[:user_id].eq(id)))
-
-    # - No Arel -
-    # followed_user_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-    # where("user_id IN (#{followed_user_ids}) OR user_id = :user_id", user_id: user)
+    # NOTE: `tweets.or` doesn't work, so use `Tweet.where`
+    Tweet.where(user_id: id).or(Tweet.where(user_id: relationships.select(:followed_id)))
   end
 
   def following?(other_user)
