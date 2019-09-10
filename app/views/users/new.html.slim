@@ -4,28 +4,28 @@
   div.col-md-12.one-col
     h1 Sign up
 
-    = form_for(@user) do |f|
-      = render 'shared/error_messages', object: f.object
+    = form_with model: @user, local: true do |form|
+      = render 'shared/error_messages', object: form.object
 
       .form-group
-        = f.label :slug, class: 'control-label'
-        = f.text_field :slug, class: 'form-control'
+        = form.label :slug, class: 'control-label'
+        = form.text_field :slug, class: 'form-control'
 
       .form-group
-        = f.label :name, class: 'control-label'
-        = f.text_field :name, class: 'form-control'
+        = form.label :name, class: 'control-label'
+        = form.text_field :name, class: 'form-control'
 
       .form-group
-        = f.label :email, class: 'control-label'
-        = f.text_field :email, class: 'form-control'
+        = form.label :email, class: 'control-label'
+        = form.text_field :email, class: 'form-control'
 
       .form-group
-        = f.label :password, class: 'control-label'
-        = f.password_field :password, class: 'form-control'
+        = form.label :password, class: 'control-label'
+        = form.password_field :password, class: 'form-control'
 
       .form-group
-        = f.label :password_confirmation, class: 'control-label'
-        = f.password_field :password_confirmation, class: 'form-control'
+        = form.label :password_confirmation, class: 'control-label'
+        = form.password_field :password_confirmation, class: 'form-control'
 
       .actions
-        = f.submit "Sign up", class: "btn btn-large btn-primary"
+        = form.submit "Sign up", class: "btn btn-large btn-primary"
