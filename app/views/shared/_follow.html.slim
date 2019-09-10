@@ -1,3 +1,3 @@
-= form_for(current_user.relationships.build(followed_id: @user.id)) do |f|
-  div = f.hidden_field :followed_id
-  = f.submit "Follow", class: "btn btn-large btn-primary"
+= form_with model: current_user.relationships.new(followed_id: @user.id), local: true do |form|
+  div = form.hidden_field :followed_id
+  = form.submit "Follow", class: "btn btn-large btn-primary"

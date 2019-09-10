@@ -11,7 +11,10 @@
     - if @user.tweets.any?
       .timeline
         h2.title Tweets
-        = render 'shared/feed'
+        - if @feed_items.any?
+          ol.tweets
+            = render partial: 'shared/feed_item', collection: @feed_items
+          .paginate = will_paginate @feed_items, renderer: BootstrapPagination::Rails
 
     - else
       p No post yet

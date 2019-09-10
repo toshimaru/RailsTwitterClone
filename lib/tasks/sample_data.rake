@@ -1,16 +1,15 @@
-
 # frozen_string_literal: true
 
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    make_user
-    make_tweets
-    make_relationships
+    make_user!
+    make_tweets!
+    make_relationships!
   end
 end
 
-def make_user
+def make_user!
   User.create!(name: "Toshi",
                email: "me@toshimaru.net",
                password: "foobar",
@@ -30,15 +29,14 @@ def make_user
   end
 end
 
-def make_tweets
+def make_tweets!
   users = User.all
   50.times do
-    content = Faker::Lorem.sentence(word_count: 5)
-    users.each { |user| user.tweets.create!(content: content) }
+    users.each { |user| user.tweets.create!(content: Faker::Lorem.sentence(word_count: 5)) }
   end
 end
 
-def make_relationships
+def make_relationships!
   users = User.all
   user  = users.first
   followed_users = users[2..50]
