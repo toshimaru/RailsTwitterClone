@@ -1,0 +1,6 @@
+<div class="profile clearfix">
+  <%= link_to gravatar_for(@user, size: 75), @user %>
+  <div><%= link_to @user.name, @user %></div>
+  <div><%= @user.email %></div>
+  <%= render 'shared/follow_form' if signed_in? %>
+</div>

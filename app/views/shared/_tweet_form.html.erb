@@ -1,0 +1,8 @@
+<div class="tweet-box">
+  <%= form_with model: current_user.tweets.new do |form| %>
+    <div class="field">
+      <%= form.text_area :content, placeholder: "Compose new Tweet..." %>
+    </div>
+    <%= form.submit "Post", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
