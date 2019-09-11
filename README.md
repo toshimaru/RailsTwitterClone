@@ -1,6 +1,6 @@
 # Rails Twitter Clone
 
-[![Actions Status](https://github.com/toshimaru/RailsTwitterClone/workflows/Docker%20Compose%20Build/badge.svg)](https://github.com/toshimaru/dotfiles/actions)
+[![Actions Status](https://github.com/toshimaru/RailsTwitterClone/workflows/Docker%20Compose%20Build/badge.svg)](https://github.com/toshimaru/RailsTwitterClone/actions)
 [![Build Status](https://travis-ci.org/toshimaru/RailsTwitterClone.svg?branch=bundle-update-20170116)](https://travis-ci.org/toshimaru/RailsTwitterClone)
 [![Code Climate](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone)
 [![Test Coverage](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone/coverage)
