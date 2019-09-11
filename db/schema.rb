@@ -12,20 +12,21 @@
 
 ActiveRecord::Schema.define(version: 2014_07_25_142845) do
 
-  create_table "relationships", primary_key: ["follower_id", "followed_id"], force: :cascade do |t|
+  create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "tweets", force: :cascade do |t|
     t.string "content"
     t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["user_id", "created_at"], name: "index_tweets_on_user_id_and_created_at"
   end
 
@@ -33,8 +34,8 @@ ActiveRecord::Schema.define(version: 2014_07_25_142845) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string "remember_token"
     t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
