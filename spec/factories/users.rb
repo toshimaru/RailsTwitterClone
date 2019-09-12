@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryBot.define do
   factory :user do
     sequence(:name)  { |n| "Person #{n}" }
@@ -13,10 +11,5 @@ FactoryBot.define do
     factory :user1 do
       email { "user1@example.com" }
     end
-  end
-
-  factory :tweet do
-    sequence(:content) { |n| "Lorem ipsum #{n}" }
-    user
   end
 end
