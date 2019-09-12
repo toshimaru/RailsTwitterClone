@@ -19,7 +19,7 @@ RSpec.describe "Static Pages", type: :system do
 
       it "should render the user's feed" do
         user.feed.each do |item|
-          expect(page).to have_selector("li##{item.id}", text: item.content)
+          should have_content(item.content)
         end
       end
 
