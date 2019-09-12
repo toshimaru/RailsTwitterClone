@@ -7,7 +7,7 @@ class TweetsController < ApplicationController
   # TODO: show all tweets despite non-signed in user.
   def index
     @tweet = current_user.tweets.build if signed_in?
-    @feed_items = Tweet.all.paginate(page: params[:page])
+    @feed_items = Tweet.includes(:user).paginate(page: params[:page])
     render "static_pages/home"
   end
 
