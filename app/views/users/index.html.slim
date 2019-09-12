@@ -5,7 +5,4 @@
     .timeline
       h2.title All Users
       ul.tweets
-        - @users.each do |user|
-          li.tweet.clearfix
-            = gravatar_for user, size: 52
-            = link_to user.name, user
+        = render @users
