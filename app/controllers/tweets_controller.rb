@@ -36,11 +36,4 @@ class TweetsController < ApplicationController
       @tweet = current_user.tweets.find_by(id: params[:id])
       redirect_to root_url if @tweet.nil?
     end
-
-  ## yet another `correct_user` imprementation
-  # def correct_user
-  #   @micropost = current_user.tweets.find(params[:id])
-  # rescue
-  #   redirect_to root_url
-  # end
 end
