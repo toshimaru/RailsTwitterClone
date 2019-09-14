@@ -1,0 +1,24 @@
+<% provide(:title, @title) %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+      <%= render 'shared/profile' %>
+      <%= render 'shared/stats' %>
+      <%= render 'shared/tweet_form' if @user == current_user%>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <div class="timeline">
+      <h2 class="title"><%= @title %></h2>
+      <% if @users.any? %>
+      <ul class="tweets">
+        <%= render @users %>
+        <div class="paginate">
+          <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+        </div>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

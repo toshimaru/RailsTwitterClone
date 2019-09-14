@@ -37,10 +37,10 @@ RSpec.describe "Authentication", type: :system do
       end
 
       it { should have_title("Home") }
-      it { should have_link("Users",       href: users_path) }
-      it { should have_link("Profile",     href: user_path(user)) }
-      it { should have_link("All tweets",  href: tweets_path) }
-      it { should have_link("Sign out",    href: signout_path) }
+      it { should have_link("Users", href: users_path) }
+      it { should have_link("Profile", href: user_path(user)) }
+      it { should have_link("Tweets", href: tweets_path) }
+      it { should have_link("Sign out", href: signout_path) }
       it { should_not have_link("Log in", href: signin_path) }
 
       describe "followed by signout" do
