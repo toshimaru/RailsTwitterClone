@@ -4,12 +4,12 @@
   <table>
   <tr>
     <th>Tweets</th>
-    <th>Followings</th>
+    <th>Following</th>
     <th>Followers</th>
   </tr>
   <tr>
     <td><%= link_to @user.tweets.count, user_path(@user) %></td>
-    <td><%= link_to @user.followed_users.count, following_user_path(@user) %></td>
+    <td><%= link_to @user.following.count, following_user_path(@user) %></td>
     <td><%= link_to @user.followers.count, followers_user_path(@user) %></td>
   </tr>
   </table>
