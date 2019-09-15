@@ -15,9 +15,9 @@ RSpec.describe User, type: :model do
   it { should respond_to(:authenticate) }
   it { should respond_to(:tweets) }
   it { should respond_to(:feed) }
-  it { should respond_to(:relationships) }
-  it { should respond_to(:followed_users) }
-  it { should respond_to(:reverse_relationships) }
+  it { should respond_to(:active_relationships) }
+  it { should respond_to(:following) }
+  it { should respond_to(:passive_relationships) }
   it { should respond_to(:followers) }
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
@@ -157,7 +157,7 @@ RSpec.describe User, type: :model do
     end
 
     it { should be_following(other_user) }
-    specify { expect(user.followed_users).to include(other_user) }
+    specify { expect(user.following).to include(other_user) }
 
     describe "followed user" do
       specify { expect(other_user.followers).to include(user) }

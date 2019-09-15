@@ -150,7 +150,7 @@ RSpec.describe "UserPages", type: :system do
         it "should increment the followed user count" do
           expect do
             click_button "Follow"
-          end.to change(user.followed_users, :count).by(1)
+          end.to change(user.following, :count).by(1)
         end
 
         it "should increment the other user's followers count" do
@@ -174,7 +174,7 @@ RSpec.describe "UserPages", type: :system do
         it "should decrement the followed user count" do
           expect do
             click_button "Unfollow"
-          end.to change(user.followed_users, :count).by(-1)
+          end.to change(user.following, :count).by(-1)
         end
 
         it "should decrement the other user's followers count" do
