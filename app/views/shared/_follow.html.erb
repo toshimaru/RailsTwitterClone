@@ -1,4 +1,4 @@
-<%= form_with model: current_user.relationships.new(followed: user), local: true do |form| %>
+<%= form_with model: current_user.active_relationships.new(followed: user), local: true do |form| %>
   <%= form.hidden_field :followed_id %>
   <%= form.submit "Follow", class: "btn btn-large btn-primary" %>
 <% end %>
