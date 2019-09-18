@@ -8,7 +8,6 @@ gem "rails", "~> 5.2.3"
 gem "bcrypt"
 gem "bootsnap", require: false
 gem "bootstrap-sass"
-gem "coffee-rails"
 gem "font-awesome-sass", "~> 4.3"
 gem "jquery-rails"
 gem "puma"
