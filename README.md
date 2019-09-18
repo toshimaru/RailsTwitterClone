@@ -32,10 +32,6 @@ This application doesn't provide many features in order to keep it simple. Here 
 
 ## Used gem
 
-### For template
-
-* slim
-
 ### For CSS Style
 
 * bootstrap-sass
