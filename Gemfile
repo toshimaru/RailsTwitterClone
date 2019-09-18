@@ -13,7 +13,6 @@ gem "font-awesome-sass", "~> 4.3"
 gem "jquery-rails"
 gem "puma"
 gem "sass-rails"
-gem "slim"
 gem "sqlite3"
 gem "turbolinks"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
