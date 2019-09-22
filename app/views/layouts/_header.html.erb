@@ -35,9 +35,9 @@
             <% end %>
           </li>
           <li>
-            <%= link_to signout_path, method: "delete" do %>
+            <%= link_to logout_path, method: "delete" do %>
               <%= icon("sign-out") %>
-              <span>Sign out</span>
+              <span>Log out</span>
             <% end %>
           </li>
         <% else %>
@@ -55,7 +55,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to signin_path do %>
+              <%= link_to login_path do %>
                 <%= icon("sign-in") %>
                 <span>Sign in</span>
               <% end %>

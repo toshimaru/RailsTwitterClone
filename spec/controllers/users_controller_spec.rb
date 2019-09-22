@@ -47,7 +47,7 @@ RSpec.describe UsersController, type: :controller do
       it "doen't delete user" do
         delete :destroy, params: { id: user.slug }
         expect(response.status).to eq(302)
-        expect(response).to redirect_to(signin_path)
+        expect(response).to redirect_to(login_path)
       end
     end
 
@@ -66,7 +66,7 @@ RSpec.describe UsersController, type: :controller do
       it "doen't update user" do
         patch :update, params: { id: user.slug }
         expect(response.status).to eq(302)
-        expect(response).to redirect_to(signin_path)
+        expect(response).to redirect_to(login_path)
       end
     end
 
