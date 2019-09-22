@@ -23,7 +23,7 @@ jobs:
       - checkout
       - bundle-install/bundle-install
       - run: bundle exec rails db:create db:schema:load
-      - run: bundle exec rspec --format RspecJunitFormatter -o ~/test-results/rspec/rspec.xml
+      - run: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/test-results/rspec/rspec.xml
       - store_artifacts:
           path: coverage
       - store_artifacts:
