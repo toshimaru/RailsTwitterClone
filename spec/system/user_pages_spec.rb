@@ -47,7 +47,7 @@ RSpec.describe "UserPages", type: :system do
       describe "after saving the user" do
         before { click_button "Sign up" }
 
-        it { should have_link("Sign out") }
+        it { should have_link("Log out") }
         it { should have_selector("div.alert.alert-success", text: "Welcome") }
         it { should have_title(user_name) }
       end
@@ -101,10 +101,10 @@ RSpec.describe "UserPages", type: :system do
       end
 
       it { should have_title(new_name) }
-      it { should have_link("Profile",     href: user_path(user)) }
-      it { should have_link("Setting",     href: edit_user_path(user)) }
-      it { should have_link("Sign out",    href: signout_path) }
-      it { should_not have_link("Log in", href: signin_path) }
+      it { should have_link("Profile", href: user_path(user)) }
+      it { should have_link("Setting", href: edit_user_path(user)) }
+      it { should have_link("Log out", href: logout_path) }
+      it { should_not have_link("Log in", href: login_path) }
       it { should have_selector("div.alert.alert-success") }
       it { expect(user.reload.name).to  eq new_name }
       it { expect(user.reload.email).to eq new_email }

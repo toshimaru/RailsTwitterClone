@@ -11,12 +11,12 @@ RSpec.describe TweetsController, type: :controller do
 
     describe "#create" do
       before { post :create }
-      it { expect(response).to redirect_to(signin_path) }
+      it { expect(response).to redirect_to(login_path) }
     end
 
     describe "#destroy" do
       before { delete :destroy, params: { id: 1 } }
-      it { expect(response).to redirect_to(signin_path) }
+      it { expect(response).to redirect_to(login_path) }
     end
   end
 end

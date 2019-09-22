@@ -6,7 +6,7 @@ RSpec.describe "Authentication", type: :system do
   subject { page }
 
   describe "authorization" do
-    before { visit signin_path }
+    before { visit login_path }
 
     it { should have_title("Log in") }
     it { should have_content("Log in") }
@@ -40,11 +40,11 @@ RSpec.describe "Authentication", type: :system do
       it { should have_link("Users", href: users_path) }
       it { should have_link("Profile", href: user_path(user)) }
       it { should have_link("Tweets", href: tweets_path) }
-      it { should have_link("Sign out", href: signout_path) }
-      it { should_not have_link("Log in", href: signin_path) }
+      it { should have_link("Log out", href: logout_path) }
+      it { should_not have_link("Log in", href: login_path) }
 
       describe "followed by signout" do
-        before { click_link "Sign out" }
+        before { click_link "Log out" }
         it { should have_link("Log in") }
       end
     end
