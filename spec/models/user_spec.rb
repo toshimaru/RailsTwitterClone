@@ -3,8 +3,10 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  subject(:user) { User.new(name: "toshi", email: "mail@test.com",
-                            password: "my password", password_confirmation: "my password") }
+  subject(:user) do
+    User.new(name: "toshi", email: "mail@test.com",
+             password: "my password", password_confirmation: "my password")
+  end
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
@@ -23,7 +25,7 @@ RSpec.describe User, type: :model do
   it { should respond_to(:follow!) }
   it { should respond_to(:unfollow!) }
 
-  it { should be_valid }
+  it { should_not be_valid }
 
   describe "when name is not present" do
     before { user.name = " " }
@@ -46,7 +48,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "when email format is invalid" do
+  describe "when email format is valid" do
     it "should be valid" do
       addresses = %w[user@foo.bar a+b@a.com toshi...1@a.b.c]
       addresses.each do |address|
@@ -67,8 +69,8 @@ RSpec.describe User, type: :model do
   end
 
   describe "when password is not present" do
-    subject(:user) { User.new(name: "Example User", email: "user@example.com",
-                              password: " ", password_confirmation: " ") }
+    subject { User.new(name: "Example User", email: "user@example.com",
+                       password: " ", password_confirmation: " ") }
     it { should_not be_valid }
   end
 
@@ -94,7 +96,7 @@ RSpec.describe User, type: :model do
       let(:user_for_invalid_password) { found_user.authenticate("invalid") }
 
       it { should_not eq user_for_invalid_password }
-      specify { expect(user_for_invalid_password).to be false }
+      it { expect(user_for_invalid_password).to be false }
     end
   end
 
@@ -120,15 +122,13 @@ RSpec.describe User, type: :model do
       tweets = user.tweets.to_a
       user.destroy
       expect(tweets).not_to be_empty
-      tweets.each do |m|
-        expect(Tweet.where(id: m.id)).to be_empty
+      tweets.each do |tweet|
+        expect(Tweet.where(id: tweet.id)).to be_empty
       end
     end
 
     describe "status" do
-      let(:unfollowed_post) {
-        FactoryBot.create(:tweet, user: FactoryBot.create(:user))
-      }
+      let(:unfollowed_post) { FactoryBot.create(:tweet, user: FactoryBot.create(:user)) }
       let(:followed_user) { FactoryBot.create(:user) }
 
       before do
@@ -136,7 +136,7 @@ RSpec.describe User, type: :model do
         3.times { followed_user.tweets.create!(content: "Love & Peace!") }
       end
 
-      specify do
+      it do
         expect(user.feed).to include(newer_tweet)
         expect(user.feed).to include(older_tweet)
         expect(user.feed).not_to include(unfollowed_post)
@@ -157,10 +157,10 @@ RSpec.describe User, type: :model do
     end
 
     it { should be_following(other_user) }
-    specify { expect(user.following).to include(other_user) }
+    it { expect(user.following).to include(other_user) }
 
     describe "followed user" do
-      specify { expect(other_user.followers).to include(user) }
+      it { expect(other_user.followers).to include(user) }
     end
   end
 end
