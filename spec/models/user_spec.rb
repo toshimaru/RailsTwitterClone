@@ -120,8 +120,8 @@ RSpec.describe User, type: :model do
     end
 
     describe "status" do
-      let(:unfollowed_post) { FactoryBot.create(:tweet, user: users(:user_1)) }
-      let(:followed_user) { users(:user) }
+      let(:unfollowed_post) { FactoryBot.create(:tweet, user: users(:fixture_user_1)) }
+      let(:followed_user) { users(:fixture_user_2) }
 
       before do
         user.follow!(followed_user)
@@ -141,7 +141,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "following" do
-    let(:other_user) { users(:user) }
+    let(:other_user) { users(:fixture_user_1) }
 
     before do
       user.save

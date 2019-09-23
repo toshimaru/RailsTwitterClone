@@ -1,10 +1,10 @@
-user:
-  name: <%= Faker::Internet.user_name %>
+fixture_user_1:
+  name: <%= Faker::Name.name %>
   slug: <%= Faker::Internet.user_name %>
   email:  <%= Faker::Internet.email %>
   password_digest: <%= Faker::Internet.password(min_length: 20) %>
-user_1:
-  name: <%= Faker::Internet.user_name %>
+fixture_user_2:
+  name: <%= Faker::Name.name %>
   slug: <%= Faker::Internet.user_name %>
   email:  <%= Faker::Internet.email %>
   password_digest: <%= Faker::Internet.password(min_length: 20) %>
