@@ -3,8 +3,10 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+  fixtures :users
+
   subject(:user) do
-    User.new(name: "toshi", email: "mail@test.com",
+    User.new(name: "toshimaru", email: "mail@test.com",
              password: "my password", password_confirmation: "my password")
   end
 
@@ -40,7 +42,7 @@ RSpec.describe User, type: :model do
   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,bar user.foo user@foo.]
-      addresses << "too.long.email@address.com" + "a" * 250
+      addresses << "too.long.email@address.com-#{"a" * 250}"
       addresses.each do |address|
         user.email = address
         expect(user).not_to be_valid
@@ -68,19 +70,13 @@ RSpec.describe User, type: :model do
     it { should_not be_valid }
   end
 
-  describe "when password is not present" do
-    subject { User.new(name: "Example User", email: "user@example.com",
-                       password: " ", password_confirmation: " ") }
-    it { should_not be_valid }
-  end
-
   describe "when password doesn't match confirmation" do
     before { user.password_confirmation = "aaa" }
     it { should_not be_valid }
   end
 
   describe "with a password that's too short" do
-    before { user.password = user.password_confirmation = "a" * 3 }
+    before { user.password = "a" * 3 }
     it { should be_invalid }
   end
 
@@ -107,12 +103,9 @@ RSpec.describe User, type: :model do
 
   describe "tweet associations" do
     before { user.save }
-    let!(:older_tweet) do
-      FactoryBot.create(:tweet, user: user, created_at: 1.day.ago)
-    end
-    let!(:newer_tweet) do
-      FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago)
-    end
+
+    let!(:older_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.day.ago) }
+    let!(:newer_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago) }
 
     it "should have the right tweets in the right order" do
       expect(user.tweets.to_a).to eq [newer_tweet, older_tweet]
@@ -128,8 +121,8 @@ RSpec.describe User, type: :model do
     end
 
     describe "status" do
-      let(:unfollowed_post) { FactoryBot.create(:tweet, user: FactoryBot.create(:user)) }
-      let(:followed_user) { FactoryBot.create(:user) }
+      let(:unfollowed_post) { FactoryBot.create(:tweet, user: users(:user_1)) }
+      let(:followed_user) { users(:user) }
 
       before do
         user.follow!(followed_user)
@@ -149,7 +142,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "following" do
-    let(:other_user) { FactoryBot.create(:user) }
+    let(:other_user) { users(:user) }
 
     before do
       user.save
