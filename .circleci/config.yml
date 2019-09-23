@@ -23,11 +23,13 @@ jobs:
       - checkout
       - bundle-install/bundle-install
       - run: bundle exec rails db:create db:schema:load
-      - run: bundle exec rspec
+      - run: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/test-results/rspec/rspec.xml
       - store_artifacts:
           path: coverage
       - store_artifacts:
           path: tmp/capybara
+      - store_test_results:
+          path: ~/test-results/rspec/
   rubocop:
     executor: default
     steps:

@@ -185,6 +185,8 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.74.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -287,6 +289,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-controller-testing
   rspec-rails
+  rspec_junit_formatter
   rubocop-rails_config
   sass-rails
   selenium-webdriver
