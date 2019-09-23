@@ -31,12 +31,12 @@ RSpec.describe User, type: :model do
 
   describe "when name is not present" do
     before { user.name = " " }
-    it { should_not be_valid }
+    it { should be_invalid }
   end
 
   describe "when name is too long" do
     before { user.name = "a" * 51 }
-    it { should_not be_valid }
+    it { should be_invalid }
   end
 
   describe "when email format is invalid" do
@@ -45,7 +45,7 @@ RSpec.describe User, type: :model do
       addresses << "too.long.email@address.com-#{"a" * 250}"
       addresses.each do |address|
         user.email = address
-        expect(user).not_to be_valid
+        expect(user).to be_invalid
       end
     end
   end
@@ -67,12 +67,12 @@ RSpec.describe User, type: :model do
       user_with_same_email.save
     end
 
-    it { should_not be_valid }
+    it { should be_invalid }
   end
 
   describe "when password doesn't match confirmation" do
     before { user.password_confirmation = "aaa" }
-    it { should_not be_valid }
+    it { should be_invalid }
   end
 
   describe "with a password that's too short" do
@@ -108,15 +108,14 @@ RSpec.describe User, type: :model do
     let!(:newer_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago) }
 
     it "should have the right tweets in the right order" do
-      expect(user.tweets.to_a).to eq [newer_tweet, older_tweet]
+      expect(user.tweets).to eq [newer_tweet, older_tweet]
     end
 
     it "should destroy associated tweets" do
-      tweets = user.tweets.to_a
+      tweets = user.tweets
       user.destroy
-      expect(tweets).not_to be_empty
       tweets.each do |tweet|
-        expect(Tweet.where(id: tweet.id)).to be_empty
+        expect(Tweet.find_by(id: tweet.id)).to be_nil
       end
     end
 
