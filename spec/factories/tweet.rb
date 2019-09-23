@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :tweet do
-    sequence(:content) { |n| "Lorem ipsum #{n}" }
+    sequence(:content) { Faker::Quote.famous_last_words }
     user
   end
 end
