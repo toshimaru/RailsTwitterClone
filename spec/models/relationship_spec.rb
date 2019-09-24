@@ -3,8 +3,10 @@
 require "rails_helper"
 
 RSpec.describe Relationship, type: :model do
-  let(:follower) { FactoryBot.create(:user) }
-  let(:followed) { FactoryBot.create(:user) }
+  fixtures :users
+
+  let(:follower) { users(:fixture_user_1) }
+  let(:followed) { users(:fixture_user_2) }
 
   subject(:relationship) { follower.active_relationships.build(followed_id: followed.id) }
 
