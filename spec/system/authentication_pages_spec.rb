@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe "Authentication", type: :system do
+  fixtures :users
+
   subject { page }
 
   describe "authorization" do
@@ -106,8 +108,8 @@ RSpec.describe "Authentication", type: :system do
     end
 
     describe "as wrong user" do
-      let(:user) { FactoryBot.create(:user) }
-      let(:wrong_user) { FactoryBot.create(:user, email: "wrong@example.com") }
+      let(:user) { users(:fixture_user_1) }
+      let(:wrong_user) { users(:fixture_user_2) }
       before { log_in user }
 
       describe "Visit wrong_user's edit page" do
