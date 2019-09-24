@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  fixtures :users
+  fixtures :users, :tweets
 
   subject(:user) do
     User.new(name: "toshimaru", email: "mail@test.com",
@@ -113,22 +113,22 @@ RSpec.describe User, type: :model do
 
     it "should destroy associated tweets" do
       tweets = user.tweets
-      user.destroy
+      user.destroy!
       tweets.each do |tweet|
         expect(Tweet.find_by(id: tweet.id)).to be_nil
       end
     end
 
     describe "status" do
-      let(:unfollowed_post) { FactoryBot.create(:tweet, user: users(:fixture_user_1)) }
+      let!(:unfollowed_post) { tweets(:tweet) }
       let(:followed_user) { users(:fixture_user_2) }
 
       before do
         user.follow!(followed_user)
-        3.times { followed_user.tweets.create!(content: "Love & Peace!") }
+        3.times { followed_user.tweets.create!(content: Faker::Quote.famous_last_words) }
       end
 
-      it do
+      it "includes following user's tweets" do
         expect(user.feed).to include(newer_tweet)
         expect(user.feed).to include(older_tweet)
         expect(user.feed).not_to include(unfollowed_post)
@@ -140,7 +140,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "following" do
+  describe "following & followers" do
     let(:other_user) { users(:fixture_user_1) }
 
     before do
@@ -148,10 +148,12 @@ RSpec.describe User, type: :model do
       user.follow!(other_user)
     end
 
-    it { should be_following(other_user) }
-    it { expect(user.following).to include(other_user) }
+    describe "following" do
+      it { should be_following(other_user) }
+      it { expect(user.following).to include(other_user) }
+    end
 
-    describe "followed user" do
+    describe "followers" do
       it { expect(other_user.followers).to include(user) }
     end
   end

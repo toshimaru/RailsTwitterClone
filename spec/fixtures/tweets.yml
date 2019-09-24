@@ -1,0 +1,3 @@
+tweet:
+  content: <%= Faker::Quote.famous_last_words %>
+  user: fixture_user_1
