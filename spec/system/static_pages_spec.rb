@@ -8,11 +8,11 @@ RSpec.describe "Static Pages", type: :system do
   subject { page }
 
   describe "Home Page" do
-    describe "for signed in users" do
+    describe "for log in users" do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        3.times { FactoryBot.create(:tweet, user: user, content: Faker::Quote.famous_last_words) }
+        FactoryBot.create_list(:tweet, 2, user: user, content: Faker::Quote.famous_last_words)
         log_in user
         visit root_path
       end

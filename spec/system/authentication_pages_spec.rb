@@ -45,13 +45,13 @@ RSpec.describe "Authentication", type: :system do
       it { should have_link("Log out", href: logout_path) }
       it { should_not have_link("Log in", href: login_path) }
 
-      describe "followed by signout" do
+      describe "followed by logout" do
         before { click_link "Log out" }
         it { should have_link("Log in") }
       end
     end
 
-    context "for non-signed-in users" do
+    context "for non-log-in users" do
       let(:user) { FactoryBot.create(:user) }
 
       describe "visit root page" do
@@ -61,7 +61,7 @@ RSpec.describe "Authentication", type: :system do
         it { should have_link("Sign up") }
 
         describe "screenshot", js: true do
-          it { page.save_screenshot "sign-in.png" }
+          it { page.save_screenshot "log-in.png" }
         end
       end
 
@@ -71,7 +71,7 @@ RSpec.describe "Authentication", type: :system do
           it { should have_content("Log in") }
         end
 
-        describe "after signing in" do
+        describe "after log in" do
           before do
             visit edit_user_path(user)
             fill_in "Email",    with: user.email
