@@ -120,7 +120,7 @@ RSpec.describe User, type: :model do
     end
 
     describe "status" do
-      let!(:unfollowed_post) { tweets(:tweet) }
+      let(:unfollowed_post) { tweets(:tweet) }
       let(:followed_user) { users(:fixture_user_2) }
 
       before do
