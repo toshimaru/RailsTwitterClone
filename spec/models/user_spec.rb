@@ -3,8 +3,10 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+  fixtures :users, :tweets
+
   subject(:user) do
-    User.new(name: "toshi", email: "mail@test.com",
+    User.new(name: "toshimaru", email: "mail@test.com",
              password: "my password", password_confirmation: "my password")
   end
 
@@ -29,21 +31,21 @@ RSpec.describe User, type: :model do
 
   describe "when name is not present" do
     before { user.name = " " }
-    it { should_not be_valid }
+    it { should be_invalid }
   end
 
   describe "when name is too long" do
     before { user.name = "a" * 51 }
-    it { should_not be_valid }
+    it { should be_invalid }
   end
 
   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,bar user.foo user@foo.]
-      addresses << "too.long.email@address.com" + "a" * 250
+      addresses << "too.long.email@address.com-#{"a" * 250}"
       addresses.each do |address|
         user.email = address
-        expect(user).not_to be_valid
+        expect(user).to be_invalid
       end
     end
   end
@@ -65,22 +67,16 @@ RSpec.describe User, type: :model do
       user_with_same_email.save
     end
 
-    it { should_not be_valid }
-  end
-
-  describe "when password is not present" do
-    subject { User.new(name: "Example User", email: "user@example.com",
-                       password: " ", password_confirmation: " ") }
-    it { should_not be_valid }
+    it { should be_invalid }
   end
 
   describe "when password doesn't match confirmation" do
     before { user.password_confirmation = "aaa" }
-    it { should_not be_valid }
+    it { should be_invalid }
   end
 
   describe "with a password that's too short" do
-    before { user.password = user.password_confirmation = "a" * 3 }
+    before { user.password = "a" * 3 }
     it { should be_invalid }
   end
 
@@ -107,36 +103,32 @@ RSpec.describe User, type: :model do
 
   describe "tweet associations" do
     before { user.save }
-    let!(:older_tweet) do
-      FactoryBot.create(:tweet, user: user, created_at: 1.day.ago)
-    end
-    let!(:newer_tweet) do
-      FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago)
-    end
+
+    let!(:older_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.day.ago) }
+    let!(:newer_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago) }
 
     it "should have the right tweets in the right order" do
-      expect(user.tweets.to_a).to eq [newer_tweet, older_tweet]
+      expect(user.tweets).to eq [newer_tweet, older_tweet]
     end
 
     it "should destroy associated tweets" do
-      tweets = user.tweets.to_a
-      user.destroy
-      expect(tweets).not_to be_empty
+      tweets = user.tweets
+      user.destroy!
       tweets.each do |tweet|
-        expect(Tweet.where(id: tweet.id)).to be_empty
+        expect(Tweet.find_by(id: tweet.id)).to be_nil
       end
     end
 
     describe "status" do
-      let(:unfollowed_post) { FactoryBot.create(:tweet, user: FactoryBot.create(:user)) }
-      let(:followed_user) { FactoryBot.create(:user) }
+      let(:unfollowed_post) { tweets(:tweet) }
+      let(:followed_user) { users(:fixture_user_2) }
 
       before do
         user.follow!(followed_user)
-        3.times { followed_user.tweets.create!(content: "Love & Peace!") }
+        3.times { followed_user.tweets.create!(content: Faker::Quote.famous_last_words) }
       end
 
-      it do
+      it "includes following user's tweets" do
         expect(user.feed).to include(newer_tweet)
         expect(user.feed).to include(older_tweet)
         expect(user.feed).not_to include(unfollowed_post)
@@ -148,18 +140,20 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "following" do
-    let(:other_user) { FactoryBot.create(:user) }
+  describe "following & followers" do
+    let(:other_user) { users(:fixture_user_1) }
 
     before do
       user.save
       user.follow!(other_user)
     end
 
-    it { should be_following(other_user) }
-    it { expect(user.following).to include(other_user) }
+    describe "following" do
+      it { should be_following(other_user) }
+      it { expect(user.following).to include(other_user) }
+    end
 
-    describe "followed user" do
+    describe "followers" do
       it { expect(other_user.followers).to include(user) }
     end
   end

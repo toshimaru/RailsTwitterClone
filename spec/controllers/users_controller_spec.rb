@@ -3,7 +3,8 @@
 require "rails_helper"
 
 RSpec.describe UsersController, type: :controller do
-  let(:user) { FactoryBot.create(:user) }
+  fixtures :users
+  let(:user) { users(:fixture_user_1) }
 
   describe "#index" do
     it "has a 200 status code" do
@@ -27,23 +28,23 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#create" do
-    before { FactoryBot.create(:user1) }
-
-    it "create new user" do
+    it "creates new user" do
       post :create, params: { user: FactoryBot.attributes_for(:user) }
       expect(response.status).to eq(302)
       expect(response).to redirect_to(assigns(:user))
     end
 
-    it "doesn't create new user" do
-      post :create, params: { user: FactoryBot.attributes_for(:user1) }
-      expect(response.status).to eq(200)
-      expect(response).to render_template(:new)
+    describe "User already exists" do
+      it "doesn't create new user" do
+        post :create, params: { user: FactoryBot.attributes_for(:user, email: user.email) }
+        expect(response.status).to eq(200)
+        expect(response).to render_template(:new)
+      end
     end
   end
 
   describe "#destroy" do
-    context "no signed in" do
+    context "no log in" do
       it "doen't delete user" do
         delete :destroy, params: { id: user.slug }
         expect(response.status).to eq(302)
@@ -51,7 +52,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    context "signed in" do
+    context "log in" do
       before { log_in user, no_capybara: true }
       it "deletes user" do
         expect { delete :destroy, params: { id: user.slug } }.to change(User, :count).by(-1)
@@ -62,7 +63,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#update" do
-    context "no signed in" do
+    context "no log in" do
       it "doen't update user" do
         patch :update, params: { id: user.slug }
         expect(response.status).to eq(302)
@@ -70,7 +71,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    context "signed in" do
+    context "log in" do
       let(:updated_user) { FactoryBot.attributes_for(:user) }
       before { log_in user, no_capybara: true }
       it "updates user" do

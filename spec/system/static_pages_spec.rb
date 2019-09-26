@@ -3,16 +3,16 @@
 require "rails_helper"
 
 RSpec.describe "Static Pages", type: :system do
+  fixtures :users
+
   subject { page }
 
   describe "Home Page" do
-    describe "for signed in users" do
+    describe "for log in users" do
       let(:user) { FactoryBot.create(:user) }
 
       before do
-        3.times do |i|
-          FactoryBot.create(:tweet, user: user, content: "Lorem ipsum #{i}")
-        end
+        FactoryBot.create_list(:tweet, 2, user: user, content: Faker::Quote.famous_last_words)
         log_in user
         visit root_path
       end
@@ -27,7 +27,8 @@ RSpec.describe "Static Pages", type: :system do
       it { should have_field("tweet[content]") }
 
       describe "follower/following counts" do
-        let(:other_user) { FactoryBot.create(:user) }
+        let(:other_user) { users(:fixture_user_1) }
+
         before do
           other_user.follow!(user)
           visit root_path
