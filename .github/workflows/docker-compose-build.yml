@@ -1,11 +1,10 @@
-name: Docker Compose Build
+name: Docker Compose
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-16.04
+    name: Build & Test
     steps:
     - uses: actions/checkout@v1
-    - name: Build & Test
-      run: |
-        docker-compose build
-        docker-compose run web rspec
+    - run: docker-compose build
+    - run: docker-compose run web rspec
