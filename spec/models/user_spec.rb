@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
 
   describe "when name is not present" do
     before { user.name = " " }
-    it { should be_invalid }
+    it { should be_valid }
   end
 
   describe "when name is too long" do
