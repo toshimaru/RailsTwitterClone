@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :tweets,        only: [:index, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
+  get    "help",   to: "static_pages#help"
   get    "about",  to: "static_pages#about"
   get    "signup", to: "users#new"
   get    "login",  to: "sessions#new"
