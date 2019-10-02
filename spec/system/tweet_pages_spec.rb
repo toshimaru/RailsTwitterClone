@@ -20,11 +20,11 @@ RSpec.describe "Tweet pages", type: :system do
     it { should have_content(tweet1.content) }
     it { should have_content(tweet2.content) }
     it { should have_content(tweet3.content) }
-    it { should have_content("a" * 65) }
+    it { should have_content(tweet4.content) }
 
-    # describe 'screenshot', js: true do
-    #   it { page.save_screenshot "tweets.png" }
-    # end
+    describe "screenshot", js: true do
+      it { page.save_screenshot "tweets.png" }
+    end
   end
 
   describe "tweet creation" do
