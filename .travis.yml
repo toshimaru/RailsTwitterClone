@@ -15,7 +15,7 @@ before_install:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 rvm:
-  - 2.6.4
+  - 2.6.5
 script:
   - bundle exec rails db:migrate
   - bundle exec rails db:populate
