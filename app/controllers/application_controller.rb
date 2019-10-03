@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def render_500(exception = nil)
     if exception
-      logger.info "Rendering 500 with exception: #{exception.inspect}"
+      logger.error "Rendering 500 with exception: #{exception.inspect}"
     end
     render template: "errors/error_500", status: 500, layout: "application"
   end
