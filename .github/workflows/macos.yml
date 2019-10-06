@@ -9,10 +9,10 @@ jobs:
     name: RSpec
     steps:
     - uses: actions/checkout@master
-    - name: Set up Ruby
+    - name: Set up Ruby ${{ matrix.ruby }}
       uses: actions/setup-ruby@v1
       with:
-        version: ${{ matrix.ruby }}
+        ruby-version: ${{ matrix.ruby }}
     - name: Install Dependencies
       run: |
         brew update
