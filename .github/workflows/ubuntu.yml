@@ -19,6 +19,7 @@ jobs:
         sudo apt-get install libsqlite3-dev chromium-driver
     - name: bundle install
       run: |
+        gem install bundler
         bundle update --bundler
         bundle install --jobs 4 --retry 3
     - name: Run RSpec
