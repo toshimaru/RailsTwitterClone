@@ -14,10 +14,10 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install libsqlite3-dev chromium-driver
-    - name: Run RSpec
+    - name: bundle install
       run: |
         gem install bundler
         bundle update --bundler
         bundle install --jobs 4 --retry 3
-    - name: Run RSpec
-      run: bundle exec rubocop
+    - name: Run RuboCop
+      run: bundle exec rubocop -f html -o tmp/rubocop/report.html
