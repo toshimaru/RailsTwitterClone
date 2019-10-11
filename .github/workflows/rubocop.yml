@@ -20,7 +20,7 @@ jobs:
         bundle update --bundler
         bundle install --jobs 4 --retry 3
     - name: Run RuboCop
-      run: bundle exec rubocop -f html -o tmp/rubocop/report.html
+      run: bundle exec rubocop -f progress -f html -o tmp/rubocop/report.html
     - uses: actions/upload-artifact@master
       with:
         name: rubocop-report
