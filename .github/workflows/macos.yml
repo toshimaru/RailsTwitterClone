@@ -17,8 +17,9 @@ jobs:
       run: |
         brew update
         brew cask install google-chrome chromedriver
-    - name: Run RSpec
+    - name: bundle install
       run: |
         bundle update --bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rake
+    - name: Run RSpec
+      run: bundle exec rake

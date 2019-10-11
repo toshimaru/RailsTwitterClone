@@ -1,18 +1,15 @@
-name: Ubuntu
-on: [push]
+name: RuboCop
+on: [pull_request]
 jobs:
   build:
-    strategy:
-      matrix:
-        ruby: [2.4.x, 2.5.x, 2.6.x]
     runs-on: ubuntu-latest
-    name: RSpec
+    name: RuboCop
     steps:
     - uses: actions/checkout@master
-    - name: Set up Ruby ${{ matrix.ruby }}
+    - name: Set up Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: ${{ matrix.ruby }}
+        ruby-version: 2.6.x
     - name: Install Dependencies
       run: |
         sudo apt-get update
@@ -22,5 +19,9 @@ jobs:
         gem install bundler
         bundle update --bundler
         bundle install --jobs 4 --retry 3
-    - name: Run RSpec
-      run: bundle exec rake
+    - name: Run RuboCop
+      run: bundle exec rubocop -f progress -f html -o tmp/rubocop/report.html
+    - uses: actions/upload-artifact@master
+      with:
+        name: rubocop-report
+        path: tmp/rubocop/report.html
