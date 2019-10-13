@@ -10,9 +10,9 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: bundle install
+    - name: Install rubocop
       run: |
-        gem install bundled_gem
+        gem install bundled_gems
         bgem install rubocop-rails_config
     - name: Run RuboCop
       run: rubocop -f progress -f html -o tmp/rubocop/report.html
