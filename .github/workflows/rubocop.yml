@@ -10,17 +10,12 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Install Dependencies
+    - name: Install rubocop
       run: |
-        sudo apt-get update
-        sudo apt-get install libsqlite3-dev chromium-driver
-    - name: bundle install
-      run: |
-        gem install bundler
-        bundle update --bundler
-        bundle install --jobs 4 --retry 3
+        gem install bundled_gems
+        bgem install rubocop-rails_config
     - name: Run RuboCop
-      run: bundle exec rubocop -f progress -f html -o tmp/rubocop/report.html
+      run: rubocop -f progress -f html -o tmp/rubocop/report.html
     - uses: actions/upload-artifact@master
       with:
         name: rubocop-report
