@@ -23,6 +23,7 @@ RSpec.describe "Static Pages", type: :system do
         end
       end
 
+      it { should have_title "Home" }
       it { should have_selector("textarea") }
       it { should have_field("tweet[content]") }
 
