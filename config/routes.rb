@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :tweets,        only: [:index, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
-  get    "about",  to: "static_pages#about"
+  get "help",    to: "static_pages#help"
+  get "about",   to: "static_pages#about"
+  get "contact", to: 'static_pages#contact'
+
   get    "signup", to: "users#new"
   get    "login",  to: "sessions#new"
   delete "logout", to: "sessions#destroy"
