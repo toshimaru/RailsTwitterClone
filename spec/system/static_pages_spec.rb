@@ -7,7 +7,7 @@ RSpec.describe "Static Pages", type: :system do
 
   subject { page }
 
-  describe "Home Page" do
+  describe "Home" do
     describe "for log in users" do
       let(:user) { FactoryBot.create(:user) }
 
@@ -23,6 +23,7 @@ RSpec.describe "Static Pages", type: :system do
         end
       end
 
+      it { should have_title "Home" }
       it { should have_selector("textarea") }
       it { should have_field("tweet[content]") }
 
@@ -38,5 +39,20 @@ RSpec.describe "Static Pages", type: :system do
         it { should have_link("1", href: followers_user_path(user)) }
       end
     end
+  end
+
+  describe "Help" do
+    before { visit help_path }
+    it { should have_title "Help" }
+  end
+
+  describe "About" do
+    before { visit about_path }
+    it { should have_title "About" }
+  end
+
+  describe "Contact" do
+    before { visit contact_path }
+    it { should have_title "Contact" }
   end
 end
