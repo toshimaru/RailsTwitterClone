@@ -25,7 +25,6 @@ jobs:
           ${{ runner.os }}-bundler-
     - name: bundle install
       run: |
-        bundle update --bundler
         bundle install --jobs 4 --retry 3 --path vendor/bundle
     - name: Run RSpec
       run: bundle exec rake
