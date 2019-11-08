@@ -16,6 +16,7 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: gem install bundler
       - bundle-install/bundle-install
   rspec:
     executor: default
@@ -38,6 +39,7 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: gem install bundler
       - bundle-install/bundle-install
       - run: bundle exec rubocop
 
