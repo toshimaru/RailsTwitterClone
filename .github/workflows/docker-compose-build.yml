@@ -7,4 +7,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: docker-compose build
-    - run: docker-compose run web rspec
+    - run: docker-compose run web bundle exec rspec
