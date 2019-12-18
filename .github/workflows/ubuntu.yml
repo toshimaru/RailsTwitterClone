@@ -15,7 +15,7 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - name: Install Dependencies
       run: |
-        sudo apt-get update
+        # sudo apt-get update
         sudo apt-get install libsqlite3-dev chromium-driver
     - uses: actions/cache@v1
       with:
