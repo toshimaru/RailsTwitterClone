@@ -21,14 +21,14 @@ class ApplicationController < ActionController::Base
     if exception
       logger.info "Rendering 404 with exception: #{exception} #{exception.message}"
     end
-    render template: "errors/error_404", status: 404, layout: "application"
+    render template: "errors/error_404", status: :not_found, layout: "application"
   end
 
   def render_500(exception = nil)
     if exception
       logger.error "Rendering 500 with exception: #{exception.inspect}"
     end
-    render template: "errors/error_500", status: 500, layout: "application"
+    render template: "errors/error_500", status: :internal_server_error, layout: "application"
   end
 
   def routing_error
