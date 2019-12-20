@@ -16,7 +16,8 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install libsqlite3-dev chromium-driver google-chrome-stable
+        sudo apt-get remove google-chrome-stable
+        sudo apt-get install libsqlite3-dev chromium-driver
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
