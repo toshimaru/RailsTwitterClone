@@ -287,6 +287,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails
   rspec_junit_formatter
+  rubocop-rails
   rubocop-rails_config
   sass-rails
   selenium-webdriver
