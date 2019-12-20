@@ -1,9 +1,11 @@
+require:
+- rubocop-rails
+
 inherit_gem:
   rubocop-rails_config:
     - config/rails.yml
-
-require:
-- rubocop-rails
+  rubocop-rails:
+    - config/default.yml
 
 AllCops:
   TargetRubyVersion: 2.4
