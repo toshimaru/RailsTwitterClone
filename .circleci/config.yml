@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  bundle-install: toshimaru/bundle-install@0.3.0
+  bundle-install: toshimaru/bundle-install@0.3.1
 
 executors:
   default:
