@@ -4,13 +4,13 @@ jobs:
   build:
     strategy:
       matrix:
-        ruby: [2.4.x, 2.5.x, 2.6.x]
+        ruby: [2.4, 2.5, 2.6, 2.7]
     runs-on: ubuntu-latest
     name: RSpec
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: Set up Ruby ${{ matrix.ruby }}
-      uses: actions/setup-ruby@v1
+      uses: eregon/use-ruby-action@master
       with:
         ruby-version: ${{ matrix.ruby }}
     - name: Install Dependencies

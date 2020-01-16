@@ -1,13 +1,13 @@
 version: 2.1
 
 orbs:
-  bundle-install: toshimaru/bundle-install@0.3.0
+  bundle-install: toshimaru/bundle-install@0.3.1
 
 executors:
   default:
     working_directory: ~/app
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.7-node-browsers
         environment:
           RAILS_ENV: test
 
