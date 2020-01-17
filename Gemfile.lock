@@ -293,7 +293,6 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
-  sprockets (~> 4.0)
   sqlite3
   turbolinks
   tzinfo-data
