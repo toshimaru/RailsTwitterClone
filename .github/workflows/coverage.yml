@@ -11,7 +11,9 @@ jobs:
       with:
         ruby-version: 2.6
     - name: bundle install
-      run: bundle install --jobs 4 --retry 3
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
     - uses: paambaati/codeclimate-action@v2.4.0
       env:
         CC_TEST_REPORTER_ID: a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
