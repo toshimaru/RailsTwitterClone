@@ -15,6 +15,11 @@ jobs:
         sudo apt-get update
         sudo apt-get remove google-chrome-stable
         sudo apt-get install libsqlite3-dev chromium-driver
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundler-${{ hashFiles('**/Gemfile.lock')}}
+        restore-keys: bundler-
     - name: bundle install
       run: |
         gem install bundler
