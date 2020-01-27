@@ -10,6 +10,11 @@ jobs:
       uses: eregon/use-ruby-action@master
       with:
         ruby-version: 2.6
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get remove google-chrome-stable
+        sudo apt-get install libsqlite3-dev chromium-driver
     - name: bundle install
       run: |
         gem install bundler
