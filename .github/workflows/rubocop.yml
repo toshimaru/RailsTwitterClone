@@ -3,7 +3,7 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: RuboCop
+    name: rubocop
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
