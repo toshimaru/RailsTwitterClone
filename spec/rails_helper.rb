@@ -11,6 +11,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # NOTE: place `SimpleCov.start` before `require 'rspec/rails'`
 require "simplecov"
 SimpleCov.start "rails"
+SimpleCov.enable_coverage :branch
 require "rspec/rails"
 
 # Add additional requires below this line. Rails is not loaded until this point!
