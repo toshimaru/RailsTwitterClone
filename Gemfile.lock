@@ -165,7 +165,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (1.6.0)
+    regexp_parser (1.7.0)
     rexml (3.2.4)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
