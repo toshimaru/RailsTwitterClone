@@ -18,13 +18,14 @@ jobs:
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
-        key: bundler-${{ hashFiles('**/Gemfile.lock')}}
-        restore-keys: bundler-
+        key: ${{ runner.os }}-${{ matrix.ruby }}-bundler-${{ hashFiles('**/Gemfile.lock')}}
+        restore-keys: |
+          ${{ runner.os }}-${{ matrix.ruby }}-bundler-
     - name: bundle install
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-    - uses: paambaati/codeclimate-action@v2.4.0
+    - uses: paambaati/codeclimate-action@v2.5.4
       env:
         CC_TEST_REPORTER_ID: a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
       with:
