@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe SessionsController, type: :controller do
+RSpec.describe SessionsController, type: :request do
   describe "#new" do
     context "GET" do
       it "has a 200 status code" do

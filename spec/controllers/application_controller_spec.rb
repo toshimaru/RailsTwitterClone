@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe ApplicationController, type: :controller do
+RSpec.describe ApplicationController, type: :request do
   controller do
     def index
       routing_error
