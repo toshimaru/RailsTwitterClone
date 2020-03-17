@@ -31,14 +31,12 @@ RSpec.describe UsersController, type: :request do
     it "creates new user" do
       post users_path, params: { user: FactoryBot.attributes_for(:user) }
       expect(response.status).to eq(302)
-      expect(response).to redirect_to(assigns(:user))
     end
 
     describe "User already exists" do
       it "doesn't create new user" do
         post users_path, params: { user: FactoryBot.attributes_for(:user, email: user.email) }
         expect(response.status).to eq(200)
-        expect(response).to render_template(:new)
       end
     end
   end
