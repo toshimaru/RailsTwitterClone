@@ -5,17 +5,17 @@ require "rails_helper"
 RSpec.describe TweetsController, type: :request do
   describe "in the Tweets controller" do
     describe "#index" do
-      before { get :index }
+      before { get tweets_path }
       it { expect(response.status).to eq(200) }
     end
 
     describe "#create" do
-      before { post :create }
+      before { post tweets_path }
       it { expect(response).to redirect_to(login_path) }
     end
 
     describe "#destroy" do
-      before { delete :destroy, params: { id: 1 } }
+      before { delete tweet_path(1) }
       it { expect(response).to redirect_to(login_path) }
     end
   end
