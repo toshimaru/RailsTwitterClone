@@ -2,43 +2,41 @@
 
 require "rails_helper"
 
-RSpec.describe UsersController, type: :controller do
+RSpec.describe UsersController, type: :request do
   fixtures :users
   let(:user) { users(:fixture_user_1) }
 
   describe "#index" do
     it "has a 200 status code" do
-      get :index
+      get users_path
       expect(response.status).to eq(200)
     end
   end
 
   describe "#show" do
     it "has a 200 status code" do
-      get :show, params: { id: user.slug }
+      get user_path(user.slug)
       expect(response.status).to eq(200)
     end
   end
 
   describe "#new" do
     it "has a 200 status code" do
-      get :new
+      get new_user_path
       expect(response.status).to eq(200)
     end
   end
 
   describe "#create" do
     it "creates new user" do
-      post :create, params: { user: FactoryBot.attributes_for(:user) }
+      post users_path, params: { user: FactoryBot.attributes_for(:user) }
       expect(response.status).to eq(302)
-      expect(response).to redirect_to(assigns(:user))
     end
 
     describe "User already exists" do
       it "doesn't create new user" do
-        post :create, params: { user: FactoryBot.attributes_for(:user, email: user.email) }
+        post users_path, params: { user: FactoryBot.attributes_for(:user, email: user.email) }
         expect(response.status).to eq(200)
-        expect(response).to render_template(:new)
       end
     end
   end
@@ -46,7 +44,7 @@ RSpec.describe UsersController, type: :controller do
   describe "#destroy" do
     context "no log in" do
       it "doen't delete user" do
-        delete :destroy, params: { id: user.slug }
+        delete user_path(user.slug)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(login_path)
       end
@@ -55,7 +53,7 @@ RSpec.describe UsersController, type: :controller do
     context "log in" do
       before { log_in user, no_capybara: true }
       it "deletes user" do
-        expect { delete :destroy, params: { id: user.slug } }.to change(User, :count).by(-1)
+        expect { delete user_path(user.slug) }.to change(User, :count).by(-1)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(root_path)
       end
@@ -65,7 +63,7 @@ RSpec.describe UsersController, type: :controller do
   describe "#update" do
     context "no log in" do
       it "doen't update user" do
-        patch :update, params: { id: user.slug }
+        patch user_path(user.slug)
         expect(response.status).to eq(302)
         expect(response).to redirect_to(login_path)
       end
@@ -75,7 +73,7 @@ RSpec.describe UsersController, type: :controller do
       let(:updated_user) { FactoryBot.attributes_for(:user) }
       before { log_in user, no_capybara: true }
       it "updates user" do
-        patch :update, params: { id: user.slug, user: updated_user }
+        patch user_path(user.slug), params: { user: updated_user }
         expect(response.status).to eq(302)
         expect(user.reload.name).to eq(updated_user[:name])
         expect(user.reload.email).to eq(updated_user[:email])

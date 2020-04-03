@@ -2,15 +2,15 @@
 
 require "rails_helper"
 
-RSpec.describe RelationshipsController, type: :controller do
+RSpec.describe RelationshipsController, type: :request do
   describe "in the Relationships controller" do
     describe "submitting to the create action" do
-      before { post :create }
+      before { post relationships_path }
       it { expect(response).to redirect_to(login_path) }
     end
 
     describe "submitting to the destroy action" do
-      before { delete :destroy, params: { id: 1 } }
+      before { delete relationship_path(1) }
       it { expect(response).to redirect_to(login_path) }
     end
   end
