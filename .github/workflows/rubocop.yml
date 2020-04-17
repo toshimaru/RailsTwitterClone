@@ -17,7 +17,7 @@ jobs:
         bgem install rubocop-rails_config
     - name: Run RuboCop
       run: rubocop -f progress -f html -o tmp/rubocop/report.html
-    - uses: actions/upload-artifact@master
+    - uses: actions/upload-artifact@v1
       with:
         name: rubocop-report
         path: tmp/rubocop/report.html
