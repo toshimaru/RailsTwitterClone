@@ -13,6 +13,7 @@ jobs:
     - name: Install rubocop
       run: |
         gem install bundled_gems
+        bgem install rubocop
         bgem install rubocop-rails_config
     - name: Run RuboCop
       run: rubocop -f progress -f html -o tmp/rubocop/report.html
