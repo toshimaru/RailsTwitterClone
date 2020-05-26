@@ -28,8 +28,4 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3 --path vendor/bundle
     - name: Run RSpec
-      # FIXME:
-      # macOS CI error: raise Error::WebDriverError, cannot_connect_error_text
-      # Selenium::WebDriver::Error::WebDriverError:
-      #   unable to connect to chromedriver 127.0.0.1:9515
-      run: bundle exec rspec --tag ~js:true
+      run: bundle exec rspec
