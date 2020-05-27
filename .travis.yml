@@ -2,7 +2,7 @@ language: ruby
 cache: bundler
 dist: bionic
 addons:
-  chrome: beta
+  chrome: stable
   apt:
     packages:
       - chromium-chromedriver
