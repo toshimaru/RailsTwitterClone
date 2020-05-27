@@ -14,10 +14,11 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6
-      - name: bundle install
+      - name: Install rubocop
         run: |
-          gem install bundler
-          bundle install --jobs 4 --retry 3 --path vendor/bundle
+          gem install bundled_gems
+          bgem install rubocop
+          bgem install rubocop-rails_config
       - name: Run rubocop
         run: |
           bundle exec rubocop
