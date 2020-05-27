@@ -15,7 +15,7 @@ jobs:
         bgem install rubocop
         bgem install rubocop-rails_config
     - name: Run RuboCop
-      run: rubocop -f progress -f html -o tmp/rubocop/report.html
+      run: rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
     - uses: actions/upload-artifact@v1
       with:
         name: rubocop-report
@@ -41,4 +41,4 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          rubocop | reviewdog -reporter=github-pr-review -f=rubocop
+          rubocop --parallel | reviewdog -reporter=github-pr-review -f=rubocop
