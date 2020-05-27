@@ -1,9 +1,8 @@
 name: RuboCop
 on: [pull_request]
 jobs:
-  build:
+  rubocop:
     runs-on: ubuntu-latest
-    name: rubocop
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -16,8 +15,30 @@ jobs:
         bgem install rubocop
         bgem install rubocop-rails_config
     - name: Run RuboCop
-      run: rubocop -f progress -f html -o tmp/rubocop/report.html
+      run: rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
     - uses: actions/upload-artifact@v1
       with:
         name: rubocop-report
         path: tmp/rubocop/report.html
+  reviewdog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup reviewdog
+        run: |
+          mkdir -p $HOME/bin && curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b $HOME/bin
+          echo ::add-path::$HOME/bin
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - name: Install rubocop
+        run: |
+          gem install bundled_gems
+          bgem install rubocop
+          bgem install rubocop-rails_config
+      - name: Run rubocop & reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          rubocop --parallel | reviewdog -reporter=github-pr-review -f=rubocop
