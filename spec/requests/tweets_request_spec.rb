@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe TweetsController, type: :request do
+RSpec.describe "Tweets", type: :request do
   describe "in the Tweets controller" do
     describe "#index" do
       before { get tweets_path }
