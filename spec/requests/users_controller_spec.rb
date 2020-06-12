@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe UsersController, type: :request do
+RSpec.describe "Users", type: :request do
   fixtures :users
   let(:user) { users(:fixture_user_1) }
 
