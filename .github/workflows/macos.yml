@@ -17,15 +17,15 @@ jobs:
       run: |
         brew update
         brew cask install google-chrome chromedriver
-    - uses: actions/cache@v1
+    - uses: actions/cache@v2
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-${{ matrix.ruby }}-bundler-${{ hashFiles('**/Gemfile.lock')}}
-        restore-keys: |
-          ${{ runner.os }}-${{ matrix.ruby }}-bundler-
+        restore-keys: ${{ runner.os }}-${{ matrix.ruby }}-bundler-
     - name: bundle install
       run: |
         gem install bundler
-        bundle install --jobs 4 --retry 3 --path vendor/bundle
+        bundle config set path 'vendor/bundle'
+        bundle install --jobs 4 --retry 3
     - name: Run RSpec
       run: bundle exec rspec
