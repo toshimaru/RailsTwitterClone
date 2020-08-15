@@ -25,7 +25,7 @@ jobs:
         gem install bundler
         bundle config set path 'vendor/bundle'
         bundle install --jobs 4 --retry 3
-    - uses: paambaati/codeclimate-action@v2.5.4
+    - uses: paambaati/codeclimate-action@v2.6.0
       env:
         CC_TEST_REPORTER_ID: a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
       with:
