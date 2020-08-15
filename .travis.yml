@@ -8,6 +8,8 @@ addons:
       - chromium-chromedriver
 rvm:
   - 2.6.5
+before_install:
+  - gem install bundler
 script:
   - bundle exec rails db:migrate
   - bundle exec rails db:populate
