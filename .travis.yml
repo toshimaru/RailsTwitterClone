@@ -1,6 +1,6 @@
 language: ruby
 cache: bundler
-dist: bionic
+dist: focal
 addons:
   chrome: stable
   apt:
