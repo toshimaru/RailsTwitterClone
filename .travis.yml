@@ -1,6 +1,6 @@
 language: ruby
 cache: bundler
-dist: bionic
+dist: focal
 addons:
   chrome: stable
   apt:
@@ -8,10 +8,12 @@ addons:
       - chromium-chromedriver
 rvm:
   - 2.6.5
+before_install:
+  - gem install bundler
 script:
   - bundle exec rails db:migrate
   - bundle exec rails db:populate
   - bundle exec rails db:reset
-  - bundle exec rspec --tag ~js:true
+  - bundle exec rspec
 after_failure:
   - cat log/test.log
