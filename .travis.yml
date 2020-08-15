@@ -14,6 +14,5 @@ script:
   - bundle exec rails db:migrate
   - bundle exec rails db:populate
   - bundle exec rails db:reset
-  - bundle exec rspec --tag ~js:true
 after_failure:
   - cat log/test.log
