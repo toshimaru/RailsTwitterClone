@@ -45,7 +45,6 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - name: Install Dependencies
       run: |
-        brew update
         brew cask install google-chrome chromedriver
     - uses: actions/cache@v2
       with:

@@ -20,6 +20,7 @@ jobs:
       with:
         name: rubocop-report
         path: tmp/rubocop/report.html
+
   reviewdog:
     runs-on: ubuntu-latest
     steps:
