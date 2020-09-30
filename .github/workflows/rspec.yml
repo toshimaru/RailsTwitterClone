@@ -1,7 +1,7 @@
-name: macOS
+name: RSpec
 on: [push]
 jobs:
-  build:
+  macos-build:
     strategy:
       matrix:
         ruby: [2.5, 2.6, 2.7]
