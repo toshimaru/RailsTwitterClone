@@ -59,3 +59,11 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: Run RSpec
       run: bundle exec rspec
+
+  docker-compose-build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+    - uses: actions/checkout@v2
+    - run: docker-compose build
+    - run: docker-compose run web bundle exec rspec
