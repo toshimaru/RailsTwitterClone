@@ -52,7 +52,7 @@ This application doesn't provide many features in order to keep it simple. Here 
 * pry-rails
 * web-console
 
-See more details on [Gemfile](https://github.com/toshimaru/RailsTwitterClone/blob/master/Gemfile).
+See more details on [Gemfile](./Gemfile).
 
 ## Test
 
