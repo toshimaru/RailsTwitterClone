@@ -1,12 +1,41 @@
 name: RSpec
 on: [push]
 jobs:
+  ubuntu-build:
+    strategy:
+      matrix:
+        ruby: [2.5, 2.6, 2.7]
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby ${{ matrix.ruby }}
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get remove google-chrome-stable
+        sudo apt-get install libsqlite3-dev chromium-driver
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-${{ matrix.ruby }}-bundler-${{ hashFiles('**/Gemfile.lock')}}
+        restore-keys: ${{ runner.os }}-${{ matrix.ruby }}-bundler-
+    - name: bundle install
+      run: |
+        gem install bundler
+        bundle config set path 'vendor/bundle'
+        bundle install --jobs 4 --retry 3
+    - name: Run RSpec
+      run: bundle exec rspec
+
   macos-build:
     strategy:
       matrix:
         ruby: [2.5, 2.6, 2.7]
     runs-on: macos-latest
-    name: RSpec
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
     - uses: actions/checkout@v2
