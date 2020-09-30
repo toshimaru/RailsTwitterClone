@@ -16,17 +16,17 @@ jobs:
         bgem install rubocop-rails_config
     - name: Run RuboCop
       run: rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2
       with:
         name: rubocop-report
         path: tmp/rubocop/report.html
+
   reviewdog:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup reviewdog
-        run: |
-          mkdir -p $HOME/bin && curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b $HOME/bin
-          echo ::add-path::$HOME/bin
+      - uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
       - uses: actions/checkout@v2
       - name: Set up Ruby
         uses: actions/setup-ruby@v1
