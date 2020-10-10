@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   rescue_from StandardError, with: :dispatch_error unless Rails.env.development?
 
   def dispatch_error(exception)
+    
     case exception
     when ActiveRecord::RecordNotFound, ActionController::RoutingError
       render_404(exception)
