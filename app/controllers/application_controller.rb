@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
