@@ -7,7 +7,7 @@ executors:
   default:
     working_directory: ~/app
     docker:
-      - image: circleci/ruby:2.7-node-browsers
+      - image: cimg/ruby:2.7-browsers
         environment:
           RAILS_ENV: test
 
