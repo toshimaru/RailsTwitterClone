@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  bundle-install: toshimaru/bundle-install@0.3.1
+  ruby: circleci/ruby@1.1.2
 
 executors:
   default:
@@ -17,13 +17,13 @@ jobs:
     steps:
       - checkout
       - run: gem install bundler
-      - bundle-install/bundle-install
+      - ruby/install-deps
   rspec:
     executor: default
     steps:
       - checkout
       - run: gem install bundler
-      - bundle-install/bundle-install
+      - ruby/install-deps
       - run: bundle exec rails db:create db:schema:load
       - run:
           name: Run RSpec
@@ -40,7 +40,7 @@ jobs:
     steps:
       - checkout
       - run: gem install bundler
-      - bundle-install/bundle-install
+      - ruby/install-deps
       - run: bundle exec rubocop
 
 workflows:
