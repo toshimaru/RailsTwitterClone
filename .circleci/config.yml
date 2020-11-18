@@ -16,7 +16,7 @@ jobs:
     executor: default
     steps:
       - checkout
-      - run: gem install bundler
+      - run: brew install sqlite3
       - ruby/install-deps
   rspec:
     executor: default
