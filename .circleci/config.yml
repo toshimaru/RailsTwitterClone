@@ -16,9 +16,11 @@ jobs:
     executor: default
     steps:
       - checkout
-      - run: |
-        sudo apt update
-        sudo apt install libsqlite3-dev
+      - run:
+          name: Install System Dependencies
+          command: |
+            sudo apt update
+            sudo apt install libsqlite3-dev
       - ruby/install-deps
   rspec:
     executor: default
