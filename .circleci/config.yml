@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1.1.2
+  browser-tools: circleci/browser-tools@1.1.0
 
 executors:
   default:
@@ -26,8 +27,8 @@ jobs:
     executor: default
     steps:
       - checkout
-      - run: gem install bundler
       - ruby/install-deps
+      - browser-tools/install-chromedriver
       - run: bundle exec rails db:create db:schema:load
       - run:
           name: Run RSpec
@@ -43,7 +44,6 @@ jobs:
     executor: default
     steps:
       - checkout
-      - run: gem install bundler
       - ruby/install-deps
       - run: bundle exec rubocop
 
