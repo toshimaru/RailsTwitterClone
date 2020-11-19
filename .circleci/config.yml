@@ -16,7 +16,9 @@ jobs:
     executor: default
     steps:
       - checkout
-      - run: sudo apt-get install libsqlite3-dev
+      - run: |
+        sudo apt update
+        sudo apt install libsqlite3-dev
       - ruby/install-deps
   rspec:
     executor: default
