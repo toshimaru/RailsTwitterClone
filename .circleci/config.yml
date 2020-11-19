@@ -28,6 +28,7 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
+      - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run: bundle exec rails db:create db:schema:load
       - run:
