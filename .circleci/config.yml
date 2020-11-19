@@ -41,7 +41,7 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - run: bundle exec rubocop
+      - ruby/rubocop-check
 
 workflows:
   build:
