@@ -31,16 +31,11 @@ jobs:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run: bundle exec rails db:create db:schema:load
-      - run:
-          name: Run RSpec
-          command: |
-            bundle exec rspec --format progress --format RspecJunitFormatter -o ~/test-results/rspec/rspec.xml
+      - ruby/rspec-test
       - store_artifacts:
           path: coverage
       - store_artifacts:
           path: tmp/capybara
-      - store_test_results:
-          path: ~/test-results/rspec/
   rubocop:
     executor: default
     steps:
