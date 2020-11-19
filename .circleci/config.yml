@@ -30,7 +30,7 @@ jobs:
       - ruby/install-deps
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - run: bundle exec rails db:create db:schema:load
+      - run: bin/rails db:schema:load --trace
       - ruby/rspec-test
       - store_artifacts:
           path: coverage
