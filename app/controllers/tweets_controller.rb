@@ -14,7 +14,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "Tweet created!"
       redirect_to root_url
     else
       flash[:danger] = @tweet.errors.full_messages.to_sentence
