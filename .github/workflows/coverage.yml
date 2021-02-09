@@ -11,6 +11,10 @@ jobs:
       with:
         ruby-version: 2.7
         bundler-cache: true
+    - name: Setup webpacker
+      run: |
+        yarn install
+        bin/webpack
     - uses: paambaati/codeclimate-action@v2.7.5
       env:
         CC_TEST_REPORTER_ID: a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
