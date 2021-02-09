@@ -15,6 +15,7 @@ gem "sqlite3"
 gem "turbolinks"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier"
+gem "webpacker"
 gem "will_paginate-bootstrap"
 gem "will_paginate"
 
