@@ -6,7 +6,6 @@ jobs:
       matrix:
         ruby: [2.5, 2.6, 2.7]
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby ${{ matrix.ruby }}
@@ -36,7 +35,6 @@ jobs:
       matrix:
         ruby: [2.5, 2.6, 2.7]
     runs-on: macos-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby ${{ matrix.ruby }}
@@ -58,7 +56,6 @@ jobs:
 
   docker-compose-build:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
     - uses: actions/checkout@v2
     - run: docker-compose build

@@ -4,7 +4,6 @@ jobs:
   coverage:
     name: CodeClimate
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.6
