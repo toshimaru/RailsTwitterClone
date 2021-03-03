@@ -20,8 +20,8 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-${{ matrix.ruby }}-bundler-${{ hashFiles('**/Gemfile.lock')}}
-        restore-keys: ${{ runner.os }}-${{ matrix.ruby }}-bundler-
+        key: ${{ runner.os }}-${{ matrix.ruby }}-bundler-v1-${{ hashFiles('**/Gemfile.lock')}}
+        restore-keys: ${{ runner.os }}-${{ matrix.ruby }}-bundler-v1-
     - name: bundle install
       run: |
         gem install bundler
