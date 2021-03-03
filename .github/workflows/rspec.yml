@@ -13,11 +13,11 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - name: Install Dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get remove google-chrome-stable
-        sudo apt-get install libsqlite3-dev chromium-driver
+    # - name: Install Dependencies
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get remove google-chrome-stable
+    #     sudo apt-get install libsqlite3-dev chromium-driver
     - name: Run RSpec
       run: bundle exec rspec
 
