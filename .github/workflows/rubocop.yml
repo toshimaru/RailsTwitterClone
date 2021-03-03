@@ -11,7 +11,7 @@ jobs:
         ruby-version: 2.7
         bundler-cache: true
     - name: Run RuboCop
-      run: rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
+      run: bundle exec rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
     - uses: actions/upload-artifact@v2
       with:
         name: rubocop-report
@@ -32,4 +32,4 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          rubocop --parallel | reviewdog -reporter=github-pr-review -f=rubocop
+          bundle exec rubocop --parallel | reviewdog -reporter=github-pr-review -f=rubocop
