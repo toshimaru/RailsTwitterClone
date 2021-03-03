@@ -12,21 +12,12 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
     - name: Install Dependencies
       run: |
         sudo apt-get update
         sudo apt-get remove google-chrome-stable
         sudo apt-get install libsqlite3-dev chromium-driver
-    - uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-${{ matrix.ruby }}-bundler-v1-${{ hashFiles('**/Gemfile.lock')}}
-        restore-keys: ${{ runner.os }}-${{ matrix.ruby }}-bundler-v1-
-    - name: bundle install
-      run: |
-        gem install bundler
-        bundle config set path 'vendor/bundle'
-        bundle install --jobs 4 --retry 3
     - name: Run RSpec
       run: bundle exec rspec
 
