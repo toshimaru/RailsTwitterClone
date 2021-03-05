@@ -21,12 +21,14 @@ jobs:
           command: |
             sudo apt update
             sudo apt install libsqlite3-dev
-      - ruby/install-deps
+      - ruby/install-deps:
+          key: gems-v2
   rspec:
     executor: default
     steps:
       - checkout
-      - ruby/install-deps
+      - ruby/install-deps:
+          key: gems-v2
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run: bin/rails db:schema:load --trace
@@ -39,7 +41,8 @@ jobs:
     executor: default
     steps:
       - checkout
-      - ruby/install-deps
+      - ruby/install-deps:
+          key: gems-v2
       - ruby/rubocop-check
 
 workflows:
