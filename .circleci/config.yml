@@ -30,8 +30,8 @@ jobs:
       - checkout
       - ruby/install-deps:
           key: gems-v2
-      - node/install:
-          install-yarn: true
+      - node/install-packages:
+          pkg-manager: yarn
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run: bin/rails db:schema:load --trace
