@@ -10,5 +10,6 @@ services:
       - /app/node_modules
       - /app/tmp
       - /app/vendor
+      - /app/db/sqlite
     ports:
       - "3000:3000"
