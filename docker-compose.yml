@@ -5,5 +5,6 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && rails s -b '0.0.0.0'"
     volumes:
       - .:/app
+      - /app/node_modules
     ports:
       - "3000:3000"

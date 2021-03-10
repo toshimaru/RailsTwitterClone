@@ -14,6 +14,10 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
+    - name: Setup webpacker
+      run: |
+        yarn install
+        bin/webpack
     - name: Run RSpec
       run: bundle exec rspec
   docker-compose-build:
@@ -21,4 +25,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: docker-compose build
+    - run: docker-compose run web bin/webpack
     - run: docker-compose run web bundle exec rspec
