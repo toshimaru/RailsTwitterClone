@@ -1,4 +1,5 @@
 {
+  "license": "UNLICENSED",
   "dependencies": {
     "@rails/webpacker": "5.2.1"
   },
