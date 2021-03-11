@@ -251,8 +251,6 @@ GEM
     tilt (2.0.10)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (2.0.0)
     uniform_notifier (1.14.1)
     web-console (3.7.0)
@@ -302,7 +300,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3
   tzinfo-data
-  uglifier
   web-console
   webpacker
   will_paginate
