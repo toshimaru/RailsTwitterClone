@@ -32,6 +32,10 @@ This application doesn't provide many features in order to keep it simple. Here 
 
 ## Used gem
 
+### JavaScript
+
+- webpacker
+
 ### For CSS Style
 
 * bootstrap-sass
@@ -54,7 +58,7 @@ This application doesn't provide many features in order to keep it simple. Here 
 
 See more details on [Gemfile](./Gemfile).
 
-## Test
+## Testing
 
 ```console
 $ bundle exec rspec
