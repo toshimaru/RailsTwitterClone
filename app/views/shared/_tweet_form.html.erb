@@ -1,5 +1,5 @@
 <div class="tweet-box">
-  <%= form_with model: current_user.tweets.new do |form| %>
+  <%= form_with model: current_user.tweets.new, local: true do |form| %>
     <div class="field">
       <%= form.text_area :content, placeholder: "Compose new Tweet..." %>
     </div>
