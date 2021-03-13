@@ -6,9 +6,9 @@ services:
     volumes:
       - .:/app:cached
       - bundle:/usr/local/bundle:cached
+      - node_modules:/app/node_modules:cached
       - /app/.git
       - /app/log
-      - /app/node_modules
       - /app/tmp
       - /app/vendor
       - /app/db/sqlite
@@ -16,3 +16,4 @@ services:
       - "3000:3000"
 volumes:
   bundle:
+  node_modules:
