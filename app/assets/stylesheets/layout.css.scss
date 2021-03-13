@@ -2,14 +2,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-$gray: #aaa;
 $lightGray: #e8e8e8;
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -31,108 +24,9 @@ textarea {
   margin-bottom: 8px;
 }
 
-.profile {
-  padding: 15px;
-  border-bottom: 1px solid $lightGray;
-}
-.stats {
-  border-bottom: 1px solid $lightGray;
-  table {
-    th, td {
-      padding-left: 20px;
-    }
-    th {
-      color: $gray;
-      padding-top: 7px;
-    }
-    td {
-      padding-bottom: 5px;
-      font-size: 23px;
-    }
-  }
-}
-.tweet-box {
-  padding: 15px;
-  background-color: rgba(0, 132, 180, 0.1);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
 .field_with_errors {
   @extend .has-error;
 }
 .alert-notice {
   @extend .alert-danger;
-}
-.tweets {
-  list-style: none;
-  margin: 10px 0 0 0;
-
-  .tweet {
-    padding: 10px 15px 5px;
-    border-top: 1px solid $lightGray;
-    &:hover {
-      background-color: #F5F8FA;
-    }
-    &:last-child {
-      border-bottom: 1px solid $lightGray;
-    }
-  }
-}
-.content {
-  display: block;
-  margin-left: 63px;
-}
-.tweet-footer {
-  font-size: 13px;
-  color: $gray;
-}
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $gray;
-    &:last-child {
-      border-bottom: 1px solid $gray;
-    }
-  }
-}
-.timeline {
-  background-color: #fff;
-  border-radius: 5px;
-}
-.title {
-  font-size: 25px;
-  color: $gray;
-  margin: 0;
-  padding: 10px 15px 0;
-}
-.paginate {
-  padding: 15px 10px;
-  text-align: center;
-}
-.tweet-actions {
-  float: right;
-}
-.one-col {
-  background-color: #fff;
-  padding: 20px 30px;
-  margin-top: 10px;
-}
-.header-menu {
-  .fa {
-    margin-right: 8px;
-  }
 }
