@@ -9,5 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  */
+
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.field_with_errors {
+  @extend .has-error;
+}
+.alert-notice {
+  @extend .alert-danger;
+}

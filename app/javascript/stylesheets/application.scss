@@ -1,15 +1,4 @@
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-
-$gray: #aaa;
-$lightGray: #e8e8e8;
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
+@import 'variable';
 
 body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -56,19 +45,6 @@ textarea {
   background-color: rgba(0, 132, 180, 0.1);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-}
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-.field_with_errors {
-  @extend .has-error;
-}
-.alert-notice {
-  @extend .alert-danger;
 }
 .tweets {
   list-style: none;
@@ -135,4 +111,12 @@ textarea {
   .fa {
     margin-right: 8px;
   }
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  box-sizing: border-box;
 }
