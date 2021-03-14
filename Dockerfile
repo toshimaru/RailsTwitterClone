@@ -6,5 +6,5 @@ RUN apt update -qq && apt install -y nodejs chromium-driver yarn && apt clean &&
 RUN mkdir /app
 COPY Gemfile Gemfile.lock package.json yarn.lock /app/
 WORKDIR /app
-RUN bundle install
+RUN bundle install --jobs=2
 RUN yarn install
