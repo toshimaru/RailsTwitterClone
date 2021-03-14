@@ -24,6 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: docker-compose build
+    - run: DOCKER_BUILDKIT=1 docker-compose build
     - run: docker-compose run web bin/webpack
     - run: docker-compose run web bundle exec rspec
