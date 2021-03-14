@@ -12,6 +12,6 @@ RUN apt update -qq && apt install -y nodejs chromium-driver yarn && apt clean &&
 RUN mkdir /app
 COPY Gemfile Gemfile.lock package.json yarn.lock /app/
 WORKDIR /app
+RUN yarn install
 COPY --from=bundle-installer /usr/local/bundle/ /usr/local/bundle/
 RUN bundle install
-RUN yarn install
