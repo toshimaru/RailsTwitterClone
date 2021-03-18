@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
   class << self
-    def new_remember_token
+    def new_token
       SecureRandom.urlsafe_base64
     end
 
@@ -61,6 +61,6 @@ class User < ApplicationRecord
 
   private
     def create_remember_token
-      self.remember_token = User.hexdigest(User.new_remember_token)
+      self.remember_token = User.hexdigest(User.new_token)
     end
 end
