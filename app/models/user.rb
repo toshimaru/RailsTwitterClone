@@ -61,6 +61,6 @@ class User < ApplicationRecord
 
   private
     def create_remember_token
-      self.remember_token = User.hexdigest(User.new_token)
+      self.remember_token = User.hexdigest(self.class.new_token)
     end
 end
