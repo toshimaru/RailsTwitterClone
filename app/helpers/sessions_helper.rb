@@ -2,7 +2,7 @@
 
 module SessionsHelper
   def log_in(user)
-    remember_token = User.new_remember_token
+    remember_token = User.new_token
     cookies.permanent[:remember_token] = remember_token
     user.update_attribute(:remember_token, User.hexdigest(remember_token))
     self.current_user = user
@@ -13,8 +13,7 @@ module SessionsHelper
   end
 
   def log_out
-    current_user.update_attribute(:remember_token,
-                                  User.hexdigest(User.new_remember_token))
+    current_user.update_attribute(:remember_token, User.hexdigest(User.new_token))
     cookies.delete(:remember_token)
     self.current_user = nil
   end
