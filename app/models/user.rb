@@ -54,13 +54,13 @@ class User < ApplicationRecord
       SecureRandom.urlsafe_base64
     end
 
-    def hexdigest(token)
-      Digest::SHA1.hexdigest(token.to_s)
+    def hexdigest(string)
+      Digest::SHA1.hexdigest(string.to_s)
     end
   end
 
   private
     def create_remember_token
-      self.remember_token = User.hexdigest(self.class.new_token)
+      self.remember_token = self.class.hexdigest(self.class.new_token)
     end
 end
