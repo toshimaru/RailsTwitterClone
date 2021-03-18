@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    @tweet = current_user.tweets.build if signed_in?
+    @tweet = current_user.tweets.build if logged_in?
     @feed_items = @user.tweets.paginate(page: params[:page])
   end
 
