@@ -1,3 +1,9 @@
+FROM ruby:2.7 AS bundle-installer
+
+WORKDIR /tmp
+COPY Gemfile Gemfile.lock /tmp/
+RUN bundle install --jobs=2
+
 FROM ruby:2.7
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
@@ -6,6 +12,6 @@ RUN apt update -qq && apt install -y nodejs chromium-driver yarn && apt clean &&
 RUN mkdir /app
 COPY Gemfile Gemfile.lock package.json yarn.lock /app/
 WORKDIR /app
-RUN gem install bundler
-RUN bundle install
 RUN yarn install
+COPY --from=bundle-installer /usr/local/bundle/ /usr/local/bundle/
+RUN bundle install
