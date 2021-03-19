@@ -51,7 +51,9 @@ RSpec.describe "Users", type: :request do
     end
 
     context "log in" do
-      before { log_in user, no_capybara: true }
+      before {
+        allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
+      }
       it "deletes user" do
         expect { delete user_path(user.slug) }.to change(User, :count).by(-1)
         expect(response.status).to eq(302)
@@ -71,7 +73,9 @@ RSpec.describe "Users", type: :request do
 
     context "log in" do
       let(:updated_user) { FactoryBot.attributes_for(:user) }
-      before { log_in user, no_capybara: true }
+      before {
+        allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
+      }
       it "updates user" do
         patch user_path(user.slug), params: { user: updated_user }
         expect(response.status).to eq(302)
