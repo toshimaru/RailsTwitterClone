@@ -2,10 +2,7 @@
 
 module SessionsHelper
   def log_in(user)
-    remember_token = User.new_token
-    cookies.permanent[:remember_token] = remember_token
-    user.update_attribute(:remember_token, User.hexdigest(remember_token))
-    @current_user = user
+    session[:user_id] = user.id
   end
 
   def logged_in?
@@ -18,8 +15,9 @@ module SessionsHelper
   end
 
   def current_user
-    remember_token = User.hexdigest(cookies[:remember_token])
-    @current_user ||= User.find_by(remember_token: remember_token)
+    if session[:user_id]
+      @current_user ||= User.find_by(id: session[:user_id])
+    end
   end
 
   def current_user?(user)
@@ -36,7 +34,7 @@ module SessionsHelper
   end
 
   def signed_in_user
-    unless signed_in?
+    unless logged_in?
       store_location
       redirect_to login_path, notice: "Please sign in."
     end
