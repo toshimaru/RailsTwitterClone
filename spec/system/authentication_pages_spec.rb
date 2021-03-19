@@ -70,19 +70,6 @@ RSpec.describe "Authentication", type: :system do
           before { visit edit_user_path(user) }
           it { should have_content("Log in") }
         end
-
-        describe "after log in" do
-          before do
-            visit edit_user_path(user)
-            fill_in "Email",    with: user.email
-            fill_in "Password", with: user.password
-            click_button "Log in"
-          end
-
-          it "should render the desired protected page" do
-            should have_content("Update your profile")
-          end
-        end
       end
 
       describe "in the Users Controller" do
