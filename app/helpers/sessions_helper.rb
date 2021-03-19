@@ -24,10 +24,6 @@ module SessionsHelper
     user == current_user
   end
 
-  def store_location
-    session[:return_to] = request.url if request.get?
-  end
-
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
@@ -35,7 +31,6 @@ module SessionsHelper
 
   def signed_in_user
     unless logged_in?
-      store_location
       redirect_to login_path, notice: "Please sign in."
     end
   end
