@@ -13,8 +13,7 @@ module SessionsHelper
   end
 
   def log_out
-    current_user.update_attribute(:remember_token, User.hexdigest(User.new_token))
-    cookies.delete(:remember_token)
+    reset_session
     @current_user = nil
   end
 
