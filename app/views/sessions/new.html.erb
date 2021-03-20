@@ -6,8 +6,8 @@
 
     <%= form_with(url: sessions_path, scope: :session, local: true) do |f| %>
       <div class="form-group">
-        <%= f.label :email, class: 'control-label' %>
-        <%= f.text_field :email, class: 'form-control' %>
+        <%= f.label :email, class: 'control-label'%>
+        <%= f.text_field :email, class: 'form-control', autofocus: true  %>
       </div>
       <div class="form-group">
         <%= f.label :password, class: 'control-label' %>
