@@ -70,19 +70,6 @@ RSpec.describe "Authentication", type: :system do
           before { visit edit_user_path(user) }
           it { should have_content("Log in") }
         end
-
-        describe "after log in" do
-          before do
-            visit edit_user_path(user)
-            fill_in "Email",    with: user.email
-            fill_in "Password", with: user.password
-            click_button "Log in"
-          end
-
-          it "should render the desired protected page" do
-            should have_content("Update your profile")
-          end
-        end
       end
 
       describe "in the Users Controller" do
@@ -110,7 +97,7 @@ RSpec.describe "Authentication", type: :system do
     describe "as wrong user" do
       let(:user) { users(:fixture_user_1) }
       let(:wrong_user) { users(:fixture_user_2) }
-      before { log_in user }
+      before { log_in_as user }
 
       describe "Visit wrong_user's edit page" do
         before { visit edit_user_path(wrong_user) }
