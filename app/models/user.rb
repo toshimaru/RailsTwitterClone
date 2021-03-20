@@ -54,6 +54,11 @@ class User < ApplicationRecord
       SecureRandom.urlsafe_base64
     end
 
+    def digest
+      cost = ActiveModel::SecrurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+    end
+
     def hexdigest(string)
       Digest::SHA1.hexdigest(string.to_s)
     end
