@@ -97,7 +97,7 @@ RSpec.describe "Authentication", type: :system do
     describe "as wrong user" do
       let(:user) { users(:fixture_user_1) }
       let(:wrong_user) { users(:fixture_user_2) }
-      before { log_in user }
+      before { log_in_as user }
 
       describe "Visit wrong_user's edit page" do
         before { visit edit_user_path(wrong_user) }

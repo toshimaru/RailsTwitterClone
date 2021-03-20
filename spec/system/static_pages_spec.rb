@@ -13,7 +13,7 @@ RSpec.describe "Static Pages", type: :system do
 
       before do
         FactoryBot.create_list(:tweet, 2, user: user, content: Faker::Quote.famous_last_words)
-        log_in user
+        log_in_as user
         visit root_path
       end
 
