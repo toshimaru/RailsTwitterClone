@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  attr_accessor :remember_token
+
   has_many :tweets, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -46,6 +48,11 @@ class User < ApplicationRecord
 
   def unfollow!(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy!
+  end
+
+  def remember
+    self.remember_token = self.class.new_token
+    update_attribute(:remember_digest, self.class.digest(remember_token))
   end
 
   class << self
