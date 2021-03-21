@@ -14,7 +14,7 @@ RSpec.describe "Authentication", type: :system do
     it { should have_content("Log in") }
 
     describe "screenshot", js: true do
-      it { page.save_screenshot "authorization.png" }
+      it { page.save_screenshot "login-page.png" }
     end
 
     context "with invalid information" do
