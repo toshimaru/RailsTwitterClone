@@ -41,7 +41,7 @@ Capybara.server = :puma, { Silent: true }
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join("spec/support/*.rb")].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -82,5 +82,9 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system, js: true) do
     driven_by :headless_chrome
+  end
+
+  config.when_first_matching_example_defined(type: :system) do
+    require "support/system/login"
   end
 end
