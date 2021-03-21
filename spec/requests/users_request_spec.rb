@@ -42,7 +42,7 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "#destroy" do
-    context "no log in" do
+    context "no login" do
       it "doen't delete user" do
         delete user_path(user.slug)
         expect(response.status).to eq(302)
@@ -50,7 +50,7 @@ RSpec.describe "Users", type: :request do
       end
     end
 
-    context "log in" do
+    context "login" do
       before {
         allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
       }
@@ -60,10 +60,21 @@ RSpec.describe "Users", type: :request do
         expect(response).to redirect_to(root_path)
       end
     end
+
+    context "login as another user" do
+      let(:another_user) { users(:fixture_user_2) }
+      before {
+        allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
+      }
+      it "redirects to root" do
+        delete user_path(another_user.slug)
+        expect(response).to redirect_to(root_path)
+      end
+    end
   end
 
   describe "#update" do
-    context "no log in" do
+    context "no login" do
       it "doen't update user" do
         patch user_path(user.slug)
         expect(response.status).to eq(302)
@@ -71,16 +82,29 @@ RSpec.describe "Users", type: :request do
       end
     end
 
-    context "log in" do
-      let(:updated_user) { FactoryBot.attributes_for(:user) }
+    context "login" do
+      let(:update_param) { FactoryBot.attributes_for(:user) }
       before {
         allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
       }
       it "updates user" do
-        patch user_path(user.slug), params: { user: updated_user }
-        expect(response.status).to eq(302)
-        expect(user.reload.name).to eq(updated_user[:name])
-        expect(user.reload.email).to eq(updated_user[:email])
+        patch user_path(user.slug), params: { user: update_param }
+        user.reload
+        expect(response).to redirect_to(user_path(user.slug))
+        expect(user.name).to eq(update_param[:name])
+        expect(user.email).to eq(update_param[:email])
+      end
+    end
+
+    context "login as another user" do
+      let(:update_param) { FactoryBot.attributes_for(:user) }
+      let(:another_user) { users(:fixture_user_2) }
+      before {
+        allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
+      }
+      it "redirects to root" do
+        patch user_path(another_user.slug), params: { user: update_param }
+        expect(response).to redirect_to(root_path)
       end
     end
   end
