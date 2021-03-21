@@ -151,4 +151,11 @@ RSpec.describe User, type: :model do
       it { expect(other_user.followers).to include(user) }
     end
   end
+
+  describe "authenticated?" do
+    it "should return false for a user with nil digest" do
+      expect(user.authenticated?(nil)).to be false
+      expect(user.authenticated?("")).to be false
+    end
+  end
 end
