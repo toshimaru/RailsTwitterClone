@@ -2,13 +2,23 @@
 
 require "rails_helper"
 
-RSpec.describe "Sessions", type: :request do
-  describe "#new" do
-    context "GET" do
-      it "has a 200 status code" do
-        get new_session_path
-        expect(response).to have_http_status(200)
-      end
+RSpec.describe "/sessions", type: :request do
+  fixtures :users
+  let(:user) { users(:fixture_user_1) }
+
+  describe "GET /new" do
+    it "return 200" do
+      get login_path
+      expect(response).to be_successful
+    end
+  end
+
+  describe "DELETE /destroy" do
+    before { log_in_as(user) }
+
+    it "redirects to root" do
+      delete logout_path
+      expect(response).to redirect_to(root_url)
     end
   end
 end
