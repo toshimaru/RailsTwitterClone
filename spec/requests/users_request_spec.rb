@@ -9,21 +9,21 @@ RSpec.describe "Users", type: :request do
   describe "#index" do
     it "has a 200 status code" do
       get users_path
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(200)
     end
   end
 
   describe "#show" do
     it "has a 200 status code" do
       get user_path(user.slug)
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(200)
     end
   end
 
   describe "#new" do
     it "has a 200 status code" do
       get new_user_path
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(200)
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe "Users", type: :request do
     describe "User already exists" do
       it "doesn't create new user" do
         post users_path, params: { user: FactoryBot.attributes_for(:user, email: user.email) }
-        expect(response.status).to eq(200)
+        expect(response).to have_http_status(200)
       end
     end
   end
