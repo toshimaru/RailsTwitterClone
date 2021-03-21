@@ -41,7 +41,7 @@ Capybara.server = :puma, { Silent: true }
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join("spec/support/*.rb")].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -76,13 +76,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  config.when_first_matching_example_defined(type: :request) do
-    require "support/request/login"
-  end
-
-  config.when_first_matching_example_defined(type: :system) do
-    require "support/system/login"
-  end
+  config.include(RequestSpecHelper, type: :request)
+  config.include(SystemSpecHelper, type: :system)
 
   config.before(:each, type: :system) do
     driven_by :rack_test
