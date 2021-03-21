@@ -76,15 +76,19 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  config.when_first_matching_example_defined(type: :request) do
+    require "support/request/login"
+  end
+
+  config.when_first_matching_example_defined(type: :system) do
+    require "support/system/login"
+  end
+
   config.before(:each, type: :system) do
     driven_by :rack_test
   end
 
   config.before(:each, type: :system, js: true) do
     driven_by :headless_chrome
-  end
-
-  config.when_first_matching_example_defined(type: :system) do
-    require "support/system/login"
   end
 end

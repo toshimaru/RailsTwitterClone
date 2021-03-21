@@ -51,9 +51,7 @@ RSpec.describe "Users", type: :request do
     end
 
     context "login" do
-      before {
-        allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
-      }
+      before { log_in_as(user) }
       it "deletes user" do
         expect { delete user_path(user.slug) }.to change(User, :count).by(-1)
         expect(response.status).to eq(302)
@@ -63,9 +61,7 @@ RSpec.describe "Users", type: :request do
 
     context "login as another user" do
       let(:another_user) { users(:fixture_user_2) }
-      before {
-        allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
-      }
+      before { log_in_as(user) }
       it "redirects to root" do
         delete user_path(another_user.slug)
         expect(response).to redirect_to(root_path)
@@ -84,9 +80,7 @@ RSpec.describe "Users", type: :request do
 
     context "login" do
       let(:update_param) { FactoryBot.attributes_for(:user) }
-      before {
-        allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
-      }
+      before { log_in_as(user) }
       it "updates user" do
         patch user_path(user.slug), params: { user: update_param }
         user.reload
@@ -99,9 +93,7 @@ RSpec.describe "Users", type: :request do
     context "login as another user" do
       let(:update_param) { FactoryBot.attributes_for(:user) }
       let(:another_user) { users(:fixture_user_2) }
-      before {
-        allow_any_instance_of(ActionDispatch::Request).to receive(:session).and_return(user_id: user.id)
-      }
+      before { log_in_as(user) }
       it "redirects to root" do
         patch user_path(another_user.slug), params: { user: update_param }
         expect(response).to redirect_to(root_path)
