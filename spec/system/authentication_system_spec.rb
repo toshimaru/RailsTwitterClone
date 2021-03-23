@@ -97,7 +97,7 @@ RSpec.describe "Authentication", type: :system do
     describe "as wrong user" do
       let(:user) { FactoryBot.create(:user) }
       let(:wrong_user) { users(:fixture_user_1) }
-      before { log_in_as user }
+      before { log_in_as(user) }
 
       describe "Visit wrong_user's edit page" do
         before { visit edit_user_path(wrong_user) }

@@ -7,7 +7,7 @@ RSpec.describe "Tweet pages", type: :system do
 
   # NOTE: Use `let!` to avoid `exception: #<BCrypt::Errors::InvalidHash: invalid hash>`
   let!(:user) { FactoryBot.create(:user) }
-  before { log_in_as user }
+  before { log_in_as(user) }
 
   describe "show all tweets" do
     let!(:tweet1) { FactoryBot.create(:tweet, user: user, content: "Harakiri") }
