@@ -120,3 +120,15 @@ textarea {
   margin-top: 45px;
   box-sizing: border-box;
 }
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 16px;
+  span {
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+}
