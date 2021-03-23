@@ -71,7 +71,7 @@ RSpec.describe "UserPages", type: :system do
 
   describe "edit" do
     before do
-      log_in_as user
+      log_in_as(user)
       visit edit_user_path(user)
     end
 
@@ -132,7 +132,7 @@ RSpec.describe "UserPages", type: :system do
 
     describe "Log in user have tweet" do
       before do
-        log_in_as user
+        log_in_as(user)
         visit user_path(user)
       end
 
@@ -142,7 +142,7 @@ RSpec.describe "UserPages", type: :system do
 
     describe "follow/unfollow buttons" do
       let(:other_user) { FactoryBot.create(:user) }
-      before { log_in_as user }
+      before { log_in_as(user) }
 
       describe "following a user" do
         before { visit user_path(other_user) }
@@ -197,7 +197,7 @@ RSpec.describe "UserPages", type: :system do
 
     describe "followed users" do
       before do
-        log_in_as user
+        log_in_as(user)
         visit following_user_path(user)
       end
 

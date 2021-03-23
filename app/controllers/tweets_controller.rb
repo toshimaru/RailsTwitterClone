@@ -4,7 +4,6 @@ class TweetsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: [:destroy]
 
-  # TODO: show all tweets despite non-signed in user.
   def index
     @tweet = current_user.tweets.build if logged_in?
     @feed_items = Tweet.includes(:user).paginate(page: params[:page])

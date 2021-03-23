@@ -14,7 +14,7 @@ RSpec.describe "Authentication", type: :system do
     it { should have_content("Log in") }
 
     describe "screenshot", js: true do
-      it { page.save_screenshot "authorization.png" }
+      it { page.save_screenshot "login-page.png" }
     end
 
     context "with invalid information" do
@@ -95,15 +95,15 @@ RSpec.describe "Authentication", type: :system do
     end
 
     describe "as wrong user" do
-      let(:user) { users(:fixture_user_1) }
-      let(:wrong_user) { users(:fixture_user_2) }
-      before { log_in_as user }
+      let(:user) { FactoryBot.create(:user) }
+      let(:wrong_user) { users(:fixture_user_1) }
+      before { log_in_as(user) }
 
       describe "Visit wrong_user's edit page" do
         before { visit edit_user_path(wrong_user) }
 
         it { should_not have_content("Update your profile") }
-        it { should have_content("Log in") }
+        it { should have_content("Log out") }
       end
     end
   end
