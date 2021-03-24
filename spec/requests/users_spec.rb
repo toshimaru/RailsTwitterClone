@@ -22,7 +22,7 @@ RSpec.describe "/users", type: :request do
 
   describe "GET /new" do
     it "has a 200 status code" do
-      get new_user_path
+      get signup_path
       expect(response).to have_http_status(200)
     end
   end
