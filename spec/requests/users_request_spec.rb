@@ -2,35 +2,36 @@
 
 require "rails_helper"
 
-RSpec.describe "Users", type: :request do
+RSpec.describe "/users", type: :request do
   fixtures :users
   let(:user) { users(:fixture_user_1) }
 
-  describe "#index" do
+  describe "GET /index" do
     it "has a 200 status code" do
       get users_path
       expect(response).to have_http_status(200)
     end
   end
 
-  describe "#show" do
+  describe "GET /show" do
     it "has a 200 status code" do
       get user_path(user.slug)
       expect(response).to have_http_status(200)
     end
   end
 
-  describe "#new" do
+  describe "GET /new" do
     it "has a 200 status code" do
       get new_user_path
       expect(response).to have_http_status(200)
     end
   end
 
-  describe "#create" do
+  describe "POST /create" do
     it "creates new user" do
-      post users_path, params: { user: FactoryBot.attributes_for(:user) }
-      expect(response.status).to eq(302)
+      user_attributes = FactoryBot.attributes_for(:user)
+      post users_path, params: { user: user_attributes }
+      expect(response).to redirect_to(user_path(user_attributes[:slug]))
     end
 
     describe "User already exists" do
@@ -41,11 +42,10 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "#destroy" do
+  describe "DELETE /destroy" do
     context "no login" do
       it "doen't delete user" do
         delete user_path(user.slug)
-        expect(response.status).to eq(302)
         expect(response).to redirect_to(login_path)
       end
     end
@@ -54,7 +54,6 @@ RSpec.describe "Users", type: :request do
       before { log_in_as(user) }
       it "deletes user" do
         expect { delete user_path(user.slug) }.to change(User, :count).by(-1)
-        expect(response.status).to eq(302)
         expect(response).to redirect_to(root_path)
       end
     end
@@ -69,11 +68,10 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "#update" do
+  describe "PATCH /update" do
     context "no login" do
       it "doen't update user" do
         patch user_path(user.slug)
-        expect(response.status).to eq(302)
         expect(response).to redirect_to(login_path)
       end
     end
