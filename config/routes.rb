@@ -3,9 +3,10 @@
 Rails.application.routes.draw do
   root "static_pages#home"
 
-  resources :users do
+  resources :users, only: [:index, :show, :edit, :create, :update, :destroy] do
     member do
-      get :following, :followers
+      get :following
+      get :followers
     end
   end
   resources :tweets,        only: [:index, :create, :destroy]
