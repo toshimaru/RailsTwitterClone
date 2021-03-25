@@ -17,11 +17,11 @@ RSpec.describe ApplicationController, type: :controller do
     end
   end
 
-  describe "render_500" do
+  describe "#render_500" do
     before { routes.draw { get "anonymous/unknown_error" } }
     it "returns 500" do
       get :unknown_error
-      expect(response.status).to eq(500)
+      expect(response).to have_http_status(500)
     end
   end
 
@@ -29,14 +29,14 @@ RSpec.describe ApplicationController, type: :controller do
     before { routes.draw { get "anonymous/not_found_error" } }
     it "returns 404" do
       get :not_found_error
-      expect(response.status).to eq(404)
+      expect(response).to have_http_status(404)
     end
   end
 
   describe "invoke routing_error" do
     it "returns 404" do
       get :index
-      expect(response.status).to eq(404)
+      expect(response).to have_http_status(404)
     end
   end
 end
