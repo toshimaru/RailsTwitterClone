@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt install shared-mime-info
     - name: Set up Ruby 2.6
       uses: ruby/setup-ruby@v1
       with:
