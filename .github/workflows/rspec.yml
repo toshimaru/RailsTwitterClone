@@ -1,7 +1,7 @@
 name: RSpec
 on: [push, pull_request]
 jobs:
-  build:
+  rspec:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
