@@ -6,7 +6,7 @@ RSpec.describe "Tweets", type: :request do
   describe "in the Tweets controller" do
     describe "#index" do
       before { get tweets_path }
-      it { expect(response.status).to eq(200) }
+      it { expect(response).to have_http_status(200) }
     end
 
     describe "#create" do

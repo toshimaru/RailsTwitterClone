@@ -4,16 +4,22 @@
   <div class="col-md-6 col-md-offset-3 one-col">
     <h1>Log in to Twitter Clone</h1>
 
-    <%= form_with url: sessions_path, local: true do |form| %>
+    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
       <div class="form-group">
-        <%= form.label :email, class: 'control-label' %>
-        <%= form.text_field :email, class: 'form-control' %>
+        <%= f.label :email, class: 'control-label'%>
+        <%= f.text_field :email, class: 'form-control', autofocus: true  %>
       </div>
       <div class="form-group">
-        <%= form.label :password, class: 'control-label' %>
-        <%= form.password_field :password, class: 'form-control' %>
+        <%= f.label :password, class: 'control-label' %>
+        <%= f.password_field :password, class: 'form-control' %>
       </div>
-      <%= form.submit "Log in", class: "btn btn-large btn-primary" %>
+      <div class="checkbox">
+        <%= f.label :remember_me, class: 'control-label' do %>
+          <%= f.check_box :remember_me %>
+          <span>Remember me on this computer</span>
+        <% end %>
+      </div>
+      <%= f.submit "Log in", class: "btn btn-large btn-primary" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up", signup_path %></p>

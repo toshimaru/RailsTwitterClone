@@ -2,44 +2,50 @@
 
 module SessionsHelper
   def log_in(user)
-    remember_token = User.new_token
-    cookies.permanent[:remember_token] = remember_token
-    user.update_attribute(:remember_token, User.hexdigest(remember_token))
-    @current_user = user
+    session[:user_id] = user.id
   end
 
-  def signed_in?
+  def logged_in?
     !current_user.nil?
   end
 
   def log_out
-    current_user.update_attribute(:remember_token, User.hexdigest(User.new_token))
-    cookies.delete(:remember_token)
+    forget(current_user)
+    reset_session
     @current_user = nil
   end
 
   def current_user
-    remember_token = User.hexdigest(cookies[:remember_token])
-    @current_user ||= User.find_by(remember_token: remember_token)
+    if (user_id = session[:user_id])
+      @current_user ||= User.find_by(id: user_id)
+    elsif (user_id = cookies.encrypted[:user_id])
+      user = User.find_by(id: user_id)
+      if user&.authenticated?(cookies[:remember_token])
+        log_in(user)
+        @current_user = user
+      end
+    end
   end
 
   def current_user?(user)
-    user == current_user
+    user && user == current_user
   end
 
-  def store_location
-    session[:return_to] = request.url if request.get?
-  end
-
-  def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
-    session.delete(:return_to)
-  end
-
-  def signed_in_user
-    unless signed_in?
-      store_location
+  def logged_in_user
+    unless logged_in?
       redirect_to login_path, notice: "Please sign in."
     end
+  end
+
+  def remember(user)
+    user.remember
+    cookies.permanent.encrypted[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
+  end
+
+  def forget(user)
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
   end
 end

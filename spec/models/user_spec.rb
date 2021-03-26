@@ -15,7 +15,6 @@ RSpec.describe User, type: :model do
   it { should respond_to(:password) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:tweets) }
   it { should respond_to(:feed) }
@@ -26,6 +25,7 @@ RSpec.describe User, type: :model do
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
   it { should respond_to(:unfollow!) }
+  it { should respond_to(:remember_token) }
 
   it { should be_valid }
 
@@ -96,11 +96,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "remember token" do
-    before { user.save }
-    it { expect(user.remember_token).not_to be_blank }
-  end
-
   describe "tweet associations" do
     before { user.save }
 
@@ -155,6 +150,13 @@ RSpec.describe User, type: :model do
 
     describe "followers" do
       it { expect(other_user.followers).to include(user) }
+    end
+  end
+
+  describe "authenticated?" do
+    it "should return false for a user with nil digest" do
+      expect(user.authenticated?(nil)).to be false
+      expect(user.authenticated?("")).to be false
     end
   end
 end

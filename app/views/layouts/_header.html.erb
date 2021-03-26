@@ -9,7 +9,7 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right header-menu">
-        <% if signed_in? %>
+        <% if logged_in? %>
           <li>
             <%= link_to users_path do %>
               <%= icon("users") %>
@@ -17,7 +17,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to user_path(current_user) do %>
+            <%= link_to current_user do %>
               <%= icon("user") %>
               <span>Profile</span>
             <% end %>
