@@ -9,12 +9,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies (ubuntu)
-      if: ${{ matrix.os == 'ubuntu-latest' }}
-      run: sudo apt install shared-mime-info
-    - name: Install dependencies (macos)
-      if: ${{ matrix.os == 'macos-latest' }}
-      run: brew install shared-mime-info
     - name: Set up Ruby ${{ matrix.ruby }}
       uses: ruby/setup-ruby@v1
       with:
