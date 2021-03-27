@@ -5,8 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: sudo apt install shared-mime-info
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -23,8 +21,6 @@ jobs:
     steps:
     - uses: reviewdog/action-setup@v1
     - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: sudo apt install shared-mime-info
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
