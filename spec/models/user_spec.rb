@@ -6,12 +6,13 @@ RSpec.describe User, type: :model do
   fixtures :users, :tweets
 
   subject(:user) do
-    User.new(name: "toshimaru", email: "mail@test.com",
+    User.new(name: "toshimaru", email: "mail@example.com", slug: "toshimaru",
              password: "my password", password_confirmation: "my password")
   end
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
+  it { should respond_to(:slug) }
   it { should respond_to(:password) }
   it { should respond_to(:password_digest) }
   it { should respond_to(:password_confirmation) }
