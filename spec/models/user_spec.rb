@@ -82,7 +82,7 @@ RSpec.describe User, type: :model do
   describe "associations" do
     describe ".followers" do
       let(:user) { users(:fixture_user_1) }
-        let(:other_user) { users(:fixture_user_2) }
+      let(:other_user) { users(:fixture_user_2) }
       before { user.follow!(other_user) }
       it { expect(other_user.followers).to include(user) }
     end
