@@ -3,7 +3,23 @@
 require "rails_helper"
 
 RSpec.describe "Relationships", type: :request do
+  fixtures :users
+  let(:user) { users(:fixture_user_1) }
+  let(:another_user) { users(:fixture_user_2) }
+
   describe "POST /create" do
+    context "login" do
+      before { log_in_as(user) }
+      it "creates relationship" do
+        expect {
+          post relationship_path, params: { relationship: { followed_id: another_user.id } }
+        }.to change(Relationship, :count).by(1)
+        relationship = Relationship.find_by(follower: user, followed: another_user)
+        expect(relationship.follower).to eq user
+        expect(relationship.followed).to eq another_user
+      end
+    end
+
     context "without login" do
       before { post relationship_path }
       it { expect(response).to redirect_to(login_path) }
