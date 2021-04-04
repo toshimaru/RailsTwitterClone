@@ -22,63 +22,63 @@ RSpec.describe User, type: :model do
   it { should respond_to(:active_relationships) }
   it { should respond_to(:following) }
   it { should respond_to(:passive_relationships) }
-  it { should respond_to(:followers) }
-  it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
   it { should respond_to(:unfollow) }
   it { should respond_to(:remember_token) }
 
-  it { should be_valid }
+  describe "validations" do
+    it { is_expected.to be_valid }
 
-  describe "when name is not present" do
-    before { user.name = " " }
-    it { should be_invalid }
-  end
+    describe "when name is not present" do
+      before { user.name = " " }
+      it { is_expected.to be_invalid }
+    end
 
-  describe "when name is too long" do
-    before { user.name = "a" * 51 }
-    it { should be_invalid }
-  end
+    describe "when name is too long" do
+      before { user.name = "a" * 51 }
+      it { is_expected.to be_invalid }
+    end
 
-  describe "when email format is invalid" do
-    it "should be invalid" do
-      addresses = %w[user@foo,bar user.foo user@foo.]
-      addresses << "too.long.email@address.com-#{"a" * 250}"
-      addresses.each do |address|
-        user.email = address
-        expect(user).to be_invalid
+    describe "when email format is invalid" do
+      it "should be invalid" do
+        addresses = %w[user@foo,bar user.foo user@foo.]
+        addresses << "too.long.email@address.com-#{"a" * 250}"
+        addresses.each do |address|
+          user.email = address
+          expect(user).to be_invalid
+        end
       end
     end
-  end
 
-  describe "when email format is valid" do
-    it "should be valid" do
-      addresses = %w[user@foo.bar a+b@a.com toshi...1@a.b.c]
-      addresses.each do |address|
-        user.email = address
-        expect(user).to be_valid
+    describe "when email format is valid" do
+      it "should be valid" do
+        addresses = %w[user@foo.bar a+b@a.com toshi...1@a.b.c]
+        addresses.each do |address|
+          user.email = address
+          expect(user).to be_valid
+        end
       end
     end
-  end
 
-  describe "when email address is already taken" do
-    before do
-      user_with_same_email = user.dup
-      user_with_same_email.email = user.email.upcase
-      user_with_same_email.save
+    describe "when email address is already taken" do
+      before do
+        user_with_same_email = user.dup
+        user_with_same_email.email = user.email.upcase
+        user_with_same_email.save
+      end
+
+      it { is_expected.to be_invalid }
     end
 
-    it { should be_invalid }
-  end
+    describe "when password doesn't match confirmation" do
+      before { user.password_confirmation = "aaa" }
+      it { is_expected.to be_invalid }
+    end
 
-  describe "when password doesn't match confirmation" do
-    before { user.password_confirmation = "aaa" }
-    it { should be_invalid }
-  end
-
-  describe "with a password that's too short" do
-    before { user.password = "a" * 3 }
-    it { should be_invalid }
+    describe "with a password that's too short" do
+      before { user.password = "a" * 3 }
+      it { is_expected.to be_invalid }
+    end
   end
 
   describe "return value of authenticate method" do
