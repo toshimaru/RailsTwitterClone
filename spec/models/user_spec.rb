@@ -136,25 +136,21 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "following & followers" do
-    let(:other_user) { users(:fixture_user_1) }
-
-    before do
-      user.save
-      user.follow!(other_user)
-    end
-
-    describe "following" do
-      it { should be_following(other_user) }
-      it { expect(user.following).to include(other_user) }
-    end
-
-    describe "followers" do
-      it { expect(other_user.followers).to include(user) }
-    end
+  describe "#following?" do
+    let(:user) { users(:fixture_user_1) }
+    let(:other_user) { users(:fixture_user_2) }
+    before { user.follow!(other_user) }
+    it { is_expected.to be_following(other_user) }
   end
 
-  describe "authenticated?" do
+  describe "#followers" do
+    let(:user) { users(:fixture_user_1) }
+    let(:other_user) { users(:fixture_user_2) }
+    before { user.follow!(other_user) }
+    it { expect(other_user.followers).to include(user) }
+  end
+
+  describe "#authenticated?" do
     it "should return false for a user with nil digest" do
       expect(user.authenticated?(nil)).to be false
       expect(user.authenticated?("")).to be false
