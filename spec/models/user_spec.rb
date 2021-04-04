@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
   it { should respond_to(:active_relationships) }
   it { should respond_to(:following) }
   it { should respond_to(:passive_relationships) }
-  it { should respond_to(:follow!) }
+  it { should respond_to(:follow) }
   it { should respond_to(:unfollow) }
   it { should respond_to(:remember_token) }
 
@@ -129,7 +129,7 @@ RSpec.describe User, type: :model do
   describe "#following?" do
     let(:user) { users(:fixture_user_1) }
     let(:other_user) { users(:fixture_user_2) }
-    before { user.follow!(other_user) }
+    before { user.follow(other_user) }
     it { is_expected.to be_following(other_user) }
   end
 
@@ -139,7 +139,7 @@ RSpec.describe User, type: :model do
     let(:unfollowed_tweet) { FactoryBot.create(:tweet) }
 
     before do
-      user.follow!(followed_user)
+      user.follow(followed_user)
       FactoryBot.create_list(:tweet, 3, user: followed_user, content: Faker::Quote.famous_last_words)
     end
 

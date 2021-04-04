@@ -31,7 +31,7 @@ RSpec.describe "Static Pages", type: :system do
         let(:other_user) { users(:fixture_user_1) }
 
         before do
-          other_user.follow!(user)
+          other_user.follow(user)
           visit root_path
         end
 

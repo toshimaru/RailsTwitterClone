@@ -38,12 +38,12 @@ class User < ApplicationRecord
     Tweet.where(user_id: id).or(Tweet.where(user_id: active_relationships.select(:followed_id)))
   end
 
-  def following?(other_user)
-    following.include?(other_user)
+  def follow(other_user)
+    following << other_user unless self == other_user
   end
 
-  def follow!(other_user)
-    active_relationships.create!(followed_id: other_user.id)
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   def unfollow(other_user)

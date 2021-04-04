@@ -167,7 +167,7 @@ RSpec.describe "UserPages", type: :system do
 
       describe "unfollowing a user" do
         before do
-          user.follow!(other_user)
+          user.follow(other_user)
           visit user_path(other_user)
         end
 
@@ -193,7 +193,7 @@ RSpec.describe "UserPages", type: :system do
 
   describe "following/followers" do
     let(:other_user) { FactoryBot.create(:user) }
-    before { user.follow!(other_user) }
+    before { user.follow(other_user) }
 
     describe "followed users" do
       before do
