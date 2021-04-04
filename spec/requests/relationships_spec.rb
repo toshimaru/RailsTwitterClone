@@ -10,6 +10,7 @@ RSpec.describe "Relationships", type: :request do
   describe "POST /create" do
     context "login" do
       before { log_in_as(user) }
+
       it "creates relationship" do
         expect {
           post relationship_path, params: { relationship: { followed_id: another_user.id } }
@@ -27,6 +28,21 @@ RSpec.describe "Relationships", type: :request do
   end
 
   describe "DELETE /destroy" do
+    context "login" do
+      before {
+        user.follow!(another_user)
+        log_in_as(user)
+      }
+
+      it "destroys relationship" do
+        expect {
+          delete relationship_path, params: { relationship: { followed_id: another_user.id } }
+        }.to change(Relationship, :count).by(-1)
+        relationship = Relationship.find_by(follower: user, followed: another_user)
+        expect(relationship).to be_nil
+      end
+    end
+
     context "without login" do
       before { delete relationship_path }
       it { expect(response).to redirect_to(login_path) }
