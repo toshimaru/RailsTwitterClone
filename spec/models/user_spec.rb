@@ -17,7 +17,6 @@ RSpec.describe User, type: :model do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
-  it { should respond_to(:feed) }
   it { should respond_to(:active_relationships) }
   it { should respond_to(:following) }
   it { should respond_to(:passive_relationships) }
@@ -83,12 +82,12 @@ RSpec.describe User, type: :model do
   describe "associations" do
     describe ".followers" do
       let(:user) { users(:fixture_user_1) }
-      let(:other_user) { users(:fixture_user_2) }
+        let(:other_user) { users(:fixture_user_2) }
       before { user.follow!(other_user) }
       it { expect(other_user.followers).to include(user) }
     end
 
-    describe ".associations" do
+    describe ".tweets" do
       before { user.save }
 
       let!(:older_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.day.ago) }
@@ -99,26 +98,8 @@ RSpec.describe User, type: :model do
       end
 
       it "should destroy associated tweets" do
-        tweets = user.tweets
         user.destroy!
-        tweets.each do |tweet|
-          expect(Tweet.find_by(id: tweet.id)).to be_nil
-        end
-      end
-
-      describe "status" do
-        let(:unfollowed_post) { tweets(:tweet) }
-        let(:followed_user) { users(:fixture_user_2) }
-
-        before do
-          user.follow!(followed_user)
-          3.times { followed_user.tweets.create!(content: Faker::Quote.famous_last_words) }
-        end
-
-        it "includes following user's tweets" do
-          expect(user.feed).to include(newer_tweet, older_tweet, *followed_user.tweets)
-          expect(user.feed).not_to include(unfollowed_post)
-        end
+        expect(user.tweets).to eq []
       end
     end
   end
@@ -139,12 +120,27 @@ RSpec.describe User, type: :model do
     end
   end
 
-
   describe "#following?" do
     let(:user) { users(:fixture_user_1) }
     let(:other_user) { users(:fixture_user_2) }
     before { user.follow!(other_user) }
     it { is_expected.to be_following(other_user) }
+  end
+
+  describe "#feed" do
+    let(:user) { users(:fixture_user_1) }
+    let(:followed_user) { users(:fixture_user_2) }
+    let(:unfollowed_tweet) { FactoryBot.create(:tweet) }
+
+    before do
+      user.follow!(followed_user)
+      FactoryBot.create_list(:tweet, 3, user: followed_user, content: Faker::Quote.famous_last_words)
+    end
+
+    it "includes following user's tweets" do
+      expect(user.feed).to include(*followed_user.tweets.to_a)
+      expect(user.feed).not_to include(unfollowed_tweet)
+    end
   end
 
   describe "#authenticated?" do
