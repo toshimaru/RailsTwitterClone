@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
   it { should respond_to(:followers) }
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
-  it { should respond_to(:unfollow!) }
+  it { should respond_to(:unfollow) }
   it { should respond_to(:remember_token) }
 
   it { should be_valid }
