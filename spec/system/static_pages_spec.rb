@@ -30,10 +30,10 @@ RSpec.describe "Static Pages", type: :system do
       describe "follower/following counts" do
         let(:other_user) { users(:fixture_user_1) }
 
-        before do
-          other_user.follow(user)
+        before {
+          FactoryBot.create(:relationship, follower: other_user, followed: user)
           visit root_path
-        end
+        }
 
         it { should have_link("0", href: following_user_path(user)) }
         it { should have_link("1", href: followers_user_path(user)) }

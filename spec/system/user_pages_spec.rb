@@ -166,15 +166,15 @@ RSpec.describe "UserPages", type: :system do
       end
 
       describe "unfollowing a user" do
-        before do
-          user.follow(other_user)
+        before {
+          FactoryBot.create(:relationship, follower: user, followed: other_user)
           visit user_path(other_user)
-        end
+        }
 
         it "should decrement the followed user count" do
-          expect do
+          expect {
             click_button "Unfollow"
-          end.to change(user.following, :count).by(-1)
+          }.to change(user.following, :count).by(-1)
         end
 
         it "should decrement the other user's followers count" do
@@ -193,17 +193,17 @@ RSpec.describe "UserPages", type: :system do
 
   describe "following/followers" do
     let(:other_user) { FactoryBot.create(:user) }
-    before { user.follow(other_user) }
+    before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
 
     describe "followed users" do
-      before do
+      before {
         log_in_as(user)
         visit following_user_path(user)
-      end
+      }
 
-      it { should have_title("Following") }
-      it { should have_selector("h2", text: "Following") }
-      it { should have_link(other_user.name, href: user_path(other_user)) }
+      it { is_expected.to have_title("Following") }
+      it { is_expected.to have_selector("h2", text: "Following") }
+      it { is_expected.to have_link(other_user.name, href: user_path(other_user)) }
     end
 
     describe "followers" do
