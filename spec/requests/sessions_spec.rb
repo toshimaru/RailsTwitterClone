@@ -43,7 +43,7 @@ RSpec.describe "/sessions", type: :request do
       end
     end
 
-    context "no login" do
+    context "without login" do
       it "redirects to root" do
         delete logout_path
         expect(response).to redirect_to(root_url)
