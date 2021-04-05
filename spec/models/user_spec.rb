@@ -110,15 +110,23 @@ RSpec.describe User, type: :model do
   end
 
   describe "#authenticate" do
-    subject(:user) { FactoryBot.create(:user) }
-    let(:found_user) { User.find_by(email: user.email) }
+    subject { user.authenticate(password) }
 
     describe "with valid password" do
-      it { is_expected.to eq found_user.authenticate(user.password) }
+      let(:password) { user.password }
+      it { is_expected.to be user }
     end
 
     describe "with invalid password" do
-      it { expect(found_user.authenticate("invalid")).to be false }
+      let(:password) { "invalid password" }
+      it { is_expected.to be false }
+    end
+  end
+
+  describe "#authenticated?" do
+    it "should return false for a user with nil digest" do
+      expect(user.authenticated?(nil)).to be false
+      expect(user.authenticated?("")).to be false
     end
   end
 
@@ -155,13 +163,6 @@ RSpec.describe User, type: :model do
     it "includes following user's tweets" do
       expect(user.feed).to include(*followed_user.tweets.to_a)
       expect(user.feed).not_to include(unfollowed_tweet)
-    end
-  end
-
-  describe "#authenticated?" do
-    it "should return false for a user with nil digest" do
-      expect(user.authenticated?(nil)).to be false
-      expect(user.authenticated?("")).to be false
     end
   end
 end
