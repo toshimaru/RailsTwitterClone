@@ -10,19 +10,23 @@ RSpec.describe User, type: :model do
              password: "my password", password_confirmation: "my password")
   end
 
-  it { should respond_to(:name) }
-  it { should respond_to(:email) }
-  it { should respond_to(:slug) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:authenticate) }
-  it { should respond_to(:active_relationships) }
-  it { should respond_to(:following) }
-  it { should respond_to(:passive_relationships) }
-  it { should respond_to(:follow) }
-  it { should respond_to(:unfollow) }
-  it { should respond_to(:remember_token) }
+  describe "attributes" do
+    it { is_expected.to respond_to(:name) }
+    it { is_expected.to respond_to(:email) }
+    it { is_expected.to respond_to(:slug) }
+    it { is_expected.to respond_to(:password_digest) }
+    it { is_expected.to respond_to(:remember_token) }
+    it { is_expected.to respond_to(:remember_digest) }
+  end
+
+  describe "methods" do
+    it { is_expected.to respond_to(:password) }
+    it { is_expected.to respond_to(:password_confirmation) }
+    it { is_expected.to respond_to(:authenticate) }
+    it { is_expected.to respond_to(:active_relationships) }
+    it { is_expected.to respond_to(:following) }
+    it { is_expected.to respond_to(:passive_relationships) }
+  end
 
   describe "validations" do
     it { is_expected.to be_valid }
@@ -124,6 +128,19 @@ RSpec.describe User, type: :model do
       it { should_not eq user_for_invalid_password }
       it { expect(user_for_invalid_password).to be false }
     end
+  end
+
+  describe "#follow" do
+    let(:user) { users(:fixture_user_1) }
+    let(:other_user) { users(:fixture_user_2) }
+    it { expect(user.follow(other_user)).to eq [other_user] }
+  end
+
+  describe "#unfollow" do
+    let(:user) { users(:fixture_user_1) }
+    let(:other_user) { users(:fixture_user_2) }
+    before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
+    it { expect { user.unfollow(other_user) }.to change(user.following, :count).by(-1) }
   end
 
   describe "#following?" do
