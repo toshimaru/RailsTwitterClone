@@ -5,10 +5,7 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   fixtures :users
 
-  subject(:user) do
-    User.new(name: "toshimaru", email: "mail@example.com", slug: "toshimaru",
-             password: "my password", password_confirmation: "my password")
-  end
+  subject(:user) { FactoryBot.build(:user) }
 
   describe "attributes" do
     it { is_expected.to respond_to(:name) }
@@ -84,22 +81,20 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
+    subject(:user) { users(:fixture_user_1) }
+    let(:other_user) { users(:fixture_user_2) }
+
     describe ".followers" do
-      let(:user) { users(:fixture_user_1) }
-      let(:other_user) { users(:fixture_user_2) }
       before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
       it { expect(other_user.followers).to include(user) }
     end
 
     describe ".following" do
-      let(:user) { users(:fixture_user_1) }
-      let(:other_user) { users(:fixture_user_2) }
       before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
       it { expect(user.following).to include(other_user) }
     end
 
     describe ".tweets" do
-      before { user.save }
       let!(:older_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.day.ago) }
       let!(:newer_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago) }
 
@@ -114,19 +109,16 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "return value of authenticate method" do
-    before { user.save }
+  describe "#authenticate" do
+    subject(:user) { FactoryBot.create(:user) }
     let(:found_user) { User.find_by(email: user.email) }
 
     describe "with valid password" do
-      it { should eq found_user.authenticate(user.password) }
+      it { is_expected.to eq found_user.authenticate(user.password) }
     end
 
     describe "with invalid password" do
-      let(:user_for_invalid_password) { found_user.authenticate("invalid") }
-
-      it { should_not eq user_for_invalid_password }
-      it { expect(user_for_invalid_password).to be false }
+      it { expect(found_user.authenticate("invalid")).to be false }
     end
   end
 

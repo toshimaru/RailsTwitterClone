@@ -8,3 +8,8 @@ fixture_user_2:
   slug: <%= Faker::Internet.slug %>
   email:  <%= Faker::Internet.free_email %>
   password_digest: <%= User.digest('password') %>
+tweet_user:
+  name: <%= Faker::Name.name %>
+  slug: <%= Faker::Internet.slug %>
+  email:  <%= Faker::Internet.free_email %>
+  password_digest: <%= User.digest('password') %>
