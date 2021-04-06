@@ -2,7 +2,7 @@
 
 class RelationshipsController < ApplicationController
   before_action :logged_in_user
-  before_action :set_relationship_user
+  before_action :set_followed_user
 
   def create
     current_user.follow(@user)
@@ -15,7 +15,7 @@ class RelationshipsController < ApplicationController
   end
 
   private
-    def set_relationship_user
+    def set_followed_user
       @user = User.find(params[:relationship][:followed_id])
     end
 end
