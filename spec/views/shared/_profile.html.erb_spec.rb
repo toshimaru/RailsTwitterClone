@@ -10,9 +10,10 @@ RSpec.describe "shared/_profile", type: :view do
   end
 
   context "login" do
+    let(:login_user) { users(:fixture_user_2) }
+
     before do
-      @other_user = users(:fixture_user_2)
-      allow_any_instance_of(SessionsHelper).to receive(:current_user).and_return(@other_user)
+      log_in_as(login_user)
     end
 
     it "renders user follow form" do
