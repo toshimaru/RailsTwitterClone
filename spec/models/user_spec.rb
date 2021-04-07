@@ -131,9 +131,16 @@ RSpec.describe User, type: :model do
   end
 
   describe "#follow" do
-    let(:user) { users(:fixture_user_1) }
-    let(:other_user) { users(:fixture_user_2) }
-    it { expect(user.follow(other_user)).to eq [other_user] }
+    describe "user follow other user" do
+      let(:user) { users(:fixture_user_1) }
+      let(:other_user) { users(:fixture_user_2) }
+      it { expect(user.follow(other_user)).to eq [other_user] }
+    end
+
+    describe "user can't follow other user" do
+      let(:user) { users(:fixture_user_1) }
+      it { expect(user.follow(user)).to be_nil }
+    end
   end
 
   describe "#unfollow" do
