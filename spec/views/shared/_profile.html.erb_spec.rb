@@ -12,17 +12,38 @@ RSpec.describe "shared/_profile", type: :view do
   context "login" do
     let(:login_user) { users(:fixture_user_2) }
 
-    before do
-      log_in_as(login_user)
+    describe "follow" do
+      before do
+        log_in_as(login_user)
+      end
+
+      it "renders user follow form" do
+        render
+
+        assert_select "#follow_form" do
+          assert_select "form[action=?][method=?]", relationship_path, "post" do
+            assert_select "input[type=hidden][name=?][value=?]", "relationship[followed_id]", @user.id.to_s
+            assert_select "input[type=submit][value=?]", "Follow"
+          end
+        end
+      end
     end
 
-    it "renders user follow form" do
-      render
+    describe "unfollow" do
+      before do
+        FactoryBot.create(:relationship, follower: login_user, followed: @user)
+        log_in_as(login_user)
+      end
 
-      assert_select "#follow_form" do
-        assert_select "form[action=?][method=?]", relationship_path, "post" do
-          assert_select "input[name=?][value=?]", "relationship[followed_id]", @user.id.to_s
-          assert_select "input[type=submit][value=?]", "Follow"
+      it "renders user follow form" do
+        render
+
+        assert_select "#follow_form" do
+          assert_select "form[action=?][method=?]", relationship_path, "post" do
+            assert_select "input[type=hidden][name=?][value=?]", "relationship[follower_id]", login_user.id.to_s
+            assert_select "input[type=hidden][name=?][value=?]", "relationship[followed_id]", @user.id.to_s
+            assert_select "input[type=submit][value=?]", "Unfollow"
+          end
         end
       end
     end
