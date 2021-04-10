@@ -12,17 +12,13 @@ RSpec.describe User, type: :model do
     it { is_expected.to respond_to(:email) }
     it { is_expected.to respond_to(:slug) }
     it { is_expected.to respond_to(:password_digest) }
-    it { is_expected.to respond_to(:remember_token) }
     it { is_expected.to respond_to(:remember_digest) }
+    it { is_expected.to respond_to(:remember_token) }
   end
 
   describe "methods" do
     it { is_expected.to respond_to(:password) }
     it { is_expected.to respond_to(:password_confirmation) }
-    it { is_expected.to respond_to(:authenticate) }
-    it { is_expected.to respond_to(:active_relationships) }
-    it { is_expected.to respond_to(:following) }
-    it { is_expected.to respond_to(:passive_relationships) }
   end
 
   describe "validations" do
@@ -124,9 +120,22 @@ RSpec.describe User, type: :model do
   end
 
   describe "#authenticated?" do
-    it "should return false for a user with nil digest" do
-      expect(user.authenticated?(nil)).to be false
-      expect(user.authenticated?("")).to be false
+    subject { user.authenticated?(remember_token) }
+
+    describe "remember_token is nil" do
+      let(:remember_token) { nil }
+      it { is_expected.to be false }
+    end
+
+    describe "remember_token is empty string" do
+      let(:remember_token) { "" }
+      it { is_expected.to be false }
+    end
+
+    describe "remeber_toke is valid" do
+      let(:remember_token) { described_class.new_token }
+      before { user.remember_digest = described_class.digest(remember_token) }
+      it { is_expected.to be true }
     end
   end
 
@@ -152,10 +161,21 @@ RSpec.describe User, type: :model do
   end
 
   describe "#following?" do
+    subject { user.following?(follow_user) }
+
     let(:user) { users(:fixture_user_1) }
     let(:other_user) { users(:fixture_user_2) }
     before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
-    it { is_expected.to be_following(other_user) }
+
+    describe "user following other user" do
+      let(:follow_user) { other_user }
+      it { is_expected.to be true }
+    end
+
+    describe "user following other user" do
+      let(:follow_user) { user }
+      it { is_expected.to be false }
+    end
   end
 
   describe "#feed" do
