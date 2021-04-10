@@ -131,15 +131,16 @@ RSpec.describe User, type: :model do
   end
 
   describe "#follow" do
+    subject { user.follow(follow_user) }
+
     describe "user follow other user" do
-      let(:user) { users(:fixture_user_1) }
-      let(:other_user) { users(:fixture_user_2) }
-      it { expect(user.follow(other_user)).to eq [other_user] }
+      let(:follow_user) { users(:fixture_user_2) }
+      it { is_expected.to eq [follow_user] }
     end
 
     describe "user can't follow other user" do
-      let(:user) { users(:fixture_user_1) }
-      it { expect(user.follow(user)).to be_nil }
+      let(:follow_user) { user }
+      it { is_expected.to be_nil }
     end
   end
 
@@ -158,6 +159,8 @@ RSpec.describe User, type: :model do
   end
 
   describe "#feed" do
+    subject { user.feed }
+
     let(:user) { users(:fixture_user_1) }
     let(:followed_user) { users(:fixture_user_2) }
     let(:unfollowed_tweet) { FactoryBot.create(:tweet) }
@@ -168,8 +171,8 @@ RSpec.describe User, type: :model do
     end
 
     it "includes following user's tweets" do
-      expect(user.feed).to include(*followed_user.tweets.to_a)
-      expect(user.feed).not_to include(unfollowed_tweet)
+      is_expected.to include(*followed_user.tweets)
+      is_expected.not_to include(unfollowed_tweet)
     end
   end
 end
