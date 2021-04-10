@@ -43,7 +43,7 @@ RSpec.describe "/users", type: :request do
   end
 
   describe "DELETE /destroy" do
-    context "no login" do
+    context "without login" do
       it "doen't delete user" do
         delete user_path(user.slug)
         expect(response).to redirect_to(login_path)
@@ -69,7 +69,7 @@ RSpec.describe "/users", type: :request do
   end
 
   describe "PATCH /update" do
-    context "no login" do
+    context "without login" do
       it "doen't update user" do
         patch user_path(user.slug)
         expect(response).to redirect_to(login_path)
