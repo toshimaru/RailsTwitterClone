@@ -12,7 +12,10 @@ class CheckExistingMigrationsForRails6 < ActiveRecord::Migration[6.0]
     if migration_from_rails5?
       raise StandardError, <<~MIGRATION_MSG
         Plese run `bin/rails db:reset`.
-        CAUTION: all data will be cleared if you reset database.
+
+        CAUTION:
+        All data will be cleared if you reset database and new tables will be
+        created in the next migrations.
       MIGRATION_MSG
     end
   end
