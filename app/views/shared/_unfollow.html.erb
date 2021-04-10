@@ -1,3 +1,5 @@
-<%= form_with model: current_user.active_relationships.find_by(followed: @user), local: true, html: { method: :delete } do |form| %>
+<%= form_with model: current_user.active_relationships.find_by(followed: user), local: true, html: { method: :delete } do |form| %>
+  <%= form.hidden_field :follower_id  %>
+  <%= form.hidden_field :followed_id  %>
   <%= form.submit "Unfollow", class: "btn btn-large btn-default" %>
 <% end %>

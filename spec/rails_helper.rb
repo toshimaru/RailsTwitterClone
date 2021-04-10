@@ -78,6 +78,7 @@ RSpec.configure do |config|
 
   config.include(RequestSpecHelper, type: :request)
   config.include(SystemSpecHelper, type: :system)
+  config.include(ViewSpecHelper, type: :view)
 
   config.before(:each, type: :system) do
     driven_by :rack_test

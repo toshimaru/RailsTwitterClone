@@ -12,7 +12,7 @@ class User < ApplicationRecord
                                    foreign_key: "followed_id",
                                    inverse_of: :followed,
                                    dependent: :destroy
-  has_many :following, through: :active_relationships, source: :followed
+  has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
   before_save { self.email = email.downcase }
@@ -38,16 +38,16 @@ class User < ApplicationRecord
     Tweet.where(user_id: id).or(Tweet.where(user_id: active_relationships.select(:followed_id)))
   end
 
+  def follow(other_user)
+    following << other_user unless self == other_user
+  end
+
   def following?(other_user)
-    active_relationships.find_by(followed_id: other_user.id)
+    following.include?(other_user)
   end
 
-  def follow!(other_user)
-    active_relationships.create!(followed_id: other_user.id)
-  end
-
-  def unfollow!(other_user)
-    active_relationships.find_by(followed_id: other_user.id).destroy!
+  def unfollow(other_user)
+    following.delete(other_user)
   end
 
   def remember
