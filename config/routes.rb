@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root "static_pages#home"
+  root "home#index"
 
   get    "login",  to: "sessions#new"
   post   "login",  to: "sessions#create"
