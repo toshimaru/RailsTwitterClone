@@ -5,8 +5,7 @@ require "rails_helper"
 RSpec.describe "Tweet pages", type: :system do
   subject { page }
 
-  # NOTE: Use `let!` to avoid `exception: #<BCrypt::Errors::InvalidHash: invalid hash>`
-  let!(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
   before { log_in_as(user) }
 
   describe "show all tweets" do
