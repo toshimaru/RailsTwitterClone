@@ -7,16 +7,16 @@ RSpec.describe "Static Pages", type: :system do
 
   describe "Help" do
     before { visit help_path }
-    it { should have_title "Help" }
+    it { is_expected.to have_title "Help" }
   end
 
   describe "About" do
     before { visit about_path }
-    it { should have_title "About" }
+    it { is_expected.to have_title "About" }
   end
 
   describe "Contact" do
     before { visit contact_path }
-    it { should have_title "Contact" }
+    it { is_expected.to have_title "Contact" }
   end
 end
