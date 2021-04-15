@@ -10,9 +10,7 @@ RSpec.describe "Home", type: :system do
   context "login" do
     let(:user) { FactoryBot.create(:user) }
 
-    before do
-      log_in_as(user)
-    end
+    before { log_in_as(user) }
 
     describe "Timeline" do
       before do
@@ -52,6 +50,21 @@ RSpec.describe "Home", type: :system do
 
       it { is_expected.to have_link("0", href: following_user_path(user)) }
       it { is_expected.to have_link("1", href: followers_user_path(user)) }
+    end
+  end
+
+  context "without login" do
+    before { visit root_path }
+
+    it "shows home for non-login user" do
+      is_expected.to have_title("Welcome")
+      is_expected.to have_content("Welcome to Twitter Clone")
+      is_expected.to have_link("Log in")
+      is_expected.to have_link("Sign up")
+    end
+
+    describe "screenshot", js: true do
+      it { page.save_screenshot "non-login-home.png" }
     end
   end
 end
