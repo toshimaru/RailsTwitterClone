@@ -51,7 +51,7 @@ RSpec.describe "Authentication", type: :system do
       end
     end
 
-    context "for non-log-in users" do
+    context "without login" do
       let(:user) { FactoryBot.create(:user) }
 
       describe "visit root page" do

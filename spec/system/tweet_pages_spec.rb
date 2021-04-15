@@ -28,7 +28,7 @@ RSpec.describe "Tweet pages", type: :system do
   end
 
   describe "tweet creation" do
-    before { visit root_path }
+    before { visit tweets_path }
 
     describe "with invalid information" do
       it "should not create a tweet" do
@@ -53,7 +53,7 @@ RSpec.describe "Tweet pages", type: :system do
     before { FactoryBot.create(:tweet, user: user) }
 
     describe "as correct user" do
-      before { visit root_path }
+      before { visit tweets_path }
 
       it "should delete a tweet" do
         expect { click_link "delete" }.to change(Tweet, :count).by(-1)
