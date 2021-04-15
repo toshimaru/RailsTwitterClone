@@ -3,43 +3,7 @@
 require "rails_helper"
 
 RSpec.describe "Static Pages", type: :system do
-  fixtures :users
-
   subject { page }
-
-  describe "Home" do
-    describe "for log in users" do
-      let(:user) { FactoryBot.create(:user) }
-
-      before do
-        FactoryBot.create_list(:tweet, 2, user: user, content: Faker::Quote.famous_last_words)
-        log_in_as(user)
-        visit root_path
-      end
-
-      it "should render the user's feed" do
-        user.feed.each do |item|
-          should have_content(item.content)
-        end
-      end
-
-      it { should have_title "Home" }
-      it { should have_selector("textarea") }
-      it { should have_field("tweet[content]") }
-
-      describe "follower/following counts" do
-        let(:other_user) { users(:fixture_user_1) }
-
-        before {
-          FactoryBot.create(:relationship, follower: other_user, followed: user)
-          visit root_path
-        }
-
-        it { should have_link("0", href: following_user_path(user)) }
-        it { should have_link("1", href: followers_user_path(user)) }
-      end
-    end
-  end
 
   describe "Help" do
     before { visit help_path }
