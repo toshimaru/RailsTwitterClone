@@ -48,6 +48,7 @@ RSpec.describe "Home", type: :system do
         user.follow(other_user)
         visit root_path
       }
+
       it "shows Tweets/Followings/Followings with the number" do
         within ".stats" do
           is_expected.to have_link("2", href: user_path(user))
