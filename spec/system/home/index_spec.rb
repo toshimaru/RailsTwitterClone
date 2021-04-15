@@ -7,32 +7,46 @@ RSpec.describe "Home", type: :system do
 
   subject { page }
 
-  describe "for log in users" do
+  context "login" do
     let(:user) { FactoryBot.create(:user) }
 
     before do
-      FactoryBot.create_list(:tweet, 2, user: user, content: Faker::Quote.famous_last_words)
       log_in_as(user)
-      visit root_path
     end
 
-    it "renders the user's feed" do
-      user.feed.each do |item|
-        is_expected.to have_content(item.content)
+    describe "Timeline" do
+      before do
+        FactoryBot.create_list(:tweet, 3, user: user, content: Faker::Quote.famous_last_words)
+        visit root_path
+      end
+
+      it "renders the user's feed" do
+        is_expected.to have_title "Home"
+        user.feed.each do |item|
+          is_expected.to have_content(item.content)
+        end
       end
     end
 
-    it "shows home" do
-      is_expected.to have_title "Home"
-      is_expected.to have_selector("textarea")
-      is_expected.to have_field("tweet[content]")
+    describe "Tweet creation" do
+      let(:tweet) { Faker::Quote.famous_last_words }
+
+      before {
+        visit root_path
+        fill_in "tweet_content", with: tweet
+      }
+
+      it "creates a tweet" do
+        expect { click_button "Post" }.to change(Tweet, :count).by(1)
+        is_expected.to have_content(tweet)
+      end
     end
 
-    describe "follower/following counts" do
+    describe "follower/following link" do
       let(:other_user) { users(:fixture_user_1) }
 
       before {
-        FactoryBot.create(:relationship, follower: other_user, followed: user)
+        other_user.follow(user)
         visit root_path
       }
 
