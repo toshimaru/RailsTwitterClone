@@ -51,19 +51,8 @@ RSpec.describe "Authentication", type: :system do
       end
     end
 
-    context "for non-log-in users" do
+    context "without login" do
       let(:user) { FactoryBot.create(:user) }
-
-      describe "visit root page" do
-        before { visit root_path }
-        it { should have_content("Welcome to Twitter Clone") }
-        it { should have_link("Log in") }
-        it { should have_link("Sign up") }
-
-        describe "screenshot", js: true do
-          it { page.save_screenshot "log-in.png" }
-        end
-      end
 
       describe "when attempting to visit a protected page" do
         describe "visiting the edit page" do
