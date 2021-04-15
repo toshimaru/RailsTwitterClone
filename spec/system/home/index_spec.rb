@@ -40,16 +40,21 @@ RSpec.describe "Home", type: :system do
       end
     end
 
-    describe "follower/following link" do
+    describe "Tweets/Followings/Followings" do
       let(:other_user) { users(:fixture_user_1) }
 
       before {
-        other_user.follow(user)
+        FactoryBot.create_list(:tweet, 2, user: user, content: Faker::Quote.famous_last_words)
+        user.follow(other_user)
         visit root_path
       }
-
-      it { is_expected.to have_link("0", href: following_user_path(user)) }
-      it { is_expected.to have_link("1", href: followers_user_path(user)) }
+      it "shows Tweets/Followings/Followings with the number" do
+        within ".stats" do
+          is_expected.to have_link("2", href: user_path(user))
+          is_expected.to have_link("1", href: following_user_path(user))
+          is_expected.to have_link("0", href: followers_user_path(user))
+        end
+      end
     end
   end
 
