@@ -35,22 +35,21 @@ RSpec.describe User, type: :model do
     end
 
     describe "when email format is invalid" do
-      it "should be invalid" do
-        addresses = %w[user@foo,bar user.foo user@foo.]
-        addresses << "too.long.email@address.com-#{"a" * 250}"
-        addresses.each do |address|
+      it "becomes invalid" do
+        invalid_addresses = %W[user@foo,bar user.foo user@foo. too.long.email@address.com-#{"a" * 250}]
+        invalid_addresses.each do |address|
           user.email = address
-          expect(user).to be_invalid
+          is_expected.to be_invalid
         end
       end
     end
 
     describe "when email format is valid" do
-      it "should be valid" do
-        addresses = %w[user@foo.bar a+b@a.com toshi...1@a.b.c]
+      it "becomes valid" do
+        addresses = %w[user@foo.bar a+b@a.com 1...2@a.b.c]
         addresses.each do |address|
           user.email = address
-          expect(user).to be_valid
+          is_expected.to be_valid
         end
       end
     end
@@ -94,11 +93,11 @@ RSpec.describe User, type: :model do
       let!(:older_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.day.ago) }
       let!(:newer_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago) }
 
-      it "should have the right tweets in the right order" do
+      it "has the right tweets in the right order" do
         expect(user.tweets).to eq [newer_tweet, older_tweet]
       end
 
-      it "should destroy associated tweets" do
+      it "destroys associated tweets" do
         user.destroy!
         expect(user.tweets).to eq []
       end
