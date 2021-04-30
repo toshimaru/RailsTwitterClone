@@ -1,4 +1,3 @@
-
 name: "Rubocop Code Scanning"
 on:
   push:
@@ -19,7 +18,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6
+        ruby-version: 3.0
     - name: Install Code Scanning integration
       run: bundle add code-scanning-rubocop --skip-install
     - name: Install dependencies
