@@ -33,7 +33,7 @@ This application doesn't provide many features in order to keep it simple. Here 
 
 ### JavaScript
 
-- webpacker
+* webpacker
 
 ### For CSS Style
 
