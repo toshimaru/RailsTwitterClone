@@ -61,7 +61,7 @@ GEM
     ast (2.4.2)
     autoprefixer-rails (10.2.5.0)
       execjs (< 2.8.0)
-    bcrypt (3.1.15)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
