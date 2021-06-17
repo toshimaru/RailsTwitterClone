@@ -1,21 +1,22 @@
 version: 2
 updates:
-- package-ecosystem: bundler
-  directory: "/"
-  schedule:
-    interval: daily
-  reviewers:
-  - toshimaru
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  reviewers:
-  - toshimaru
-- package-ecosystem: github-actions
-  directory: "/"
-  schedule:
-    interval: weekly
-  reviewers:
-  - toshimaru
-
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: daily
+    reviewers:
+      - toshimaru
+    open-pull-requests-limit: 10
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+    reviewers:
+      - toshimaru
+    open-pull-requests-limit: 10
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    reviewers:
+      - toshimaru
