@@ -6,6 +6,8 @@ updates:
       interval: daily
     reviewers:
       - toshimaru
+    allow:
+      - dependency-type: "all"
     open-pull-requests-limit: 10
   - package-ecosystem: npm
     directory: "/"
