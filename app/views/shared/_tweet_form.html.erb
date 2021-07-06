@@ -3,6 +3,15 @@
     <div class="field">
       <%= form.text_area :content, placeholder: "Compose new Tweet..." %>
     </div>
-    <%= form.submit "Post", class: "btn btn-large btn-primary" %>
+    <div class="btn-toolbar justify-content-between">
+      <div class="btn-group">
+        <span class="image">
+          <%= form.file_field :image %>
+        </span>
+      </div>
+      <div class="btn-group">
+        <%= form.submit "Post", class: "btn btn-large btn-primary" %>
+      </div>
+    </div>
   <% end %>
 </div>
