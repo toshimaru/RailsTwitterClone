@@ -1,0 +1,19 @@
+<li class="tweet clearfix">
+  <%= link_to gravatar_for(tweet.user), tweet.user %>
+  <div class="content">
+    <div class="user">
+      <%= link_to tweet.user.name, tweet.user %>
+    </div>
+    <div class="tweet-content">
+      <%= tweet.content %>
+    </div>
+    <div class="tweet-footer">
+      <time><%= time_ago_in_words(tweet.created_at) %> ago.</time>
+      <% if current_user?(tweet.user) %>
+      <div class="tweet-actions">
+        <%= link_to "delete", tweet, method: :delete, data: { confirm: "You sure?" }, title: tweet.content %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</li>

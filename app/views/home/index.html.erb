@@ -12,7 +12,7 @@
         <h2 class="title">Tweets</h2>
         <% if @feed_items.any? %>
         <ol class="tweets">
-          <%= render partial: 'shared/feed_item', collection: @feed_items %>
+          <%= render @feed_items %>
           <div class="paginate">
             <%= will_paginate @feed_items, renderer: BootstrapPagination::Rails %>
           </div>
