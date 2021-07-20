@@ -10,11 +10,11 @@
     <div class="col-md-8">
       <div class="timeline">
         <h2 class="title">Tweets</h2>
-        <% if @feed_items.any? %>
+        <% if @tweets.any? %>
         <ol class="tweets">
-          <%= render @feed_items %>
+          <%= render @tweets %>
           <div class="paginate">
-            <%= will_paginate @feed_items, renderer: BootstrapPagination::Rails %>
+            <%= will_paginate @tweets, renderer: BootstrapPagination::Rails %>
           </div>
         </ol>
         <% end %>

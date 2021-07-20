@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @tweet = current_user.tweets.build if logged_in?
-    @feed_items = @user.tweets.paginate(page: params[:page])
+    @tweets = @user.tweets.paginate(page: params[:page])
   end
 
   def new
