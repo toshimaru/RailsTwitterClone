@@ -65,6 +65,11 @@ textarea {
   display: block;
   margin-left: 63px;
 }
+.tweet-content {
+  img {
+    padding: 8px 0;
+  }
+}
 .tweet-footer {
   font-size: 13px;
   color: $gray;
