@@ -35,11 +35,7 @@ RSpec.describe "Tweet", type: :system do
     describe "with invalid information" do
       it "doesn't create a tweet" do
         expect { click_button "Post" }.not_to change(Tweet, :count)
-      end
-
-      describe "error messages" do
-        before { click_button "Post" }
-        it { is_expected.to have_content("can't be blank") }
+        is_expected.to have_content("can't be blank")
       end
     end
 
