@@ -29,37 +29,46 @@ RSpec.describe "Tweet", type: :system do
     end
   end
 
-  describe "tweet creation" do
+  describe "Tweet creation" do
     before { visit tweets_path }
 
     describe "with invalid information" do
       it "doesn't create a tweet" do
         expect { click_button "Post" }.not_to change(Tweet, :count)
-      end
-
-      describe "error messages" do
-        before { click_button "Post" }
-        it { is_expected.to have_content("can't be blank") }
+        is_expected.to have_content "can't be blank"
       end
     end
 
     describe "with valid information" do
-      before { fill_in "tweet_content", with: "Lorem ipsum" }
+      let(:tweet) { Faker::Quote.famous_last_words }
+      let(:image) { file_fixture("image.png") }
+
+      before { fill_in "tweet_content", with: tweet }
+
       it "creates a tweet" do
         expect { click_button "Post" }.to change(Tweet, :count).by(1)
+        is_expected.to have_content "Tweet created!"
+        is_expected.to have_content(tweet)
+      end
+
+      it "creates a tweet with image" do
+        attach_file "tweet_image", image
+        expect { click_button "Post" }.to change(Tweet, :count).by(1)
+        is_expected.to have_content "Tweet created!"
+        is_expected.to have_content(tweet)
+        is_expected.to have_selector ".tweet-img"
       end
     end
   end
 
-  describe "tweet destroy" do
-    before { FactoryBot.create(:tweet, user: user) }
+  describe "Tweet deletion" do
+    before {
+      FactoryBot.create(:tweet, user: user)
+      visit tweets_path
+    }
 
-    describe "as correct user" do
-      before { visit tweets_path }
-
-      it "deletes a tweet" do
-        expect { click_link "delete" }.to change(Tweet, :count).by(-1)
-      end
+    it "deletes a tweet" do
+      expect { click_link "delete" }.to change(Tweet, :count).by(-1)
     end
   end
 end
