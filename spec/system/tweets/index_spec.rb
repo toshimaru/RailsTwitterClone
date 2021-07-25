@@ -40,10 +40,20 @@ RSpec.describe "Tweet", type: :system do
     end
 
     describe "with valid information" do
+      let(:image) { file_fixture("image.png") }
+
       before { fill_in "tweet_content", with: "Lorem ipsum" }
+
       it "creates a tweet" do
         expect { click_button "Post" }.to change(Tweet, :count).by(1)
         is_expected.to have_content "Tweet created!"
+      end
+
+      it "creates a tweet with image" do
+        attach_file "tweet_image", image
+        expect { click_button "Post" }.to change(Tweet, :count).by(1)
+        is_expected.to have_content "Tweet created!"
+        is_expected.to have_selector ".tweet-img"
       end
     end
   end
