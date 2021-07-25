@@ -29,13 +29,13 @@ RSpec.describe "Tweet", type: :system do
     end
   end
 
-  describe "tweet creation" do
+  describe "Tweet creation" do
     before { visit tweets_path }
 
     describe "with invalid information" do
       it "doesn't create a tweet" do
         expect { click_button "Post" }.not_to change(Tweet, :count)
-        is_expected.to have_content("can't be blank")
+        is_expected.to have_content "can't be blank"
       end
     end
 
@@ -43,11 +43,12 @@ RSpec.describe "Tweet", type: :system do
       before { fill_in "tweet_content", with: "Lorem ipsum" }
       it "creates a tweet" do
         expect { click_button "Post" }.to change(Tweet, :count).by(1)
+        is_expected.to have_content "Tweet created!"
       end
     end
   end
 
-  describe "tweet destroy" do
+  describe "Tweet deletion" do
     before { FactoryBot.create(:tweet, user: user) }
 
     describe "as correct user" do
