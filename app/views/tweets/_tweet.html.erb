@@ -6,10 +6,12 @@
     </div>
     <div class="tweet-content">
       <%= tweet.content %>
-      <div class="tweet-img">
-        <%= image_tag tweet.image, class: 'rounded img-responsive' if tweet.image.attached? %>
-      </div>
-    </div>  
+      <% if tweet.image.attached? %>
+        <div class="tweet-img">
+          <%= image_tag tweet.image, class: 'rounded img-responsive' %>
+        </div>
+      <% end %>
+    </div>
     <div class="tweet-footer">
       <time><%= time_ago_in_words(tweet.created_at) %> ago.</time>
       <% if current_user?(tweet.user) %>
