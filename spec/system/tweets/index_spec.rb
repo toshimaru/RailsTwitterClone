@@ -40,33 +40,35 @@ RSpec.describe "Tweet", type: :system do
     end
 
     describe "with valid information" do
+      let(:tweet) { Faker::Quote.famous_last_words }
       let(:image) { file_fixture("image.png") }
 
-      before { fill_in "tweet_content", with: "Lorem ipsum" }
+      before { fill_in "tweet_content", with: tweet }
 
       it "creates a tweet" do
         expect { click_button "Post" }.to change(Tweet, :count).by(1)
         is_expected.to have_content "Tweet created!"
+        is_expected.to have_content(tweet)
       end
 
       it "creates a tweet with image" do
         attach_file "tweet_image", image
         expect { click_button "Post" }.to change(Tweet, :count).by(1)
         is_expected.to have_content "Tweet created!"
+        is_expected.to have_content(tweet)
         is_expected.to have_selector ".tweet-img"
       end
     end
   end
 
   describe "Tweet deletion" do
-    before { FactoryBot.create(:tweet, user: user) }
+    before {
+      FactoryBot.create(:tweet, user: user)
+      visit tweets_path
+    }
 
-    describe "as correct user" do
-      before { visit tweets_path }
-
-      it "deletes a tweet" do
-        expect { click_link "delete" }.to change(Tweet, :count).by(-1)
-      end
+    it "deletes a tweet" do
+      expect { click_link "delete" }.to change(Tweet, :count).by(-1)
     end
   end
 end

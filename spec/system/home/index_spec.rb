@@ -36,6 +36,7 @@ RSpec.describe "Home", type: :system do
 
       it "creates a tweet" do
         expect { click_button "Post" }.to change(Tweet, :count).by(1)
+        is_expected.to have_content "Tweet created!"
         is_expected.to have_content(tweet)
       end
     end
