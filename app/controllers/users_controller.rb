@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @tweet = current_user.tweets.build if logged_in?
-    @tweets = @user.tweets.paginate(page: params[:page])
+    @tweets = @user.tweets.with_attached_image.paginate(page: params[:page])
   end
 
   def new
