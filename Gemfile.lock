@@ -37,6 +37,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (0.9.5)
+      rails (>= 5.2.0)
     activejob (6.0.4)
       activesupport (= 6.0.4)
       globalid (>= 0.3.6)
@@ -290,6 +292,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_storage_validations
   bcrypt
   bootsnap
   bootstrap-sass
@@ -321,4 +324,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   2.2.16
+   2.2.24

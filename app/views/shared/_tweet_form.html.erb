@@ -5,7 +5,7 @@
     </div>
     <div class="btn-toolbar justify-content-between">
       <div class="btn-group">
-        <%= form.file_field :image %>
+        <%= form.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
       </div>
       <div class="btn-group">
         <%= form.submit "Post", class: "btn btn-large btn-primary" %>
