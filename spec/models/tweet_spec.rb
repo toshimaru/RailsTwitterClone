@@ -10,32 +10,38 @@ RSpec.describe Tweet, type: :model do
   subject(:tweet) { user.tweets.build(content: "Lorem ipsum") }
 
   describe "attributes" do
-    it { should respond_to(:content) }
-    it { should respond_to(:user_id) }
+    it { is_expected.to respond_to(:content) }
+    it { is_expected.to respond_to(:user_id) }
   end
 
   describe "associations" do
-    it { should respond_to(:user) }
+    it { is_expected.to respond_to(:user) }
     it { expect(tweet.user).to eq(user) }
-    it { should respond_to(:image) }
+    it { is_expected.to respond_to(:image) }
   end
 
   describe "validations" do
-    it { should be_valid }
+    it { is_expected.to be_valid }
 
     describe "when user_id is not present" do
       before { tweet.user_id = nil }
-      it { should be_invalid }
+      it { is_expected.to be_invalid }
     end
 
     describe "with blank content" do
       before { tweet.content = " " }
-      it { should be_invalid }
+      it { is_expected.to be_invalid }
     end
 
     describe "with content that is too long" do
       before { tweet.content = "a" * 141 }
-      it { should be_invalid }
+      it { is_expected.to be_invalid }
+    end
+
+    describe "with invalid image" do
+      let(:image) { fixture_file_upload(file_fixture("empty.txt")) }
+      before { tweet.image.attach(image) }
+      it { is_expected.to be_invalid }
     end
   end
 end
