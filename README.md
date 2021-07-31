@@ -17,6 +17,7 @@ Check out this repository and then,
 
 ```console
 $ bundle install
+$ rails webpacker:install
 $ bundle exec rails db:migrate
 $ bundle exec rails server
 ```
