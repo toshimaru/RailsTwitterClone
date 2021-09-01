@@ -10,6 +10,7 @@ gem "bcrypt"
 gem "bootsnap", require: false
 gem "bootstrap-sass"
 gem "font-awesome-sass", "~> 4.3"
+gem "image_processing"
 gem "puma"
 gem "sass-rails"
 gem "sqlite3"
@@ -20,8 +21,6 @@ gem "will_paginate"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 
