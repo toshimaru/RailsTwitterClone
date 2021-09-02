@@ -98,7 +98,7 @@ GEM
       railties (>= 5.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
-    ffi (1.15.3)
+    ffi (1.15.4)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     globalid (0.5.2)
