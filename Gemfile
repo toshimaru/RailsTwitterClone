@@ -3,7 +3,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "rails", "~> 6.0.4"
+gem "rails", "7.0.0.alpha2"
+gem "mysql2"
 
 gem "active_storage_validations"
 gem "bcrypt"
@@ -38,11 +39,11 @@ group :development, :test do
 end
 
 group :development do
-  gem "bullet"
+  # gem "bullet"
   gem "listen"
   gem "rubocop"
   gem "rubocop-rails_config"
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  # gem "spring"
+  # gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console"
 end
