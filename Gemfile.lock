@@ -276,7 +276,7 @@ GEM
       thread_safe (~> 0.1)
     unicode-display_width (2.1.0)
     uniform_notifier (1.14.2)
-    web-console (4.1.0)
+    web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
@@ -294,7 +294,7 @@ GEM
       will_paginate (>= 3.0.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.0)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
