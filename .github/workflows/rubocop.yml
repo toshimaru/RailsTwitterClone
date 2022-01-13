@@ -8,7 +8,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.0'
+        ruby-version: '3.1'
         bundler-cache: true
     - name: Run RuboCop
       run: bundle exec rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
@@ -24,7 +24,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.0'
+        ruby-version: '3.1'
         bundler-cache: true
     - name: Run rubocop & reviewdog
       env:

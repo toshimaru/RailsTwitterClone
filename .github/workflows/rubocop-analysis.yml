@@ -18,7 +18,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.0'
+        ruby-version: '3.1'
     - name: Install Code Scanning integration
       run: bundle add code-scanning-rubocop --skip-install
     - name: Install dependencies
