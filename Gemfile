@@ -35,6 +35,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "selenium-webdriver"
   gem "simplecov", require: false
+  gem "net-smtp", require: false
 end
 
 group :development do
