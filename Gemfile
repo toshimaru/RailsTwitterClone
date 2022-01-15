@@ -9,7 +9,7 @@ gem "active_storage_validations"
 gem "bcrypt"
 gem "bootsnap", require: false
 gem "bootstrap-sass"
-gem "font-awesome-sass", "~> 4.3"
+gem "font-awesome-sass", "~> 5.15"
 gem "image_processing"
 gem "puma"
 gem "sass-rails"
