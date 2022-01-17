@@ -64,15 +64,10 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
-    autoprefixer-rails (10.4.2.0)
-      execjs (~> 2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.10.3)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.2.4)
     bullet (7.0.1)
       activesupport (>= 3.0.0)
@@ -95,7 +90,6 @@ GEM
     digest (3.1.0)
     docile (1.4.0)
     erubi (1.10.0)
-    execjs (2.8.1)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -316,7 +310,6 @@ DEPENDENCIES
   active_storage_validations
   bcrypt
   bootsnap
-  bootstrap-sass
   bullet
   byebug
   capybara

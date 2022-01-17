@@ -8,7 +8,6 @@ gem "rails", "~> 6.0.4"
 gem "active_storage_validations"
 gem "bcrypt"
 gem "bootsnap", require: false
-gem "bootstrap-sass"
 gem "font-awesome-sass", "~> 4.3"
 gem "image_processing"
 gem "puma"
