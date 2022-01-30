@@ -14,7 +14,7 @@
         <h2 class="title">Tweets</h2>
         <ol class="tweets">
           <%= render @tweets %>
-          <div class="paginate">
+          <div class="my-4">
             <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
           </div>
         </ol>

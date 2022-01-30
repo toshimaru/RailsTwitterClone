@@ -100,9 +100,9 @@ textarea {
   margin: 0;
   padding: 10px 15px 0;
 }
-.paginate {
-  padding: 15px 10px;
-  text-align: center;
+.pagination {
+  display: flex;
+  justify-content: center;
 }
 .tweet-actions {
   float: right;
