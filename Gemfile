@@ -15,7 +15,7 @@ gem "sass-rails"
 gem "sqlite3"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "webpacker"
-gem "will_paginate-bootstrap"
+gem "will_paginate-bootstrap-style"
 gem "will_paginate"
 
 # Use Redis adapter to run Action Cable in production

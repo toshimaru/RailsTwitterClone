@@ -14,7 +14,7 @@
         <ol class="tweets">
           <%= render @tweets %>
           <div class="paginate">
-            <%= will_paginate @tweets, renderer: BootstrapPagination::Rails %>
+            <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
           </div>
         </ol>
         <% end %>
