@@ -2,9 +2,8 @@
 @import 'variable';
 
 body {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  padding-top: 60px;
-  background-color: #F5F8FA;
+  min-height: 75rem;
+  padding-top: 4.5rem;
 }
 ul, ol {
   padding: 0;
@@ -113,12 +112,17 @@ textarea {
   padding: 20px 30px;
   margin-top: 10px;
 }
-.header-menu {
+.navbar {
+  border-bottom: 1px solid #eff3f4;
+}
+.nav-item {
   .fa {
-    margin-right: 8px;
+    margin-right: 10px;
   }
 }
-
+.container {
+  max-width: 720px;
+}
 .debug_dump {
   clear: both;
   float: left;
