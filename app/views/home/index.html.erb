@@ -1,9 +1,9 @@
 <% if logged_in? %>
   <% provide(:title, 'Home') %>
-  <div>
+  <div class=main-column>
     <h2 class="title">Home</h2>
     <section>
-      <%= render 'shared/user_info' if logged_in? %>
+      <%= render 'shared/user_info' %>
     </section>
     <div class="timeline">
       <% if @tweets.any? %>

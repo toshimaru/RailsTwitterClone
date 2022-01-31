@@ -113,7 +113,7 @@ textarea {
   margin-top: 10px;
 }
 .navbar {
-  border-bottom: 1px solid #eff3f4;
+  border-bottom: 1px solid $lightGray;
 }
 .nav-item {
   .fa {
@@ -122,6 +122,9 @@ textarea {
 }
 .container {
   max-width: 720px;
+}
+.main-column {
+  border: 1px solid $lightGray;
 }
 .debug_dump {
   clear: both;
