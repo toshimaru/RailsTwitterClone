@@ -1,20 +1,21 @@
 <% if logged_in? %>
   <% provide(:title, 'Home') %>
+
   <div class=main-column>
     <h2 class="title">Home</h2>
     <section>
       <%= render 'shared/user_info' %>
     </section>
-    <div class="timeline">
-      <% if @tweets.any? %>
-      <ol class="tweets">
-        <%= render @tweets %>
-        <div class="my-4">
-          <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-        </div>
-      </ol>
-      <% end %>
-    </div>
+    <% if @tweets.any? %>
+      <div class="timeline">
+        <ol class="tweets">
+          <%= render @tweets %>
+          <div class="my-4">
+            <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+          </div>
+        </ol>
+      </div>
+    <% end %>
   </div>
 <% else %>
   <% provide(:title, 'Welcome') %>
