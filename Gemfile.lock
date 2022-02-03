@@ -194,7 +194,7 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.2.0)
     rexml (3.2.5)
-    rspec-core (3.10.1)
+    rspec-core (3.10.2)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.2)
       diff-lcs (>= 1.2.0, < 2.0)
