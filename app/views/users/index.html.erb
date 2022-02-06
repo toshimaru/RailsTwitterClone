@@ -1,17 +1,10 @@
 <% provide(:title, 'Users') %>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section>
-      <%= render 'shared/user_info' if logged_in? %>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <div class="timeline">
-      <h2 class="title">All Users</h2>
-      <ul class="tweets">
-        <%= render @users %>
-      </ul>
-    </div>
+<div class="main-column">
+  <h2 class="title">All Users</h2>
+  <div class="timeline">
+    <ul class="tweets">
+      <%= render @users %>
+    </ul>
   </div>
 </div>

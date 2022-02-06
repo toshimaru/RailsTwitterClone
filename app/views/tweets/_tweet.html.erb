@@ -8,7 +8,7 @@
       <%= tweet.content %>
       <% if tweet.image.attached? %>
         <div class="tweet-img">
-          <%= image_tag tweet.display_image, class: 'rounded img-responsive' %>
+          <%= image_tag tweet.display_image, class: 'img-fluid rounded' %>
         </div>
       <% end %>
     </div>

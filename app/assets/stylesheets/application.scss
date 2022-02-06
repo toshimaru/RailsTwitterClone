@@ -11,13 +11,5 @@
  *= require_self
  */
 
-@import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-.field_with_errors {
-  @extend .has-error;
-}
-.alert-notice {
-  @extend .alert-danger;
-}

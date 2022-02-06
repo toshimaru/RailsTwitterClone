@@ -14,8 +14,8 @@
       <% if @users.any? %>
       <ul class="tweets">
         <%= render @users %>
-        <div class="paginate">
-          <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+        <div class="my-4">
+          <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
         </div>
       </ul>
       <% end %>

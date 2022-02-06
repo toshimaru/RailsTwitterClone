@@ -2,4 +2,4 @@
 
 <%= render 'shared/profile' %>
 <%= render 'shared/stats' %>
-<%= render 'shared/tweet_form' %>
+<%= render 'shared/tweet_form' if @user == current_user%>
