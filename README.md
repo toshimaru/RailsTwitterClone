@@ -38,7 +38,6 @@ This application doesn't provide many features in order to keep it simple. Here 
 
 ### For CSS Style
 
-* bootstrap-sass
 * font-awesome-sass
 
 ### For testing
