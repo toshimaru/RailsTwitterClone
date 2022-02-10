@@ -235,7 +235,7 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
-    rubocop-rails_config (1.8.1)
+    rubocop-rails_config (1.8.2)
       railties (>= 5.0)
       rubocop (>= 1.19)
       rubocop-ast (>= 1.0.1)
