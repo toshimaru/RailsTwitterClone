@@ -136,6 +136,13 @@ textarea {
   box-sizing: border-box;
 }
 
+.alert {
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+}
+
 .checkbox {
   margin-top: -10px;
   margin-bottom: 16px;
