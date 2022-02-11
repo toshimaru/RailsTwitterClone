@@ -1,8 +1,8 @@
-<% provide(:title, "Log in") %>
+<% provide(:title, "Sign in") %>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3 one-col">
-    <h1>Log in to Twitter Clone</h1>
+    <h1>Sign in to Twitter Clone</h1>
 
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
       <div class="form-group">
@@ -19,7 +19,7 @@
           <span>Remember me on this computer</span>
         <% end %>
       </div>
-      <%= f.submit "Log in", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up", signup_path %></p>
