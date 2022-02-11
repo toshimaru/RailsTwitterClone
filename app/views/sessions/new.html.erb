@@ -1,27 +1,30 @@
 <% provide(:title, "Sign in") %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3 one-col">
-    <h1>Sign in to Twitter Clone</h1>
+<div class="text-center">
+  <div class="form-signin">
+    <%# <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> %>
+    <h1 class="h4 mb-3 fw-normal">Sign in to Twitter Clone</h1>
 
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-      <div class="form-group">
-        <%= f.label :email, class: 'control-label'%>
-        <%= f.text_field :email, class: 'form-control', autofocus: true  %>
+      <div class="form-floating">
+        <%= f.text_field :email, class: 'form-control', placeholder: 'Email', autofocus: true  %>
+        <%= f.label :email%>
       </div>
-      <div class="form-group">
-        <%= f.label :password, class: 'control-label' %>
-        <%= f.password_field :password, class: 'form-control' %>
+      <div class="form-floating">
+        <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+        <%= f.label :password %>
       </div>
-      <div class="checkbox">
-        <%= f.label :remember_me, class: 'control-label' do %>
+      <div class="checkbox mb-3">
+        <%= f.label :remember_me do %>
           <%= f.check_box :remember_me %>
-          <span>Remember me on this computer</span>
+          <span>Remember me</span>
         <% end %>
       </div>
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Sign in", class: "w-100 btn btn-lg btn-primary" %>
     <% end %>
 
-    <p>New user? <%= link_to "Sign up", signup_path %></p>
+    <div class="mt-5">
+      <p>New user? <%= link_to "Sign up", signup_path %></p>
+    </div>
   </div>
 </div>

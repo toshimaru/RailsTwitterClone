@@ -128,13 +128,6 @@ textarea {
 .main-column {
   border: 1px solid $lightGray;
 }
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  box-sizing: border-box;
-}
 
 .alert {
   ul {
@@ -143,14 +136,17 @@ textarea {
   }
 }
 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 16px;
-  span {
-    font-weight: normal;
-  }
+.form-signin {
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
+  margin: auto;
 }
 
-#session_remember_me {
-  width: auto;
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  box-sizing: border-box;
 }
