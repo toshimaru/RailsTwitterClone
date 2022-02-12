@@ -1,24 +1,18 @@
 <% provide(:title, @title) %>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section>
-      <%= render 'shared/profile' %>
-      <%= render 'shared/stats' %>
-      <%= render 'shared/tweet_form' if @user == current_user%>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <div class="timeline">
-      <h2 class="title"><%= @title %></h2>
-      <% if @users.any? %>
-      <ul class="tweets">
-        <%= render @users %>
-        <div class="my-4">
-          <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-        </div>
-      </ul>
-      <% end %>
-    </div>
+<div class="main-column">
+  <h2 class="title"><%= @title %></h2>
+  <section>
+    <%= render 'shared/user_info' %>
+  </section>
+  <div class="timeline">
+    <% if @users.any? %>
+    <ul class="tweets">
+      <%= render @users %>
+      <div class="my-4">
+        <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </div>
+    </ul>
+    <% end %>
   </div>
 </div>

@@ -128,22 +128,25 @@ textarea {
 .main-column {
   border: 1px solid $lightGray;
 }
+
+.alert {
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
+  margin: auto;
+}
+
 .debug_dump {
   clear: both;
   float: left;
   width: 100%;
   margin-top: 45px;
   box-sizing: border-box;
-}
-
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 16px;
-  span {
-    font-weight: normal;
-  }
-}
-
-#session_remember_me {
-  width: auto;
 }

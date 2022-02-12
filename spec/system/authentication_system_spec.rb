@@ -10,17 +10,16 @@ RSpec.describe "Authentication", type: :system do
   describe "authorization" do
     before { visit login_path }
 
-    it { should have_title("Log in") }
-    it { should have_content("Log in") }
+    it { should have_title("Sign in") }
 
     describe "screenshot", js: true do
       it { page.save_screenshot "login-page.png" }
     end
 
     context "with invalid information" do
-      before { click_button "Log in" }
+      before { click_button "Sign in" }
 
-      it { should have_title("Log in") }
+      it { should have_title("Sign in") }
       it { should have_selector("div.alert.alert-danger") }
 
       describe "after visiting another page" do
@@ -35,19 +34,19 @@ RSpec.describe "Authentication", type: :system do
       before do
         fill_in "Email",    with: user.email.upcase
         fill_in "Password", with: user.password
-        click_button "Log in"
+        click_button "Sign in"
       end
 
       it { should have_title("Home") }
       it { should have_link("Users", href: users_path) }
       it { should have_link("Profile", href: user_path(user)) }
       it { should have_link("Tweets", href: tweets_path) }
-      it { should have_link("Log out", href: logout_path) }
-      it { should_not have_link("Log in", href: login_path) }
+      it { should have_link("Sign out", href: logout_path) }
+      it { should_not have_link("Sign in", href: login_path) }
 
       describe "followed by logout" do
-        before { click_link "Log out" }
-        it { should have_link("Log in") }
+        before { click_link "Sign out" }
+        it { should have_link("Sign in") }
       end
     end
 
@@ -57,7 +56,7 @@ RSpec.describe "Authentication", type: :system do
       describe "when attempting to visit a protected page" do
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
-          it { should have_content("Log in") }
+          it { should have_content("Sign in") }
         end
       end
 
@@ -92,7 +91,7 @@ RSpec.describe "Authentication", type: :system do
         before { visit edit_user_path(wrong_user) }
 
         it { should_not have_content("Update your profile") }
-        it { should have_content("Log out") }
+        it { should have_content("Sign out") }
       end
     end
   end

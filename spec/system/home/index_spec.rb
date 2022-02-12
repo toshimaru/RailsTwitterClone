@@ -66,7 +66,7 @@ RSpec.describe "Home", type: :system do
     it "shows home for non-login user" do
       is_expected.to have_title("Welcome")
       is_expected.to have_content("Welcome to Twitter Clone")
-      is_expected.to have_link("Log in")
+      is_expected.to have_link("Sign in")
       is_expected.to have_link("Sign up")
     end
 
