@@ -5,8 +5,8 @@ class TweetsController < ApplicationController
   before_action :correct_user, only: [:destroy]
 
   def index
-    @tweet = current_user.tweets.build if logged_in?
     @tweets = Tweet.includes(:user).with_attached_image.paginate(page: params[:page])
+    # FIXME: show tweets for guest user
     render "home/index"
   end
 

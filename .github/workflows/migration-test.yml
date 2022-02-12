@@ -16,6 +16,6 @@ jobs:
         bundler-cache: true
     - name: Migration Test
       run: |
-        bundle exec rails db:migrate
-        bundle exec rails db:populate
-        bundle exec rails db:reset
+        bin/rails db:migrate
+        bin/rails db:populate
+        bin/rails db:reset

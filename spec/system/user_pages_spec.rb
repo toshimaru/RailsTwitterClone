@@ -47,7 +47,7 @@ RSpec.describe "UserPages", type: :system do
       describe "after saving the user" do
         before { click_button "Sign up" }
 
-        it { should have_link("Log out") }
+        it { should have_link("Sign out") }
         it { should have_selector("div.alert.alert-success", text: "Welcome") }
         it { should have_title(user_name) }
       end
@@ -76,7 +76,6 @@ RSpec.describe "UserPages", type: :system do
     end
 
     describe "page" do
-      it { should have_content("Update your profile") }
       it { should have_title("Edit user") }
       it { should have_link("Change", href: "http://gravatar.com/emails") }
       it { should have_link("Delete my account", href: user_path(user)) }
@@ -103,10 +102,10 @@ RSpec.describe "UserPages", type: :system do
       it { should have_title(new_name) }
       it { should have_link("Profile", href: user_path(user)) }
       it { should have_link("Setting", href: edit_user_path(user)) }
-      it { should have_link("Log out", href: logout_path) }
-      it { should_not have_link("Log in", href: login_path) }
+      it { should have_link("Sign out", href: logout_path) }
+      it { should_not have_link("Sign in", href: login_path) }
       it { should have_selector("div.alert.alert-success") }
-      it { expect(user.reload.name).to  eq new_name }
+      it { expect(user.reload.name).to eq new_name }
       it { expect(user.reload.email).to eq new_email }
     end
 
@@ -130,7 +129,7 @@ RSpec.describe "UserPages", type: :system do
     it { should_not have_selector("textarea") }
     it { should_not have_field("tweet[content]") }
 
-    describe "Log in user have tweet" do
+    describe "Sign in user have tweet" do
       before do
         log_in_as(user)
         visit user_path(user)

@@ -18,8 +18,8 @@ Check out this repository and then,
 ```console
 $ bundle install
 $ rails webpacker:install
-$ bundle exec rails db:migrate
-$ bundle exec rails server
+$ bin/rails db:migrate
+$ bin/rails server
 ```
 
 ## Features
@@ -66,6 +66,6 @@ $ bundle exec rspec
 ## Data reset and sample data creation
 
 ```console
-$ bundle exec rails db:reset    # Data reset
-$ bundle exec rails db:populate # Create sample data
+$ bin/rails db:reset    # Data reset
+$ bin/rails db:populate # Create sample data
 ```
