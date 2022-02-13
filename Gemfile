@@ -10,6 +10,7 @@ gem "bcrypt"
 gem "bootsnap", require: false
 gem "font-awesome-sass", "~> 4.3"
 gem "image_processing"
+gem "inline_svg"
 gem "puma"
 gem "sass-rails"
 gem "sqlite3"
