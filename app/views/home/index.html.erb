@@ -2,9 +2,11 @@
 
 <div class="main-column">
   <h2 class="title">Home</h2>
-  <section>
-    <%= render 'shared/user_info' %>
-  </section>
+  <% if logged_in? %>
+    <section>
+      <%= render 'shared/user_info' %>
+    </section>
+  <% end %>
   <% if @tweets.any? %>
     <div class="timeline">
       <ol class="tweets">

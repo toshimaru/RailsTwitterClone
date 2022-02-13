@@ -6,7 +6,6 @@ class TweetsController < ApplicationController
 
   def index
     @tweets = Tweet.includes(:user).with_attached_image.paginate(page: params[:page])
-    # FIXME: show tweets for guest user
     render "home/index"
   end
 
