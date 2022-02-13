@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root "home#index"
+  root "welcome#index"
 
+  get    "home",   to: "home#index"
   get    "login",  to: "sessions#new"
   post   "login",  to: "sessions#create"
   delete "logout", to: "sessions#destroy"
-
-  get "signup", to: "users#new"
+  get    "signup", to: "users#new"
   resources :users, only: [:index, :show, :edit, :create, :update, :destroy] do
     member do
       get :following
@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   resource  :relationship, only: [:create, :destroy]
   resolve("Relationship") { :relationship }
 
-  get "help",    to: "static_pages#help"
-  get "about",   to: "static_pages#about"
-  get "contact", to: "static_pages#contact"
+  get "help",  to: "static_pages#help"
+  get "about", to: "static_pages#about"
 end

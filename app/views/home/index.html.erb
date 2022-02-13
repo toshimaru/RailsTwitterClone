@@ -1,30 +1,20 @@
-<% if logged_in? %>
-  <% provide(:title, 'Home') %>
+<% provide(:title, 'Home') %>
 
-  <div class="main-column">
-    <h2 class="title">Home</h2>
+<div class="border">
+  <h2 class="title">Home</h2>
+  <% if logged_in? %>
     <section>
       <%= render 'shared/user_info' %>
     </section>
-    <% if @tweets.any? %>
-      <div class="timeline">
-        <ol class="tweets">
-          <%= render @tweets %>
-          <div class="my-4">
-            <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-          </div>
-        </ol>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <%# # FIXME: move to welcome_controller %>
-  <% provide(:title, 'Welcome') %>
-
-  <div class="main-column">
-    <h1>Welcome to Twitter Clone</h1>
-    <p> See what’s happening in the world right now</p>
-    <%= link_to 'Sign up', signup_path, class: "btn btn-primary" %>
-    <%= link_to 'Sign in', login_path, class: "btn btn-secondary" %>
-  </div>
-<% end %>
+  <% end %>
+  <% if @tweets.any? %>
+    <div class="timeline">
+      <ol class="tweets">
+        <%= render @tweets %>
+        <div class="my-4">
+          <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+        </div>
+      </ol>
+    </div>
+  <% end %>
+</div>

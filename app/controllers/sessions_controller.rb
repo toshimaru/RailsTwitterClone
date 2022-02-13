@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       reset_session
       params[:session][:remember_me] == "1" ? remember(user) : forget(user)
       log_in(user)
-      redirect_to root_url
+      redirect_to home_url
     else
       flash.now[:danger] = "Invalid email/password combination"
       render :new

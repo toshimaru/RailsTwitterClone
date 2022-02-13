@@ -8,26 +8,26 @@ RSpec.describe "/sessions", type: :request do
 
   describe "GET /new" do
     it "return 200" do
-      get login_path
+      get login_url
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
     it "redirects to root" do
-      post login_path, params: { session: { email: user.email, password: "password" } }
-      expect(response).to redirect_to(root_url)
+      post login_url, params: { session: { email: user.email, password: "password" } }
+      expect(response).to redirect_to(home_url)
     end
 
     it "creates a new session with remember_token cookie" do
-      post login_path, params: {
+      post login_url, params: {
         session: { email: user.email, password: "password", remember_me: "1" }
       }
       expect(cookies[:remember_token]).to be_present
     end
 
     it "creates a new session without remember_token cookie" do
-      post login_path, params: {
+      post login_url, params: {
         session: { email: user.email, password: "password", remember_me: "0" }
       }
       expect(cookies[:remember_token]).to be_nil
