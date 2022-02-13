@@ -1,4 +1,4 @@
-<div class="tweet-box">
+<div class="tweet-box border-top border-bottom">
   <%= form_with model: current_user.tweets.new, local: true do |form| %>
     <div class="field">
       <%= form.text_area :content, placeholder: "Compose new Tweet..." %>
