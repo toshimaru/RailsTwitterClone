@@ -8,11 +8,9 @@ gem "rails", "~> 6.0.4.6"
 gem "active_storage_validations"
 gem "bcrypt"
 gem "bootsnap", require: false
-gem "font-awesome-sass", "~> 4.3"
 gem "image_processing"
 gem "inline_svg"
 gem "puma"
-gem "sass-rails"
 gem "sqlite3"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "webpacker"
