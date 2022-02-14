@@ -98,8 +98,6 @@ GEM
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.5)
-    font-awesome-sass (4.7.0)
-      sass (>= 3.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.9.1)
@@ -107,6 +105,9 @@ GEM
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
+    inline_svg (1.8.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-wait (0.2.1)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -241,21 +242,6 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -277,7 +263,6 @@ GEM
     sqlite3 (1.4.2)
     thor (1.2.1)
     thread_safe (0.3.6)
-    tilt (2.0.10)
     timeout (0.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
@@ -315,8 +300,8 @@ DEPENDENCIES
   capybara
   factory_bot_rails
   faker
-  font-awesome-sass (~> 4.3)
   image_processing
+  inline_svg
   listen
   net-smtp
   pry-byebug
@@ -327,7 +312,6 @@ DEPENDENCIES
   rspec_junit_formatter
   rubocop
   rubocop-rails_config
-  sass-rails
   selenium-webdriver
   simplecov
   sqlite3

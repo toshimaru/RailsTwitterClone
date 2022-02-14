@@ -17,7 +17,6 @@ RSpec.describe "Tweet", type: :system do
     before { visit tweets_path }
 
     it "shows tweets" do
-      is_expected.to have_selector("h2", text: "Home")
       is_expected.to have_content(tweet1.content)
       is_expected.to have_content(tweet2.content)
       is_expected.to have_content(tweet3.content)
