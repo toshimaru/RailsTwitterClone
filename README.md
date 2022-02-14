@@ -17,7 +17,7 @@ Check out this repository and then,
 
 ```console
 $ bundle install
-$ rails webpacker:install
+$ bin/rails webpacker:install
 $ bin/rails db:migrate
 $ bin/rails server
 ```
@@ -36,9 +36,9 @@ This application doesn't provide many features in order to keep it simple. Here 
 
 - webpacker
 
-### For CSS Style
+### Database
 
-* font-awesome-sass
+- sqlite3
 
 ### For testing
 
