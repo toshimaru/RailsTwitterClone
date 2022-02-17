@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe "/tweets", type: :request do
   describe "GET /index" do
     before { get tweets_path }
-    it { expect(response).to have_http_status(200) }
+    it { expect(response).to be_ok }
   end
 
   describe "POST /create" do

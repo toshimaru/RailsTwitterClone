@@ -7,44 +7,38 @@ RSpec.describe "/users", type: :request do
   let(:user) { users(:fixture_user_1) }
 
   describe "GET /index" do
-    it "has a 200 status code" do
-      get users_path
-      expect(response).to have_http_status(200)
-    end
+    before { get users_path }
+    it { expect(response).to be_ok }
   end
 
   describe "GET /show" do
-    it "has a 200 status code" do
-      get user_path(user.slug)
-      expect(response).to have_http_status(200)
-    end
+    before { get user_path(user.slug) }
+    it { expect(response).to be_ok }
   end
 
   describe "GET /new" do
-    it "has a 200 status code" do
-      get signup_path
-      expect(response).to have_http_status(200)
-    end
+    before { get signup_path }
+    it { expect(response).to be_ok }
   end
 
   describe "POST /create" do
-    it "creates new user" do
+    it "creates a new user" do
       user_attributes = FactoryBot.attributes_for(:user)
       post users_path, params: { user: user_attributes }
       expect(response).to redirect_to(user_path(user_attributes[:slug]))
     end
 
     describe "User already exists" do
-      it "doesn't create new user" do
+      it "doesn't create a new user" do
         post users_path, params: { user: FactoryBot.attributes_for(:user, email: user.email) }
-        expect(response).to have_http_status(200)
+        expect(response).to be_ok
       end
     end
   end
 
   describe "DELETE /destroy" do
     context "without login" do
-      it "doen't delete user" do
+      it "doen't delete a user" do
         delete user_path(user.slug)
         expect(response).to redirect_to(login_path)
       end
@@ -52,7 +46,7 @@ RSpec.describe "/users", type: :request do
 
     context "login" do
       before { log_in_as(user) }
-      it "deletes user" do
+      it "deletes a user" do
         expect { delete user_path(user.slug) }.to change(User, :count).by(-1)
         expect(response).to redirect_to(root_path)
       end
@@ -70,18 +64,20 @@ RSpec.describe "/users", type: :request do
 
   describe "PATCH /update" do
     context "without login" do
-      it "doen't update user" do
-        patch user_path(user.slug)
+      before { patch user_path(user.slug) }
+      it "doen't update a user" do
         expect(response).to redirect_to(login_path)
       end
     end
 
     context "login" do
       let(:update_param) { FactoryBot.attributes_for(:user) }
-      before { log_in_as(user) }
-      it "updates user" do
+      before {
+        log_in_as(user)
         patch user_path(user.slug), params: { user: update_param }
         user.reload
+      }
+      it "updates a user" do
         expect(response).to redirect_to(user_path(user.slug))
         expect(user.name).to eq(update_param[:name])
         expect(user.email).to eq(update_param[:email])

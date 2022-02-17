@@ -3,10 +3,20 @@
 require "rails_helper"
 
 RSpec.describe "/", type: :request do
-  describe "GET /index" do
-    it "renders a successful response" do
-      get root_url
-      expect(response).to be_ok
+  context "without login" do
+    describe "GET /index" do
+      before { get root_url }
+      it { expect(response).to be_ok }
     end
+  end
+
+  context "login" do
+    fixtures :users
+    let(:user) { users(:fixture_user_1) }
+    before {
+      log_in_as(user)
+      get root_url
+    }
+    it { expect(response).to redirect_to(home_url) }
   end
 end

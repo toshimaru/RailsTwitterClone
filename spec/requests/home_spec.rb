@@ -8,18 +8,16 @@ RSpec.describe "/home", type: :request do
 
   describe "GET /index" do
     context "login" do
-      before { log_in_as(user) }
-      it "renders a 200 response" do
+      before {
+        log_in_as(user)
         get home_url
-        expect(response).to be_ok
-      end
+      }
+      it { expect(response).to be_ok }
     end
 
     context "without login" do
-      it "redirects to login page" do
-        get home_url
-        expect(response).to redirect_to login_url
-      end
+      before { get home_url }
+      it { expect(response).to redirect_to login_url }
     end
   end
 end
