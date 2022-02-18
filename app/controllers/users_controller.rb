@@ -33,9 +33,10 @@ class UsersController < ApplicationController
     end
   end
 
+  # TODO: Dont't include ID in the URL
   def update
     if @user.update(user_params)
-      flash[:success] = "Update your profile"
+      flash[:success] = "Profile was successfully updated."
       redirect_to @user
     else
       render :edit
