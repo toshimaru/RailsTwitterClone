@@ -69,51 +69,6 @@ RSpec.describe "UserPages", type: :system do
     end
   end
 
-  describe "edit" do
-    before do
-      log_in_as(user)
-      visit edit_user_path(user)
-    end
-
-    describe "page" do
-      it { should have_title("Edit user") }
-      it { should have_link("Change", href: "http://gravatar.com/emails") }
-      it { should have_link("Delete my account", href: user_path(user)) }
-    end
-
-    context "with invalid information" do
-      before { click_button "Save changes" }
-
-      it { should have_content("too short") }
-    end
-
-    context "with valid information" do
-      let(:new_name)  { "New Name" }
-      let(:new_email) { "new@example.com" }
-
-      before do
-        fill_in "Name",                  with: new_name
-        fill_in "Email",                 with: new_email
-        fill_in "Password",              with: user.password
-        fill_in "Password confirmation", with: user.password
-        click_button "Save changes"
-      end
-
-      it { should have_title(new_name) }
-      it { should have_link("Profile", href: user_path(user)) }
-      it { should have_link("Setting", href: edit_user_path(user)) }
-      it { should have_link("Sign out", href: logout_path) }
-      it { should_not have_link("Sign in", href: login_path) }
-      it { should have_selector("div.alert.alert-success") }
-      it { expect(user.reload.name).to eq new_name }
-      it { expect(user.reload.email).to eq new_email }
-    end
-
-    it "deletes account" do
-      expect { click_link "Delete my account" }.to change(User, :count).by(-1)
-    end
-  end
-
   describe "profile page (/user/:id)" do
     let!(:m1) { FactoryBot.create(:tweet, user: user, content: "Foo") }
     let!(:m2) { FactoryBot.create(:tweet, user: user, content: "Bar") }
