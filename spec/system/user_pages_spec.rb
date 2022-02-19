@@ -7,21 +7,6 @@ RSpec.describe "UserPages", type: :system do
 
   let(:user) { FactoryBot.create(:user) }
 
-  describe "Show all users (/users)" do
-    before do
-      FactoryBot.create_list(:user, 2)
-      visit users_path
-    end
-
-    it { should have_title("Users") }
-    it { should have_content("Users") }
-    it "should list each user" do
-      User.all.each do |user|
-        expect(page).to have_selector("li", text: user.name)
-      end
-    end
-  end
-
   describe "/signup" do
     before { visit signup_path }
 
