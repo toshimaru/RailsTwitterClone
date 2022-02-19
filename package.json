@@ -1,7 +1,7 @@
 {
   "license": "UNLICENSED",
   "dependencies": {
-    "@rails/ujs": "^6.1.4",
+    "@rails/ujs": "^7.0.2",
     "@rails/webpacker": "5.4.3",
     "bootstrap": "^5.1.3"
   },
