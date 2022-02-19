@@ -23,17 +23,15 @@ gem "will_paginate"
 # gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara"
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "factory_bot_rails"
   gem "faker"
-  gem "pry-byebug"
-  gem "pry-rails"
+  gem "net-smtp", require: false
   gem "rspec_junit_formatter"
   gem "rspec-rails"
   gem "selenium-webdriver"
   gem "simplecov", require: false
-  gem "net-smtp", require: false
 end
 
 group :development do
