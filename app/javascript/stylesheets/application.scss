@@ -1,9 +1,10 @@
+@import "bootstrap";
+@import "bootstrap_custom";
 @import 'variable';
 
 body {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  padding-top: 60px;
-  background-color: #F5F8FA;
+  min-height: 75rem;
+  padding-top: 3.5rem;
 }
 ul, ol {
   padding: 0;
@@ -43,12 +44,10 @@ textarea {
 .tweet-box {
   padding: 15px;
   background-color: rgba(0, 132, 180, 0.1);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 .tweets {
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: 0;
 
   .tweet {
     padding: 10px 15px 5px;
@@ -67,7 +66,7 @@ textarea {
 }
 .tweet-content {
   img {
-    padding: 8px 0;
+    margin: 8px 0;
   }
 }
 .tweet-footer {
@@ -77,6 +76,7 @@ textarea {
 .gravatar {
   float: left;
   margin-right: 10px;
+  border-radius: 50%;
 }
 .users {
   list-style: none;
@@ -100,9 +100,9 @@ textarea {
   margin: 0;
   padding: 10px 15px 0;
 }
-.paginate {
-  padding: 15px 10px;
-  text-align: center;
+.pagination {
+  display: flex;
+  justify-content: center;
 }
 .tweet-actions {
   float: right;
@@ -112,10 +112,32 @@ textarea {
   padding: 20px 30px;
   margin-top: 10px;
 }
-.header-menu {
+.nav-item {
   .fa {
-    margin-right: 8px;
+    margin-right: 10px;
   }
+}
+.container {
+  max-width: 720px;
+}
+
+.alert {
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 350px;
+  padding: 15px;
+  margin: auto;
+}
+
+.bi {
+  width: 1.1em;
+  height: 1.1em;
 }
 
 .debug_dump {
@@ -124,16 +146,4 @@ textarea {
   width: 100%;
   margin-top: 45px;
   box-sizing: border-box;
-}
-
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 16px;
-  span {
-    font-weight: normal;
-  }
-}
-
-#session_remember_me {
-  width: auto;
 }

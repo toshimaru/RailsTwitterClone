@@ -8,16 +8,18 @@
       <%= tweet.content %>
       <% if tweet.image.attached? %>
         <div class="tweet-img">
-          <%= image_tag tweet.display_image, class: 'rounded img-responsive' %>
+          <%= image_tag tweet.display_image, class: 'img-fluid rounded' %>
         </div>
       <% end %>
     </div>
     <div class="tweet-footer">
-      <time><%= time_ago_in_words(tweet.created_at) %> ago.</time>
+      <time>
+        <%= time_ago_in_words(tweet.created_at) %> ago.
+      </time>
       <% if current_user?(tweet.user) %>
-      <div class="tweet-actions">
-        <%= link_to "delete", tweet, method: :delete, data: { confirm: "You sure?" }, title: tweet.content %>
-      </div>
+        <div class="tweet-actions">
+          <%= link_to "delete", tweet, method: :delete, data: { confirm: "Delete Tweet?" } %>
+        </div>
       <% end %>
     </div>
   </div>

@@ -1,26 +1,19 @@
 <% provide(:title, @user.name) %>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section>
-      <%= render 'shared/profile' %>
-      <%= render 'shared/stats' %>
-      <%= render 'shared/tweet_form' if @user == current_user%>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <% if @user.tweets.any? %>
-      <div class="timeline">
-        <h2 class="title">Tweets</h2>
-        <ol class="tweets">
-          <%= render @tweets %>
-          <div class="paginate">
-            <%= will_paginate @tweets, renderer: BootstrapPagination::Rails %>
-          </div>
-        </ol>
-      </div>
-    <% else %>
-      <p>No post yet</p>
-    <% end %>
-  </div>
+<div class="border">
+  <section>
+    <%= render 'shared/user_info' %>
+  </section>
+  <% if @user.tweets.any? %>
+    <div class="timeline">
+      <ol class="tweets">
+        <%= render @tweets %>
+        <div class="my-4">
+          <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+        </div>
+      </ol>
+    </div>
+  <% else %>
+    <p>No post yet</p>
+  <% end %>
 </div>

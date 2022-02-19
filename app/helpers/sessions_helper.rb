@@ -33,7 +33,7 @@ module SessionsHelper
 
   def logged_in_user
     unless logged_in?
-      redirect_to login_path, notice: "Please sign in."
+      redirect_to login_path, flash: { danger: "Please sign in." }
     end
   end
 

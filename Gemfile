@@ -3,20 +3,18 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "rails", "~> 6.0.4"
+gem "rails", "~> 6.0.4.6"
 
 gem "active_storage_validations"
 gem "bcrypt"
 gem "bootsnap", require: false
-gem "bootstrap-sass"
-gem "font-awesome-sass", "~> 4.3"
 gem "image_processing"
+gem "inline_svg"
 gem "puma"
-gem "sass-rails"
 gem "sqlite3"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "webpacker"
-gem "will_paginate-bootstrap"
+gem "will_paginate-bootstrap-style"
 gem "will_paginate"
 
 # Use Redis adapter to run Action Cable in production
