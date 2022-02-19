@@ -36,7 +36,7 @@ RSpec.describe "User Edit", type: :system do
         click_button "Save changes"
       end
 
-      it 'updateds successfully' do
+      it "updates successfully" do
         is_expected.to have_title(new_name)
         is_expected.to have_selector("div.alert.alert-success", text: "Profile was successfully updated.")
         is_expected.to have_content(new_name)
@@ -46,19 +46,6 @@ RSpec.describe "User Edit", type: :system do
 
     it "deletes account" do
       expect { click_link "Delete my account" }.to change(User, :count).by(-1)
-    end
-
-    describe "as wrong user" do
-      fixtures :users
-      let(:user) { FactoryBot.create(:user) }
-      let(:wrong_user) { users(:fixture_user_1) }
-
-      before { log_in_as(user) }
-
-      describe "Visit wrong_user's edit page" do
-        before { visit edit_user_path(wrong_user) }
-        it { is_expected.to have_content("Sign out") }
-      end
     end
   end
 
