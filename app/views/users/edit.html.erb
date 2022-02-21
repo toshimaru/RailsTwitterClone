@@ -10,7 +10,7 @@
     </div>
   </form>
 
-  <%= form_with model: @user, local: true do |form| %>
+  <%= form_with model: @user do |form| %>
     <%= render 'shared/error_messages', object: form.object if form.object.errors.any? %>
 
     <div class="mb-3">

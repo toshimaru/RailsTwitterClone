@@ -5,7 +5,7 @@
     <%# <img class="mb-4" src="/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> %>
     <h1 class="h4 mb-3 fw-normal">Sign in to Twitter Clone</h1>
 
-    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+    <%= form_with(url: login_path, scope: :session) do |f| %>
       <div class="form-floating">
         <%= f.text_field :email, class: 'form-control', placeholder: 'Email', autofocus: true  %>
         <%= f.label :email%>

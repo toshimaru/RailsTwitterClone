@@ -25,9 +25,12 @@ This implementation is based on [Ruby on Rails Tutorial](https://www.railstutori
 Check out this repository and then,
 
 ```console
-$ bundle install
-$ bin/yarn install
-$ bin/rails db:migrate
+$ bin/setup
+```
+
+### Start Rails server
+
+```console
 $ bin/rails server
 ```
 
