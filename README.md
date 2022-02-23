@@ -2,6 +2,8 @@
 [![Code Climate](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone)
 [![Test Coverage](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone/coverage)
 [![CircleCI](https://circleci.com/gh/toshimaru/RailsTwitterClone.svg?style=svg)](https://circleci.com/gh/toshimaru/RailsTwitterClone)
+![Supported Ruby Version](https://img.shields.io/badge/Ruby-v3.1-green)
+![Supported Rails Version](https://img.shields.io/badge/Rails-v6.1-green)
 
 # Rails Twitter Clone
 
@@ -69,8 +71,9 @@ This application doesn't provide many features in order to keep it simple. Here 
 ### For debugging
 
 * bullet
-* pry-byebug
-* pry-rails
+* debug
+* rack-mini-profiler
+* rubocop
 * web-console
 
 See more details on [Gemfile](./Gemfile).
