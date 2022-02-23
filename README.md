@@ -69,8 +69,9 @@ This application doesn't provide many features in order to keep it simple. Here 
 ### For debugging
 
 * bullet
-* pry-byebug
-* pry-rails
+* debug
+* rack-mini-profiler
+* rubocop
 * web-console
 
 See more details on [Gemfile](./Gemfile).
