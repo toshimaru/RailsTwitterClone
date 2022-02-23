@@ -152,6 +152,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
+    rack-mini-profiler (2.3.4)
+      rack (>= 1.2.0)
     rack-proxy (0.7.2)
       rack
     rack-test (1.1.0)
@@ -306,6 +308,7 @@ DEPENDENCIES
   listen
   net-smtp
   puma
+  rack-mini-profiler
   rails (~> 6.1.0)
   rspec-rails
   rspec_junit_formatter

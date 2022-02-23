@@ -37,6 +37,7 @@ end
 group :development do
   gem "bullet"
   gem "listen"
+  gem "rack-mini-profiler"
   gem "rubocop"
   gem "rubocop-rails_config"
   gem "web-console"
