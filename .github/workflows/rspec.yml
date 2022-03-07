@@ -8,7 +8,7 @@ jobs:
         ruby: [2.7, '3.0', '3.1']
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Ruby ${{ matrix.ruby }}
       uses: ruby/setup-ruby@v1
       with:
@@ -23,7 +23,7 @@ jobs:
   docker-compose-build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - run: DOCKER_BUILDKIT=1 docker-compose build --parallel
     - run: docker-compose run web bin/webpack
     - run: docker-compose run web bundle exec rspec
