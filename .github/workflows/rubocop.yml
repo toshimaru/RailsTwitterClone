@@ -4,7 +4,7 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: reviewdog/action-setup@v1
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
