@@ -8,10 +8,6 @@ services:
       - bundle:/usr/local/bundle:cached
       - node_modules:/app/node_modules:cached
       - /app/.git
-      - /app/log
-      - /app/tmp
-      - /app/vendor
-      - /app/db/sqlite
     ports:
       - "3000:3000"
 volumes:
