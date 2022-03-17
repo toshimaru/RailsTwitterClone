@@ -40,18 +40,6 @@ ActiveRecord::Schema.define(version: 2022_02_19_155729) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.string "recipient_type", null: false
-    t.integer "recipient_id", null: false
-    t.string "type", null: false
-    t.json "params"
-    t.datetime "read_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["read_at"], name: "index_notifications_on_read_at"
-    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
-  end
-
   create_table "relationships", id: false, force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followed_id", null: false
