@@ -5,6 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - run: DOCKER_BUILDKIT=1 docker-compose build --parallel
+    - run: docker-compose build --parallel
     - run: docker-compose run web bin/webpack
     - run: docker-compose run web bundle exec rspec
