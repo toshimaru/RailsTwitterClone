@@ -1,4 +1,4 @@
-name: Rails Migration Test
+name: Rails Migration
 on: [push, pull_request]
 jobs:
   migration:
@@ -16,6 +16,4 @@ jobs:
         bundler-cache: true
     - name: Migration Test
       run: |
-        bin/rails db:migrate
-        bin/rails db:populate
-        bin/rails db:reset
+        bin/rails db:migrate db:populate db:reset
