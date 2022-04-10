@@ -19,14 +19,15 @@ require "rspec/rails"
 
 # Specifying `no-sandbox` is required, so use custom driver instead of `selenium_chrome_headless`.
 # ref. https://github.com/teamcapybara/capybara/blob/c7c22789b7aaf6c1515bf6e68f00bfe074cf8fc1/lib/capybara/registrations/drivers.rb#L27-L36
-Capybara.register_driver :headless_chrome do |app|
-  browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
-    opts.args << "--headless"
-    opts.args << "--disable-gpu"
-    opts.args << "--no-sandbox"
-  end
-  Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: browser_options)
-end
+# Capybara.default_driver = :selenium_chrome_headless
+# Capybara.register_driver :headless_chrome do |app|
+#   browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+#     opts.args << "--headless"
+#     opts.args << "--disable-gpu"
+#     opts.args << "--no-sandbox"
+#   end
+#   Capybara::Selenium::Driver.new(app, browser: :chrome, capabilities: browser_options)
+# end
 
 Capybara.server = :puma, { Silent: true }
 
@@ -87,6 +88,6 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system, js: true) do
-    driven_by :headless_chrome
+    driven_by :selenium_chrome_headless
   end
 end
