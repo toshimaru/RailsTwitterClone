@@ -139,7 +139,7 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.4)
+    nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     parallel (1.22.1)
@@ -232,9 +232,9 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
-    rubocop-rails_config (1.9.3)
+    rubocop-rails_config (1.10.0)
       railties (>= 5.0)
-      rubocop (>= 1.25.1)
+      rubocop (>= 1.29.0)
       rubocop-ast (>= 1.0.1)
       rubocop-minitest (~> 0.15)
       rubocop-packaging (~> 0.5)
