@@ -268,7 +268,7 @@ GEM
     sqlite3 (1.4.4)
     thor (1.2.1)
     timeout (0.3.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.2.0)
     uniform_notifier (1.16.0)
