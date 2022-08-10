@@ -1,5 +1,11 @@
 name: RSpec
-on: [push, pull_request]
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
 jobs:
   rspec:
     strategy:
@@ -16,7 +22,7 @@ jobs:
         bundler-cache: true
     - name: Setup webpacker
       run: |
-        yarn install
+        yarn install --frozen-lockfile
         bin/webpack
     - name: Run RSpec
       run: bundle exec rspec

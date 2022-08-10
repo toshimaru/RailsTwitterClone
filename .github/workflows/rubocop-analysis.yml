@@ -1,4 +1,5 @@
 name: "Rubocop Code Scanning"
+
 on:
   push:
     branches: [ main ]
@@ -7,6 +8,7 @@ on:
     branches: [ main ]
   schedule:
     - cron: '24 10 * * 2'
+
 jobs:
   rubocop:
     runs-on: ubuntu-latest
