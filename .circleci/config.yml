@@ -26,6 +26,7 @@ jobs:
           clean-bundle: true
   rspec:
     executor: default
+    parallelism: 2
     steps:
       - checkout
       - ruby/install-deps
