@@ -11,6 +11,7 @@ executors:
       - image: cimg/ruby:3.1-browsers
         environment:
           RAILS_ENV: test
+    resource_class: small
 
 jobs:
   setup:
@@ -19,9 +20,7 @@ jobs:
       - checkout
       - run:
           name: Install System Dependencies
-          command: |
-            sudo apt update
-            sudo apt install libsqlite3-dev
+          command: sudo apt install libsqlite3-dev
       - ruby/install-deps:
           clean-bundle: true
   rspec:
