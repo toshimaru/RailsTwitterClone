@@ -22,7 +22,8 @@ jobs:
           command: |
             sudo apt update
             sudo apt install libsqlite3-dev
-      - ruby/install-deps
+      - ruby/install-deps:
+          clean-bundle: true
   rspec:
     executor: default
     steps:
