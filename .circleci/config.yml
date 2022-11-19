@@ -47,7 +47,8 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - ruby/rubocop-check
+      - ruby/rubocop-check:
+          parallel: true
 
 workflows:
   build:
