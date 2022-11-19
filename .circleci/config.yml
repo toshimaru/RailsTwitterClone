@@ -1,9 +1,9 @@
 version: 2.1
 
 orbs:
-  browser-tools: circleci/browser-tools@1.2.4
-  node: circleci/node@5.0.0
-  ruby: circleci/ruby@1.3.0
+  browser-tools: circleci/browser-tools@1.4.0
+  node: circleci/node@5.0.3
+  ruby: circleci/ruby@2.0.0
 
 executors:
   default:
@@ -11,6 +11,7 @@ executors:
       - image: cimg/ruby:3.1-browsers
         environment:
           RAILS_ENV: test
+    resource_class: small
 
 jobs:
   setup:
@@ -19,10 +20,9 @@ jobs:
       - checkout
       - run:
           name: Install System Dependencies
-          command: |
-            sudo apt update
-            sudo apt install libsqlite3-dev
-      - ruby/install-deps
+          command: sudo apt install libsqlite3-dev
+      - ruby/install-deps:
+          clean-bundle: true
   rspec:
     executor: default
     steps:
@@ -46,7 +46,8 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - ruby/rubocop-check
+      - ruby/rubocop-check:
+          parallel: true
 
 workflows:
   build:
