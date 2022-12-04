@@ -8,10 +8,17 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.1
+      - image: cimg/ruby:3.1-browsers
         environment:
           RAILS_ENV: test
     resource_class: small
+
+commands:
+  bundle-install:
+    steps:
+      - ruby/install-deps:
+          clean-bundle: true
+          key: gems-v2
 
 jobs:
   setup:
@@ -21,13 +28,13 @@ jobs:
       - run:
           name: Install System Dependencies
           command: sudo apt install libsqlite3-dev
-      - ruby/install-deps:
-          clean-bundle: true
+      - bundle-install
   rspec:
     executor: default
+    resource_class: medium
     steps:
       - checkout
-      - ruby/install-deps
+      - bundle-install
       - node/install:
           install-yarn: true
           node-version: '16'
@@ -48,7 +55,7 @@ jobs:
     executor: default
     steps:
       - checkout
-      - ruby/install-deps
+      - bundle-install
       - ruby/rubocop-check:
           parallel: true
 
