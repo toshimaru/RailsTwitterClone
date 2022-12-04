@@ -31,6 +31,7 @@ jobs:
       - bundle-install
   rspec:
     executor: default
+    resource_class: medium
     steps:
       - checkout
       - bundle-install
