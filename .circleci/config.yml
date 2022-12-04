@@ -13,6 +13,13 @@ executors:
           RAILS_ENV: test
     resource_class: small
 
+commands:
+  bundle-install:
+    steps:
+      - ruby/install-deps:
+          clean-bundle: true
+          key: gems-v2
+
 jobs:
   setup:
     executor: default
@@ -21,13 +28,12 @@ jobs:
       - run:
           name: Install System Dependencies
           command: sudo apt install libsqlite3-dev
-      - ruby/install-deps:
-          clean-bundle: true
+      - bundle-install
   rspec:
     executor: default
     steps:
       - checkout
-      - ruby/install-deps
+      - bundle-install
       - node/install:
           install-yarn: true
           node-version: '16'
@@ -48,7 +54,7 @@ jobs:
     executor: default
     steps:
       - checkout
-      - ruby/install-deps
+      - bundle-install
       - ruby/rubocop-check:
           parallel: true
 
