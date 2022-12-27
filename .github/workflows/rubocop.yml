@@ -3,6 +3,7 @@ name: RuboCop
 on: [pull_request]
 
 jobs:
+
   rubocop:
     runs-on: ubuntu-latest
     steps:
@@ -10,7 +11,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1'
+        ruby-version: 3.2
         bundler-cache: true
     - name: Run RuboCop
       run: bundle exec rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
@@ -18,6 +19,7 @@ jobs:
       with:
         name: rubocop-report
         path: tmp/rubocop/report.html
+
   reviewdog:
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +28,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1'
+        ruby-version: 3.2
         bundler-cache: true
     - name: Run rubocop & reviewdog
       env:
