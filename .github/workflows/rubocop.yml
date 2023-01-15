@@ -24,6 +24,29 @@ jobs:
         name: rubocop-report
         path: tmp/rubocop/report.html
 
+  rubocop-code-scanning:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2
+        bundler-cache: true
+        cache-version: rubocop-v1
+    - name: Run RuboCop with Code Scanning
+      run: |
+        bash -c "
+          bundle exec rubocop --require code_scanning --format CodeScanning::SarifFormatter -o rubocop.sarif
+          [[ $? -ne 2 ]]
+        "
+    - name: Upload Sarif output
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: rubocop.sarif
+
   reviewdog:
     runs-on: ubuntu-latest
     steps:
