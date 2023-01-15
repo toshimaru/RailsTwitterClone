@@ -38,7 +38,11 @@ group :development do
   gem "bullet"
   gem "listen"
   gem "rack-mini-profiler"
-  gem "rubocop"
-  gem "rubocop-rails_config"
   gem "web-console"
+end
+
+group :rubocop do
+  gem "code-scanning-rubocop", require: false
+  gem "rubocop-rails_config"
+  gem "rubocop"
 end
