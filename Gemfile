@@ -42,6 +42,7 @@ group :development do
 end
 
 group :rubocop do
-  gem "rubocop"
+  gem "code-scanning-rubocop", require: false
   gem "rubocop-rails_config"
+  gem "rubocop"
 end
