@@ -6,6 +6,6 @@
     "bootstrap": "^5.2.3"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.11.3"
+    "webpack-dev-server": "^4.13.3"
   }
 }
