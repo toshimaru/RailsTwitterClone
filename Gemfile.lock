@@ -196,7 +196,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.8.0)
-    reline (0.3.3)
+    reline (0.3.4)
       io-console (~> 0.5)
     rexml (3.2.5)
     rspec-core (3.12.2)
