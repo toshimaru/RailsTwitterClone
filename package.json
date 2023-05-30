@@ -3,7 +3,7 @@
   "dependencies": {
     "@rails/ujs": "^6.1.7-2",
     "@rails/webpacker": "5.4.4",
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.3.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.3"
