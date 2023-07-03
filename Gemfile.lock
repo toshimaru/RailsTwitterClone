@@ -181,8 +181,9 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.7)
       sprockets-rails (>= 2.0.0)
-    rails-dom-testing (2.1.0)
+    rails-dom-testing (2.1.1)
       activesupport (>= 5.0.0)
+      minitest
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
