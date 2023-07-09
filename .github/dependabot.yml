@@ -9,6 +9,16 @@ updates:
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10
+    groups:
+      debug-gem:
+        patterns:
+          - "debug"
+          - "irb"
+          - "reline"
+      rubocop:
+        patterns:
+          - "rubocop"
+          - "rubocop-*"
   - package-ecosystem: npm
     directory: "/"
     schedule:
