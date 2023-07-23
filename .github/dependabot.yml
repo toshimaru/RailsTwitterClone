@@ -15,6 +15,10 @@ updates:
           - "debug"
           - "irb"
           - "reline"
+      nokogiri:
+        patterns:
+          - "nokogiri"
+          - "mini_portile2"
       rubocop:
         patterns:
           - "rubocop"
