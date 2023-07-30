@@ -15,6 +15,9 @@ updates:
           - "debug"
           - "irb"
           - "reline"
+      net-gem:
+        patterns:
+          - "net-*"
       nokogiri:
         patterns:
           - "nokogiri"
