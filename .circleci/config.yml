@@ -40,7 +40,10 @@ jobs:
           node-version: '16'
       - node/install-packages:
           pkg-manager: yarn
-      - browser-tools/install-chrome
+      - browser-tools/install-chrome:
+          # TODO: Remove following line when fixed https://github.com/CircleCI-Public/browser-tools-orb/issues/90
+          chrome-version: 116.0.5845.96
+          replace-existing: true
       - browser-tools/install-chromedriver
       - run: bin/rails db:schema:load --trace
       - run: bin/webpack
