@@ -26,6 +26,9 @@ updates:
         patterns:
           - "rubocop"
           - "rubocop-*"
+          - "parser"
+          - "language_server-protocol"
+          - "unicode-display_width"
   - package-ecosystem: npm
     directory: "/"
     schedule:
