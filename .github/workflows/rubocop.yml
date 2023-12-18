@@ -43,7 +43,7 @@ jobs:
           [[ $? -ne 2 ]]
         "
     - name: Upload Sarif output
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: rubocop.sarif
 
