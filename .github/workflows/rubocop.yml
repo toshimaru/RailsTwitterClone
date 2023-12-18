@@ -19,7 +19,7 @@ jobs:
         cache-version: rubocop-v1
     - name: Run RuboCop
       run: bundle exec rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: rubocop-report
         path: tmp/rubocop/report.html
