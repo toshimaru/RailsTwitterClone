@@ -14,7 +14,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2
+        ruby-version: 3.3
         bundler-cache: true
         cache-version: rubocop-v1
     - name: Run RuboCop
@@ -33,7 +33,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2
+        ruby-version: 3.3
         bundler-cache: true
         cache-version: rubocop-v1
     - name: Run RuboCop with Code Scanning
@@ -55,7 +55,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2
+        ruby-version: 3.3
         bundler-cache: true
         cache-version: rubocop-v1
     - name: Run rubocop & reviewdog
