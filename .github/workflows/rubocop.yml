@@ -14,9 +14,9 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2
+        ruby-version: 3.3
         bundler-cache: true
-        cache-version: rubocop-v1
+        cache-version: rubocop-v2
     - name: Run RuboCop
       run: bundle exec rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
     - uses: actions/upload-artifact@v4
@@ -33,9 +33,9 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2
+        ruby-version: 3.3
         bundler-cache: true
-        cache-version: rubocop-v1
+        cache-version: rubocop-v2
     - name: Run RuboCop with Code Scanning
       run: |
         bash -c "
@@ -55,9 +55,9 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.2
+        ruby-version: 3.3
         bundler-cache: true
-        cache-version: rubocop-v1
+        cache-version: rubocop-v2
     - name: Run rubocop & reviewdog
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}

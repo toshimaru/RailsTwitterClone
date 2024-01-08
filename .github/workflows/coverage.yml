@@ -11,21 +11,21 @@ jobs:
     name: CodeClimate
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.2
-        bundler-cache: true
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 16
-    - name: Setup webpacker
-      run: |
-        yarn install --frozen-lockfile
-        bin/webpack
-    - uses: paambaati/codeclimate-action@v5.0.0
-      env:
-        CC_TEST_REPORTER_ID: a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
-      with:
-        coverageCommand: bundle exec rspec
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+      - name: Setup webpacker
+        run: |
+          yarn install --frozen-lockfile
+          bin/webpack
+      - uses: paambaati/codeclimate-action@v5.0.0
+        env:
+          CC_TEST_REPORTER_ID: a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
+        with:
+          coverageCommand: bundle exec rspec
