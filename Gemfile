@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "rails", "~> 6.1.7"
+gem "rails", "~> 7.1.3"
 
 gem "active_storage_validations"
 gem "bcrypt"
