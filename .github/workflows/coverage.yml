@@ -24,7 +24,7 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           bin/webpack
-      - uses: paambaati/codeclimate-action@v5.0.0
+      - uses: paambaati/codeclimate-action@v6.0.0
         env:
           CC_TEST_REPORTER_ID: a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
         with:
