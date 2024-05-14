@@ -1,10 +1,10 @@
-FROM ruby:3.2 AS bundle-installer
+FROM ruby:3.3 AS bundle-installer
 
 WORKDIR /tmp
 COPY Gemfile Gemfile.lock /tmp/
 RUN bundle install --jobs=2
 
-FROM ruby:3.2
+FROM ruby:3.3
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
