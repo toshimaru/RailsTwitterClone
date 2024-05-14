@@ -14,7 +14,6 @@ RUN mkdir /app
 COPY Gemfile Gemfile.lock package.json yarn.lock /app/
 
 WORKDIR /app
-ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN yarn install
 COPY --from=bundle-installer /usr/local/bundle/ /usr/local/bundle/
 RUN bundle install
