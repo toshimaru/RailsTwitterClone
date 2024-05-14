@@ -8,7 +8,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.2-browsers
+      - image: cimg/ruby:3.3-browsers
         environment:
           RAILS_ENV: test
     resource_class: small
@@ -18,7 +18,7 @@ commands:
     steps:
       - ruby/install-deps:
           clean-bundle: true
-          key: gems-v2
+          key: gems-v3
 
 jobs:
   setup:
@@ -56,8 +56,7 @@ jobs:
     steps:
       - checkout
       - bundle-install
-      - ruby/rubocop-check:
-          parallel: true
+      - ruby/rubocop-check
 
 workflows:
   build:
