@@ -1,15 +1,15 @@
 fixture_user_1:
   name: <%= Faker::Name.name %>
   slug: <%= Faker::Internet.slug %>
-  email:  <%= Faker::Internet.free_email %>
+  email: <%= Faker::Internet.email %>
   password_digest: <%= User.digest('password') %>
 fixture_user_2:
   name: <%= Faker::Name.name %>
   slug: <%= Faker::Internet.slug %>
-  email:  <%= Faker::Internet.free_email %>
+  email: <%= Faker::Internet.email %>
   password_digest: <%= User.digest('password') %>
 tweet_user:
   name: <%= Faker::Name.name %>
   slug: <%= Faker::Internet.slug %>
-  email:  <%= Faker::Internet.free_email %>
+  email: <%= Faker::Internet.email %>
   password_digest: <%= User.digest('password') %>
