@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :user do
-    sequence(:name)  { Faker::Name.name }
+    name  { Faker::Name.name }
     sequence(:slug)  { |n| "#{Faker::Internet.slug}-#{n}" }
-    sequence(:email) { |n| "#{n}-#{Faker::Internet.free_email}" }
+    sequence(:email) { |n| "#{n}-#{Faker::Internet.email}" }
     password { "FactoryBot" }
     password_confirmation { "FactoryBot" }
   end
