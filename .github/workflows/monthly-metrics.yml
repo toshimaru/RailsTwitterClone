@@ -1,0 +1,51 @@
+name: Monthly Pull Request metrics
+
+on:
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "Enter the year (e.g. 2023) for which you want to collect metrics"
+        required: true
+        type: number
+      month:
+        description: "Enter the month (1-12) for which you want to collect metrics"
+        required: true
+        type: number
+
+permissions:
+  issues: write
+  pull-requests: read
+
+jobs:
+  build:
+    name: pull request metrics
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get dates for specified year and month
+        shell: bash
+        run: |
+          # Get the specified year and month from the inputs
+          year=${{ github.event.inputs.year }}
+          month=${{ github.event.inputs.month }}
+
+          # Calculate the first day of the specified month and year
+          first_day=$(date -d "$year-$month-01" +%Y-%m-%d)
+
+          # Calculate the last day of the specified month and year
+          last_day=$(date -d "$first_day +1 month -1 day" +%Y-%m-%d)
+
+          # Set an environment variable with the date range
+          echo "$first_day..$last_day"
+          echo "selected_month=$first_day..$last_day" >> "$GITHUB_ENV"
+      - name: Run issue-metrics tool
+        uses: github/issue-metrics@v3
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SEARCH_QUERY: "repo:toshimaru/RailsTwitterClone is:pr created:${{ env.selected_month }}"
+      - name: Create issue
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Monthly pull request metrics report (${{ env.selected_month }})"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          content-filepath: ./issue_metrics.md
