@@ -12,6 +12,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "simplecov"
 SimpleCov.start "rails" do
   enable_coverage :branch
+  enable_coverage_for_eval
 end
 require "rspec/rails"
 
