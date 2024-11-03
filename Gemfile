@@ -45,3 +45,5 @@ group :rubocop do
   gem "rubocop-rails_config"
   gem "rubocop"
 end
+
+gem "net-imap", "~> 0.4.17"

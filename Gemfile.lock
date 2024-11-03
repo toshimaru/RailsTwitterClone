@@ -333,6 +333,7 @@ DEPENDENCIES
   image_processing
   inline_svg
   listen
+  net-imap (~> 0.4.17)
   puma
   rack-mini-profiler
   rails (~> 6.1.7)
