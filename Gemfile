@@ -27,7 +27,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "factory_bot_rails"
   gem "faker"
-  gem "net-smtp", require: false
   gem "rspec_junit_formatter"
   gem "rspec-rails"
   gem "selenium-webdriver"
@@ -46,3 +45,5 @@ group :rubocop do
   gem "rubocop-rails_config"
   gem "rubocop"
 end
+
+gem "net-imap", "~> 0.4.17"
