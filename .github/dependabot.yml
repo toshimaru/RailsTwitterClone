@@ -10,7 +10,11 @@ updates:
       - dependency-type: "all"
     open-pull-requests-limit: 15
     ignore:
+      # requires Ruby 3.2+
       - dependency-name: "zeitwerk"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      # requires Ruby 3.1+
+      - dependency-name: "net-imap"
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
     groups:
       debug-gem:
