@@ -11,7 +11,7 @@ gem "bootsnap", require: false
 gem "image_processing"
 gem "inline_svg"
 gem "puma"
-gem "sqlite3"
+gem "sqlite3", "~> 1.7.3"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "webpacker"
 gem "will_paginate-bootstrap-style"
