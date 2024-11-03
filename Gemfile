@@ -47,3 +47,4 @@ group :rubocop do
 end
 
 gem "net-imap", "~> 0.4.17"
+gem "zeitwerk", "~> 2.6.0"
