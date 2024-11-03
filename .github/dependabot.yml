@@ -16,6 +16,9 @@ updates:
       # requires Ruby 3.1+
       - dependency-name: "net-imap"
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      # requires Rails v7.0+
+      - dependency-name: "sqlite3"
+        update-types: ["version-update:semver-major"]
     groups:
       debug-gem:
         patterns:
