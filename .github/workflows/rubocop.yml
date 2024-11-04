@@ -15,7 +15,6 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-          cache-version: rubocop-v2
       - name: Run RuboCop
         run: bundle exec rubocop --parallel -f progress -f html -o tmp/rubocop/report.html
       - uses: actions/upload-artifact@v4
@@ -34,7 +33,6 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-          cache-version: rubocop-v2
       - name: Run RuboCop with Code Scanning
         run: |
           bash -c "
@@ -56,7 +54,6 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-          cache-version: rubocop-v2
       - run: bundle exec rubocop --parallel --format github
       - name: Run rubocop & reviewdog
         env:
