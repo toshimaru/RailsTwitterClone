@@ -142,14 +142,14 @@ GEM
     mini_portile2 (2.8.8)
     minitest (5.25.4)
     msgpack (1.7.5)
-    net-imap (0.4.18)
+    net-imap (0.4.19)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.5.0)
+    net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
     nokogiri (1.16.8)
@@ -337,7 +337,7 @@ DEPENDENCIES
   image_processing
   inline_svg
   listen
-  net-imap (~> 0.4.18)
+  net-imap (~> 0.4.19)
   puma
   rack-mini-profiler
   rails (~> 6.1.7.10)
