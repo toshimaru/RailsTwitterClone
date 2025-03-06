@@ -19,6 +19,9 @@ updates:
       # requires Rails v7.0+
       - dependency-name: "sqlite3"
         update-types: ["version-update:semver-major"]
+      # nokogiri v1.18.0+ requires Ruby 3.0+
+      - dependency-name: "nokogiri"
+        versions: [">= 1.18.0"]
     groups:
       debug-gem:
         patterns:
