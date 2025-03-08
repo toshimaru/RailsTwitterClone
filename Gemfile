@@ -48,3 +48,4 @@ end
 
 gem "net-imap", "~> 0.4.19"
 gem "zeitwerk", "~> 2.6.0"
+gem "concurrent-ruby", "1.3.4"
