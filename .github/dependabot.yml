@@ -53,6 +53,12 @@ updates:
       interval: daily
     reviewers:
       - toshimaru
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - toshimaru
     open-pull-requests-limit: 10
   - package-ecosystem: github-actions
     directory: "/"
