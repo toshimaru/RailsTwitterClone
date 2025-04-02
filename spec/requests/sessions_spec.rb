@@ -45,5 +45,19 @@ RSpec.describe "/sessions", type: :request do
       before { delete logout_path }
       it { expect(response).to redirect_to(root_url) }
     end
+
+    context "Session Replay" do
+      before { log_in_as(user) }
+      it "prevents session replay attack" do
+        session_cookie = cookies["_rails_twitter_clone_session"]
+        get home_path
+        expect(response).to have_http_status(:ok)
+
+        delete logout_path
+        cookies["_rails_twitter_clone_session"] = session_cookie
+        get home_path
+        expect(response).to have_http_status(:redirect)
+      end
+    end
   end
 end
