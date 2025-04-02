@@ -12,7 +12,7 @@ RSpec.describe "/home", type: :request do
         log_in_as(user)
         get home_url
       }
-      it { expect(response).to be_ok }
+      it { expect(response).to have_http_status(:ok) }
     end
 
     context "without login" do

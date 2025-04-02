@@ -6,7 +6,7 @@ RSpec.describe "/", type: :request do
   context "without login" do
     describe "GET /index" do
       before { get root_url }
-      it { expect(response).to be_ok }
+      it { expect(response).to have_http_status(:ok) }
     end
   end
 

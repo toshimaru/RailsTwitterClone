@@ -50,9 +50,11 @@ class User < ApplicationRecord
     following.delete(other_user)
   end
 
+  # Remembers a user in the database for use in persistent sessions.
   def remember
     self.remember_token = self.class.new_token
     update_attribute(:remember_digest, self.class.digest(remember_token))
+    remember_digest
   end
 
   def authenticated?(remember_token)
@@ -63,6 +65,12 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  # Returns a session token to prevent session hijacking.
+  # We reuse the remember digest for convenience.
+  def session_token
+    remember_digest || remember
   end
 
   class << self

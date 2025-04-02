@@ -9,17 +9,17 @@ RSpec.describe "/users", type: :request do
 
   describe "GET /index" do
     before { get users_path }
-    it { expect(response).to be_ok }
+    it { expect(response).to have_http_status(:ok) }
   end
 
   describe "GET /show" do
     before { get user_path(user.slug) }
-    it { expect(response).to be_ok }
+    it { expect(response).to have_http_status(:ok) }
   end
 
   describe "GET /new" do
     before { get signup_path }
-    it { expect(response).to be_ok }
+    it { expect(response).to have_http_status(:ok) }
   end
 
   describe "POST /create" do
@@ -32,14 +32,14 @@ RSpec.describe "/users", type: :request do
     describe "User already exists" do
       it "doesn't create a new user" do
         post users_path, params: { user: FactoryBot.attributes_for(:user, email: user.email) }
-        expect(response).to be_ok
+        expect(response).to have_http_status(:ok)
       end
     end
   end
 
   describe "DELETE /destroy" do
     context "without login" do
-      it "doen't delete a user" do
+      it "doesn't delete a user" do
         delete user_path(user.slug)
         expect(response).to redirect_to(login_path)
       end
@@ -69,7 +69,7 @@ RSpec.describe "/users", type: :request do
 
       describe "showing my edit page" do
         before { get edit_user_path(user) }
-        it { expect(response).to be_ok }
+        it { expect(response).to have_http_status(:ok) }
       end
 
       describe "showing another user's edit page" do
