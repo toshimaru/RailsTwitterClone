@@ -8,7 +8,7 @@ RSpec.describe "/sessions", type: :request do
 
   describe "GET /new" do
     before { get login_url }
-    it { expect(response).to be_ok }
+    it { expect(response).to have_http_status(:ok) }
   end
 
   describe "POST /create" do
