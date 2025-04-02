@@ -39,7 +39,7 @@ RSpec.describe "/users", type: :request do
 
   describe "DELETE /destroy" do
     context "without login" do
-      it "doen't delete a user" do
+      it "doesn't delete a user" do
         delete user_path(user.slug)
         expect(response).to redirect_to(login_path)
       end
