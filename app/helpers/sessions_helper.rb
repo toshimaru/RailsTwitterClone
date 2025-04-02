@@ -38,6 +38,7 @@ module SessionsHelper
 
   def logged_in_user
     unless logged_in?
+      store_location
       redirect_to login_path, flash: { danger: "Please sign in." }
     end
   end
@@ -52,5 +53,9 @@ module SessionsHelper
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
+  end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end
