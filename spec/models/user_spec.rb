@@ -194,4 +194,14 @@ RSpec.describe User, type: :model do
       is_expected.not_to include(unfollowed_tweet)
     end
   end
+
+  describe "#remember" do
+    subject { user.remember }
+    it { is_expected.to eq user.remember_digest }
+  end
+
+  describe "#session_token" do
+    subject { user.session_token }
+    it { is_expected.to eq user.remember_digest }
+  end
 end
