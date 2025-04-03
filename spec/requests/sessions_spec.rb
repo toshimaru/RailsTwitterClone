@@ -20,6 +20,12 @@ RSpec.describe "/sessions", type: :request do
       expect(response).to redirect_to(home_url)
     end
 
+    it "redirects to store location" do
+      get edit_user_path(user)
+      post login_url, params: { session: { email: email, password: password } }
+      expect(response).to redirect_to(edit_user_url(user))
+    end
+
     it "creates a new session with remember_token cookie" do
       post login_url, params: { session: { email: email, password: password, remember_me: "1" } }
       expect(cookies[:remember_token]).to be_present
