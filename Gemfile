@@ -37,6 +37,9 @@ group :development do
   gem "listen"
   gem "rack-mini-profiler"
   gem "web-console"
+  gem "ruby-lsp", require: false
+  gem "ruby-lsp-rails", require: false
+  gem "ruby-lsp-rspec", require: false
 end
 
 group :rubocop do
