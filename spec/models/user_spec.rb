@@ -79,16 +79,26 @@ RSpec.describe User, type: :model do
     let(:user) { users(:fixture_user_1) }
     let(:other_user) { users(:fixture_user_2) }
 
-    describe ".followers" do
-      subject { other_user.followers }
-      before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
-      it { is_expected.to include(user) }
-    end
-
     describe ".following" do
       subject { user.following }
       before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
       it { is_expected.to include(other_user) }
+
+      it "destroys associated following" do
+        user.destroy!
+        is_expected.to eq []
+      end
+    end
+
+    describe ".followers" do
+      subject { other_user.followers }
+      before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
+      it { is_expected.to include(user) }
+
+      it "destroys associated followers" do
+        user.destroy!
+        is_expected.to eq []
+      end
     end
 
     describe ".tweets" do
