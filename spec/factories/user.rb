@@ -7,5 +7,9 @@ FactoryBot.define do
     sequence(:email) { |n| "#{n}-#{Faker::Internet.email}" }
     password { "FactoryBot" }
     password_confirmation { "FactoryBot" }
+
+    trait :admin do
+      admin { true }
+    end
   end
 end

@@ -19,6 +19,7 @@ module SessionsHelper
 
   def current_user
     if (user_id = session[:user_id])
+      # TODO: memoize current_user result
       user = User.find_by(id: user_id)
       if user && session[:session_token] == user.session_token
         @current_user = user

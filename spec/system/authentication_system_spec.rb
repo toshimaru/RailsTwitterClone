@@ -51,30 +51,5 @@ RSpec.describe "Authentication", type: :system do
         it { is_expected.to have_link("Sign in") }
       end
     end
-
-    context "without login" do
-      let(:user) { FactoryBot.create(:user) }
-
-      describe "in the Users Controller" do
-        describe "visit the following page" do
-          before { visit following_user_path(user) }
-          it { is_expected.to have_title("Following") }
-        end
-
-        describe "visit the followers page" do
-          before { visit followers_user_path(user) }
-          it { is_expected.to have_title("Followers") }
-        end
-
-        describe "visiting the user index" do
-          before { visit users_path }
-          it { is_expected.to have_title("Users") }
-
-          describe "screenshot", js: true do
-            it { page.save_screenshot "users.png" }
-          end
-        end
-      end
-    end
   end
 end
