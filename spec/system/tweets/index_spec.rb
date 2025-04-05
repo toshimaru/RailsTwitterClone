@@ -61,10 +61,10 @@ RSpec.describe "Tweet", type: :system do
   end
 
   describe "Tweet deletion" do
-    before {
+    before do
       FactoryBot.create(:tweet, user: user)
       visit tweets_path
-    }
+    end
 
     it "deletes a tweet" do
       expect { click_link "delete" }.to change(Tweet, :count).by(-1)

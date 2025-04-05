@@ -8,10 +8,10 @@ RSpec.describe "/home", type: :request do
 
   describe "GET /index" do
     context "login" do
-      before {
+      before do
         log_in_as(user)
         get home_url
-      }
+      end
       it { expect(response).to have_http_status(:ok) }
     end
 

@@ -13,10 +13,10 @@ RSpec.describe "/", type: :request do
   context "login" do
     fixtures :users
     let(:user) { users(:fixture_user_1) }
-    before {
+    before do
       log_in_as(user)
       get root_url
-    }
+    end
     it { expect(response).to redirect_to(home_url) }
   end
 end

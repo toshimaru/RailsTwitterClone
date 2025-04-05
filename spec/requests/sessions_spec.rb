@@ -39,10 +39,10 @@ RSpec.describe "/sessions", type: :request do
 
   describe "DELETE /destroy" do
     context "login" do
-      before {
+      before do
         log_in_as(user)
         delete logout_path
-      }
+      end
       it { expect(response).to redirect_to(root_url) }
     end
 

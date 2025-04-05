@@ -95,10 +95,10 @@ RSpec.describe "/users", type: :request do
       before { log_in_as(user) }
 
       describe "updating user" do
-        before {
+        before do
           patch user_path(user), params: { user: update_param }
           user.reload
-        }
+        end
         it "updates a user" do
           expect(response).to redirect_to(user_path(user))
           expect(user.name).to eq(update_param[:name])
