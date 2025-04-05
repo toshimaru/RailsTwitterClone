@@ -76,30 +76,33 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
-    subject(:user) { users(:fixture_user_1) }
+    let(:user) { users(:fixture_user_1) }
     let(:other_user) { users(:fixture_user_2) }
 
     describe ".followers" do
+      subject { other_user.followers }
       before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
-      it { expect(other_user.followers).to include(user) }
+      it { is_expected.to include(user) }
     end
 
     describe ".following" do
+      subject { user.following }
       before { FactoryBot.create(:relationship, follower: user, followed: other_user) }
-      it { expect(user.following).to include(other_user) }
+      it { is_expected.to include(other_user) }
     end
 
     describe ".tweets" do
+      subject { user.tweets }
       let!(:older_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.day.ago) }
       let!(:newer_tweet) { FactoryBot.create(:tweet, user: user, created_at: 1.hour.ago) }
 
       it "has the right tweets in the right order" do
-        expect(user.tweets).to eq [newer_tweet, older_tweet]
+        is_expected.to eq [newer_tweet, older_tweet]
       end
 
       it "destroys associated tweets" do
         user.destroy!
-        expect(user.tweets).to eq []
+        is_expected.to eq []
       end
     end
   end
