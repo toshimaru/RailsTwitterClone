@@ -27,23 +27,37 @@ RSpec.describe "User Index", type: :system do
     end
 
     context "login" do
-      let(:admin_user) { FactoryBot.create(:user, :admin) }
-
       before do
-        log_in_as(admin_user)
+        log_in_as(login_user)
         visit users_path
       end
 
-      it "lists users with delete link" do
-        is_expected.to have_title("Users")
-        users.each do |user|
-          is_expected.to have_link(user.name, href: user_path(user))
-          is_expected.to have_link("delete", href: user_path(user))
+      context "as non-admin" do
+        let(:login_user) { FactoryBot.create(:user) }
+
+        it "lists users with delete link" do
+          is_expected.to have_title("Users")
+          is_expected.not_to have_content("delete")
+          users.each do |user|
+            is_expected.to have_link(user.name, href: user_path(user))
+          end
         end
       end
 
-      describe "screenshot", js: true do
-        it { page.save_screenshot "users-admin.png" }
+      context "as admin" do
+        let(:login_user) { FactoryBot.create(:user, :admin) }
+
+        it "lists users with delete link" do
+          is_expected.to have_title("Users")
+          users.each do |user|
+            is_expected.to have_link(user.name, href: user_path(user))
+            is_expected.to have_link("delete", href: user_path(user))
+          end
+        end
+
+        describe "screenshot", js: true do
+          it { page.save_screenshot "users-admin.png" }
+        end
       end
     end
   end
