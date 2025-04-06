@@ -29,10 +29,10 @@ RSpec.describe "Relationships", type: :request do
 
   describe "DELETE /destroy" do
     context "login" do
-      before {
+      before do
         FactoryBot.create(:relationship, follower: user, followed: another_user)
         log_in_as(user)
-      }
+      end
 
       it "destroys relationship" do
         expect {

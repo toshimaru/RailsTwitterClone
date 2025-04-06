@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Followers", type: :system do
+RSpec.describe "User Followers", type: :system do
   subject { page }
 
   let(:user) { FactoryBot.create(:user) }

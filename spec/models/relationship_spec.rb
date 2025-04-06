@@ -8,24 +8,24 @@ RSpec.describe Relationship, type: :model do
   let(:follower) { users(:fixture_user_1) }
   let(:followed) { users(:fixture_user_2) }
 
-  subject(:relationship) { follower.active_relationships.build(followed_id: followed.id) }
+  subject { follower.active_relationships.build(followed_id: followed.id) }
 
-  it { should be_valid }
+  it "has correct relationships" do
+    expect(subject.follower).to eq(follower)
+    expect(subject.followed).to eq(followed)
+  end
 
-  describe "follower methods" do
-    it "has correct relationships" do
-      expect(relationship.follower).to eq(follower)
-      expect(relationship.followed).to eq(followed)
+  describe "validations" do
+    it { is_expected.to be_valid }
+
+    describe "when followed id is not present" do
+      before { subject.followed_id = nil }
+      it { is_expected.to be_invalid }
     end
-  end
 
-  describe "when followed id is not present" do
-    before { relationship.followed_id = nil }
-    it { should be_invalid }
-  end
-
-  describe "when follower id is not present" do
-    before { relationship.follower_id = nil }
-    it { should be_invalid }
+    describe "when follower id is not present" do
+      before { subject.follower_id = nil }
+      it { is_expected.to be_invalid }
+    end
   end
 end

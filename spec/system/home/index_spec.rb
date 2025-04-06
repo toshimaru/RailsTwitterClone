@@ -27,10 +27,10 @@ RSpec.describe "Home", type: :system do
     describe "Tweet creation" do
       let(:tweet) { Faker::Quote.famous_last_words }
 
-      before {
+      before do
         visit root_path
         fill_in "tweet_content", with: tweet
-      }
+      end
 
       it "creates a tweet" do
         expect { click_button "Post" }.to change(Tweet, :count).by(1)
@@ -43,11 +43,11 @@ RSpec.describe "Home", type: :system do
       fixtures :users
       let(:other_user) { users(:fixture_user_1) }
 
-      before {
+      before do
         FactoryBot.create_list(:tweet, 2, user: user, content: Faker::Quote.famous_last_words)
         user.follow(other_user)
         visit root_path
-      }
+      end
 
       it "shows Tweets/Followings/Followings with the number" do
         within ".stats" do
