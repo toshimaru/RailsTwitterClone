@@ -19,11 +19,7 @@ module SessionsHelper
 
   def current_user
     if (user_id = session[:user_id])
-      # TODO: memoize current_user result
-      user = User.find_by(id: user_id)
-      if user && session[:session_token] == user.session_token
-        @current_user = user
-      end
+      @current_user ||= find_and_verify_user(user_id)
     elsif (user_id = cookies.encrypted[:user_id])
       user = User.find_by(id: user_id)
       if user&.authenticated?(cookies[:remember_token])
@@ -56,7 +52,16 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
-  def store_location
-    session[:forwarding_url] = request.original_url if request.get?
-  end
+  private
+    def store_location
+      session[:forwarding_url] = request.original_url if request.get?
+    end
+
+    def find_and_verify_user(user_id)
+      user = User.find_by(id: user_id)
+      return if user.nil?
+      return if session[:session_token] != user.session_token
+
+      user
+    end
 end
