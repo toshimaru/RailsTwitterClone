@@ -12,7 +12,6 @@ RSpec.describe "Followers", type: :system do
 
   describe "followers page" do
     before do
-      log_in_as(other_user)
       visit followers_user_path(other_user)
     end
 

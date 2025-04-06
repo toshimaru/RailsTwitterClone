@@ -12,7 +12,6 @@ RSpec.describe "Following", type: :system do
 
   describe "following page" do
     before do
-      log_in_as(user)
       visit following_user_path(user)
     end
 
