@@ -14,6 +14,7 @@ def make_user!
                email: "me@toshimaru.net",
                password: "foobar",
                password_confirmation: "foobar",
+               admin: true,
                slug: "toshi")
 
   (1..100).each do |n|
