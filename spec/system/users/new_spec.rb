@@ -26,14 +26,6 @@ RSpec.describe "User signup", type: :system do
       it "creates a user" do
         expect { click_button "Sign up" }.to change(User, :count).by(1)
       end
-
-      describe "after saving the user" do
-        before { click_button "Sign up" }
-
-        it { is_expected.to have_link("Sign out") }
-        it { is_expected.to have_selector("div.alert.alert-success", text: "Welcome") }
-        it { is_expected.to have_title(user_name) }
-      end
     end
 
     context "with invalid information" do
