@@ -132,22 +132,26 @@ RSpec.describe User, type: :model do
   end
 
   describe "#authenticated?" do
-    subject { user.authenticated?(remember_token) }
+    subject { user.authenticated?(attribute, token) }
 
-    describe "remember_token is nil" do
-      let(:remember_token) { nil }
-      it { is_expected.to be false }
-    end
+    context "remember" do
+      let(:attribute) { :remember }
 
-    describe "remember_token is empty string" do
-      let(:remember_token) { "" }
-      it { is_expected.to be false }
-    end
+      describe "remember_token is nil" do
+        let(:token) { nil }
+        it { is_expected.to be false }
+      end
 
-    describe "remeber_toke is valid" do
-      let(:remember_token) { described_class.new_token }
-      before { user.remember_digest = described_class.digest(remember_token) }
-      it { is_expected.to be true }
+      describe "remember_token is empty string" do
+        let(:token) { "" }
+        it { is_expected.to be false }
+      end
+
+      describe "remeber_toke is valid" do
+        let(:token) { described_class.new_token }
+        before { user.remember_digest = described_class.digest(token) }
+        it { is_expected.to be true }
+      end
     end
   end
 
