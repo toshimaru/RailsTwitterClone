@@ -4,16 +4,19 @@ require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
   describe "account_activation" do
-    let(:mail) { UserMailer.account_activation }
+    let(:user) { FactoryBot.create(:user) }
+    let(:mail) { UserMailer.account_activation(user) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Account activation")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.subject).to eq("Account Activation")
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(["noreply@example.com"])
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      expect(mail.body.encoded).to include(user.name)
+        .and include(user.activation_token)
+        .and include(CGI.escape(user.email))
     end
   end
 
@@ -23,11 +26,11 @@ RSpec.describe UserMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Password reset")
       expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["noreply@example.com"])
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      expect(mail.body.encoded).to include("Hi")
     end
   end
 end
