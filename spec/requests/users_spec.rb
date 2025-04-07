@@ -26,7 +26,7 @@ RSpec.describe "/users", type: :request do
     it "creates a new user" do
       user_attributes = FactoryBot.attributes_for(:user)
       post users_path, params: { user: user_attributes }
-      expect(response).to redirect_to(user_path(user_attributes[:slug]))
+      expect(response).to redirect_to(root_path)
     end
 
     describe "User already exists" do
