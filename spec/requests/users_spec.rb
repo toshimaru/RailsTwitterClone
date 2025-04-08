@@ -4,6 +4,8 @@ require "rails_helper"
 
 RSpec.describe "/users", type: :request do
   fixtures :users
+  define_negated_matcher :not_change, :change
+
   let(:user) { users(:fixture_user_1) }
   let(:another_user) { users(:fixture_user_2) }
 
@@ -23,15 +25,20 @@ RSpec.describe "/users", type: :request do
   end
 
   describe "POST /create" do
+    let(:user_attributes) { FactoryBot.attributes_for(:user) }
+
     it "creates a new user" do
-      user_attributes = FactoryBot.attributes_for(:user)
-      post users_path, params: { user: user_attributes }
+      expect { post users_path, params: { user: user_attributes } }
+        .to change(User, :count).by(1)
+        .and change(ActionMailer::Base.deliveries, :size).by(1)
       expect(response).to redirect_to(root_path)
     end
 
     describe "User already exists" do
       it "doesn't create a new user" do
-        post users_path, params: { user: FactoryBot.attributes_for(:user, email: user.email) }
+        expect { post users_path, params: { user: user_attributes.update(email: user.email) } }
+          .to not_change(User, :count)
+          .and not_change(ActionMailer::Base.deliveries, :size)
         expect(response).to have_http_status(:ok)
       end
     end

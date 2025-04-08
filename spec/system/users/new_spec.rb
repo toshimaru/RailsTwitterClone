@@ -8,8 +8,10 @@ RSpec.describe "User signup", type: :system do
   describe "/signup" do
     before { visit signup_path }
 
-    it { is_expected.to have_title("Sign up") }
-    it { is_expected.to have_content("Sign up") }
+    it "shows sign up page" do
+      is_expected.to have_title("Sign up")
+      is_expected.to have_content("Sign up")
+    end
 
     context "with valid information" do
       let(:user_email) { "user@example.com" }
@@ -24,7 +26,13 @@ RSpec.describe "User signup", type: :system do
       end
 
       it "creates a user" do
-        expect { click_button "Sign up" }.to change(User, :count).by(1)
+        click_button "Sign up"
+        created_user = User.find_by!(email: user_email)
+        expect(created_user.activated).to be false
+        expect(created_user.activated).to be false
+        expect(created_user.activated_at).to be_nil
+        expect(created_user.activation_digest).to start_with("$2a$")
+        is_expected.to have_content "Please check your email to activate your account."
       end
     end
 
@@ -33,13 +41,13 @@ RSpec.describe "User signup", type: :system do
         expect { click_button "Sign up" }.not_to change(User, :count)
       end
 
-      describe "error message" do
-        before { click_button "Sign up" }
+      before { click_button "Sign up" }
 
-        it { is_expected.to have_content "Name can't be blank" }
-        it { is_expected.to have_content "Email can't be blank" }
-        it { is_expected.to have_content "Password can't be blank" }
-        it { is_expected.to have_content "Password is too short" }
+      it "shows error messages" do
+        is_expected.to have_content "Name can't be blank"
+        is_expected.to have_content "Email can't be blank"
+        is_expected.to have_content "Password can't be blank"
+        is_expected.to have_content "Password is too short"
       end
     end
   end
