@@ -78,6 +78,9 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # Use freeze_time
+  config.include ActiveSupport::Testing::TimeHelpers
+
   config.include(RequestSpecHelper, type: :request)
   config.include(SystemSpecHelper, type: :system)
   config.include(ViewSpecHelper, type: :view)

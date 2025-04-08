@@ -221,4 +221,14 @@ RSpec.describe User, type: :model do
     subject { user.session_token }
     it { is_expected.to eq user.remember_digest }
   end
+
+  describe "#activate" do
+    let(:user) { users(:fixture_user_2) }
+    before do
+      freeze_time
+      user.activate
+    end
+    it { expect(user.activated).to be true }
+    it { expect(user.activated_at).to eq Time.zone.now }
+  end
 end
