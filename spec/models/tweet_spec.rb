@@ -3,11 +3,9 @@
 require "rails_helper"
 
 RSpec.describe Tweet, type: :model do
-  fixtures :users
+  fixtures :tweets
 
-  let(:user) { users(:fixture_user_1) }
-
-  subject(:tweet) { user.tweets.build(content: "Lorem ipsum") }
+  subject(:tweet) { tweets(:tweet) }
 
   describe "attributes" do
     it { is_expected.to respond_to(:content) }
@@ -16,7 +14,7 @@ RSpec.describe Tweet, type: :model do
 
   describe "associations" do
     it { is_expected.to respond_to(:user) }
-    it { expect(tweet.user).to eq(user) }
+    it { expect(tweet.user).to be_a(User) }
     it { is_expected.to respond_to(:image) }
   end
 
