@@ -35,6 +35,14 @@ RSpec.describe "/sessions", type: :request do
       post login_url, params: { session: { email: email, password: password, remember_me: "0" } }
       expect(cookies[:remember_token]).to be_nil
     end
+
+    context "invalid" do
+      it "redirects to root_url" do
+        post login_url, params: { session: { email: email, password: "invalid password" } }
+        expect(flash[:danger]).to eq("Invalid email/password combination")
+        expect(response).to have_http_status(:ok)
+      end
+    end
   end
 
   describe "DELETE /destroy" do
