@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   resources :tweets,       only: [:index, :create, :destroy]
   resource  :relationship, only: [:create, :destroy]
+  resources :account_activations, only: [:edit]
   resolve("Relationship") { :relationship }
 
   get "help",  to: "static_pages#help"
