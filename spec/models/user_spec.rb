@@ -14,11 +14,20 @@ RSpec.describe User, type: :model do
     it { is_expected.to respond_to(:password_digest) }
     it { is_expected.to respond_to(:remember_digest) }
     it { is_expected.to respond_to(:remember_token) }
+    it { is_expected.to respond_to(:admin) }
+    it { is_expected.to respond_to(:admin?) }
+    it { is_expected.to respond_to(:activation_token) }
+    it { is_expected.to respond_to(:activation_digest) }
+    it { is_expected.to respond_to(:activated) }
+    it { is_expected.to respond_to(:activated?) }
+    it { is_expected.to respond_to(:activated_at) }
   end
 
   describe "methods" do
-    it { is_expected.to respond_to(:password) }
-    it { is_expected.to respond_to(:password_confirmation) }
+    describe "has_secure_password" do
+      it { is_expected.to respond_to(:password) }
+      it { is_expected.to respond_to(:password_confirmation) }
+    end
   end
 
   describe "validations" do
