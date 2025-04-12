@@ -232,12 +232,18 @@ RSpec.describe User, type: :model do
   end
 
   describe "#activate" do
-    let(:user) { users(:fixture_user_2) }
+    let(:inactive_user) { users(:fixture_user_2) }
     before do
       freeze_time
-      user.activate
+      inactive_user.activate
     end
-    it { expect(user.activated).to be true }
-    it { expect(user.activated_at).to eq Time.zone.now }
+    it { expect(inactive_user.activated).to be true }
+    it { expect(inactive_user.activated_at).to eq Time.zone.now }
+  end
+
+  describe "#create_activation_digest" do
+    before { subject.save }
+    it { expect(subject.activation_token).to be_present }
+    it { expect(subject.activation_digest).to start_with "$2a$" }
   end
 end
