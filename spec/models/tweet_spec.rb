@@ -3,11 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Tweet, type: :model do
-  fixtures :users
-
-  let(:user) { users(:fixture_user_1) }
-
-  subject(:tweet) { user.tweets.build(content: "Lorem ipsum") }
+  subject(:tweet) { FactoryBot.build(:tweet) }
 
   describe "attributes" do
     it { is_expected.to respond_to(:content) }
@@ -16,11 +12,13 @@ RSpec.describe Tweet, type: :model do
 
   describe "associations" do
     it { is_expected.to respond_to(:user) }
-    it { expect(tweet.user).to eq(user) }
+    it { expect(tweet.user).to be_a(User) }
     it { is_expected.to respond_to(:image) }
   end
 
   describe "validations" do
+    subject(:tweet) { FactoryBot.create(:tweet) }
+
     it { is_expected.to be_valid }
 
     describe "when user_id is not present" do

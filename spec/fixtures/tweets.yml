@@ -1,3 +1,0 @@
-tweet:
-  content: <%= Faker::Quote.famous_last_words %>
-  user: tweet_user

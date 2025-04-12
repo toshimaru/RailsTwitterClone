@@ -132,22 +132,26 @@ RSpec.describe User, type: :model do
   end
 
   describe "#authenticated?" do
-    subject { user.authenticated?(remember_token) }
+    subject { user.authenticated?(attribute, token) }
 
-    describe "remember_token is nil" do
-      let(:remember_token) { nil }
-      it { is_expected.to be false }
-    end
+    context "remember" do
+      let(:attribute) { :remember }
 
-    describe "remember_token is empty string" do
-      let(:remember_token) { "" }
-      it { is_expected.to be false }
-    end
+      describe "remember_token is nil" do
+        let(:token) { nil }
+        it { is_expected.to be false }
+      end
 
-    describe "remeber_toke is valid" do
-      let(:remember_token) { described_class.new_token }
-      before { user.remember_digest = described_class.digest(remember_token) }
-      it { is_expected.to be true }
+      describe "remember_token is empty string" do
+        let(:token) { "" }
+        it { is_expected.to be false }
+      end
+
+      describe "remeber_toke is valid" do
+        let(:token) { described_class.new_token }
+        before { user.remember_digest = described_class.digest(token) }
+        it { is_expected.to be true }
+      end
     end
   end
 
@@ -216,5 +220,15 @@ RSpec.describe User, type: :model do
   describe "#session_token" do
     subject { user.session_token }
     it { is_expected.to eq user.remember_digest }
+  end
+
+  describe "#activate" do
+    let(:user) { users(:fixture_user_2) }
+    before do
+      freeze_time
+      user.activate
+    end
+    it { expect(user.activated).to be true }
+    it { expect(user.activated_at).to eq Time.zone.now }
   end
 end
