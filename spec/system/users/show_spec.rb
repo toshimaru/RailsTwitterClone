@@ -43,6 +43,7 @@ RSpec.describe "User Show", type: :system do
         is_expected.to have_content(user.email)
         is_expected.to have_selector("textarea")
         is_expected.to have_field("tweet[content]")
+        is_expected.to have_content("No post yet")
       end
     end
 
