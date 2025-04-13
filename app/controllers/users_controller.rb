@@ -64,6 +64,7 @@ class UsersController < ApplicationController
   private
     def set_user
       @user = User.find_by!(slug: params[:id])
+      redirect_to(root_url) and return unless @user.activated?
     end
 
     def user_params
