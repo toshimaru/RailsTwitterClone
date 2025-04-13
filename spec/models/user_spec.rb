@@ -258,6 +258,16 @@ RSpec.describe User, type: :model do
     it { expect(inactive_user.activated_at).to eq Time.zone.now }
   end
 
+  describe "#send_activation_email" do
+    subject do
+      user.save
+      user.send_activation_email
+    end
+    it do
+      expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+  end
+
   describe "#downcase_email" do
     subject do
       user.email = "TEST@EXAMPLE.COM"
