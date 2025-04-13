@@ -5,8 +5,9 @@ require "rails_helper"
 RSpec.describe "User Index", type: :system do
   subject { page }
 
-  describe "Showing all users" do
+  describe "Showing active users" do
     let!(:users) { FactoryBot.create_list(:user, 3) }
+    let!(:inactive_user) { FactoryBot.create(:user, :inactive) }
 
     context "without login" do
       before do
@@ -19,6 +20,7 @@ RSpec.describe "User Index", type: :system do
         users.each do |user|
           is_expected.to have_link(user.name, href: user_path(user))
         end
+        is_expected.not_to have_content(inactive_user.name)
       end
 
       describe "screenshot", js: true do
@@ -41,6 +43,7 @@ RSpec.describe "User Index", type: :system do
           users.each do |user|
             is_expected.to have_link(user.name, href: user_path(user))
           end
+          is_expected.not_to have_content(inactive_user.name)
         end
       end
 
