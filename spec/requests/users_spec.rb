@@ -75,6 +75,15 @@ RSpec.describe "/users", type: :request do
         expect(response).to redirect_to(root_path)
       end
     end
+
+    context "login as admin" do
+      let(:admin_user) { users(:fixture_admin_user) }
+      before { log_in_as(admin_user) }
+      it "deletes a user" do
+        expect { delete user_path(user.slug) }.to change(User, :count).by(-1)
+        expect(response).to redirect_to(root_path)
+      end
+    end
   end
 
   describe "GET /edit" do
