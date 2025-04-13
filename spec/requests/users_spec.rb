@@ -15,8 +15,16 @@ RSpec.describe "/users", type: :request do
   end
 
   describe "GET /show" do
-    before { get user_path(user.slug) }
-    it { expect(response).to have_http_status(:ok) }
+    context "user is active" do
+      before { get user_path(user.slug) }
+      it { expect(response).to have_http_status(:ok) }
+    end
+
+    context "user is inactive" do
+      let(:inactive_user) { users(:fixture_inactive_user) }
+      before { get user_path(inactive_user.slug) }
+      it { expect(response).to redirect_to(root_url) }
+    end
   end
 
   describe "GET /new" do
@@ -65,6 +73,15 @@ RSpec.describe "/users", type: :request do
       before { log_in_as(user) }
       it "redirects to root" do
         delete user_path(another_user.slug)
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    context "login as admin" do
+      let(:admin_user) { users(:fixture_admin_user) }
+      before { log_in_as(admin_user) }
+      it "deletes a user" do
+        expect { delete user_path(user.slug) }.to change(User, :count).by(-1)
         expect(response).to redirect_to(root_path)
       end
     end

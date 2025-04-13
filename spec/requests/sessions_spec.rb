@@ -27,7 +27,7 @@ RSpec.describe "/sessions", type: :request do
     end
 
     context "inactive user" do
-      let(:user) { users(:fixture_user_2) }
+      let(:user) { users(:fixture_inactive_user) }
 
       it "redirects to root" do
         post login_url, params: { session: { email: email, password: password } }
