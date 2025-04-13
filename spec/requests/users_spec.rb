@@ -21,7 +21,8 @@ RSpec.describe "/users", type: :request do
     end
 
     context "user is inactive" do
-      before { get user_path(another_user.slug) }
+      let(:inactive_user) { users(:fixture_inactive_user) }
+      before { get user_path(inactive_user.slug) }
       it { expect(response).to redirect_to(root_url) }
     end
   end
