@@ -255,4 +255,14 @@ RSpec.describe User, type: :model do
     it { expect(subject.activation_token).to be_present }
     it { expect(subject.activation_digest).to start_with "$2a$" }
   end
+
+  describe ".new_token" do
+    subject { described_class.new_token }
+    it { is_expected.to match(/\A[a-zA-Z0-9_-]+\z/) }
+  end
+
+  describe ".digest" do
+    subject { described_class.digest("test") }
+    it { is_expected.to start_with "$2a$04$" }
+  end
 end
