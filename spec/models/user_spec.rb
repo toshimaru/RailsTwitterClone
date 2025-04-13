@@ -164,6 +164,15 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#forget" do
+    subject do
+      user.remember_digest = "remember me"
+      user.forget
+      user.remember_digest
+    end
+    it { is_expected.to be_nil }
+  end
+
   describe "#follow" do
     subject { user.follow(follow_user) }
 
