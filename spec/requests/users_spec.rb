@@ -15,8 +15,15 @@ RSpec.describe "/users", type: :request do
   end
 
   describe "GET /show" do
-    before { get user_path(user.slug) }
-    it { expect(response).to have_http_status(:ok) }
+    context "user is active" do
+      before { get user_path(user.slug) }
+      it { expect(response).to have_http_status(:ok) }
+    end
+
+    context "user is inactive" do
+      before { get user_path(another_user.slug) }
+      it { expect(response).to redirect_to(root_url) }
+    end
   end
 
   describe "GET /new" do
