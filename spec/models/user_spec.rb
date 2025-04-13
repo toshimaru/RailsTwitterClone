@@ -14,11 +14,20 @@ RSpec.describe User, type: :model do
     it { is_expected.to respond_to(:password_digest) }
     it { is_expected.to respond_to(:remember_digest) }
     it { is_expected.to respond_to(:remember_token) }
+    it { is_expected.to respond_to(:admin) }
+    it { is_expected.to respond_to(:admin?) }
+    it { is_expected.to respond_to(:activation_token) }
+    it { is_expected.to respond_to(:activation_digest) }
+    it { is_expected.to respond_to(:activated) }
+    it { is_expected.to respond_to(:activated?) }
+    it { is_expected.to respond_to(:activated_at) }
   end
 
   describe "methods" do
-    it { is_expected.to respond_to(:password) }
-    it { is_expected.to respond_to(:password_confirmation) }
+    describe "has_secure_password" do
+      it { is_expected.to respond_to(:password) }
+      it { is_expected.to respond_to(:password_confirmation) }
+    end
   end
 
   describe "validations" do
@@ -57,7 +66,7 @@ RSpec.describe User, type: :model do
     describe "when email address is already taken" do
       before do
         user_with_same_email = user.dup
-        user_with_same_email.email = user.email.upcase
+        user_with_same_email.email = user.email
         user_with_same_email.save
       end
 
@@ -155,6 +164,28 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#forget" do
+    subject do
+      user.remember_digest = "remember me"
+      user.forget
+      user.remember_digest
+    end
+    it { is_expected.to be_nil }
+  end
+
+  describe "#session_token" do
+    subject { user.session_token }
+    it { is_expected.to eq user.remember_digest }
+
+    context "remember digest have a value" do
+      subject do
+        user.remember_digest = "my-remember-digest"
+        user.session_token
+      end
+      it { is_expected.to eq "my-remember-digest" }
+    end
+  end
+
   describe "#follow" do
     subject { user.follow(follow_user) }
 
@@ -217,18 +248,48 @@ RSpec.describe User, type: :model do
     it { is_expected.to eq user.remember_digest }
   end
 
-  describe "#session_token" do
-    subject { user.session_token }
-    it { is_expected.to eq user.remember_digest }
-  end
-
   describe "#activate" do
-    let(:user) { users(:fixture_user_2) }
+    let(:inactive_user) { users(:fixture_user_2) }
     before do
       freeze_time
-      user.activate
+      inactive_user.activate
     end
-    it { expect(user.activated).to be true }
-    it { expect(user.activated_at).to eq Time.zone.now }
+    it { expect(inactive_user.activated).to be true }
+    it { expect(inactive_user.activated_at).to eq Time.zone.now }
+  end
+
+  describe "#send_activation_email" do
+    subject do
+      user.save
+      user.send_activation_email
+    end
+    it do
+      expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+  end
+
+  describe "#downcase_email" do
+    subject do
+      user.email = "TEST@EXAMPLE.COM"
+      user.save
+      user.email
+    end
+    it { is_expected.to eq "test@example.com" }
+  end
+
+  describe "#create_activation_digest" do
+    before { subject.save }
+    it { expect(subject.activation_token).to be_present }
+    it { expect(subject.activation_digest).to start_with "$2a$" }
+  end
+
+  describe ".new_token" do
+    subject { described_class.new_token }
+    it { is_expected.to match(/\A[a-zA-Z0-9_-]+\z/) }
+  end
+
+  describe ".digest" do
+    subject { described_class.digest("test") }
+    it { is_expected.to start_with "$2a$04$" }
   end
 end
