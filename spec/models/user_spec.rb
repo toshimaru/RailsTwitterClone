@@ -173,6 +173,19 @@ RSpec.describe User, type: :model do
     it { is_expected.to be_nil }
   end
 
+  describe "#session_token" do
+    subject { user.session_token }
+    it { is_expected.to eq user.remember_digest }
+
+    context "remember digest have a value" do
+      subject do
+        user.remember_digest = "my-remember-digest"
+        user.session_token
+      end
+      it { is_expected.to eq "my-remember-digest" }
+    end
+  end
+
   describe "#follow" do
     subject { user.follow(follow_user) }
 
@@ -232,11 +245,6 @@ RSpec.describe User, type: :model do
 
   describe "#remember" do
     subject { user.remember }
-    it { is_expected.to eq user.remember_digest }
-  end
-
-  describe "#session_token" do
-    subject { user.session_token }
     it { is_expected.to eq user.remember_digest }
   end
 
