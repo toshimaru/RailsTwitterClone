@@ -66,7 +66,7 @@ RSpec.describe User, type: :model do
     describe "when email address is already taken" do
       before do
         user_with_same_email = user.dup
-        user_with_same_email.email = user.email.upcase
+        user_with_same_email.email = user.email
         user_with_same_email.save
       end
 
@@ -239,6 +239,15 @@ RSpec.describe User, type: :model do
     end
     it { expect(inactive_user.activated).to be true }
     it { expect(inactive_user.activated_at).to eq Time.zone.now }
+  end
+
+  describe "#downcase_email" do
+    subject do
+      user.email = "TEST@EXAMPLE.COM"
+      user.save
+      user.email
+    end
+    it { is_expected.to eq "test@example.com" }
   end
 
   describe "#create_activation_digest" do
