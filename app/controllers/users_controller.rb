@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   before_action :admin_or_correct_user, only: :destroy
 
   def index
-    @users = User.all
+    @users = User.where(activated: true).all
   end
 
   def show
