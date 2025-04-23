@@ -37,6 +37,11 @@ group :development do
   gem "listen"
   gem "rack-mini-profiler"
   gem "web-console"
+  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.3")
+    gem "ruby-lsp", require: false
+    gem "ruby-lsp-rails", require: false
+    gem "ruby-lsp-rspec", require: false
+  end
 end
 
 group :rubocop do
