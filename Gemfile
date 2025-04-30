@@ -42,7 +42,7 @@ end
 group :rubocop do
   gem "code-scanning-rubocop", require: false
   gem "rubocop-rails_config"
-  gem "rubocop", "~> 1.75.2"
+  gem "rubocop", "~> 1.75.4"
 end
 
 gem "net-imap", "~> 0.4.21"
