@@ -4,8 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: daily
-    reviewers:
-      - toshimaru
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 15
@@ -51,18 +49,12 @@ updates:
     directory: "/"
     schedule:
       interval: daily
-    reviewers:
-      - toshimaru
   - package-ecosystem: docker
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - toshimaru
     open-pull-requests-limit: 10
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
-    reviewers:
-      - toshimaru
