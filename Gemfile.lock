@@ -240,7 +240,7 @@ GEM
     rspec-support (3.13.1)
     rspec_junit_formatter (0.6.0)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.75.5)
+    rubocop (1.75.7)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -268,12 +268,12 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.31.0)
+    rubocop-rails (2.32.0)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
       rubocop (>= 1.75.0, < 2.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
+      rubocop-ast (>= 1.44.0, < 2.0)
     rubocop-rails_config (1.17.1)
       rubocop (>= 1.72.2)
       rubocop-ast (>= 1.38.0)
@@ -362,7 +362,7 @@ DEPENDENCIES
   rails (~> 6.1.7.10)
   rspec-rails
   rspec_junit_formatter
-  rubocop (~> 1.75.5)
+  rubocop (~> 1.75.7)
   rubocop-rails_config
   selenium-webdriver
   simplecov
