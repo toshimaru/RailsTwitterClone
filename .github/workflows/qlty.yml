@@ -1,4 +1,4 @@
-name: Coverage
+name: Qlty
 
 on:
   push:
@@ -7,12 +7,11 @@ on:
   pull_request:
 
 jobs:
-  coverage:
-    name: Test Coverage
+  qlty:
+    name: Code Quality Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3
@@ -20,14 +19,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 16
-      - name: Setup webpacker
+      - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
-          bin/webpack
-      - name: Run tests with coverage
-        run: bundle exec rspec
-      - name: Upload coverage reports
-        uses: actions/upload-artifact@v4
+      - name: Run Qlty
+        uses: qltyio/qlty-action@main
         with:
-          name: coverage
-          path: coverage/
+          config-file: .qlty.yaml
