@@ -176,7 +176,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.17)
-    rack-mini-profiler (3.3.1)
+    rack-mini-profiler (4.0.0)
       rack (>= 1.2.0)
     rack-proxy (0.7.7)
       rack
