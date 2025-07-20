@@ -1,5 +1,6 @@
 [![RSpec](https://github.com/toshimaru/RailsTwitterClone/actions/workflows/rspec.yml/badge.svg?branch=main)](https://github.com/toshimaru/RailsTwitterClone/actions/workflows/rspec.yml)
-[![Qlty](https://github.com/toshimaru/RailsTwitterClone/actions/workflows/qlty.yml/badge.svg)](https://github.com/toshimaru/RailsTwitterClone/actions/workflows/qlty.yml)
+[![Maintainability](https://qlty.sh/gh/toshimaru/projects/RailsTwitterClone/maintainability.svg)](https://qlty.sh/gh/toshimaru/projects/RailsTwitterClone)
+[![Code Coverage](https://qlty.sh/gh/toshimaru/projects/RailsTwitterClone/coverage.svg)](https://qlty.sh/gh/toshimaru/projects/RailsTwitterClone)
 [![CircleCI](https://circleci.com/gh/toshimaru/RailsTwitterClone.svg?style=svg)](https://circleci.com/gh/toshimaru/RailsTwitterClone)
 ![Supported Ruby Version](https://img.shields.io/badge/Ruby-v3.3-green)
 ![Supported Rails Version](https://img.shields.io/badge/Rails-v6.1-green)
