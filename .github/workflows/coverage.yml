@@ -6,9 +6,12 @@ on:
       - main
   pull_request:
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   coverage:
-    name: CodeClimate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,8 +27,9 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           bin/webpack
-      - uses: paambaati/codeclimate-action@v9.0.0
-        env:
-          CC_TEST_REPORTER_ID: a74e9933c8093d8a99be5c3ba44b7a82554eec9505f4674356f305e4667144b1
+      - name: Run tests with coverage
+        run: bundle exec rspec
+      - uses: qltysh/qlty-action/coverage@v1
         with:
-          coverageCommand: bundle exec rspec
+          oidc: true
+          files: coverage/coverage.json

@@ -1,6 +1,5 @@
 [![RSpec](https://github.com/toshimaru/RailsTwitterClone/actions/workflows/rspec.yml/badge.svg?branch=main)](https://github.com/toshimaru/RailsTwitterClone/actions/workflows/rspec.yml)
-[![Code Climate](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/gpa.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone)
-[![Test Coverage](https://codeclimate.com/github/toshimaru/RailsTwitterClone/badges/coverage.svg)](https://codeclimate.com/github/toshimaru/RailsTwitterClone/coverage)
+[![Qlty](https://github.com/toshimaru/RailsTwitterClone/actions/workflows/qlty.yml/badge.svg)](https://github.com/toshimaru/RailsTwitterClone/actions/workflows/qlty.yml)
 [![CircleCI](https://circleci.com/gh/toshimaru/RailsTwitterClone.svg?style=svg)](https://circleci.com/gh/toshimaru/RailsTwitterClone)
 ![Supported Ruby Version](https://img.shields.io/badge/Ruby-v3.3-green)
 ![Supported Rails Version](https://img.shields.io/badge/Rails-v6.1-green)
