@@ -98,7 +98,7 @@ GEM
     diff-lcs (1.6.2)
     docile (1.4.1)
     erubi (1.13.1)
-    factory_bot (6.5.4)
+    factory_bot (6.5.5)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
@@ -143,7 +143,7 @@ GEM
       logger
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.25.5)
+    minitest (5.26.0)
     msgpack (1.8.0)
     net-imap (0.4.22)
       date
