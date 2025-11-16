@@ -98,7 +98,7 @@ GEM
     diff-lcs (1.6.2)
     docile (1.4.1)
     erubi (1.13.1)
-    factory_bot (6.5.5)
+    factory_bot (6.5.6)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
