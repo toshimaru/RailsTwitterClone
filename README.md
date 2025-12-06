@@ -20,7 +20,6 @@ This implementation is based on [Ruby on Rails Tutorial](https://www.railstutori
 - v3.3
 - v3.2
 - v3.1
-- v3.0
 
 ## Setup
 
