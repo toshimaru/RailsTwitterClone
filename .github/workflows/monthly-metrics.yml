@@ -19,7 +19,7 @@ permissions:
 jobs:
   build:
     name: pull request metrics
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Get dates for specified year and month

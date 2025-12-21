@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
     - uses: actions/checkout@v6
     - name: Set up Docker Buildx
@@ -21,7 +21,7 @@ jobs:
     - run: docker compose run web bin/webpack
     - run: docker compose run web bundle exec rspec
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
     - uses: actions/checkout@v6
     - run: docker compose build

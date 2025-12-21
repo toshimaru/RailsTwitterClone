@@ -8,7 +8,7 @@ env:
 jobs:
 
   rubocop:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
     - uses: actions/checkout@v6
     - name: Set up Ruby
@@ -25,7 +25,7 @@ jobs:
         path: tmp/rubocop/report.html
 
   rubocop-code-scanning:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     strategy:
       fail-fast: false
     steps:
@@ -48,7 +48,7 @@ jobs:
         sarif_file: rubocop.sarif
 
   # reviewdog:
-  #   runs-on: ubuntu-latest
+  #   runs-on: ubuntu-slim
   #   steps:
   #   - uses: reviewdog/action-setup@v1
   #   - uses: actions/checkout@v6
