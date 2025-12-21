@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   coverage:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - name: Set up Ruby
