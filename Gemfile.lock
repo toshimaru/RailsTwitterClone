@@ -306,7 +306,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
-    stringio (3.1.7)
+    stringio (3.2.0)
     thor (1.4.0)
     timeout (0.6.0)
     tzinfo (2.0.6)
