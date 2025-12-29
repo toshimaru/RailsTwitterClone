@@ -1,4 +1,4 @@
-FROM ruby:3.3 AS base
+FROM ruby:4.0 AS base
 WORKDIR /app
 
 FROM base AS bundle-installer
