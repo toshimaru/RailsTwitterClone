@@ -72,7 +72,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.21)
     bindex (0.8.1)
-    bootsnap (1.20.1)
+    bootsnap (1.21.0)
       msgpack (~> 1.2)
     builder (3.3.0)
     bullet (8.1.0)
@@ -166,7 +166,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.7.0)
+    prism (1.8.0)
     psych (5.3.1)
       date
       stringio
