@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "rails", "~> 6.1.7.10"
+gem "rails", "~> 8.1.2"
 
 gem "active_storage_validations"
 gem "bcrypt"
