@@ -97,6 +97,7 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.6.2)
     docile (1.4.1)
+    drb (2.2.3)
     erubi (1.13.1)
     factory_bot (6.5.6)
       activesupport (>= 6.1.0)
@@ -145,7 +146,9 @@ GEM
       logger
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.27.0)
+    minitest (6.0.2)
+      drb (~> 2.0)
+      prism (~> 1.5)
     msgpack (1.8.0)
     net-imap (0.4.23)
       date
@@ -356,7 +359,7 @@ DEPENDENCIES
   image_processing
   inline_svg
   listen
-  minitest (~> 5.27)
+  minitest (~> 6.0)
   net-imap (~> 0.4.23)
   puma
   rack-mini-profiler
