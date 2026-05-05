@@ -147,7 +147,7 @@ GEM
     mini_portile2 (2.8.9)
     minitest (5.27.0)
     msgpack (1.8.0)
-    net-imap (0.4.23)
+    net-imap (0.4.24)
       date
       net-protocol
     net-pop (0.1.2)
@@ -357,7 +357,7 @@ DEPENDENCIES
   inline_svg
   listen
   minitest (~> 5.27)
-  net-imap (~> 0.4.23)
+  net-imap (~> 0.4.24)
   puma
   rack-mini-profiler
   rails (~> 6.1.7.10)

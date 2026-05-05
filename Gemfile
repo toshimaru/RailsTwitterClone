@@ -45,7 +45,7 @@ group :rubocop do
   gem "rubocop", "~> 1.84.2"
 end
 
-gem "net-imap", "~> 0.4.23"
+gem "net-imap", "~> 0.4.24"
 gem "zeitwerk", "~> 2.6.0"
 gem "concurrent-ruby", "1.3.4"
 gem "minitest", "~> 5.27"
