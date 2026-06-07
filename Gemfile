@@ -49,3 +49,8 @@ gem "net-imap", "~> 0.4.24"
 gem "zeitwerk", "~> 2.6.0"
 gem "concurrent-ruby", "1.3.4"
 gem "minitest", "~> 5.27"
+
+# Added to suppress warnings
+gem "mutex_m", "~> 0.3.0"
+gem "bigdecimal", "~> 4.1"
+gem "drb", "~> 2.2"
