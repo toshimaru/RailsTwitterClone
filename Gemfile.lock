@@ -150,7 +150,7 @@ GEM
     minitest (5.27.0)
     msgpack (1.8.0)
     mutex_m (0.3.0)
-    net-imap (0.4.24)
+    net-imap (0.5.15)
       date
       net-protocol
     net-pop (0.1.2)
@@ -363,7 +363,7 @@ DEPENDENCIES
   listen
   minitest (~> 5.27)
   mutex_m (~> 0.3.0)
-  net-imap (~> 0.4.24)
+  net-imap (~> 0.5.15)
   puma
   rack-mini-profiler
   rails (~> 6.1.7.10)
