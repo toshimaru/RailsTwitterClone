@@ -9,7 +9,7 @@ jobs:
   rubocop:
     runs-on: ubuntu-slim
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -50,7 +50,7 @@ jobs:
   #   runs-on: ubuntu-slim
   #   steps:
   #   - uses: reviewdog/action-setup@v1
-  #   - uses: actions/checkout@v6
+  #   - uses: actions/checkout@v7
   #   - name: Set up Ruby
   #     uses: ruby/setup-ruby@v1
   #     with:
