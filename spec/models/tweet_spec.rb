@@ -42,4 +42,18 @@ RSpec.describe Tweet, type: :model do
       it { is_expected.to be_invalid }
     end
   end
+
+  describe "#display_image" do
+    let(:tweet) { FactoryBot.create(:tweet) }
+    let(:image) { fixture_file_upload(file_fixture("image.png"), "image/png") }
+
+    before { tweet.image.attach(image) }
+
+    it "processes a resized image variant" do
+      variant = tweet.display_image.processed
+
+      expect(variant.download).to be_present
+      expect(variant.download.bytesize).to be > 0
+    end
+  end
 end
