@@ -45,15 +45,15 @@ RSpec.describe Tweet, type: :model do
 
   describe "#display_image" do
     let(:tweet) { FactoryBot.create(:tweet) }
-    let(:image) { fixture_file_upload(file_fixture("image.png"), "image/png") }
+    let(:image) { fixture_file_upload(file_fixture("oversized_image.png"), "image/png") }
 
     before { tweet.image.attach(image) }
 
-    it "processes a resized image variant" do
+    it "resizes an oversized image while preserving its aspect ratio" do
       variant = tweet.display_image.processed
+      resized_image = MiniMagick::Image.read(variant.download)
 
-      expect(variant.download).to be_present
-      expect(variant.download.bytesize).to be > 0
+      expect(resized_image.dimensions).to eq([700, 500])
     end
   end
 end
