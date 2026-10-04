@@ -33,6 +33,13 @@ RSpec.describe User, type: :model do
   describe "validations" do
     it { is_expected.to be_valid }
 
+    [nil, "", " "].each do |blank_slug|
+      describe "when slug is #{blank_slug.inspect}" do
+        before { user.slug = blank_slug }
+        it { is_expected.to be_invalid }
+      end
+    end
+
     describe "when name is not present" do
       before { user.name = " " }
       it { is_expected.to be_invalid }
