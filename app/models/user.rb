@@ -25,7 +25,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :password, confirmation: true, if: ->(u) { u.password.present? }
-  validates :slug, uniqueness: true
+  validates :slug, presence: true, uniqueness: true
 
   before_save   :downcase_email
   before_create :create_activation_digest
